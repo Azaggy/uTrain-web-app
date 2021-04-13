@@ -1,0 +1,20 @@
+org/liftoff/uTrain/models/dto/RegisterFormDTO.java
+ org.liftoff.uTrain.models.dto.RegisterFormDTO
+org/liftoff/uTrain/models/dto/LoginFormDTO.java
+ org.liftoff.uTrain.models.dto.LoginFormDTO
+org/liftoff/uTrain/models/User.java
+ org.liftoff.uTrain.models.User
+org/liftoff/uTrain/UTrainApplication.java
+ org.liftoff.uTrain.UTrainApplication
+org/liftoff/uTrain/data/UserRepository.java
+ org.liftoff.uTrain.data.UserRepository
+org/liftoff/uTrain/models/AbstractEntity.java
+ org.liftoff.uTrain.models.AbstractEntity
+org/liftoff/uTrain/WebApplicationConfig.java
+ org.liftoff.uTrain.WebApplicationConfig
+org/liftoff/uTrain/controllers/AuthenticationController.java
+ org.liftoff.uTrain.controllers.AuthenticationController
+org/liftoff/uTrain/AuthenticationFilter.java
+ org.liftoff.uTrain.AuthenticationFilter
+org/liftoff/uTrain/controllers/MainController.java
+ org.liftoff.uTrain.controllers.MainController
