@@ -16,13 +16,13 @@
 <header th:fragment="header">
     <div class="logo-background">
         <h1><img th:src="@{/images/headerlogo2.png}" /></h1>
+        <ul class="nav" style="float:right;">
+            <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+        </ul>
     </div>
     <div class="container">
         </br>
         <h2 class="bigText" th:text="${title}"></h2>
-        <ul class="nav" style="float:right;">
-            <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
-        </ul>
     </div>
 </header>
 
