@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38218ce2-6096-4f48-81e1-a6d3ea2936ba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/controllers/ChoreNeighborController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/controllers/PropertyOwnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/data/ChoreNeighborRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/data/PropertyOwnerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/AbstractEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/ChoreNeighbor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/PropertyOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/SafetyGear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/dto/LoginFormDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/dto/RegisterFormDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/BabySitting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/DogWalking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/Gardening.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/Job.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/LawnMowing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/LeafRaking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/MailCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/OutdoorDecorationSetup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/SnowShoveling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/TrashCanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/java/org/launchcode/NCB/models/jobs/WashingCars.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCB/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/java/com/example/NCNbeta10/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/java/com/example/NCNbeta10/models/AbstractEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/java/com/example/NCNbeta10/models/ChoreNeighbor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/java/com/example/NCNbeta10/models/PropertyOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/static/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/static/ncn.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/choreNeighbor/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/choreNeighbor/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/propertyOwner/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/propertyOwner/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NCNbeta1.0/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/java/org/launchcode/hellospring/HelloSpringApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/java/org/launchcode/hellospring/controllers/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/resources/templates/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/hello-spring.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/modules/hello-spring.hello-spring.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/modules/hello-spring.hello-spring.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/src/main/java/org/launchcode/hellospring/HelloSpringApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/src/main/java/org/launchcode/hellospring/controllers/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/src/main/resources/templates/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring/hello-spring/src/test/java/org/launchcode/hellospring/HelloSpringApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Utrain" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Utrain" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Utrain" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1r5YxllaZ4nAQbAhnFtKGfZyZKv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Utrain [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Utrain [bootRun]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38218ce2-6096-4f48-81e1-a6d3ea2936ba" name="Default Changelist" comment="" />
+      <created>1618267670185</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618267670185</updated>
+    </task>
+    <servers />
+  </component>
+</project>

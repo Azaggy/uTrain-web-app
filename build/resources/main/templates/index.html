@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link href="@{/bootstrap.css}" rel="stylesheet" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar h2 {
+  float: left;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px ;
+  text-decoration: none;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 60px 16px ;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 60px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e0ffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.homepagePics{
+
+}
+
+photos{
+  overflow: hidden;
+  background-color: #333;
+  padding: 40px 10px
+}
+
+.footer {
+  overflow: hidden;
+  background-color: #333;
+  font-size: 20 px;
+  color: white;
+  min-height:25px;
+  padding: 100px;
+  text-align:center;
+}
+
+.foots{
+    color: white;
+}
+
+.image:hover {
+    opacity:.3
+ }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2 href="">uTrain</h2>
+    <a href="/company">About Us</a>
+    <div class="dropdown">
+        <button class="dropbtn">Services
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/homeExercises">Home Exercises</a>
+            <a href="/outdoorExercises">Outdoor Exercises</a>
+            <a href="/gymExercises">Gym Exercises</a>
+            <a href="/gymLocator">Gym Locator</a>
+        </div>
+    </div>
+    <a href="/signUp">Sign Up</a>
+    <a href="/login">Login</a>
+</div >
+
+<div class= "photos">
+    <img class="image" src="https://imgk.timesnownews.com/story/push-ups.gif?tr=w-1200,h-900" alt="pushUp" width="465" height="300" >
+    <img class="image" src="https://www.johnsonfitness.com/Content/cat_images/cat_483_category-strength-adjustable-db.jpg" alt="dumbBell" width="465" height="300" >
+    <img class="image" src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/09/GRT-female-yoga-by-water-1296x728-header-1296x728.jpg?w=1155&h=1528" alt="yoga" width="465" height="300" >
+    <img class="image" src="https://blog.nasm.org/hubfs/cleangym%20%281%29.jpg" alt="gym" width="465" height="300" >
+</div>
+<div class= "photos">
+    <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
+    <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >
+    <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="465" height="300" >
+    <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >
+</div>
+
+
+
+<footer class="footer">
+    <p>uTrain 2021<br>St. Louis, MO<br>
+        <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>
+</footer>
+
+</body>
+</html>
