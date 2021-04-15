@@ -1,4 +1,4 @@
-package Controllers;
+package org.launchcode.uTrain.controllers;
 
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,6 @@ public class HomeController {
     @GetMapping
     @ResponseBody
     public String hello() {
-        return String "Welcome to uTrain.";
+        return "Welcome to uTrain.";
     }
 }
