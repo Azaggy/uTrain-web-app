@@ -1,4 +1,4 @@
-package org.launchcode.helloworld.controllers;
+package Controllers;
 
 
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloController {
+public class HomeController {
 
     @GetMapping
     @ResponseBody
     public String hello() {
-        return "Hello, World";
+        return String "Welcome to uTrain.";
     }
 }
