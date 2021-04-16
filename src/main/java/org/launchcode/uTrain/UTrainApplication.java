@@ -1,13 +1,13 @@
-package com.helloworld.helloworld;
+package org.launchcode.uTrain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloworldApplication {
+public class UTrainApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloworldApplication.class, args);
+		SpringApplication.run(UTrainApplication.class, args);
 	}
 
 }
