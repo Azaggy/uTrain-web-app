@@ -1,4 +1,4 @@
-package org.launchcode.uTrain.models;
+package org.launchcode.uTrain.models.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
