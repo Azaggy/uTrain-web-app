@@ -16,20 +16,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-    @Autowired
-    UserRepository userRepository;
+    @GetMapping("index")
+    public String indexPage(Model model) {
+        model.addAttribute("title", "Welcome!!");
 
-    @Autowired
-    AuthenticationController authenticationController;
-
-    HttpServletRequest request;
-    HttpSession session = request.getSession();
-    User user = authenticationController.getUserFromSession(session);
-
-    @GetMapping("user")
-    public String userIndexPage(Model model) {
-        model.addAttribute("Title", "Welcome!!");
-        model.addAttribute("user", user);
 
         return "index";
     }

@@ -110,7 +110,18 @@ public class AuthenticationController {
             return "login";
         }
 
+        String password = loginFormDTO.getPassword();
+
+        if (!theUser.isMatchingPassword(password)) {
+            errors.rejectValue("password", "password.invalid", "Invalid password!");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
         setUserInSession(request.getSession(), theUser);
+
+        User user = (User) getUserFromSession(request.getSession());
+        model.addAttribute("user", user);
 
         return "redirect:/user/index";
     }

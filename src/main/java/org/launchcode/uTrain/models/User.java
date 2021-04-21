@@ -2,7 +2,9 @@ package org.launchcode.uTrain.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 
@@ -15,28 +17,29 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
-    @NotNull
+
     private String firstName;
 
-    @NotNull
+
     private String lastName;
 
-    @NotNull
+
     private UserSex sex;
 
     @NotNull
     private String email;
 
-    @NotNull
+
     private int age;
 
-    @NotNull
+
     private int height;
 
-    @NotNull
+
     private int weight;
 
-    @NotNull
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -49,17 +52,21 @@ public class User extends AbstractEntity {
         this.email = email;
     }
 
-    public User (String username, String password, String firstName, String lastName,
-                 UserSex sex, String email, int age, int height, int weight) {
-        this.username = username;
-        this.pwHash = encoder.encode(password);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.sex = sex;
-        this.email = email;
-        this.age = age;
-        this.height = height;
-        this.weight = weight;
+//    public User (String username, String password, String firstName, String lastName,
+//                 UserSex sex, String email, int age, int height, int weight) {
+//        this.username = username;
+//        this.pwHash = encoder.encode(password);
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.sex = sex;
+//        this.email = email;
+//        this.age = age;
+//        this.height = height;
+//        this.weight = weight;
+//    }
+
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
     }
 
     public String getUsername() {

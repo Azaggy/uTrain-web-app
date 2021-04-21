@@ -22,7 +22,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
             "/styles.css", "/index");
 
     private static boolean isWhiteListed(String path) {
-        for (String pathRoot : whitelist) {
+        for (String pathRoot: whitelist) {
             if (path.startsWith(pathRoot)) {
                 return true;
             }
@@ -49,7 +49,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         }
 
         // the user is NOT logged in
-        response.sendRedirect("/login");
+        response.sendRedirect("/index");
         return false;
     }
 }

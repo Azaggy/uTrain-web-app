@@ -9,7 +9,7 @@
 <body>
 <header th:fragment="header">
     <div class="navbar">
-        <h2 href="">uTrain</h2>
+        <h2>uTrain</h2>
         <a href="/company">About Us</a>
         <div class="dropdown">
             <button class="dropbtn">Services
@@ -22,8 +22,9 @@
                 <a href="/gymLocator">Gym Locator</a>
             </div>
         </div>
-        <a href="/signUp">Sign Up</a>
+        <a href="/reg">Sign Up</a>
         <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
     </div >
     <h2 th:text="${title}"></h2>
 </header>

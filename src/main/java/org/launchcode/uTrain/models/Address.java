@@ -1,8 +1,8 @@
 package org.launchcode.uTrain.models;
 
 import javax.persistence.Entity;
-
-public class Address {
+@Entity
+public class Address extends AbstractEntity {
 
     private String street;
 
