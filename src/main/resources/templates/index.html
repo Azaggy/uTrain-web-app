@@ -1,30 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link href="@{/bootstrap.css}" rel="stylesheet" />-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/styles.css}">
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
-
-<div class="navbar">
-    <h2 href="">uTrain</h2>
-    <a href="/company">About Us</a>
-    <div class="dropdown">
-        <button class="dropbtn">Services
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="/homeExercises">Home Exercises</a>
-            <a href="/outdoorExercises">Outdoor Exercises</a>
-            <a href="/gymExercises">Gym Exercises</a>
-            <a href="/gymLocator">Gym Locator</a>
-        </div>
-    </div>
-    <a href="/signUp">Sign Up</a>
-    <a href="/login">Login</a>
-</div >
+<header th:replace="fragments :: header"></header>
 
 <div class= "photos">
     <img class="image" src="https://imgk.timesnownews.com/story/push-ups.gif?tr=w-1200,h-900" alt="pushUp" width="465" height="300" >
@@ -39,10 +17,7 @@
     <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >
 </div>
 
-<footer class="footer">
-    <p>uTrain 2021<br>St. Louis, MO<br>
-        <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>
-</footer>
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

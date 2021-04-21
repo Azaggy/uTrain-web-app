@@ -36,9 +36,18 @@ public class User extends AbstractEntity {
     @NotNull
     private int weight;
 
+    @NotNull
+    private Address address;
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {}
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.email = email;
+    }
 
     public User (String username, String password, String firstName, String lastName,
                  UserSex sex, String email, int age, int height, int weight) {
@@ -115,5 +124,17 @@ public class User extends AbstractEntity {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
