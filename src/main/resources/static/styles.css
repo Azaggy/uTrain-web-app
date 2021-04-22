@@ -1,32 +1,56 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #0056b9;
 }
 
-.navbar {
-  overflow: hidden;
-  background-color: #333;
+ul  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0602b9;
 }
 
-.navbar h2 {
-  float: left;
-  font-size: 40px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px ;
-  text-decoration: none;
+li {
+   float: left;
+   display: inline;
+   text-align: center;
 }
 
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 60px 16px ;
-  text-decoration: none;
+li a, .dropbtn {
+    display:inline-block;
+    color: white;
+    text-align: center;
+
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdoen:hover .dropbtn {
+    background-color: #06027e;
+}
+
+li.dropdown {
+    display: inline-block;
+    float: left;
+}
+
+.signUp {
+    float: right;
+}
+
+.logIn {
+    float: right;
+}
+
+.logo {
+    background-color: #0602b9;
+    border: none;
+    display: block;
 }
 
 .dropdown {
-  float: left;
+  float: center;
   overflow: hidden;
 }
 
@@ -35,27 +59,22 @@ body {
   border: none;
   outline: none;
   color: white;
-  padding: 60px 16px;
+  padding: 18px 16px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #e0ffff;
+  background-color: #00b1b9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  float: none;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -64,29 +83,32 @@ body {
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #00676c;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.homepagePics{
+.photos{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 
 }
 
-photos{
-  overflow: hidden;
-  background-color: #333;
-  padding: 40px 10px
+.image2 {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 50px;
+    padding-bottom: 90px;
 }
-
 .footer {
   overflow: hidden;
-  background-color: #333;
+  background-color: #0602b9;
   font-size: 20 px;
-  color: white;
   min-height:25px;
+  color: white;
   padding: 100px;
   text-align:center;
 }
@@ -95,6 +117,6 @@ photos{
     color: white;
 }
 
-.image:hover {
-    opacity:.3
+.image {
+
  }
