@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping
-    @ResponseBody
+    @GetMapping("")
     public String hello() {
-        return "Welcome to uTrain.";
+        return "index";
     }
 }
