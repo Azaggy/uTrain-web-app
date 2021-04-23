@@ -21,18 +21,22 @@ li a, .dropbtn {
     display:inline-block;
     color: white;
     text-align: center;
-
     padding: 14px 16px;
     text-decoration: none;
 }
 
-li a:hover, .dropdoen:hover .dropbtn {
+li a:hover, .dropdown:hover .dropbtn {
     background-color: #06027e;
 }
 
 li.dropdown {
     display: inline-block;
     float: left;
+}
+
+a.one {
+    padding: 0px;
+    margin: 0px;
 }
 
 .signUp {
@@ -47,22 +51,6 @@ li.dropdown {
     background-color: #0602b9;
     border: none;
     display: block;
-}
-
-.dropdown {
-  float: center;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 18px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
 }
 
 .dropdown-content {

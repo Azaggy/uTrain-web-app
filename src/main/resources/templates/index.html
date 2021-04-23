@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link href="@{/bootstrap.css}" rel="stylesheet" />-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/styles.css}">
-</head>
-<body>
-<ul>
-<!--    <li>-->
-<!--        <img class="logo" src="https://live.staticflickr.com/65535/51132084913_b71d95a5d2_t.jpg" width="100" height="47" alt="logo">-->
-<!--    </li>-->
-    <li>
-        <img src="https://i.ibb.co/8N7QbWS/IMG-1535.png" alt="logo" border="0" width="100" height="51">
-    </li>
-    <li><a href="/company">About Us</a></li>
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Services</a>
-        <div class="dropdown-content">
-            <a href="/homeExercises">Home Exercises</a>
-            <a href="/outdoorExercises">Outdoor Exercises</a>
-            <a href="/gymExercises">Gym Exercises</a>
-            <a href="/gymLocator">Gym Locator</a>
+    <head th:replace="fragments :: head">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--    &lt;!&ndash;    <link href="@{/bootstrap.css}" rel="stylesheet" />&ndash;&gt;-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--    <link rel="stylesheet" th:href="@{/styles.css}">-->
+    </head>
+    <body>
+    <!--<ul>-->
+    <!--    <li class="logo">-->
+    <!--            <a class="one" href="">-->
+    <!--                <img src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">-->
+    <!--            </a>-->
+    <!--    </li>-->
+    <!--    <li><a href="/company">About Us</a></li>-->
+    <!--    <li class="dropdown">-->
+    <!--        <a href="javascript:void(0)" class="dropbtn">Services</a>-->
+    <!--        <div class="dropdown-content">-->
+    <!--            <a href="/homeExercises">Home Exercises</a>-->
+    <!--            <a href="/outdoorExercises">Outdoor Exercises</a>-->
+    <!--            <a href="/gymExercises">Gym Exercises</a>-->
+    <!--            <a href="/gymLocator">Gym Locator</a>-->
+    <!--        </div>-->
+    <!--    </li>-->
+    <!--    <li class="signUp" ><a href="/signUp">Sign Up</a> </li>-->
+    <!--    <li class="logIn"><a href="/login">Login</a> </li>-->
+    <!--</ul>-->
+        <div th:replace="fragments :: page-header"></div>
+        <div class= "photos">
+            <img class="image" src="https://imgk.timesnownews.com/story/push-ups.gif?tr=w-1200,h-900" alt="pushUp" width="615" height="450">
+            <img class="image" src="https://www.johnsonfitness.com/Content/cat_images/cat_483_category-strength-adjustable-db.jpg" alt="dumbBell" width="615" height="450" >
+            <img class="image" src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/09/GRT-female-yoga-by-water-1296x728-header-1296x728.jpg?w=1155&h=1528" alt="yoga" width="615" height="450" >
         </div>
-    </li>
-    <li class="signUp" ><a href="/signUp">Sign Up</a> </li>
-    <li class="logIn"><a href="/login">Login</a> </li>
-</ul>
+        <div class="photos">
+            <img class="image" src="https://live.staticflickr.com/65535/51133108770_5f00f29675.jpg" width="615" height="450" alt="ropes">
+            <img class="image2" src="https://i.ibb.co/0FCw4R8/logo.png" alt="logo" border="0" width="600" height="301">
+            <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="615" height="450" >
+        </div>
+        <div class= "photos">
+            <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="615" height="450" >
+            <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="615" height="450" >
+            <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="615" height="450" >
+        </div>
 
-    <div class= "photos">
-        <img class="image" src="https://imgk.timesnownews.com/story/push-ups.gif?tr=w-1200,h-900" alt="pushUp" width="615" height="450">
-        <img class="image" src="https://www.johnsonfitness.com/Content/cat_images/cat_483_category-strength-adjustable-db.jpg" alt="dumbBell" width="615" height="450" >
-        <img class="image" src="https://i0.wp.com/post.greatist.com/wp-content/uploads/sites/2/2019/09/GRT-female-yoga-by-water-1296x728-header-1296x728.jpg?w=1155&h=1528" alt="yoga" width="615" height="450" >
-    </div>
-    <div class="photos">
-        <img class="image" src="https://live.staticflickr.com/65535/51133108770_5f00f29675.jpg" width="615" height="450" alt="ropes">
-        <img class="image2" src="https://i.ibb.co/0FCw4R8/logo.png" alt="logo" border="0" width="600" height="301">
-        <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="615" height="450" >
-    </div>
-    <div class= "photos">
-        <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="615" height="450" >
-        <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="615" height="450" >
-        <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="615" height="450" >
-    </div>
+    <footer class="footer">
+        <p>uTrain 2021<br>St. Louis, MO<br>
+            <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>
+    </footer>
 
-<footer class="footer">
-    <p>uTrain 2021<br>St. Louis, MO<br>
-        <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>
-</footer>
-
-</body>
+    </body>
 </html>
