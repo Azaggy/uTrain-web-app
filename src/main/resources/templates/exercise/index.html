@@ -1,18 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-
-<head th:replace="fragments :: head">
+<link rel="stylesheet" th:href="@{/mainn.css}" />
+<!--<head th:replace="fragments :: head">-->
 
 </head>
 <body>
 
-<form method="postd">
-    <div class="form-control">
-        <label>
-            <input>
-        </label>
+<div class="container">
+   <h2>Workouts</h2>
+    <div class="selected">
+        select activity
     </div>
-</form>
 
+    <div class="select-box">
+
+        <div class="option-container active">
+
+            <div class="option">
+                <input type="radio" class="radio" id="Active Recovery"  name="category">
+                <label for="Active Recovery">Active Recovery</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Aerobic Exercises"  name="category">
+                <label for="Aerobic Exercises">Aerobic Exercises</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Anaerobic Exercises"  name="category">
+                <label for="Anaerobic Exercises">Anaerobic Exercises</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Boot Camp"  name="category">
+                <label for="Boot Camp">Boot Camp(Military style training)</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Cross Training"  name="category">
+                <label for="Cross Training">Cross Training</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Everyday Moves"  name="category">
+                <label for="Everyday Moves">Everyday Moves</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Intervals"  name="category">
+                <label for="Intervals">Intervals</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Isometrics"  name="category">
+                <label for="Isometrics">Isometrics</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Muscle-Training"  name="category">
+                <label for="Muscle-Training">Muscle-Training</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Repetitions"  name="category">
+                <label for="Repetitions">Repetitions</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Steady-Cardio"  name="category">
+                <label for="Steady-Cardio">Steady-Cardio</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src=""></script>
 </body>
 </html>
