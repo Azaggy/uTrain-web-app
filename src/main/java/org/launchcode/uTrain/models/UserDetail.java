@@ -1,6 +1,6 @@
 package org.launchcode.uTrain.models;
 
-import org.launchcode.uTrain.models.Address;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;

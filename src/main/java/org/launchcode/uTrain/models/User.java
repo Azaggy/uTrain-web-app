@@ -1,8 +1,7 @@
 package org.launchcode.uTrain.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.launchcode.uTrain.models.AbstractEntity;
-import org.launchcode.uTrain.models.UserSex;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,6 +25,8 @@ public class User extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     private UserDetail userDetail;
 
+    private boolean isNew;
+
 
 
 
@@ -37,6 +38,7 @@ public class User extends AbstractEntity {
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.email = email;
+        this.isNew = true;
     }
 
     public User(String username, String password, String email, UserDetail userDetail) {
@@ -60,6 +62,10 @@ public class User extends AbstractEntity {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
@@ -80,5 +86,11 @@ public class User extends AbstractEntity {
         this.userDetail = userDetail;
     }
 
+    public boolean isNew() {
+        return isNew;
+    }
 
+    public void setNew(boolean aNew) {
+        isNew = aNew;
+    }
 }

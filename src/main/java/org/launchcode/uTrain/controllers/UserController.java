@@ -49,7 +49,7 @@ public class UserController {
         return "user/index";
     }
 
-    @GetMapping("profile/{userId}")
+    @GetMapping("addprofile/{userId}")
     public String displayEditProfileForm(Model model, @PathVariable int userId) {
 
         Optional<User> result = userRepository.findById(userId);
@@ -60,11 +60,11 @@ public class UserController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("sexes", UserSex.values());
 
-        return "user/profile";
+        return "user/addprofile";
     }
 
-    @PostMapping("profile")
-    public String processEditPostMDCForm(@ModelAttribute @Valid User user, int userId,
+    @PostMapping("addprofile")
+    public String processEditProfileForm(@ModelAttribute @Valid User user, int userId,
                                          Errors errors, Model model) {
 
         Optional<User> result = userRepository.findById(userId);
@@ -74,12 +74,29 @@ public class UserController {
             model.addAttribute("title", "Update " + updatedUser.getUsername());
             model.addAttribute("user", updatedUser);
             model.addAttribute("loggedIn", true);
-            return "user/profile";
+            model.addAttribute("userId", userId);
+            return "user/addprofile";
         }
 
+        userRepository.deleteById(userId);
+
+        user.setNew(false);
        userRepository.save(user);
 
-        return "redirect:/user/index";
+        return "user/index";
+    }
+
+    @GetMapping("profile")
+    public String userProfile(HttpServletRequest request, Model model) {
+
+        User user = (User) getUserFromSession(request.getSession());
+
+
+        model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+
+        return "user/profile";
     }
 
 }
