@@ -73,8 +73,15 @@
         <div class="selected">
             select activity
         </div>
+        <div class="search-box">
+            <input type="text" placeholder="Start Typing..." />
+        </div>
     </div>
 </div>
+
+
+
+
 
 <script type="text/javascript">
     const selected = document.querySelector(".selected");
@@ -85,6 +92,13 @@ const optionsContainer = document.querySelector(".option-container");
 selected.addEventListener("click", () => {
     optionsContainer.classList.toggle("active");
 })
+
+optionsList.forEach(o => {
+    o.addEventListener("click", () => {
+        selected.innerHTML = o.querySelector("label").innerHTML;
+        optionsContainer.classList.remove("active");
+        });
+    });
 </script>
 </body>
 </html>

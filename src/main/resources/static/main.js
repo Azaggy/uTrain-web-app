@@ -6,3 +6,4 @@ const optionsContainer = document.querySelector(".option-container");
 selected.addEventListener("click", () => {
     optionsContainer.classList.toggle("active");
 })
+
