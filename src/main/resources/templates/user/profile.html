@@ -38,9 +38,19 @@
 </table>
 <h2>Address</h2>
 <table class="table">
+    <thead>
+    <tr>
+        <th>Street</th>
+    </tr>
+    </thead>
     <tr>
         <td th:text="${user.userDetail.address.street}"></td>
     </tr>
+    <thead>
+    <tr>
+        <th>City, State, Zip</th>
+    </tr>
+    </thead>
     <tr>
         <td th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>
     </tr>
