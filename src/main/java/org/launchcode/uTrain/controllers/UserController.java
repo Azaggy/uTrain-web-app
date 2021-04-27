@@ -99,7 +99,7 @@ public class UserController {
         // User info is updated and saved to the database with new information
        userRepository.save(user);
 
-        return "user/index";
+        return "redirect:/index";
     }
 
     @GetMapping("profile")

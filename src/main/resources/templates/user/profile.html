@@ -55,7 +55,7 @@
         <td th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>
     </tr>
 </table>
-<p><a th:href="@{/user/addprofile/{id}(id=${user.id})}">Edit Profile</a></p>
+<p><a th:href="@{/user/addprofile/{id}(id=${user.id})}">Edit Profile</a> <a th:href="@{/user/index}">Back to Home</a></p>
 </br>
 
 <footer th:replace="fragments :: footer"></footer>
