@@ -2,7 +2,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0056b9;
 }
-
 ul  {
     list-style-type: none;
     margin: 0;
@@ -10,13 +9,11 @@ ul  {
     overflow: hidden;
     background-color: #0602b9;
 }
-
 li {
    float: left;
    display: inline;
    text-align: center;
 }
-
 li a, .dropbtn {
     display:inline-block;
     color: white;
@@ -24,35 +21,28 @@ li a, .dropbtn {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 li a:hover, .dropdown:hover .dropbtn {
     background-color: #06027e;
 }
-
 li.dropdown {
     display: inline-block;
     float: left;
 }
-
 a.one {
     padding: 0px;
     margin: 0px;
 }
-
 .signUp {
     float: right;
 }
-
 .logIn {
     float: right;
 }
-
 .logo {
     background-color: #0602b9;
     border: none;
     display: block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -61,7 +51,6 @@ a.one {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -69,22 +58,17 @@ a.one {
   display: block;
   text-align: left;
 }
-
 .dropdown-content a:hover {
   background-color: #00676c;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .photos{
   margin-left: auto;
   margin-right: auto;
   display: block;
-
 }
-
 .image2 {
     padding-left: 8px;
     padding-right: 8px;
@@ -100,11 +84,12 @@ a.one {
   padding: 100px;
   text-align:center;
 }
-
 .foots{
     color: white;
 }
-
 .image {
-
+ }
+#formgroup, .form-control{
+    font-size: 40px;
+    margin: 10px;
  }

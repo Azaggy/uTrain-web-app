@@ -20,8 +20,10 @@
         </a>
     </li>
     <li><a href="/company">About Us</a></li>
+<!--    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>-->
+    <li th:unless="${loggedIn}"><a  href="/index">Home</a></li>
     <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Services</a>
+        <a th:if="${loggedIn}" href="javascript:void(0)" class="dropbtn">Services</a>
         <div class="dropdown-content">
             <a href="/homeExercises">Home Exercises</a>
             <a href="/outdoorExercises">Outdoor Exercises</a>
@@ -29,8 +31,15 @@
             <a href="/gymLocator">Gym Locator</a>
         </div>
     </li>
-    <li class="signUp" ><a href="/signUp">Sign Up</a> </li>
-    <li class="logIn"><a href="/login">Login</a> </li>
+    <li th:if="${loggedIn}">
+    <a th:if="${user.isNew}" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
+        <a th:unless="${user.isNew}" href="/user/profile">Profile</a>
+    </li>
+    <li>
+    <a th:unless="${loggedIn}" href="/reg">Sign Up</a>
+    <a th:unless="${loggedIn}" href="/login">Login</a>
+    <a th:if="${loggedIn}" href="/logout">Logout</a>
+    </li>
 </ul>
 
 <!--<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">-->
@@ -46,6 +55,10 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
+<footer th:fragment="footer" class="footer">
+    <p>uTrain 2021<br>St. Louis, MO<br>
+        <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>
+</footer>
 
 </body>
 </html>
