@@ -5,7 +5,7 @@ box-sizing: border-box;
 
 body {
     font-family: "Roboto", sans-serif;
-    background: #f7f6ff;
+    background: #9391a9;
 }
 
 h2 {
@@ -115,29 +115,24 @@ select-box .option-container.active + .selected::after {
  }
 
 
- .search-box input {
- width: 100%
- padding: 12px 16px
- font-family: "Roboto", sans-serif;
- font-size: 16px;
- position: absulute;
- border-radius: 8px 8px 0 0;
- z-index: 100;
- border: 8px solid #2f3640;
 
- opacity: 0;
- pointer-events: none;
- transition: all 0.4s;
- }
+.search-box input{
+   width: 100%;
+   padding: 12px 16px;
+   font-family: "Roboto", sarif;
+   font-size: 16px;
+   position: absolute;
+   border-radius: 8px 8px 0 0;
+   z-index: 100;
+   border: 8px solid #2f3640
 
- .search-box input:focus {
- outline: none;
- }
+   opacity: 0;
+   pointer-events: none;
+   transition: all 0.4s;
+}
 
- .select-box .options-container.active ~ .search-box input {
-  opacity: 1;
-  pointer-events: auto;
- }
-
+.search-box input:focus {
+outline: none;
+}
 
 

@@ -14,6 +14,10 @@ public class WorkOutController {
         return("exercise/index");
     }
 
+    @GetMapping("workOut")
+    public String trainersDisplay(){
+        return("exercise/workOut");
+    }
 
 
 }

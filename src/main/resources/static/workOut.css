@@ -1,0 +1,30 @@
+body {
+background: #bfccd2;
+}
+
+table {
+border-callapse: callapse;
+width: 100%;
+}
+
+td, th{
+border: 1px solid #807575;
+text-align: left;
+padding: 7px;
+}
+
+tr:nth-child(even) {
+background-color: #d0babab0;
+color: #a7353508053601;
+}
+
+.search-div {
+margin-top:
+}
+
+.search-div input {
+width: 100%;
+padding: 7px;
+margin-bottom: 10px;
+}
+

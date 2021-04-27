@@ -1,11 +1,187 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-
-<head th:replace="fragments :: head">
-
+<!--<script th:src="@{/main.js}"></script>-->
+<link rel="stylesheet" th:href="@{/workOut.css}"/>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<!--<head th:replace="fragments :: head">-->
 </head>
 <body>
-<p>Testing</p>
 
+<ul>
+    <li class="logo">
+        <a class="one" href="">
+            <img src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+        </a>
+    </li>
+    <li><a href="/company">About Us</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Services</a>
+        <div class="dropdown-content">
+            <a href="/homeExercises">Home Exercises</a>
+            <a href="/outdoorExercises">Outdoor Exercises</a>
+            <a href="/gymExercises">Gym Exercises</a>
+            <a href="/gymLocator">Gym Locator</a>
+        </div>
+    </li>
+    <li class="signUp" ><a href="/signUp">Sign Up</a> </li>
+    <li class="logIn"><a href="/login">Login</a> </li>
+    <li class=""><a href="/exercise/index">Trainers</a></li>
+</ul>
+
+
+
+
+
+
+<div class="search=div">
+    <input type="text" id="search" placeholder="Search by name">
+</div>
+<table>
+    <tr>
+        <th>Trainer</th>
+        <th>Contack Email</th>
+        <th>Contact Number</th>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Ted Wilkons</a></td>
+        <td>tedWil@gmail.com</td>
+        <td>314-752-2537</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">John Anderson</a></td>
+        <td>JohnA@gmail.com</td>
+        <td>314-853-2537</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Mike Wilkerson</a></td>
+        <td>ddahouse4@gmail.com</td>
+        <td>314-659-9972</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Tim Bail</a></a></td>
+        <td>TimBailenger@gmail.com</td>
+        <td>314-876-8851</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">xina Arlington</a></td>
+        <td>Arlington1275animal@gmail.com</td>
+        <td>314-152-0123</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Andre Drakster</a></td>
+        <td>AndreDragon@gmail.com</td>
+        <td>314-995-995</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Michael Jakerson</a></td>
+        <td>Mike@gmail.com</td>
+        <td>614-435-6</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Mary' Ann Stafford</a></td>
+        <td>MaryQuiteContrary@gmail.com</td>
+        <td>314-758-2345</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Deon Drockers</a></td>
+        <td>Deon@gmail.com</td>
+        <td>314-576-9998</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Tina Takkerson</a></td>
+        <td>Tinaandda@gmail.com</td>
+        <td>314-368-3789</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Jack jverson</a></td>
+        <td>jjack123kapsults@gmail.com</td>
+        <td>314-246-3456</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Benjamen Drakster</a></td>
+        <td>BenjaminFranklin@gmail.com</td>
+        <td>314-113-3356</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Andre Startsan</a></td>
+        <td>startsen@gmail.com</td>
+        <td>314-788-9986</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Deon Drakestone</a></td>
+        <td>Drakestone@gmail.com</td>
+        <td>314-456-8960</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Benjamine Stoker</a></td>
+        <td>BBstoke@gmail.com</td>
+        <td>314-995-995</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Leon Napstear</a></td>
+        <td>Leeonon@gmail.com</td>
+        <td>314-564-7789</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Danielle Stafford</a></td>
+        <td>dnstafflds@gmail.com</td>
+        <td>314-314-5567</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Andre Stafford</a></td>
+        <td>AndreDragon@gmail.com</td>
+        <td>314-467-1325</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Malachi Mason</a></td>
+        <td>Dragonfly@gaganaly.com</td>
+        <td>314-560-7953</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Gabriel Josephs</a></td>
+        <td>aastafdde@gmail.com</td>
+        <td>314-668-2234</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Anna'Belle Ranaes</a></td>
+        <td>anastar@gmail.com</td>
+        <td>314-487-2221</td>
+    </tr>
+    <tr>
+        <td><a href="/exercise/index">Andgie Carvers</a></td>
+        <td>AnnCarvers@gmail.com</td>
+        <td>314-765-0896</td>
+    </tr>
+</table>
+
+
+
+
+
+<script type="text/javascript">
+    document.getElementById('search').onkeyup = function () {
+
+    var query = this.value.toUpperCase();
+    var table = document.getElementsByTagName('table')[0];
+    var table_row = document.getElementsByTagName('tr');
+
+    for(var i = 0; i < table_row.length; i++) {
+    var name_row = table_row[i].getElementsByTagName('td')[0];
+
+       if(name_row) {
+
+            var name = name_row.textContent || td.innerText;
+            if(name.toUpperCase().indexOf(query) > - 1) {
+
+            table_row[i].style.display='';
+            } else {
+            table_row[i].style.display = 'none'
+            }
+        }
+    }
+    console.log(query);
+}
+
+</script>
 </body>
 </html>
