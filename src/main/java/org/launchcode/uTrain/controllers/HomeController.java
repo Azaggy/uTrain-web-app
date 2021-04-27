@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
+    //Controller for display pages with hardly any interaction.
+
     @GetMapping("index")
     public String hello() {
         return "index";

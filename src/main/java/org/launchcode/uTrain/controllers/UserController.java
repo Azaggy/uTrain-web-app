@@ -40,6 +40,11 @@ public class UserController {
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model) {
 
+        /*
+        User is directed to the user index page after a successful login is completed.
+        The variable loggedIn is used to display certain links if user is logged in.
+         */
+
         User user = (User) getUserFromSession(request.getSession());
 
         model.addAttribute("title", "Welcome!!");
@@ -51,6 +56,12 @@ public class UserController {
 
     @GetMapping("addprofile/{userId}")
     public String displayEditProfileForm(Model model, @PathVariable int userId) {
+
+        /*
+        User is directed to add profile from link if the boolean isNew is true. If false they'll be
+        directed to the profile page.
+
+         */
 
         Optional<User> result = userRepository.findById(userId);
         User updateUser = result.get();
@@ -80,7 +91,12 @@ public class UserController {
 
         userRepository.deleteById(userId);
 
+        // Once user adds detailed information to profile it sets isNew to false. From there when they select
+        // profile it will take them to the profile page.
+
         user.setNew(false);
+
+        // User info is updated and saved to the database with new information
        userRepository.save(user);
 
         return "user/index";
@@ -88,6 +104,8 @@ public class UserController {
 
     @GetMapping("profile")
     public String userProfile(HttpServletRequest request, Model model) {
+
+        // This page is only displayed if the user variable isNew is false.
 
         User user = (User) getUserFromSession(request.getSession());
 
