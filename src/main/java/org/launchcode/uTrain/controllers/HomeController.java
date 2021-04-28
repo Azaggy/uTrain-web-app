@@ -16,6 +16,10 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("homeExercises")
+    public String homeExercises() {
+        return "homeExercises";
+    }
 
     @GetMapping("company")
     public String aboutPage(Model model) {
