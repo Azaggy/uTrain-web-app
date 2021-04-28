@@ -2,14 +2,16 @@ package org.launchcode.uTrain.models;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.Size;
 
 
 @Entity
 public class Park extends AbstractEntity {
     @NotNull
     private String name;
+
     @NotNull
+    @Size(min=5, max=5)
     private Integer zipCode;
 
     public Park (){}

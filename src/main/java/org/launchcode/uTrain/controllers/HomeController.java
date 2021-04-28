@@ -27,4 +27,15 @@ public class HomeController {
 
         return "company";
     }
+    @GetMapping("gymLocator")
+    public String gymLocator(Model model){
+        model.addAttribute("title", "Park Locator");
+        return "gymLocator";
+    }
+
+    @GetMapping("parkLocator")
+    public String parkLocator(Model model){
+        model.addAttribute("title", "Park Locator");
+        return "parkLocator";
+    }
 }

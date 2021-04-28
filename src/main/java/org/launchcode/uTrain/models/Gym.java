@@ -15,21 +15,24 @@ public class Gym extends AbstractEntity {
     private String phoneNumber;
 
     private String email;
-    @NotNull
-    private String streetAddress;
-    @NotNull
+
+    private String street;
+
     private String city;
-    @NotNull
+
+    private String state;
+
     private Integer zipCode;
 
     public Gym (){}
 
-    public Gym(String name, String phoneNumber, String email, String streetAddress, String city, Integer zipCode){
+    public Gym(String name, String phoneNumber, String email, String street, String city, String state, Integer zipCode){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email=email;
-        this.streetAddress= streetAddress;
+        this.street= street;
         this.city = city;
+        this.state = state;
         this.zipCode=zipCode;
 
     }
@@ -58,12 +61,12 @@ public class Gym extends AbstractEntity {
         this.email = email;
     }
 
-    public String getStreetAddress() {
-        return streetAddress;
+    public String getStreet() {
+        return street;
     }
 
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -72,6 +75,14 @@ public class Gym extends AbstractEntity {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Integer getZipCode() {
