@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post" th:action="@{/user/addprofile}">
+
+  <input type="hidden" th:value="${user.id}" name="userId" />
+<!--  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
+  <input type="hidden" th:value="${user.pwHash}" name="pwHash" />
+
+  <h3>General Information</h3>
+  <div class="form-group">
+    <label>User Name
+      <input  th:field="${user.username}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.username}"></p>
+  </div>
+  <div class="form-group">
+    <label>First Name
+      <input th:field="${user.userDetail.firstName}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.firstName}"></p>
+  </div>
+  <div class="form-group">
+    <label>Last Name
+      <input th:field="${user.userDetail.lastName}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.lastName}"></p>
+  </div>
+  <div>
+  <label>Sex
+    <select class="form-control" th:field="${user.userDetail.userSex}">
+      <option th:each="userSex : ${sexes}"
+              th:value="${userSex}"
+              th:text="${userSex.userSex}"
+      ></option>
+    </select>
+  </label>
+  <p class="error" th:errors="${user.userDetail.userSex}"></p>
+  </div>
+  <div>
+    <label>Email
+      <input th:field="${user.email}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.email}"></p>
+  </div>
+  <div>
+    <label>Age
+      <input type="number"th:field="${user.userDetail.age}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.age}"></p>
+  </div>
+  <div>
+    <label>Height (In Inches)
+      <input type="number" th:field="${user.userDetail.height}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.height}"></p>
+  </div>
+  <div>
+    <label>Weight (In lbs)
+      <input type="number" th:field="${user.userDetail.weight}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.weight}"></p>
+  </div>
+  <h3>Address</h3>
+  <div>
+    <label>Street
+      <input th:field="${user.userDetail.address.street}"  class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.address.street}"></p>
+  </div>
+  <div>
+    <label>City
+      <input th:field="${user.userDetail.address.city}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.address.city}"></p>
+  </div>
+  <div>
+    <label>State
+      <input th:field="${user.userDetail.address.state}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.address.state}"></p>
+  </div>
+  <div>
+    <label>Zip Code
+      <input th:field="${user.userDetail.address.zipCode}" class="form-control">
+    </label>
+    <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Update" class="btn btn-secondary">
+  </div>
+</form>
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

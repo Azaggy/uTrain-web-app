@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<h2 th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
+<h2 th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
+<div class= "photos">
+    <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
+    <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >
+    <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="465" height="300" >
+    <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
