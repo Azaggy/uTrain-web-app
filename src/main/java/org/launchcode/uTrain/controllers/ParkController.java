@@ -1,2 +1,4 @@
-package org.launchcode.uTrain.controllers;public class ParkController {
+package org.launchcode.uTrain.controllers;
+
+public class ParkController {
 }

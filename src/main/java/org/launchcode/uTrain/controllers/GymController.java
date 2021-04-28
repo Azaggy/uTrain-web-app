@@ -1,2 +1,4 @@
-package org.launchcode.uTrain.controllers;public class GymController {
+package org.launchcode.uTrain.controllers;
+
+public class GymController {
 }
