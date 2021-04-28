@@ -20,7 +20,7 @@
         </a>
     </li>
     <li><a href="/company">About Us</a></li>
-<!--    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>-->
+    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>
     <li th:unless="${loggedIn}"><a  href="/index">Home</a></li>
     <li class="dropdown">
         <a th:if="${loggedIn}" href="javascript:void(0)" class="dropbtn">Services</a>
