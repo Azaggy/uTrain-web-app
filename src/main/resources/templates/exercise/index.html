@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<!--<script th:src="@{/main.js}"></script>-->
+<link rel="stylesheet" th:href="@{/mainn.css}" />
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<!--<head th:replace="fragments :: head">-->
+
+</head>
+<body>
+
+<ul>
+    <li class="logo">
+        <a class="one" href="">
+            <img src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+        </a>
+    </li>
+    <li><a href="/company">About Us</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Services</a>
+        <div class="dropdown-content">
+            <a href="/homeExercises">Home Exercises</a>
+            <a href="/outdoorExercises">Outdoor Exercises</a>
+            <a href="/gymExercises">Gym Exercises</a>
+            <a href="/gymLocator">Gym Locator</a>
+        </div>
+    </li>
+    <li class="signUp" ><a href="/signUp">Sign Up</a> </li>
+    <li class="logIn"><a href="/login">Login</a> </li>
+    <li class=""><a href="/">Home</a></li>
+</ul>
+
+
+
+
+
+
+
+<div class="container">
+   <h2>Workouts</h2>
+
+
+    <div class="select-box">
+
+        <div class="option-container">
+
+            <div class="option">
+                <input type="radio" class="radio" id="Active Recovery"  name="category">
+                <label for="Active Recovery">Active Recovery</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Aerobic Exercises"  name="category">
+                <label for="Aerobic Exercises">Aerobic Exercises</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Anaerobic Exercises"  name="category">
+                <label for="Anaerobic Exercises">Anaerobic Exercises</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Boot Camp"  name="category">
+                <label for="Boot Camp">Boot Camp(Military style training)</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Cross Training"  name="category">
+                <label for="Cross Training">Cross Training</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Everyday Moves"  name="category">
+                <label for="Everyday Moves">Everyday Moves</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Intervals"  name="category">
+                <label for="Intervals">Intervals</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Isometrics"  name="category">
+                <label for="Isometrics">Isometrics</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Muscle-Training"  name="category">
+                <label for="Muscle-Training">Muscle-Training</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Repetitions"  name="category">
+                <label for="Repetitions">Repetitions</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Steady-Cardio"  name="category">
+                <label for="Steady-Cardio">Steady-Cardio</label>
+            </div>
+        </div>
+        <div class="selected">
+            select activity
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Start Typing..." />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <h2>Trainers</h2>
+
+
+    <div class="select-box">
+
+        <div class="option-container">
+
+            <div class="option">
+                <input type="radio" class="radio" id="John Wayne"  name="category">
+                <label for="Active Recovery">John Wayne</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Michael Hadley"  name="category">
+                <label for="Aerobic Exercises">Michael Hadley</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Tim James"  name="category">
+                <label for="Anaerobic Exercises">Tim James</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Jay Tucheah"  name="category">
+                <label for="Boot Camp">Jay Tucheah</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Larry Doubling"  name="category">
+                <label for="Cross Training">Larry Doubling</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="kjk"  name="category">
+                <label for="Everyday Moves">Larry Dais</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="jaid"  name="category">
+                <label for="Intervals">Ija Kayak</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Isometri"  name="category">
+                <label for="Isometrics">Jack Jayson</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Muscle-Trai"  name="category">
+                <label for="Muscle-Training">Mailak Maryland</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Repetions"  name="category">
+                <label for="Repetitions">Rayen Layach</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Stey-Cardio"  name="category">
+                <label for="Steady-Cardio">Carry Garfield</label>
+            </div>
+        </div>
+        <div class="selected">
+            select desired Trainer
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Start Typing..." />
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h2>Diet</h2>
+
+
+    <div class="select-box">
+
+        <div class="option-container">
+
+            <div class="option">
+                <input type="radio" class="radio" id="Active "  name="category">
+                <label for="Active Recovery">Kedo Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Aero"  name="category">
+                <label for="Aerobic Exercises">Weight Buster Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Exercises"  name="category">
+                <label for="Anaerobic Exercises">Military Fast Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id=" Camp"  name="category">
+                <label for="Boot Camp">Boot Camp(Military style Diet)</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Training"  name="category">
+                <label for="Cross Training">Steak and Eggs Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Moves"  name="category">
+                <label for="Everyday Moves">Five Bite Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="als"  name="category">
+                <label for="Intervals">Eat in Intervals Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="rics"  name="category">
+                <label for="Isometrics">Isometrics Diet(Eat based on weight sex and height)</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="ning"  name="category">
+                <label for="Muscle-Training">Muscle-Training Diet</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="tions"  name="category">
+                <label for="Repetitions">Repetition Diet(same meal every day)</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" class="radio" id="Steady-dio"  name="category">
+                <label for="Steady-Cardio">Cardio Diet</label>
+            </div>
+        </div>
+        <div class="selected">
+            select Desired Diet
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Start Typing..." />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    const selected = document.querySelector(".selected");
+const optionsContainer = document.querySelector(".option-container");
+
+ const optionsList = document.querySelectorAll(".option");
+
+selected.addEventListener("click", () => {
+    optionsContainer.classList.toggle("active");
+})
+
+optionsList.forEach(o => {
+    o.addEventListener("click", () => {
+        selected.innerHTML = o.querySelector("label").innerHTML;
+        optionsContainer.classList.remove("active");
+        });
+    });
+</script>
+</body>
+</html>

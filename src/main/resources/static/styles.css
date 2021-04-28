@@ -21,9 +21,11 @@ li a, .dropbtn {
     padding: 14px 16px;
     text-decoration: none;
 }
+
 li a:hover, .dropdown:hover .dropbtn {
     background-color: #06027e;
 }
+
 li.dropdown {
     display: inline-block;
     float: left;
@@ -32,12 +34,15 @@ a.one {
     padding: 0px;
     margin: 0px;
 }
+
 .signUp {
     float: right;
 }
+
 .logIn {
     float: right;
 }
+
 .logo {
     background-color: #0602b9;
     border: none;
@@ -58,17 +63,22 @@ a.one {
   display: block;
   text-align: left;
 }
+
 .dropdown-content a:hover {
   background-color: #00676c;
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .photos{
   margin-left: auto;
   margin-right: auto;
   display: block;
+
 }
+
 .image2 {
     padding-left: 8px;
     padding-right: 8px;
