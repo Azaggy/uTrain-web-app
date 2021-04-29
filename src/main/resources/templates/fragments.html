@@ -26,13 +26,11 @@
     <li class="dropdown">
         <a th:if="${loggedIn}" href="javascript:void(0)" class="dropbtn">Services</a>
         <div class="dropdown-content">
-            <a href="/homeExercises">Home Exercises</a>
-            <a href="/outdoorExercises">Outdoor Exercises</a>
-            <a href="/gymExercises">Gym Exercises</a>
-            <a href="/gym/listGyms">Gym Locator</a>
-            <a href="/gym/addGym">Add Gym</a>
-            <a href="/park/listParks">Park Locator</a>
-            <a href="/park/addPark">Add Park</a>
+            <a href="/exercise/index">Exercises</a>
+            <a href="/gym/index">Gym Locator</a>
+            <a href="/gym/addgym">Add Gym</a>
+            <a href="/park/index">Park Locator</a>
+            <a href="/park/addpark">Add Park</a>
         </div>
     </li>
     <li th:if="${loggedIn}">

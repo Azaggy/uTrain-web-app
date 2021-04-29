@@ -45,51 +45,5 @@ public class HomeController {
 
         return "company";
     }
-    @GetMapping("gym/addGym")
-    public String addGym(Model model){
-        model.addAttribute("title", "Add Gym");
-        model.addAttribute(new Gym());
-        return "gym/addGym";
-    }
 
-    @PostMapping
-    public String processAddGym(){
-
-        return "gym/listGyms";
-    }
-
-
-
-
-    @GetMapping("gym/listGyms")
-    public String listGym(Model model){
-        model.addAttribute("title", "Gym List");
-        return "gym/listGyms";
-    }
-
-    @GetMapping("park/addPark")
-    public String addPark(Model model){
-
-        model.addAttribute("title", "Add Park");
-        model.addAttribute(new Park());
-
-        return "park/addPark";
-    }
-
-    @PostMapping("park/addPark")
-    public String processAddPark(@ModelAttribute @Valid Park newPark, Errors errors, Model model){
-        if(errors.hasErrors()){
-            model.addAttribute("title", "Add Park");
-        return "park/addPark";
-    }
-        parkRepository.save(newPark);
-        return "park/listParks";
-    }
-
-
-    @GetMapping("park/listParks")
-    public String listPark(Model model){
-        model.addAttribute("title", "Park List");
-        return "park/listParks";
-    }
 }

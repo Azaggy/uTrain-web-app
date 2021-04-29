@@ -10,16 +10,16 @@
 
     <div class="form-group">
         <label>Park Name
-            <input  th:field="${park.parkName}" class="form-control">
+            <input  th:field="${park.name}" class="form-control">
         </label>
-        <p class="error" th:errors="${park.parkName}"></p>
+        <p class="error" th:errors="${park.name}"></p>
     </div>
 
     <div class="form-group">
         <label>Zip Code
-            <input th:field="${park.parkZipCode}" class="form-control">
+            <input th:field="${park.address.zipCode}" class="form-control">
         </label>
-        <p class="error" th:errors="${park.parkZipCode}"></p>
+        <p class="error" th:errors="${park.address.zipCode}"></p>
     </div>
 
     <div class="form-group">

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head">
+
+</head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+<h1>Gyms</h1>
+<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >
+
+<table th:each="gym : ${gyms}">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+    </tr>
+    </thead>
+    <tr>
+        <th th:text="${gym.name}"></th>
+        <th th:text="${gym.email}"></th>
+        <th th:text="${gym.phoneNumber}"></th>
+    </tr>
+    <thead>
+    <tr>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>
+    <tr>
+        <th th:text="${gym.address.street}"></th>
+        <th th:text="${gym.address.city}"></th>
+        <th th:text="${gym.address.street}"></th>
+        <th th:text="${gym.address.zipCode}"></th>
+    </tr>
+</table>
+
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

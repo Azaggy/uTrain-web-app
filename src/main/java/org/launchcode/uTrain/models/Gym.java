@@ -2,7 +2,9 @@ package org.launchcode.uTrain.models;
 
 import org.springframework.context.annotation.EnableMBeanExport;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 
@@ -10,86 +12,54 @@ import javax.validation.constraints.NotNull;
 public class Gym extends AbstractEntity {
 
 //    @NotNull
-    private String gymName;
+    private String name;
 
-    private String gymPhoneNumber;
+    private String phoneNumber;
 
-    private String gymEmail;
+    private String email;
 
-    private String gymStreet;
-
-    private String gymCity;
-
-    private String gymState;
-
-    private Integer gymZipCode;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     public Gym (){}
 
-    public Gym(String gymName, String gymPhoneNumber, String gymEmail, String gymStreet, String gymCity, String gymState, Integer gymZipCode){
-        this.gymName = gymName;
-        this.gymPhoneNumber = gymPhoneNumber;
-        this.gymEmail=gymEmail;
-        this.gymStreet= gymStreet;
-        this.gymCity = gymCity;
-        this.gymState = gymState;
-        this.gymZipCode= gymZipCode;
+    public Gym(String name, String phoneNumber, String email, Address address){
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email= email;
+        this.address = address;
 
     }
 
-    public String getGymName() {
-        return gymName;
+    public String getName() {
+        return name;
     }
 
-    public void setGymName(String gymName) {
-        this.gymName = gymName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getGymPhoneNumber() {
-        return gymPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setGymPhoneNumber(String gymPhoneNumber) {
-        this.gymPhoneNumber = gymPhoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getGymEmail() {
-        return gymEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGymEmail(String gymEmail) {
-        this.gymEmail = gymEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getGymStreet() {
-        return gymStreet;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setGymStreet(String gymStreet) {
-        this.gymStreet = gymStreet;
-    }
-
-    public String getGymCity() {
-        return gymCity;
-    }
-
-    public void setGymCity(String gymCity) {
-        this.gymCity = gymCity;
-    }
-
-    public String getGymState() {
-        return gymState;
-    }
-
-    public void setGymState(String gymState) {
-        this.gymState = gymState;
-    }
-
-    public Integer getGymZipCode() {
-        return gymZipCode;
-    }
-
-    public void setGymZipCode(Integer gymZipCode) {
-        this.gymZipCode = gymZipCode;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
