@@ -7,11 +7,11 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Park extends AbstractEntity {
-//    @NotNull
+    @NotNull
     private String parkName;
 
-//    @NotNull
-//    @Size(min=5, max=5)
+    @NotNull
+    @Size(min=5, max=5)
     private Integer parkZipCode;
 
     public Park (){}
