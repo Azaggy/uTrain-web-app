@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-public class Gym extends AbstractEntity {
+public class Gym extends BaseAddress {
 
 //    @NotNull
     private String name;
@@ -18,8 +18,8 @@ public class Gym extends AbstractEntity {
 
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address address;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private Address address;
 
     public Gym (){}
 
@@ -27,7 +27,7 @@ public class Gym extends AbstractEntity {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email= email;
-        this.address = address;
+
 
     }
 
@@ -55,11 +55,4 @@ public class Gym extends AbstractEntity {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
