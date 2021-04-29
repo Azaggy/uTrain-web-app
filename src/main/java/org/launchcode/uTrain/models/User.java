@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import java.awt.*;
+import java.sql.Blob;
 
 
 @Entity
@@ -27,6 +29,8 @@ public class User extends AbstractEntity {
 
     private boolean isNew;
 
+    private Blob profilePic;
+
 
 
 
@@ -41,11 +45,12 @@ public class User extends AbstractEntity {
         this.isNew = true;
     }
 
-    public User(String username, String password, String email, UserDetail userDetail) {
+    public User(String username, String password, String email, UserDetail userDetail, Blob profilePic) {
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.email = email;
         this.userDetail = userDetail;
+        this.profilePic = profilePic;
     }
 
 
@@ -92,5 +97,13 @@ public class User extends AbstractEntity {
 
     public void setNew(boolean aNew) {
         isNew = aNew;
+    }
+
+    public Blob getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(Blob profilePic) {
+        this.profilePic = profilePic;
     }
 }
