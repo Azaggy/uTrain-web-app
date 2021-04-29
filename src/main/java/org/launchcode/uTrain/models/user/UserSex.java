@@ -1,4 +1,4 @@
-package org.launchcode.uTrain.models;
+package org.launchcode.uTrain.models.user;
 
 public enum UserSex {
 

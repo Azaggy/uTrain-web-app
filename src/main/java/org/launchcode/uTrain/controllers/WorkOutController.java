@@ -4,13 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("exercise")
 public class WorkOutController {
 
+
     @GetMapping("index")
-    public String indexSearch(Model moel){
+    public String indexSearch(Model model){
         return("exercise/index");
     }
 
@@ -18,6 +20,5 @@ public class WorkOutController {
     public String trainersDisplay(){
         return("exercise/workOut");
     }
-
 
 }

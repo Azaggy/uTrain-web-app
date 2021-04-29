@@ -1,7 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.dto.LoginFormDTO;
 import org.launchcode.uTrain.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package org.launchcode.uTrain;
 
 import org.launchcode.uTrain.controllers.AuthenticationController;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

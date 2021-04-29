@@ -1,5 +1,7 @@
 package org.launchcode.uTrain.models;
 
+import org.launchcode.uTrain.models.AbstractEntity;
+
 import javax.persistence.Entity;
 
 @Entity

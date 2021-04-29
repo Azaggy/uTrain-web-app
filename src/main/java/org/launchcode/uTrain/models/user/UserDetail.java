@@ -1,10 +1,12 @@
-package org.launchcode.uTrain.models;
+package org.launchcode.uTrain.models.user;
 
+
+import org.launchcode.uTrain.models.AbstractEntity;
+import org.launchcode.uTrain.models.Address;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserDetail extends AbstractEntity {

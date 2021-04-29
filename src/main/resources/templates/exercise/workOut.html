@@ -42,10 +42,13 @@
         <th>Contack Email</th>
         <th>Contact Number</th>
     </tr>
-    <tr>
-        <td><a href="/exercise/index">Ted Wilkons</a></td>
-        <td>tedWil@gmail.com</td>
-        <td>314-752-2537</td>
+    <th:block>
+
+
+    <tr th:each="${trainer: trainers}" >
+        <td><a th:href="@{/exercise/index/id= ${trainer.id}">Ted Wilkons</a></td>
+        <td th:text="${trainer.email}"></td>
+        <td th:text="${trainer.phoneNumber}"></td>
     </tr>
     <tr>
         <td><a href="/exercise/index">John Anderson</a></td>
