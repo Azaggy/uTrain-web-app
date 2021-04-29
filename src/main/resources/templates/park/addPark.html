@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+    <form method="post" action="/park/addPark}">
+
+    <h1>Add Park</h1>
+
+    <div class="form-group">
+        <label>Park Name
+            <input  th:field="${park.parkName}" class="form-control">
+        </label>
+        <p class="error" th:errors="${park.parkName}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Zip Code
+            <input th:field="${park.parkZipCode}" class="form-control">
+        </label>
+        <p class="error" th:errors="${park.parkZipCode}"></p>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+
+</form>
+
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

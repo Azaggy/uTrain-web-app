@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post" action="/gym/addGym}">
+
+    <h1>Add Gym</h1>
+
+    <div class="form-group">
+        <label>Gym Name
+            <input  th:field="${gym.gymName}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymName}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym Phone
+            <input  th:field="${gym.gymPhoneNumber}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymPhoneNumber}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym Email
+            <input  th:field="${gym.gymEmail}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymEmail}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Num/Street
+            <input  th:field="${gym.gymStreet}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymStreet}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym City
+            <input  th:field="${gym.gymCity}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymCity}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym State
+            <input  th:field="${gym.gymCity}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymState}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Zip Code
+            <input th:field="${gym.gymZipCode}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.gymZipCode}"></p>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+</form>
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

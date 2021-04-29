@@ -7,33 +7,33 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Park extends AbstractEntity {
-    @NotNull
-    private String name;
+//    @NotNull
+    private String parkName;
 
-    @NotNull
-    @Size(min=5, max=5)
-    private Integer zipCode;
+//    @NotNull
+//    @Size(min=5, max=5)
+    private Integer parkZipCode;
 
     public Park (){}
 
-    public Park (String name, Integer zipCode){
-        this.name = name;
-        this.zipCode = zipCode;
+    public Park (String parkName, Integer parkZipCode){
+        this.parkName = parkName;
+        this.parkZipCode = parkZipCode;
     }
 
-    public String getName() {
-        return name;
+    public String getParkName() {
+        return parkName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
     }
 
-    public Integer getZipCode() {
-        return zipCode;
+    public Integer getParkZipCode() {
+        return parkZipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
-        this.zipCode = zipCode;
+    public void setParkZipCode(Integer parkZipCode) {
+        this.parkZipCode = parkZipCode;
     }
 }

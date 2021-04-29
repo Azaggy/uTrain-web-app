@@ -9,87 +9,87 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Gym extends AbstractEntity {
 
-    @NotNull
-    private String name;
+//    @NotNull
+    private String gymName;
 
-    private String phoneNumber;
+    private String gymPhoneNumber;
 
-    private String email;
+    private String gymEmail;
 
-    private String street;
+    private String gymStreet;
 
-    private String city;
+    private String gymCity;
 
-    private String state;
+    private String gymState;
 
-    private Integer zipCode;
+    private Integer gymZipCode;
 
     public Gym (){}
 
-    public Gym(String name, String phoneNumber, String email, String street, String city, String state, Integer zipCode){
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email=email;
-        this.street= street;
-        this.city = city;
-        this.state = state;
-        this.zipCode=zipCode;
+    public Gym(String gymName, String gymPhoneNumber, String gymEmail, String gymStreet, String gymCity, String gymState, Integer gymZipCode){
+        this.gymName = gymName;
+        this.gymPhoneNumber = gymPhoneNumber;
+        this.gymEmail=gymEmail;
+        this.gymStreet= gymStreet;
+        this.gymCity = gymCity;
+        this.gymState = gymState;
+        this.gymZipCode= gymZipCode;
 
     }
 
-    public String getName() {
-        return name;
+    public String getGymName() {
+        return gymName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGymName(String gymName) {
+        this.gymName = gymName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getGymPhoneNumber() {
+        return gymPhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setGymPhoneNumber(String gymPhoneNumber) {
+        this.gymPhoneNumber = gymPhoneNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGymEmail() {
+        return gymEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGymEmail(String gymEmail) {
+        this.gymEmail = gymEmail;
     }
 
-    public String getStreet() {
-        return street;
+    public String getGymStreet() {
+        return gymStreet;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setGymStreet(String gymStreet) {
+        this.gymStreet = gymStreet;
     }
 
-    public String getCity() {
-        return city;
+    public String getGymCity() {
+        return gymCity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setGymCity(String gymCity) {
+        this.gymCity = gymCity;
     }
 
-    public String getState() {
-        return state;
+    public String getGymState() {
+        return gymState;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setGymState(String gymState) {
+        this.gymState = gymState;
     }
 
-    public Integer getZipCode() {
-        return zipCode;
+    public Integer getGymZipCode() {
+        return gymZipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
-        this.zipCode = zipCode;
+    public void setGymZipCode(Integer gymZipCode) {
+        this.gymZipCode = gymZipCode;
     }
 }
