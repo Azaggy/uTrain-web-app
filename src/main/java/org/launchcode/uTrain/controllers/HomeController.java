@@ -83,13 +83,14 @@ public class HomeController {
         return "park/addPark";
     }
         parkRepository.save(newPark);
-        return "park/listParks";
+        return "/park/listParks";
     }
 
 
     @GetMapping("park/listParks")
     public String listPark(Model model){
         model.addAttribute("title", "Park List");
+        model.addAttribute("Parks", parkRepository.findAll());
         return "park/listParks";
     }
 }
