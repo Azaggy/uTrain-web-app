@@ -98,4 +98,5 @@ public class UserDetail extends AbstractEntity {
     public void setAddress(Address address) {
         this.address = address;
     }
+
 }
