@@ -4,15 +4,6 @@
 <body>
 <header th:replace="fragments :: page-header"></header>
 
-<!--<form>-->
-<!--  <label for="profilePhoto">Select a Photo:</label>-->
-<!--  <input type="file" id="profilePhoto" name="Profile-Photo">-->
-<!--</form>-->
-<h1>https://youtu.be/ryRQ6qXLLYM</h1>
-<!--<form method="post">-->
-<!--  <input type="file" th:field="${user.profilePic}" name="profilePic">-->
-<!--  <input type="submit"/>-->
-<!--</form>-->
 <form method="post" th:action="@{/user/addprofile}">
 
   <input type="hidden" th:value="${user.id}" name="userId" />
@@ -23,7 +14,7 @@
 
   <div>
     <label>Select a Profile Photo:
-      <input type="file" th:field="${user.profilePic}" name="profilePic">
+      <input type="file"  name="profilePic">
     </label>
   </div>
   <div class="form-group">
