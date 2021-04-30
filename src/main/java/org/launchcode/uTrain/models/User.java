@@ -2,12 +2,10 @@ package org.launchcode.uTrain.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import java.awt.*;
 import java.sql.Blob;
 
 
@@ -29,7 +27,6 @@ public class User extends AbstractEntity {
 
     private boolean isNew;
 
-    private Blob profilePic;
 
 
 
@@ -50,7 +47,7 @@ public class User extends AbstractEntity {
         this.pwHash = encoder.encode(password);
         this.email = email;
         this.userDetail = userDetail;
-        this.profilePic = profilePic;
+
     }
 
 
@@ -99,11 +96,4 @@ public class User extends AbstractEntity {
         isNew = aNew;
     }
 
-    public Blob getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(Blob profilePic) {
-        this.profilePic = profilePic;
-    }
 }
