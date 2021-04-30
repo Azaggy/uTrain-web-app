@@ -1,11 +1,9 @@
 package org.launchcode.uTrain.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 @Entity
@@ -19,16 +17,16 @@ public class Message extends AbstractEntity{
     @NotNull
     private String recipient;
 
-    @ManyToMany
+//    @OneToOne
     @NotNull
     private String sender;
 
-    Date date = new Date();
+    private String date;
 
     public Message() {
     }
 
-    public Message(@NotNull @Size(max = 50) String body, @NotNull String recipient, @NotNull String sender, Date date) {
+    public Message(@NotNull @Size(max = 50) String body, @NotNull String recipient, @NotNull String sender, String date) {
         this.body = body;
         this.recipient = recipient;
         this.sender = sender;
@@ -59,11 +57,11 @@ public class Message extends AbstractEntity{
         this.sender = sender;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

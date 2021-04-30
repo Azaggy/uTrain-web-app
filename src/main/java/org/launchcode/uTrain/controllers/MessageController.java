@@ -61,7 +61,7 @@ public class MessageController {
                 return "message/addmessage";
             }
 
-            MessageRepository.save(newMessage);
+//            MessageRepository.save(newMessage);
             return "redirect:index";
         }
 
@@ -72,7 +72,7 @@ public class MessageController {
 
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
-            model.addAttribute("messages", MessageRepository.findAll());
+//            model.addAttribute("messages", MessageRepository.findAll());
             model.addAttribute("title", "Message List");
 
             return "message/index";
