@@ -4,7 +4,6 @@ package org.launchcode.uTrain.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -22,5 +21,12 @@ public class HomeController {
         model.addAttribute("title", "About Us");
 
         return "company";
+    }
+
+    @GetMapping("bmi")
+    public String bmiCalc(Model model) {
+        model.addAttribute("title", "BMI Calculator");
+
+        return "bmi";
     }
 }
