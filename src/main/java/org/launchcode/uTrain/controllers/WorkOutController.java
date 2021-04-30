@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WorkOutController {
 
     @GetMapping("index")
-    public String indexSearch(Model moel){
+    public String indexSearch(Model model){
         return("exercise/index");
     }
 
