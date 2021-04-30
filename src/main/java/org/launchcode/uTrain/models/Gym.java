@@ -11,11 +11,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Gym extends AbstractEntity {
 
-//    @NotNull
+    @NotNull
     private String name;
 
+    @NotNull
     private String phoneNumber;
 
+    @NotNull
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
