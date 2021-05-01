@@ -22,6 +22,9 @@
         <th>Zip Code</th>
     </tr>
     </thead>
+    <!--Iterating through all gyms passed in from the gym repository.
+        A new row is created after each iteration.
+    -->
     <tr th:each="gym : ${gyms}">
         <th th:text="${gym.name}"></th>
         <th th:text="${gym.email}"></th>
