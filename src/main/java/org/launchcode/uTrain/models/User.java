@@ -4,9 +4,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Entity
@@ -26,6 +28,9 @@ public class User extends AbstractEntity {
     private UserDetail userDetail;
 
     private boolean isNew;
+
+    @ElementCollection
+    private List<Message> messages;
 
 
 
@@ -92,5 +97,13 @@ public class User extends AbstractEntity {
 
     public void setNew(boolean aNew) {
         isNew = aNew;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }
