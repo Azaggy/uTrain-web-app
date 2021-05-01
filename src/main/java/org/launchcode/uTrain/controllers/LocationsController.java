@@ -22,6 +22,15 @@ import java.util.Optional;
 @Controller
 public class LocationsController {
 
+    // Locations controller houses methods for the gym class and activities and also the park class and activities.
+    // The plan is to incorporate a geocoder api to be able to inform user/trainer how far facilities are.
+
+    /*
+    Like other controllers throughout app, bringing in get user from session method. This allows nagivation of entire
+    site to be unique to the user. Also some of the conditionals within the fragments.html file use variables for site
+    navigation.
+     */
+
     private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -39,11 +48,21 @@ public class LocationsController {
     @Autowired
     UserRepository userRepository;
 
+
+    //Link to persisted park class
+
     @Autowired
     private ParkRepository parkRepository;
 
+    //Link to persisted park class
+
     @Autowired
     private GymRepository gymRepository;
+
+    //path localhost:8080/gym/addgym
+    //populates local variable title with "Add Gym"
+    //passes new instance of gym into the view. No attribute is given so, gym will be used. (gym.id, etc.)
+    //returns to same path localhost:8080/gym/addgym
 
     @GetMapping("gym/addgym")
     public String displayAddGym(Model model, HttpServletRequest request){
@@ -56,6 +75,14 @@ public class LocationsController {
         model.addAttribute(new Gym());
         return "gym/addgym";
     }
+
+    //path localhost:8080/gym/addgym
+    //model binding assigns attributes from submitted form from the view into new instance of gym
+    /*
+    if there aren't any validations errors, then the new instance is saved to the database and the user is routed back
+    to gym/index
+
+    */
 
     @PostMapping("gym/addgym")
     public String processAddGym(@ModelAttribute @Valid Gym newGym, Errors errors, Model model){
@@ -94,6 +121,18 @@ public class LocationsController {
 
         return "park/addpark";
     }
+
+    //path localhost:8080/park/addpark
+    //model binding assigns attributes from submitted form from the view into new instance of park
+    /*
+    if there aren't any validations errors, then the new instance is saved to the database and the user is routed back
+    to park/index
+    */
+
+    /*
+    unlike the gym class, we're only using zipcode for a geotracking. After the park form field in the view is submitted
+    before the instance is saved into the repository, we set the empty fields to unlisted, so they aren't stored as null.
+    */
 
     @PostMapping("park/addpark")
     public String processAddPark(@ModelAttribute @Valid Park newPark, Errors errors, Model model){
