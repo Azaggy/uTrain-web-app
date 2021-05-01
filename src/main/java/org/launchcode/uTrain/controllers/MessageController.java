@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -49,22 +50,35 @@ public class MessageController {
 
             User user = (User) getUserFromSession(request.getSession());
 
+            String recipient = null;
+
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
             model.addAttribute("title", "Add Message");
             model.addAttribute(new Message());
+            model.addAttribute("recipient", recipient);
+
             return "message/addmessage";
         }
 
         @PostMapping("addmessage")
-        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model){
+        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model, HttpServletRequest request,
+                                        String recipient) {
+
+            User user = (User) getUserFromSession(request.getSession());
+
+            User userRecipient = userRepository.findByEmail(recipient);
 
             if(errors.hasErrors()) {
                 model.addAttribute("title", "Add Message");
                 return "message/addmessage";
             }
 
-//            MessageRepository.save(newMessage);
+            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
+
+            userRecipient.getMessages().add(msgRefactor);
+
+            messageRepository.save(newMessage);
             return "redirect:index";
         }
 
@@ -77,6 +91,7 @@ public class MessageController {
             model.addAttribute("loggedIn", true);
 //            model.addAttribute("messages", MessageRepository.findAll());
             model.addAttribute("title", "Message List");
+            model.addAttribute("messages", user.getMessages());
 
             return "message/index";
         }
