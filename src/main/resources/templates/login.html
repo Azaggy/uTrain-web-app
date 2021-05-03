@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body>
+<!--<head th:replace="fragments :: head"></head>-->
+<head>
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">-->
+<!--    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="signin.css" rel="stylesheet">-->
+    <link rel="stylesheet" th:href="@{/signin.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+<body class="text-center">
 
-<header th:replace="fragments :: page-header"></header>
-<div class="form-new">
-<form method="post">
-    <div class="form-group">
-        <label class="stroke" th:for="username">Username
-            <input class="input" th:field="${loginFormDTO.username}">
-        </label>
+<!--<header th:replace="fragments :: page-header"></header>-->
+
+<form class="form-signin" method="post">
+    <img class="mb-4" src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label class="sr-only" for="username">Username</label>
+            <input class="form-control" id="username"th:field="${loginFormDTO.username}" placeholder="username" required autofocus>
+
         <p class="error" th:errors="${loginFormDTO.username}"></p>
-    </div>
-    <div class="form-group">
-        <label class="stroke" th:for="password">Password
-            <input class="input" th:field="${loginFormDTO.password}" type="password">
-        </label>
+
+        <label class="sr-only" th:for="password">Password</label>
+            <input class="form-control" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="password" required>
+
         <p class="error" th:errors="${loginFormDTO.password}"></p>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
     </div>
 
-    <input type="submit" class="input-submit" value="Log In" />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">Don't have an account? <a href="/reg">Register</a></p>
+
+
+    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+
 </form>
 
 
-<p class="stroke">Don't have an account? <a href="/reg">Register</a></p>
-</div>
 
 
-<footer th:replace="fragments :: footer"></footer>
+
+<!--<footer th:replace="fragments :: footer"></footer>-->
 </body>
 
 </html>
