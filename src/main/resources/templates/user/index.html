@@ -6,19 +6,35 @@
 
 <h2 th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
 <h2 th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
-<h3>Messages</h3>
+<h3>Received Messages</h3>
 <table class="table">
     <thead>
     <tr>
-        <th>From:</th>
-        <th>To:</th>
+        <th>From</th>
         <th>Message</th>
+        <th>Date</th>
     </tr>
     </thead>
-    <tr th:each="message : ${messages}">
+    <tr th:each="message : ${receivedMessages}">
         <th th:text="${message.sender}"></th>
+        <th th:text="${message.body}"></th>
+        <th th:text="${message.date}"></th>
+    </tr>
+</table>
+
+<h3>Sent Messages</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>To</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tr th:each="message : ${sentMessages}">
         <th th:text="${message.recipient}"></th>
         <th th:text="${message.body}"></th>
+        <th th:text="${message.date}"></th>
     </tr>
 </table>
 <p><a href="/message/addmessage">Send New Message</a></p>

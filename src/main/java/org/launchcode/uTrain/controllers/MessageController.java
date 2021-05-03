@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.net.http.HttpClient;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("message")
+//@RequestMapping("message")
 public class MessageController {
 
         private static final String userSessionKey = "user";
@@ -48,7 +49,7 @@ public class MessageController {
         MessageRepository messageRepository;
 
 
-        @GetMapping("addmessage")
+        @GetMapping("message/addmessage")
         public String displayAddMessage(Model model, HttpServletRequest request){
 
             User user = (User) getUserFromSession(request.getSession());
@@ -68,7 +69,7 @@ public class MessageController {
 
         }
 
-        @PostMapping("addmessage")
+        @PostMapping("message/addmessage")
         public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model,
                                         HttpServletRequest request) {
 
@@ -97,10 +98,11 @@ public class MessageController {
 
             messageRepository.save(message);
 
-            return "redirect:index";
+            model.addAttribute("user", user);
+            return "redirect:/user/index";
         }
 
-        @GetMapping("index")
+        @GetMapping("message/index")
         public String messageIndex(Model model, HttpServletRequest request){
 
             User user = (User) getUserFromSession(request.getSession());

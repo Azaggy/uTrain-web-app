@@ -1,6 +1,8 @@
 package org.launchcode.uTrain.controllers;
 
+import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.User;
 import org.launchcode.uTrain.models.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,20 +41,36 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    MessageRepository messageRepository;
+
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model) {
+
+        User user = (User) getUserFromSession(request.getSession());
+        ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
+        ArrayList<Message> sentMessages = new ArrayList<>();
+        ArrayList<Message> receivedMessages = new ArrayList<>();
+
+        for (Message message : messages) {
+            if (message.getRecipient().equals(user.getUsername())) {
+                receivedMessages.add(message);
+            }
+            if (message.getSender().equals(user.getUsername())) {
+                sentMessages.add(message);
+            }
+        }
 
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
          */
 
-        User user = (User) getUserFromSession(request.getSession());
-
         model.addAttribute("title", "Welcome!!");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
-//        model.addAttribute("messages", user.getMessages());
+        model.addAttribute("receivedMessages", receivedMessages);
+        model.addAttribute("sentMessages", sentMessages);
 
         return "user/index";
 
