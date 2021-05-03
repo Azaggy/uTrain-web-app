@@ -57,26 +57,28 @@ public class MessageController {
             model.addAttribute("title", "Add Message");
             model.addAttribute(new Message());
             model.addAttribute("recipient", recipient);
+            model.addAttribute("sender", user.getUsername());
 
             return "message/addmessage";
         }
 
         @PostMapping("addmessage")
-        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model, HttpServletRequest request,
-                                        String recipient) {
+        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model, HttpServletRequest request) {
 
+//            ,String recipient
             User user = (User) getUserFromSession(request.getSession());
-
-            User userRecipient = userRepository.findByEmail(recipient);
+//            User userRecipient = userRepository.findByEmail(recipient);
 
             if(errors.hasErrors()) {
                 model.addAttribute("title", "Add Message");
                 return "message/addmessage";
             }
 
-            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
+//            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
+//
+//            userRecipient.getMessages().add(msgRefactor);
 
-            userRecipient.getMessages().add(msgRefactor);
+
 
             messageRepository.save(newMessage);
             return "redirect:index";
@@ -89,7 +91,7 @@ public class MessageController {
 
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
-//            model.addAttribute("messages", MessageRepository.findAll());
+            model.addAttribute("messages", messageRepository.findAll());
             model.addAttribute("title", "Message List");
             model.addAttribute("messages", user.getMessages());
 

@@ -7,18 +7,31 @@
 <form method="post">
 
     <h1>Send Message</h1>
-
+    <div class="form-group">
+        <label>
+            <input   th:value="${user.getUsername()}" name="realUsername"  class="form-control">
+        </label>
+    </div>
 
     <div class="form-group">
-        <label>Send Message
-            <input  th:field="${message.recipient}" class="form-control">
+        <label>Sender Username
+            <input  th:field="${message.sender}"  name="typedUsername"  class="form-control">
+<!--            <input  th:value="${user.getUsername()}"  class="form-control">-->
+<!--            <input type="value"  th:field="${message.sender}" name="sender"  class="form-control"/>-->
+        </label>
+        <p class="error" th:errors="${message.sender}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Recipient Username
+            <input type="text" th:field="${message.recipient}" class="form-control">
         </label>
         <p class="error" th:errors="${message.recipient}"></p>
     </div>
 
     <div class="form-group">
         <label>Message
-            <input th:field="${message.body}" class="form-control">
+            <input type="text" th:field="${message.body}" class="form-control">
         </label>
         <p class="error" th:errors="${message.body}"></p>
     </div>
