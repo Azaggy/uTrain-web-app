@@ -10,21 +10,16 @@
 
 
     <div class="form-group">
-        <input type="hidden" th:field="${userMessage.user}">
+<!--        <input type="hidden" th:field="${userMessage.user}">-->
         <label>To:
-            <select th:field="${userMessage.message.recipientId}">
-                <option th:each="recipient : ${recipients}"
-                        th:value="${recipient.id}"
-                        th:text="${recipient.username}"
-                ></option>
-            </select>
+            <input th:field="${message.recipient}">
         </label>
-<!--        <p class="error" th:errors="${recipient}"></p>-->
+        <p class="error" th:errors="${message.recipient}"></p>
     </div>
 
     <div class="form-group">
         <label>Message
-            <input th:field="${userMessage.message.body}" class="form-control">
+            <input th:field="${message.body}" class="form-control">
         </label>
 <!--        <p class="error" th:errors="${message.body}"></p>-->
     </div>

@@ -6,20 +6,22 @@
 </head>
 <body>
 <div th:replace="fragments :: page-header"></div>
-<h1>Gyms</h1>
+<h1 th:text="${title}"></h1>
 
 <table class="table">
     <thead>
     <tr>
-        <th>From:</th>
-        <th>To:</th>
+        <th>From</th>
+        <th>To</th>
         <th>Message</th>
+        <th>Date</th>
     </tr>
     </thead>
     <tr th:each="message : ${messages}">
-        <th th:text="${message.senderId}"></th>
-        <th th:text="${message.recipientId}"></th>
+        <th th:text="${message.sender}"></th>
+        <th th:text="${message.recipient}"></th>
         <th th:text="${message.body}"></th>
+        <th th:text="${message.date}"></th>
     </tr>
 </table>
 

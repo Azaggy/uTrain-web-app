@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -56,38 +57,45 @@ public class MessageController {
 
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
-            model.addAttribute("title", "Add Message");
-            model.addAttribute(new Message());
-            model.addAttribute("recipients", userRepository.findAll());
-            MessageDTO userMessage = new MessageDTO();
-            userMessage.setUser(user);
-            model.addAttribute("userMessage", userMessage);
+            model.addAttribute("title", "Send Message");
+            model.addAttribute("message", new Message());
+//            model.addAttribute("recipients", userRepository.findAll());
+//            MessageDTO userMessage = new MessageDTO();
+//            userMessage.setUser(user);
+//            model.addAttribute("userMessage", userMessage);
 
             return "message/addmessage";
 
         }
 
         @PostMapping("addmessage")
-        public String processAddMessage(@ModelAttribute @Valid MessageDTO userMessage, Errors errors, Model model, HttpServletRequest request,
-                                        User recipient) {
+        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model,
+                                        HttpServletRequest request) {
 
-            Message message = userMessage.getMessage();
-            User sender = userMessage.getUser();
+            User user = (User) getUserFromSession(request.getSession());
+            Date currentDate = Calendar.getInstance().getTime();
 
-            Message newMessage = new Message(message.getBody(), message.getRecipientId(), sender.getId(), message.getDate());
+//            Message message = userMessage.getMessage();
+//            User sender = userMessage.getUser();
 
+            if(errors.hasErrors()) {
+                model.addAttribute("title", "Send Message");
+                return "message/addmessage";
+            }
 
+            User recipient = userRepository.findByUsername(newMessage.getRecipient());
 
-//            if(errors.hasErrors()) {
-//                model.addAttribute("title", "Add Message");
-//                return "message/addmessage";
-//            }
+            if (recipient == null) {
+                errors.rejectValue("recipient", "recipient.invalid", "The provided " +
+                        "recipient doesn't exist");
+                model.addAttribute("title", "Send Message");
+                return "message/addmessage";
+            }
 
-//            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
+            Message message = new Message(newMessage.getBody(), newMessage.getRecipient(),
+                    user.getUsername(), currentDate);
 
-//            userRecipient.getMessages().add(msgRefactor);
-
-            messageRepository.save(newMessage);
+            messageRepository.save(message);
 
             return "redirect:index";
         }

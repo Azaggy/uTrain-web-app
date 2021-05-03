@@ -14,23 +14,25 @@ public class Message extends AbstractEntity{
 
 
     @NotNull
-    @Size(max = 50)
+    @Size(max = 500, message = "Message has more than 500 characters")
     private String body;
 
+    @NotNull
+    @Size(max = 30, message = "Too many characters")
+    private String recipient;
 
-    private Integer recipientId;
 
-    private Integer senderId;
+    private String sender;
 
     private Date date;
 
     public Message() {
     }
 
-    public Message(String body, Integer recipientId, Integer senderId, Date date) {
+    public Message(String body, String recipient, String sender, Date date) {
         this.body = body;
-        this.recipientId = recipientId;
-        this.senderId = senderId;
+        this.recipient = recipient;
+        this.sender = sender;
         this.date = date;
     }
 
@@ -42,20 +44,20 @@ public class Message extends AbstractEntity{
         this.body = body;
     }
 
-    public Integer getRecipientId() {
-        return recipientId;
+    public String getRecipient() {
+        return recipient;
     }
 
-    public void setRecipientId(Integer recipientId) {
-        this.recipientId = recipientId;
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
-    public Integer getSenderId() {
-        return senderId;
+    public String getSender() {
+        return sender;
     }
 
-    public void setSender(Integer senderId) {
-        this.senderId = senderId;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     public Date getDate() {
