@@ -1,36 +1,36 @@
 package org.launchcode.uTrain.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.Optional;
 
 
 @Entity
 public class Message extends AbstractEntity{
 
 
-
     @NotNull
     @Size(max = 50)
     private String body;
 
-    @NotNull
-    private String recipient;
 
-//    @OneToOne
-    @NotNull
-    private String sender;
+    private Integer recipientId;
+
+    private Integer senderId;
 
     private Date date;
 
     public Message() {
     }
 
-    public Message(@NotNull @Size(max = 50) String body, @NotNull String recipient, @NotNull String sender, Date date) {
+    public Message(String body, Integer recipientId, Integer senderId, Date date) {
         this.body = body;
-        this.recipient = recipient;
-        this.sender = sender;
+        this.recipientId = recipientId;
+        this.senderId = senderId;
         this.date = date;
     }
 
@@ -42,20 +42,20 @@ public class Message extends AbstractEntity{
         this.body = body;
     }
 
-    public String getRecipient() {
-        return recipient;
+    public Integer getRecipientId() {
+        return recipientId;
     }
 
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
+    public void setRecipientId(Integer recipientId) {
+        this.recipientId = recipientId;
     }
 
-    public String getSender() {
-        return sender;
+    public Integer getSenderId() {
+        return senderId;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSender(Integer senderId) {
+        this.senderId = senderId;
     }
 
     public Date getDate() {
@@ -64,5 +64,13 @@ public class Message extends AbstractEntity{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String senderExtraction(String username){
+        return username;
+    }
+
+    public String recipientExtraction(String username) {
+        return username;
     }
 }

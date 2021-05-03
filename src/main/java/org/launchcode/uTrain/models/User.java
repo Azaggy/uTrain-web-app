@@ -29,11 +29,6 @@ public class User extends AbstractEntity {
 
     private boolean isNew;
 
-    @ElementCollection
-    private List<Message> messages;
-
-
-
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -99,11 +94,5 @@ public class User extends AbstractEntity {
         isNew = aNew;
     }
 
-    public List<Message> getMessages() {
-        return messages;
-    }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
 }

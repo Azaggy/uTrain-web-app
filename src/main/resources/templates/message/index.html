@@ -17,8 +17,8 @@
     </tr>
     </thead>
     <tr th:each="message : ${messages}">
-        <th th:text="${message.sender}"></th>
-        <th th:text="${message.recipient}"></th>
+        <th th:text="${message.senderId}"></th>
+        <th th:text="${message.recipientId}"></th>
         <th th:text="${message.body}"></th>
     </tr>
 </table>

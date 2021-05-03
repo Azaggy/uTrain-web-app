@@ -50,8 +50,10 @@ public class UserController {
         model.addAttribute("title", "Welcome!!");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+//        model.addAttribute("messages", user.getMessages());
 
         return "user/index";
+
     }
 
     @GetMapping("addprofile/{userId}")

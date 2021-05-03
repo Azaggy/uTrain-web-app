@@ -4,6 +4,7 @@ import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.dto.MessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -49,36 +51,44 @@ public class MessageController {
         public String displayAddMessage(Model model, HttpServletRequest request){
 
             User user = (User) getUserFromSession(request.getSession());
-
-            String recipient = null;
+            
+//            User recipient = null;
 
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
             model.addAttribute("title", "Add Message");
             model.addAttribute(new Message());
-            model.addAttribute("recipient", recipient);
+            model.addAttribute("recipients", userRepository.findAll());
+            MessageDTO userMessage = new MessageDTO();
+            userMessage.setUser(user);
+            model.addAttribute("userMessage", userMessage);
 
             return "message/addmessage";
+
         }
 
         @PostMapping("addmessage")
-        public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model, HttpServletRequest request,
-                                        String recipient) {
+        public String processAddMessage(@ModelAttribute @Valid MessageDTO userMessage, Errors errors, Model model, HttpServletRequest request,
+                                        User recipient) {
 
-            User user = (User) getUserFromSession(request.getSession());
+            Message message = userMessage.getMessage();
+            User sender = userMessage.getUser();
 
-            User userRecipient = userRepository.findByEmail(recipient);
+            Message newMessage = new Message(message.getBody(), message.getRecipientId(), sender.getId(), message.getDate());
 
-            if(errors.hasErrors()) {
-                model.addAttribute("title", "Add Message");
-                return "message/addmessage";
-            }
 
-            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
 
-            userRecipient.getMessages().add(msgRefactor);
+//            if(errors.hasErrors()) {
+//                model.addAttribute("title", "Add Message");
+//                return "message/addmessage";
+//            }
+
+//            Message msgRefactor = new Message(newMessage.getBody(), userRecipient.getUsername(), user.getUsername(), newMessage.getDate());
+
+//            userRecipient.getMessages().add(msgRefactor);
 
             messageRepository.save(newMessage);
+
             return "redirect:index";
         }
 
@@ -87,13 +97,18 @@ public class MessageController {
 
             User user = (User) getUserFromSession(request.getSession());
 
+
+            
+
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
 //            model.addAttribute("messages", MessageRepository.findAll());
             model.addAttribute("title", "Message List");
-            model.addAttribute("messages", user.getMessages());
+            model.addAttribute("messages", messageRepository.findAll());
+
 
             return "message/index";
+
         }
 
 
