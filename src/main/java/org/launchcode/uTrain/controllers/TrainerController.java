@@ -1,5 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
+import org.launchcode.uTrain.data.TrainerRepository;
+import org.launchcode.uTrain.models.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
