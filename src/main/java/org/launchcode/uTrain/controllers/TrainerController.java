@@ -39,7 +39,6 @@ public class TrainerController {
                                          Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Trainer");
-            model.addAttribute("title", "Create Trainer");
             return "trainer/create";
         }
         trainerRepository.save(newTrainer);

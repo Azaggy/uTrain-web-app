@@ -1,9 +1,11 @@
 package org.launchcode.uTrain.models;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Trainer extends AbstractEntity{
 
     @NotBlank(message = "Name is required")
@@ -11,7 +13,7 @@ public class Trainer extends AbstractEntity{
     private String name;
 
 
-    private Integer contactNumber;
+    private int contactNumber;
 
     @NotBlank(message = "Email is required")
     @Email
@@ -33,11 +35,11 @@ public class Trainer extends AbstractEntity{
         this.name = name;
     }
 
-    public Integer getContactNumber() {
+    public int getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(int contactNumber) {
         this.contactNumber = contactNumber;
     }
 
