@@ -4,18 +4,19 @@
 <head th:replace="fragments :: head">
 
 </head>
-
-<table class="table" th:each="trainer : ${Trainers}">
+<body>
+<table class="table">
     <thead>
     <tr>
         <th>Name</th>
-        <th>Contact Number</th>
         <th>Contact Email</th>
+        <th>Contact Number</th>
     </tr>
     </thead>
-    <tr>
+    <tr th:each="trainer : ${Trainers}">
         <th th:text="${trainer.name}"></th>
         <th th:text="${trainer.contactEmail}"></th>
         <th th:text="${trainer.contactNumber}"></th>
     </tr>
 </table>
+</body>

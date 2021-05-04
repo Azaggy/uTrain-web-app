@@ -8,18 +8,18 @@ import javax.validation.constraints.Size;
 @Entity
 public class Trainer extends AbstractEntity{
 
-    @NotBlank(message = "Name is required")
-    @Size(min = 3, max = 50, message = "Name must be between 3 aned 50 characters")
+    @NotBlank(message = "Name is required!!")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
 
 
-    private int contactNumber;
+    private String contactNumber;
 
-    @NotBlank(message = "Email is required")
+    @NotBlank(message = "Email is required!!")
     @Email
     private String contactEmail;
 
-    public Trainer(String name, Integer contactNumber, String contactEmail){
+    public Trainer(String name, String contactNumber, String contactEmail){
         this.name = name;
         this.contactNumber = contactNumber;
         this.contactEmail = contactEmail;
@@ -35,11 +35,11 @@ public class Trainer extends AbstractEntity{
         this.name = name;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 

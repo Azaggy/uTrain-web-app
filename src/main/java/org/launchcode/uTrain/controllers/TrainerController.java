@@ -20,7 +20,7 @@ public class TrainerController {
     @Autowired
     private TrainerRepository trainerRepository;
 
-    @GetMapping
+    @GetMapping("index")
     public String displayAllTrainers(Model model) {
         model.addAttribute("title", "All Trainers");
         model.addAttribute("Trainers", trainerRepository.findAll());
@@ -42,7 +42,7 @@ public class TrainerController {
             return "trainer/create";
         }
         trainerRepository.save(newTrainer);
-        return "redirect:";
+        return "redirect:index";
     }
 
 }
