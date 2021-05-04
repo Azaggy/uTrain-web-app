@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body>
-<header th:replace="fragments :: page-header" ></header>
-<form id="formgroup" method="post">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" id="username" th:field="${registerFormDTO.username}" />
-        <p class="error" th:errors="${registerFormDTO.username}"></p>
-    </div>
-    <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.password}"></p>
-    </div>
-    <div class="form-group">
-        <label>Verify Password
-            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
-        </label>
-    </div>
-    <div class="form-group">
-        <label>Email
-            <input class="form-control" th:field="${registerFormDTO.email}" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.email}"></p>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Register">
+<!--<head th:replace="fragments :: head"></head>-->
+
+<head>
+
+    <link rel="stylesheet" th:href="@{/signin.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+
+</head>
+
+<body class="text-center">
+<!--<header th:replace="fragments :: page-header" ></header>-->
+
+
+<form class="form-signin" method="post">
+    <img class="mb-4" src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <label class="sr-only" for="username">Username</label>
+            <input class="form-control" id="username" th:field="${registerFormDTO.username}" placeholder="username" required autofocus >
+            <p class="error" th:errors="${registerFormDTO.username}"></p>
+
+
+        <label class="sr-only" for="password">Password</label>
+            <input class="form-control" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="password" required>
+            <p class="error" th:errors="${registerFormDTO.password}"></p>
+
+
+        <label class="sr-only" for="verifyPassword">Verify Password </label>
+            <input class="form-control" id="verifyPassword" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="verifyPassword" required>
+
+        <label class="sr-only" for="email">Email</label>
+            <input class="form-control" id="email" th:field="${registerFormDTO.email}" placeholder="email" required>
+            <p class="error" th:errors="${registerFormDTO.email}"></p>
+
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    <p class="mt-5 mb-3 text-muted">© 2021</p>
+
 </form>
-<footer th:replace="fragments :: footer"></footer>
+<!--<footer th:replace="fragments :: footer"></footer>-->
 </body>
 </html>

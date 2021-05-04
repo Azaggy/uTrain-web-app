@@ -17,8 +17,7 @@
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label class="sr-only" for="username">Username</label>
             <input class="form-control" id="username"th:field="${loginFormDTO.username}" placeholder="username" required autofocus>
-
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
+            <p class="error" th:errors="${loginFormDTO.username}"></p>
 
         <label class="sr-only" th:for="password">Password</label>
             <input class="form-control" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="password" required>
@@ -35,7 +34,7 @@
     <p class="mt-5 mb-3 text-muted">Don't have an account? <a href="/reg">Register</a></p>
 
 
-    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <p class="mt-5 mb-3 text-muted">© 2021</p>
 
 </form>
 
