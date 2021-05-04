@@ -52,12 +52,14 @@ public class UserController {
         ArrayList<Message> sentMessages = new ArrayList<>();
         ArrayList<Message> receivedMessages = new ArrayList<>();
 
-        for (Message message : messages) {
-            if (message.getRecipient().equals(user.getUsername())) {
-                receivedMessages.add(message);
-            }
-            if (message.getSender().equals(user.getUsername())) {
-                sentMessages.add(message);
+        if (!messages.isEmpty()) {
+            for (Message message : messages) {
+                if (message.getRecipient().equals(user.getUsername())) {
+                    receivedMessages.add(message);
+                }
+                if (message.getSender().equals(user.getUsername())) {
+                    sentMessages.add(message);
+                }
             }
         }
 
