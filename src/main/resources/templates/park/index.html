@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 
-<head th:replace="fragments :: head">
+<head th:replace="fragments :: head"></head>
+<p th:replace="fragments :: bootstrap"></p>
 
-</head>
+
 <body>
 
 <div th:replace="fragments :: page-header"></div>
@@ -11,20 +12,27 @@
 <h1>Welcome to uTrain!</h1>
 <!--<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >-->
 
-<table class="table" th:each="park : ${parks}">
+<table class="table"   id="example" >
     <thead>
     <tr>
         <th>Name</th>
         <th>Zip Code</th>
     </tr>
     </thead>
-    <tr>
+    <tr th:each="park : ${parks}">
         <th th:text="${park.name}"></th>
         <th th:text="${park.address.zipCode}"></th>
     </tr>
 </table>
 
+
+
+
+
+
 </br>
 <footer th:replace="fragments :: footer"></footer>
+
+<p th:replace="fragments :: java"></p>
 </body>
 </html>
