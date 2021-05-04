@@ -13,7 +13,7 @@ public class Trainer extends AbstractEntity{
     private String name;
 
 
-    private int contactNumber;
+    private Integer contactNumber;
 
     @NotBlank(message = "Email is required")
     @Email
@@ -35,11 +35,11 @@ public class Trainer extends AbstractEntity{
         this.name = name;
     }
 
-    public int getContactNumber() {
+    public Integer getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(Integer contactNumber) {
         this.contactNumber = contactNumber;
     }
 
