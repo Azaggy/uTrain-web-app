@@ -4,9 +4,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Entity
@@ -26,8 +28,6 @@ public class User extends AbstractEntity {
     private UserDetail userDetail;
 
     private boolean isNew;
-
-
 
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -93,4 +93,6 @@ public class User extends AbstractEntity {
     public void setNew(boolean aNew) {
         isNew = aNew;
     }
+
+
 }
