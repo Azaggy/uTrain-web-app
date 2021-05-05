@@ -16,9 +16,10 @@
         <th>Name</th>
         <th>Contact Number</th>
         <th>Contact Email</th>
+
     </tr>
     </thead>
-    <tr class="table" th:each="trainer : ${Trainers}">
+    <tr class="table" th:each="trainer : ${trainers}">
         <th th:text="${trainer.name}"></th>
         <th th:text="${trainer.contactNumber}"></th>
         <th th:text="${trainer.contactEmail}"></th>

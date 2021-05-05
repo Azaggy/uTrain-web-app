@@ -23,7 +23,7 @@ public class TrainerController {
     @GetMapping
     public String displayAllTrainers(Model model) {
         model.addAttribute("title", "All Trainers");
-        model.addAttribute("Trainers", trainerRepository.findAll());
+        model.addAttribute("trainers", trainerRepository.findAll());
         return "trainer/index";
     }
 
