@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body>
-<header th:replace="fragments :: page-header"></header>
+    <script src="script.js"></script>
 
-<h1>Select a Profile Avatar</h1>
+    <head th:replace="fragments :: head">
+    </head>
+    <body>
+        <div th:replace="fragments :: page-header"></div>
 
-<div id="id01" class="modal">
-    <form>
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/xsctj4R/IMG-1547.png" alt="IMG-1547" border="0">
-        </label>
+        <h1>Select a Profile Avatar</h1>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/JCFvGBn/a-Default-Image.png" alt="a-Default-Image" border="0">
-        </label>
+        <div id="avatars">
+            <form>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/xsctj4R/IMG-1547.png" alt="IMG-1547" border="0">
+                </label>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/1q24jk5/IMG-1548.png" alt="IMG-1548" border="0">
-        </label>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/JCFvGBn/a-Default-Image.png" alt="a-Default-Image" border="0">
+                </label>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/sFGfdPt/IMG-1549.png" alt="IMG-1549" border="0">
-        </label>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/1q24jk5/IMG-1548.png" alt="IMG-1548" border="0">
+                </label>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/DDLrwTM/IMG-1550.png" alt="IMG-1550" border="0">
-        </label>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/sFGfdPt/IMG-1549.png" alt="IMG-1549" border="0">
+                </label>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/v1g6B5g/IMG-1551.png" alt="IMG-1551" border="0">
-        </label>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/DDLrwTM/IMG-1550.png" alt="IMG-1550" border="0">
+                </label>
 
-        <label class="avatars">
-            <input type="radio" name="avatar"/>
-            <img src="https://i.ibb.co/YjXPG54/IMG-1552.png" alt="IMG-1552" border="0">
-        </label>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/v1g6B5g/IMG-1551.png" alt="IMG-1551" border="0">
+                </label>
 
-    </form>
-</div>
+                <label class="avatars">
+                    <input type="radio" name="avatar"/>
+                    <img src="https://i.ibb.co/YjXPG54/IMG-1552.png" alt="IMG-1552" border="0">
+                </label>
+
+            </form>
+        </div>
 
 
 </body>

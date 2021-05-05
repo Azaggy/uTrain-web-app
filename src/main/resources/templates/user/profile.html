@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+<script src="script.js"></script>
 <body>
 <header th:replace="fragments :: page-header"></header>
 
 <a href="/../photo.html">Image Selection
     <img src="https://i.ibb.co/Fm4B9wR/IMG-1555.png" alt="IMG-1555" border="0">
 </a>
+<img src="https://i.ibb.co/Fm4B9wR/IMG-1555.png" alt="IMG-1555" border="0">
+<button type="image" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Change Avatar</button>
 
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div id="id01" class="modal">
+            <form class="modal-content animate">
+                <div>
+                    <h1>Select a new Avatar</h1>
+                </div>
+                <div class="container" id="avatars">
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/xsctj4R/IMG-1547.png" alt="IMG-1547" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/JCFvGBn/a-Default-Image.png" alt="a-Default-Image" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/1q24jk5/IMG-1548.png" alt="IMG-1548" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/sFGfdPt/IMG-1549.png" alt="IMG-1549" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/DDLrwTM/IMG-1550.png" alt="IMG-1550" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/v1g6B5g/IMG-1551.png" alt="IMG-1551" border="0">
+                    </label>
+
+                    <label class="avatars">
+                        <input type="radio" name="avatar"/>
+                        <img class="avatar" src="https://i.ibb.co/YjXPG54/IMG-1552.png" alt="IMG-1552" border="0">
+                    </label>
+
+                </div>
+
+            </form>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+    </form>
+</div>
 
 <h2>General Info</h2>
 
@@ -65,5 +125,16 @@
 
 <footer th:replace="fragments :: footer"></footer>
 
+<script>
+// Get the modal
+let modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>
