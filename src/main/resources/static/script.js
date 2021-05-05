@@ -10,3 +10,11 @@ function conversionUKToUS(int weight, int height) {
     let height2 = height/m
     console.log(newWeight/(height2**2))
 }
+
+let modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == model) {
+        modal.style.display = "none";
+    }
+}
