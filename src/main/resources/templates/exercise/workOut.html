@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org/">
 <!--<script th:src="@{/main.js}"></script>-->
 <link rel="stylesheet" th:href="@{/workOut.css}"/>
-<link rel="stylesheet" th:href="@{/styles.css}" />
-<!--<head th:replace="fragments :: head">-->
-</head>
+<!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
+<head th:replace="fragments :: head"></head>
+
+<p th:replace="fragments :: bootstrap"></p>
+
+
+
+
 <body>
 
 <ul>
@@ -33,15 +39,16 @@
 
 
 
-<div class="search=div">
-    <input type="text" id="search" placeholder="Search by name">
-</div>
-<table>
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
     <tr>
         <th>Trainer</th>
         <th>Contack Email</th>
         <th>Contact Number</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td><a href="/exercise/index">Ted Wilkons</a></td>
         <td>tedWil@gmail.com</td>
@@ -152,36 +159,38 @@
         <td>AnnCarvers@gmail.com</td>
         <td>314-765-0896</td>
     </tr>
+    </tbody>
 </table>
 
 
 
 
+<p th:replace="fragments :: java"></p>
 
-<script type="text/javascript">
-    document.getElementById('search').onkeyup = function () {
+<!--<script type="text/javascript">-->
+<!--    document.getElementById('search').onkeyup = function () {-->
 
-    var query = this.value.toUpperCase();
-    var table = document.getElementsByTagName('table')[0];
-    var table_row = document.getElementsByTagName('tr');
+<!--    var query = this.value.toUpperCase();-->
+<!--    var table = document.getElementsByTagName('table')[0];-->
+<!--    var table_row = document.getElementsByTagName('tr');-->
 
-    for(var i = 0; i < table_row.length; i++) {
-    var name_row = table_row[i].getElementsByTagName('td')[0];
+<!--    for(var i = 0; i < table_row.length; i++) {-->
+<!--    var name_row = table_row[i].getElementsByTagName('td')[0];-->
 
-       if(name_row) {
+<!--       if(name_row) {-->
 
-            var name = name_row.textContent || td.innerText;
-            if(name.toUpperCase().indexOf(query) > - 1) {
+<!--            var name = name_row.textContent || td.innerText;-->
+<!--            if(name.toUpperCase().indexOf(query) > - 1) {-->
 
-            table_row[i].style.display='';
-            } else {
-            table_row[i].style.display = 'none'
-            }
-        }
-    }
-    console.log(query);
-}
+<!--            table_row[i].style.display='';-->
+<!--            } else {-->
+<!--            table_row[i].style.display = 'none'-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--    console.log(query);-->
+<!--}-->
 
-</script>
+<!--</script>-->
 </body>
 </html>
