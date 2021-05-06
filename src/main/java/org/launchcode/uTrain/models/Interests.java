@@ -1,6 +1,9 @@
 package org.launchcode.uTrain.models;
 
-public class Interests {
+import javax.persistence.Entity;
+
+@Entity
+public class Interests extends AbstractEntity{
     private boolean walking=false;
     private boolean running=false;
     private boolean cycling=false;

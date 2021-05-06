@@ -90,9 +90,17 @@
     <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
   </div>
 
+  <h3>Interests</h3>
+  <div>
+    <label>Select Interests that apply to you
+      <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking" >
+    </label>
+  </div>
+
   <div class="form-group">
     <input type="submit" value="Update" class="btn btn-secondary">
   </div>
+
 </form>
 <p><a th:href="@{/user/index}">Back to Home</a></p>
 

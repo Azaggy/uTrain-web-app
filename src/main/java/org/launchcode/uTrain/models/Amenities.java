@@ -1,15 +1,18 @@
 package org.launchcode.uTrain.models;
 
-public class Amenities {
+import javax.persistence.Entity;
 
-    boolean swimmingPool=false;
-    boolean tennisCourt= false;
-    boolean bikePath = false;
-    boolean walkingPath = false;
-    boolean golfCourse = false;
-    boolean drivingRange = false;
-    boolean baseballField = false;
-    boolean basketballCourt= false;
+@Entity
+public class Amenities extends AbstractEntity {
+
+    private boolean swimmingPool=false;
+    private boolean tennisCourt= false;
+    private boolean bikePath = false;
+    private boolean walkingPath = false;
+    private boolean golfCourse = false;
+    private boolean drivingRange = false;
+    private boolean baseballField = false;
+    private boolean basketballCourt= false;
 
     public Amenities(){}
 
