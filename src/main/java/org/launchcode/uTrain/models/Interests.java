@@ -7,16 +7,21 @@ public class Interests {
     private boolean golf=false;
     private boolean baseball=false;
     private boolean basketball=false;
+    private boolean swimming=false;
+    private boolean tennis=false;
 
     public Interests(){}
 
-    public Interests(boolean walking, boolean running, boolean cycling, boolean golf, boolean baseball, boolean basketball){
+    public Interests(boolean walking, boolean running, boolean cycling, boolean golf, boolean baseball, boolean basketball,
+                     boolean swimming, boolean tennis){
         this.walking=walking;
         this.running=running;
         this.cycling=cycling;
         this.golf=golf;
         this.baseball=baseball;
         this.basketball=basketball;
+        this.swimming=swimming;
+        this.tennis=tennis;
     }
 
     public boolean isWalking() {
@@ -65,5 +70,21 @@ public class Interests {
 
     public void setBasketball(boolean basketball) {
         this.basketball = basketball;
+    }
+
+    public boolean isSwimming() {
+        return swimming;
+    }
+
+    public void setSwimming(boolean swimming) {
+        this.swimming = swimming;
+    }
+
+    public boolean isTennis() {
+        return tennis;
+    }
+
+    public void setTennis(boolean tennis) {
+        this.tennis = tennis;
     }
 }
