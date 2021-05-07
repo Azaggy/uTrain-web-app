@@ -42,12 +42,12 @@ public class BMIController {
     public String bmiCalc(HttpServletRequest request, Model model) {
 
 
-        Bmi bmi = new Bmi();
+//        Bmi bmi = new Bmi();
 
         User user = (User) getUserFromSession(request.getSession());
 
         model.addAttribute("title", "BMI Calculator");
-        model.addAttribute("bmiReturn", bmi);
+        model.addAttribute("bmiReturn", new Bmi(userDetail.getHeight(), userDetail.getWeight()));
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 
