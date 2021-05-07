@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+
     //Controller for display pages with hardly any interaction.
 
     @GetMapping("index")
@@ -23,12 +24,16 @@ public class HomeController {
         return "company";
     }
 
-    @GetMapping("bmi")
-    public String bmiCalc(Model model) {
-        model.addAttribute("title", "BMI Calculator");
+//    @GetMapping("bmi")
+//    public String bmiCalc(Model model) {
+//
+//        model.addAttribute("title", "BMI Calculator");
+//        model.addAttribute("user", user);
+//        return "bmi";
+//    }
 
-        return "bmi";
-    }
+
+
 
     @GetMapping("photo")
     public String profilePhoto(Model model) {

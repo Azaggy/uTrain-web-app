@@ -2,10 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
     <head th:replace="fragments :: head">
     </head>
-    <script src="script.js"></script>
     <body>
         <div th:replace="fragments :: page-header"></div>
 
+
+        <h1>Your height is: </h1>
+        <h1 th:text="${user.userDetail.height}"></h1>
+        <h2>Your weight is: </h2>
+        <h2 th:text="${user.userDetail.weight}"></h2>
+        <h3>Your BMI is: </h3>
+        <h3 th:text="${bmiReturn}"></h3>
         <form name="calculator">
             <table>
                 <tr>

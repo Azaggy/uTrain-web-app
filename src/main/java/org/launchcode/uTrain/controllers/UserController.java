@@ -117,6 +117,15 @@ public class UserController {
         return "user/profile";
     }
 
+//    @GetMapping("bmi")
+//    public String bmiCalc(HttpServletRequest request, Model model) {
+//
+//        User user = (User) getUserFromSession(request.getSession());
+//
+//        model.addAttribute("title", "BMI Calculator");
+//        model.addAttribute("user", user);
+//        return "bmi";
+//    }
 
 
 }
