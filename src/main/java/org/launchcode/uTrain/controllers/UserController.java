@@ -132,6 +132,8 @@ public class UserController {
         User user = (User) getUserFromSession(request.getSession());
 
 
+
+
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);

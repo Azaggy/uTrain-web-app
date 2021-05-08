@@ -6,11 +6,11 @@
 </head>
 <body>
 <div th:replace="fragments :: page-header"></div>
-<h1>Messages</h1>
+<h1>Gyms</h1>
 <!--<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >-->
 
 
-<table class="table">
+<table class="table" th:each="gym : ${gyms}">
     <thead>
     <tr>
         <th>Name</th>
@@ -22,7 +22,7 @@
         <th>Zip Code</th>
     </tr>
     </thead>
-    <tr th:each="gym : ${gyms}">
+    <tr>
         <th th:text="${gym.name}"></th>
         <th th:text="${gym.email}"></th>
         <th th:text="${gym.phoneNumber}"></th>
@@ -30,6 +30,37 @@
         <th th:text="${gym.address.city}"></th>
         <th th:text="${gym.address.state}"></th>
         <th th:text="${gym.address.zipCode}"></th>
+    </tr>
+    <thead>
+    <tr>
+        <th>Amenities at This Location</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tr>
+        <th>
+            <p>
+            <span th:if="${gym.amenities.swimmingPool}">Swimming Pool </span>
+            <span th:if="${gym.amenities.tennisCourt}">Tennis Court </span>
+            <span th:if="${gym.amenities.bikePath}">Bike Path </span>
+            <span th:if="${gym.amenities.walkingPath}">Walking Path </span>
+            <span th:if="${gym.amenities.golfCourse}">Golf Course </span>
+            <span th:if="${gym.amenities.drivingRange}">Driving Range </span>
+            <span th:if="${gym.amenities.baseballField}">Baseball Field </span>
+            <span th:if="${gym.amenities.basketballCourt}">Basketball Court </span>
+            </p>
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
 </table>
 
