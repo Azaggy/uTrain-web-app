@@ -3,8 +3,7 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.User;
-import org.launchcode.uTrain.models.dto.MessageDTO;
+import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +11,12 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.net.http.HttpClient;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Controller

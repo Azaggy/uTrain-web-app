@@ -3,8 +3,8 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.User;
-import org.launchcode.uTrain.models.UserSex;
+import org.launchcode.uTrain.models.user.User;
+import org.launchcode.uTrain.models.user.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller

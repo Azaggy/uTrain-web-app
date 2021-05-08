@@ -5,7 +5,7 @@ import org.launchcode.uTrain.data.ParkRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Park;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
