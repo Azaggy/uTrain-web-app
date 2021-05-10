@@ -1,12 +1,18 @@
 package org.launchcode.uTrain.models.workout;
 
 import org.launchcode.uTrain.models.AbstractEntity;
+import org.launchcode.uTrain.models.user.User;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Workout extends AbstractEntity {
@@ -21,7 +27,12 @@ public class Workout extends AbstractEntity {
 
     private Integer burnedCal;
 
-    private List<Exercise> activities;
+    @OneToMany(mappedBy="workout")
+    private List<Exercise> activities = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Workout() {}
 
@@ -71,6 +82,14 @@ public class Workout extends AbstractEntity {
 
     public void setActivities(List<Exercise> activities) {
         this.activities = activities;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

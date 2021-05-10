@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post">
+
+    <h1>Add Workout</h1>
+
+    <div class="form-group">
+        <label>Name Workout
+            <input th:field="${workout.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${workout.description}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Calories Consumed
+            <input th:field="${workout.consumedCal}" class="form-control" type="number">
+        </label>
+        <p class="error" th:errors="${workout.consumedCal}"></p>
+    </div>
+    <div class="form-group">
+        <label>Calories Burned
+            <input th:field="${workout.burnedCal}" class="form-control" type="number">
+        </label>
+        <p class="error" th:errors="${workout.burnedCal}"></p>
+    </div>
+    <h4>Select Your Activities for Your Workout</h4>
+    <div th:each="exercise : ${user.exercises}">
+        <label th:text="${exercise.name}"></label>
+        <input th:value="${exercise.id}" type="checkbox" name="exercises">
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+
+</form>
+
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
