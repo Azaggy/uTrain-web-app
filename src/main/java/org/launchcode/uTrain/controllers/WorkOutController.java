@@ -52,8 +52,13 @@ public class WorkOutController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        /*
+        The workout class is in a ManyToOne relationship to the user. Once the user is obtained from the
+        session, the workouts associated with the user can be obtained.
+         */
         List<Workout> workouts = user.getWorkouts();
 
+        // Sort method to list the workouts from more recent to oldest.
         Collections.sort(workouts, (c1, c2) -> {
             if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
             else return 1;
@@ -86,6 +91,8 @@ public class WorkOutController {
                                     Model model) {
 
         User user = (User) getUserFromSession(request.getSession());
+
+        //grabbing the current date to add to the workout before it's saved to the repository
         Date currentDate = Calendar.getInstance().getTime();
 
         if (errors.hasErrors()) {
@@ -97,6 +104,7 @@ public class WorkOutController {
             return "workout/addworkout";
         }
 
+        //we set the date and the user to the workout. The User's id will be stored on the workout table
         workout.setTimeStamp(currentDate);
         workout.setUser(user);
         workoutRepository.save(workout);

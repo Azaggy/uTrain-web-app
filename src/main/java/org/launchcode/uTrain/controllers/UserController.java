@@ -67,6 +67,7 @@ public class UserController {
             else return 1;
         });
 
+        // Sorting methods to sort messages newest, to oldest.
         Collections.sort(receivedMessages, (c1, c2) -> {
             if (c1.getDate().after(c2.getDate())) return -1;
             else return 1;

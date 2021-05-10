@@ -68,6 +68,8 @@ public class MessageController {
                                         HttpServletRequest request) {
 
             User user = (User) getUserFromSession(request.getSession());
+
+            //Pulling current date info from Date class to add to message instance.
             Date currentDate = Calendar.getInstance().getTime();
 
 //            Message message = userMessage.getMessage();
@@ -78,6 +80,7 @@ public class MessageController {
                 return "message/addmessage";
             }
 
+            //Query the user repository to see if the entered user exists.
             User recipient = userRepository.findByUsername(newMessage.getRecipient());
 
             if (recipient == null) {
@@ -86,6 +89,11 @@ public class MessageController {
                 model.addAttribute("title", "Send Message");
                 return "message/addmessage";
             }
+
+            /*
+            We set the user as the sender below, we set the time current date as the time stamp and the
+            other attributes are from the form from the view.
+             */
 
             Message message = new Message(newMessage.getBody(), newMessage.getRecipient(),
                     user.getUsername(), currentDate);
