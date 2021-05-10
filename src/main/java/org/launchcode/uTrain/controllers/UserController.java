@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 @Controller
@@ -59,6 +60,17 @@ public class UserController {
                 sentMessages.add(message);
             }
         }
+
+        // Sorting methods to sort messages newest, to oldest.
+        Collections.sort(sentMessages, (c1, c2) -> {
+            if (c1.getDate().after(c2.getDate())) return -1;
+            else return 1;
+        });
+
+        Collections.sort(receivedMessages, (c1, c2) -> {
+            if (c1.getDate().after(c2.getDate())) return -1;
+            else return 1;
+        });
 
         /*
         User is directed to the user index page after a successful login is completed.

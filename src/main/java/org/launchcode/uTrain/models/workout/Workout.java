@@ -4,8 +4,7 @@ import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.user.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,8 +19,12 @@ public class Workout extends AbstractEntity {
 
     private Date timeStamp;
 
+    @Max(value = 10000, message = "Woah there buddy, are you alive!?")
+    @Min(value = 0)
     private Integer consumedCal;
 
+    @Max(value = 10000, message = "We may need to call a doctor!!")
+    @Min(value  = 0)
     private Integer burnedCal;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -8,6 +8,5 @@ public interface ExerciseRepository extends CrudRepository<Exercise, Integer> {
 
     Exercise findByName (String name);
     Exercise findByExerciseType (ExerciseType exerciseType);
-    Exercise findByUserId (int userId);
 
 }

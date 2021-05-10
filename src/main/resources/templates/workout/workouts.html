@@ -13,7 +13,8 @@
         <th>Description</th>
         <th>Calories Consumed</th>
         <th>Calories Burned</th>
-        <th>Included Exercises</th>
+        <th>Exercise Name</th>
+        <th>Exercise Type</th>
         <th>Date of Workout</th>
     </tr>
     </thead>
@@ -21,11 +22,8 @@
         <th th:text="${workout.description}"></th>
         <th th:text="${workout.consumedCal}"></th>
         <th th:text="${workout.burnedCal}"></th>
-        <th>
-            <th:block th:each="activity : ${workout.activities}">
-                <span th:text="${activity.name}"></span>
-            </th:block>
-        </th>
+        <th th:text="${workout.exercise.name}"></th>
+        <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
         <th th:text="${workout.timeStamp}"></th>
     </tr>
 </table>

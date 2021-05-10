@@ -67,6 +67,7 @@ public class WorkOutController {
 
         model.addAttribute("title", "Add Workout");
         model.addAttribute("user", user);
+        model.addAttribute("types", ExerciseType.values());
         model.addAttribute("loggedIn", true);
         model.addAttribute("workout", new Workout());
 
@@ -75,7 +76,7 @@ public class WorkOutController {
 
     @PostMapping("addworkout")
     public String renderAddWorkouts(@ModelAttribute @Valid Workout workout, HttpServletRequest request, Errors errors,
-                                    Model model, @RequestParam(value = "exercises", required = false) int[] exercises) {
+                                    Model model) {
 
         User user = (User) getUserFromSession(request.getSession());
         Date currentDate = Calendar.getInstance().getTime();
@@ -89,16 +90,6 @@ public class WorkOutController {
             return "workout/addworkout";
         }
 
-        if(exercises != null) {
-            Exercise exercise = null;
-            for (int i : exercises) {
-
-                Optional<Exercise> result = exerciseRepository.findById(exercises[i]);
-                Exercise activity = result.get();
-                workout.getActivities().add(activity);
-            }
-        }
-
         workout.setTimeStamp(currentDate);
         workout.setUser(user);
         workoutRepository.save(workout);
@@ -107,52 +98,52 @@ public class WorkOutController {
 
     }
 
-    @GetMapping("activities")
-    public String displayCurrentActivities(HttpServletRequest request, Model model) {
-
-        User user = (User) getUserFromSession(request.getSession());
-
-        model.addAttribute("title", user.getUsername() + "'s Activities");
-        model.addAttribute("exercises", user.getExercises());
-        model.addAttribute("user", user);
-        model.addAttribute("loggedIn", true);
-
-        return ("workout/activities");
-    }
-
-    @GetMapping("addactivities")
-    public String displayAddActivity(HttpServletRequest request, Model model) {
-
-        User user = (User) getUserFromSession(request.getSession());
-
-        model.addAttribute("title", "Add Activity");
-        model.addAttribute("loggedIn", true);
-        model.addAttribute("types", ExerciseType.values());
-        model.addAttribute("user", user);
-        model.addAttribute("exercise", new Exercise());
-
-        return "workout/addactivities";
-    }
-
-    @PostMapping("addactivities")
-    public String renderAddActivity(@ModelAttribute @Valid Exercise exercise, HttpServletRequest request, Errors errors, Model model) {
-
-        User user = (User) getUserFromSession(request.getSession());
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Activity");
-            model.addAttribute("user", user);
-            model.addAttribute("loggedIn", true);
-            model.addAttribute("types", ExerciseType.values());
-            return "workout/addactivities";
-        }
-
-        exercise.setUser(user);
-
-        exerciseRepository.save(exercise);
-
-        return "redirect:/workout/activities";
-    }
+//    @GetMapping("activities")
+//    public String displayCurrentActivities(HttpServletRequest request, Model model) {
+//
+//        User user = (User) getUserFromSession(request.getSession());
+//
+//        model.addAttribute("title", user.getUsername() + "'s Activities");
+//        model.addAttribute("exercises", user.getExercises());
+//        model.addAttribute("user", user);
+//        model.addAttribute("loggedIn", true);
+//
+//        return ("workout/activities");
+//    }
+//
+//    @GetMapping("addactivities")
+//    public String displayAddActivity(HttpServletRequest request, Model model) {
+//
+//        User user = (User) getUserFromSession(request.getSession());
+//
+//        model.addAttribute("title", "Add Activity");
+//        model.addAttribute("loggedIn", true);
+//        model.addAttribute("types", ExerciseType.values());
+//        model.addAttribute("user", user);
+//        model.addAttribute("exercise", new Exercise());
+//
+//        return "workout/addactivities";
+//    }
+//
+//    @PostMapping("addactivities")
+//    public String renderAddActivity(@ModelAttribute @Valid Exercise exercise, HttpServletRequest request, Errors errors, Model model) {
+//
+//        User user = (User) getUserFromSession(request.getSession());
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Add Activity");
+//            model.addAttribute("user", user);
+//            model.addAttribute("loggedIn", true);
+//            model.addAttribute("types", ExerciseType.values());
+//            return "workout/addactivities";
+//        }
+//
+//        exercise.setUser(user);
+//
+//        exerciseRepository.save(exercise);
+//
+//        return "redirect:/workout/activities";
+//    }
 
 
 }

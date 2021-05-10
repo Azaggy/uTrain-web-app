@@ -36,10 +36,6 @@ public class User extends AbstractEntity {
     @OneToMany(mappedBy = "user")
     private List<Workout> workouts = new ArrayList<>();
 
-    //This is linked to= the exercise class. Every activity/exercise created is tied to a certain user
-    @OneToMany(mappedBy = "user")
-    private List<Exercise> exercises = new ArrayList<>();
-
     //this attribute is used to direct user to either profile or add profile page depending on whether attribute is true
     private boolean isNew;
 
@@ -116,11 +112,4 @@ public class User extends AbstractEntity {
         this.workouts = workouts;
     }
 
-    public List<Exercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
-    }
 }

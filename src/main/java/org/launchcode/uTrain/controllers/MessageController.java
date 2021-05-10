@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 //@RequestMapping("message")
@@ -102,15 +100,31 @@ public class MessageController {
         public String messageIndex(Model model, HttpServletRequest request){
 
             User user = (User) getUserFromSession(request.getSession());
+            ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
 
+            /* Populating Arraylist with only logged in user's messages. This will be for a view of all
+               messages. Ordered by date of course.
+            */
+            ArrayList<Message> userMessages = new ArrayList<>();
 
+            for (Message message : messages) {
+                if(message.getRecipient().equals(user.getUsername()) || message.getSender().equals(user.getUsername())) {
+                    userMessages.add(message);
+                }
+            }
+
+            // Sorting methods to sort messages newest, to oldest.
+            Collections.sort(userMessages, (c1, c2) -> {
+                if (c1.getDate().after(c2.getDate())) return -1;
+                else return 1;
+            });
             
 
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
 //            model.addAttribute("messages", MessageRepository.findAll());
             model.addAttribute("title", "Message List");
-            model.addAttribute("messages", messageRepository.findAll());
+            model.addAttribute("messages", userMessages);
 
 
             return "message/index";
