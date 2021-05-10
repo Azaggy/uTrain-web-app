@@ -52,10 +52,17 @@ public class WorkOutController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        List<Workout> workouts = user.getWorkouts();
+
+        Collections.sort(workouts, (c1, c2) -> {
+            if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+            else return 1;
+        });
+
         model.addAttribute("title", "Workouts");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
-        model.addAttribute("workouts", user.getWorkouts());
+        model.addAttribute("workouts", workouts);
 
         return"workout/workouts";
     }

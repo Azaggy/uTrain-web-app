@@ -15,11 +15,30 @@
         <th>Date</th>
     </tr>
     </thead>
-    <tr th:each="message : ${receivedMessages}">
-        <th th:text="${message.sender}"></th>
-        <th th:text="${message.body}"></th>
-        <th th:text="${message.date}"></th>
+    <th:block th:if="${receivedMessages.size > 2}">
+    <tr>
+        <th th:text="${receivedMessages[0].sender}"></th>
+        <th th:text="${receivedMessages[0].body}"></th>
+        <th th:text="${receivedMessages[0].date}"></th>
     </tr>
+    <tr>
+        <th th:text="${receivedMessages[1].sender}"></th>
+        <th th:text="${receivedMessages[1].body}"></th>
+        <th th:text="${receivedMessages[1].date}"></th>
+    </tr>
+    <tr>
+        <th th:text="${receivedMessages[2].sender}"></th>
+        <th th:text="${receivedMessages[2].body}"></th>
+        <th th:text="${receivedMessages[2].date}"></th>
+    </tr>
+    </th:block>
+    <th:block th:unless="${receivedMessages.size > 2}">
+        <tr th:each="message : ${receivedMessages}">
+            <th th:text="${message.sender}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.date}"></th>
+        </tr>
+    </th:block>
 </table>
 
 <h3>Sent Messages</h3>
@@ -31,11 +50,30 @@
         <th>Date</th>
     </tr>
     </thead>
-    <tr th:each="message : ${sentMessages}">
-        <th th:text="${message.recipient}"></th>
-        <th th:text="${message.body}"></th>
-        <th th:text="${message.date}"></th>
-    </tr>
+    <th:block th:if="${sentMessages.size > 2}">
+        <tr>
+            <th th:text="${sentMessages[0].recipient}"></th>
+            <th th:text="${sentMessages[0].body}"></th>
+            <th th:text="${sentMessages[0].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${sentMessages[1].recipient}"></th>
+            <th th:text="${sentMessages[1].body}"></th>
+            <th th:text="${sentMessages[1].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${sentMessages[2].recipient}"></th>
+            <th th:text="${sentMessages[2].body}"></th>
+            <th th:text="${sentMessages[2].date}"></th>
+        </tr>
+    </th:block>
+    <th:block th:unless="${sentMessages.size > 2}">
+        <tr th:each="message : ${sentMessages}">
+            <th th:text="${message.recipient}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.date}"></th>
+        </tr>
+    </th:block>
 </table>
 <p><a href="/message/addmessage">Send New Message</a></p>
 
