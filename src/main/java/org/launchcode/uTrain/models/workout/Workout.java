@@ -3,10 +3,7 @@ package org.launchcode.uTrain.models.workout;
 import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.user.User;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -27,8 +24,11 @@ public class Workout extends AbstractEntity {
 
     private Integer burnedCal;
 
-    @OneToMany(mappedBy="workout")
-    private List<Exercise> activities = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Exercise exercise;
+
+//    @OneToMany(mappedBy="workout")
+//    private List<Exercise> activities = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -36,12 +36,13 @@ public class Workout extends AbstractEntity {
 
     public Workout() {}
 
-    public Workout(String description, Date timeStamp, Integer consumedCal, Integer burnedCal, List<Exercise> activities) {
+    public Workout(String description, Date timeStamp, Integer consumedCal, Integer burnedCal,
+                   Exercise exercise) {
         this.description = description;
         this.timeStamp = timeStamp;
         this.consumedCal = consumedCal;
         this.burnedCal = burnedCal;
-        this.activities = activities;
+        this.exercise = exercise;
     }
 
     public String getDescription() {
@@ -76,12 +77,12 @@ public class Workout extends AbstractEntity {
         this.burnedCal = burnedCal;
     }
 
-    public List<Exercise> getActivities() {
-        return activities;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setActivities(List<Exercise> activities) {
-        this.activities = activities;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
     public User getUser() {

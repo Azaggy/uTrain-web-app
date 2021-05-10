@@ -13,18 +13,12 @@ public class Exercise extends AbstractEntity {
     private String name;
 
     private ExerciseType exerciseType;
+    
 
-    @ManyToOne
-    @JoinColumn(name="workout_id")
-    private Workout workout;
+    public Exercise() {
+    }
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
-
-    public Exercise () {}
-
-    public Exercise (String name, ExerciseType exerciseType) {
+    public Exercise(String name, ExerciseType exerciseType) {
         this.name = name;
         this.exerciseType = exerciseType;
     }
@@ -45,19 +39,4 @@ public class Exercise extends AbstractEntity {
         this.exerciseType = exerciseType;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Workout getWorkout() {
-        return workout;
-    }
-
-    public void setWorkout(Workout workout) {
-        this.workout = workout;
-    }
 }
