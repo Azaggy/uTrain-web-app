@@ -20,6 +20,7 @@ public class BMIController {
 
 
     UserDetail userDetail;
+//    Bmi bmi;
 
     private static final String userSessionKey = "user";
 
@@ -46,8 +47,11 @@ public class BMIController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        Bmi bmi = new Bmi();
+
         model.addAttribute("title", "BMI Calculator");
-        model.addAttribute("bmiReturn", new Bmi(userDetail.getHeight(), userDetail.getWeight()));
+//        model.addAttribute("bmiReturn", new Bmi(userDetail.getHeight(), userDetail.getWeight()));
+        model.addAttribute("bmi", bmi.getBmi());
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 

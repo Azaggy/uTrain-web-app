@@ -4,11 +4,11 @@ public class Bmi {
 
     private UserDetail userDetail;
 
-    double height = userDetail.getHeight();
+    int height = userDetail.getHeight();
 
-    double weight = userDetail.getWeight();
+    int weight = userDetail.getWeight();
 
-    double bmi = (weight)/(height*height);
+    int bmi = (weight)/(height*height);
 
     public Bmi() {}
 
@@ -21,7 +21,7 @@ public class Bmi {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
@@ -29,7 +29,7 @@ public class Bmi {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
@@ -37,7 +37,7 @@ public class Bmi {
         return bmi;
     }
 
-    public void setBmi(double bmi) {
+    public void setBmi(int bmi) {
         this.bmi = bmi;
     }
 }
