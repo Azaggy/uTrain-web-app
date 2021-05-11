@@ -6,9 +6,12 @@
 
 <form method="post" th:action="@{/user/addprofile}">
 
-  <input type="hidden" th:value="${user.id}" name="userId" />
-<!--  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
-  <input type="hidden" th:value="${user.pwHash}" name="pwHash" />
+  <input type="hidden" th:field="${user.id}" name="userId" />
+  <input type="hidden" th:field="${user.pwHash}" name="pwHash" />
+  <input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
+  <input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
+  <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
+
 
   <h3>General Information</h3>
   <div class="form-group">

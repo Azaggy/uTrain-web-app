@@ -109,21 +109,20 @@ public class UserController {
     }
 
     @PostMapping("addprofile")
-    public String processEditProfileForm(@ModelAttribute @Valid User user, int userId,
-                                         Errors errors, Model model) {
+    public String processEditProfileForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
 
-        Optional<User> result = userRepository.findById(userId);
+        Optional<User> result = userRepository.findById(user.getId());
         User updatedUser = result.get();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Update " + updatedUser.getUsername());
             model.addAttribute("user", updatedUser);
             model.addAttribute("loggedIn", true);
-            model.addAttribute("userId", userId);
+            model.addAttribute("userId", user.getId());
             return "user/addprofile";
         }
 
-        userRepository.deleteById(userId);
+//        userRepository.deleteById(userId);
 
         // Once user adds detailed information to profile it sets isNew to false. From there when they select
         // profile it will take them to the profile page.
@@ -133,7 +132,8 @@ public class UserController {
         // User info is updated and saved to the database with new information
        userRepository.save(user);
 
-        return "redirect:/index";
+
+        return "redirect:/user/index";
     }
 
     @GetMapping("profile")

@@ -15,6 +15,7 @@ public class Exercise extends AbstractEntity {
     private ExerciseType exerciseType;
     
 
+
     public Exercise() {
     }
 
