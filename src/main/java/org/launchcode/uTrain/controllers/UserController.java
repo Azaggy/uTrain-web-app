@@ -3,8 +3,8 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.User;
-import org.launchcode.uTrain.models.UserSex;
+import org.launchcode.uTrain.models.user.User;
+import org.launchcode.uTrain.models.user.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.Optional;
 
 @Controller
@@ -61,6 +61,18 @@ public class UserController {
             }
         }
 
+        // Sorting methods to sort messages newest, to oldest.
+        Collections.sort(sentMessages, (c1, c2) -> {
+            if (c1.getDate().after(c2.getDate())) return -1;
+            else return 1;
+        });
+
+        // Sorting methods to sort messages newest, to oldest.
+        Collections.sort(receivedMessages, (c1, c2) -> {
+            if (c1.getDate().after(c2.getDate())) return -1;
+            else return 1;
+        });
+
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
@@ -97,21 +109,20 @@ public class UserController {
     }
 
     @PostMapping("addprofile")
-    public String processEditProfileForm(@ModelAttribute @Valid User user, int userId,
-                                         Errors errors, Model model) {
+    public String processEditProfileForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
 
-        Optional<User> result = userRepository.findById(userId);
+        Optional<User> result = userRepository.findById(user.getId());
         User updatedUser = result.get();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Update " + updatedUser.getUsername());
             model.addAttribute("user", updatedUser);
             model.addAttribute("loggedIn", true);
-            model.addAttribute("userId", userId);
+            model.addAttribute("userId", user.getId());
             return "user/addprofile";
         }
 
-        userRepository.deleteById(userId);
+//        userRepository.deleteById(userId);
 
         // Once user adds detailed information to profile it sets isNew to false. From there when they select
         // profile it will take them to the profile page.
@@ -121,7 +132,8 @@ public class UserController {
         // User info is updated and saved to the database with new information
        userRepository.save(user);
 
-        return "redirect:/index";
+
+        return "redirect:/user/index";
     }
 
     @GetMapping("profile")
@@ -130,6 +142,8 @@ public class UserController {
         // This page is only displayed if the user variable isNew is false.
 
         User user = (User) getUserFromSession(request.getSession());
+
+
 
 
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");

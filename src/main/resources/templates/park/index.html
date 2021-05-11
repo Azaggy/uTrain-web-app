@@ -17,11 +17,22 @@
     <tr>
         <th>Name</th>
         <th>Zip Code</th>
+        <th>Amenities</th>
     </tr>
     </thead>
     <tr th:each="park : ${parks}">
         <th th:text="${park.name}"></th>
         <th th:text="${park.address.zipCode}"></th>
+        <th>
+            <span th:if="${park.amenities.swimmingPool}">Swimming Pool </span>
+            <span th:if="${park.amenities.tennisCourt}">Tennis Court </span>
+            <span th:if="${park.amenities.bikePath}">Bike Path </span>
+            <span th:if="${park.amenities.walkingPath}">Walking Path </span>
+            <span th:if="${park.amenities.golfCourse}">Golf Course </span>
+            <span th:if="${park.amenities.drivingRange}">Driving Range </span>
+            <span th:if="${park.amenities.baseballField}">Baseball Field </span>
+            <span th:if="${park.amenities.basketballCourt}">Basketball Court </span>
+        </th>
     </tr>
 </table>
 

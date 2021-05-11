@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post">
+
+    <h1>Add Workout</h1>
+
+    <div class="form-group">
+        <label>Description of Workout
+            <input th:field="${workout.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${workout.description}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Calories Consumed
+            <input th:field="${workout.consumedCal}" class="form-control" type="number">
+        </label>
+        <p class="error" th:errors="${workout.consumedCal}"></p>
+    </div>
+    <div class="form-group">
+        <label>Calories Burned
+            <input th:field="${workout.burnedCal}" class="form-control" type="number">
+        </label>
+        <p class="error" th:errors="${workout.burnedCal}"></p>
+    </div>
+    <h4>Exercise Performed</h4>
+    <div class="form-group">
+        <label>Name
+        <input class="form-control" th:field="${workout.exercise.name}">
+        </label>
+        <p class="error" th:errors="${workout.exercise.name}"></p>
+    </div>
+    <div class="form-group">
+        <label>Type
+            <select class="form-control" th:field="${workout.exercise.exerciseType}">
+                <option th:each="type : ${types}"
+                        th:value="${type}"
+                        th:text="${type.exerciseType}"
+                ></option>
+            </select>
+        </label>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+
+</form>
+
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

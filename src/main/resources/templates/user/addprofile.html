@@ -6,9 +6,12 @@
 
 <form method="post" th:action="@{/user/addprofile}">
 
-  <input type="hidden" th:value="${user.id}" name="userId" />
-<!--  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
-  <input type="hidden" th:value="${user.pwHash}" name="pwHash" />
+  <input type="hidden" th:field="${user.id}" name="userId" />
+  <input type="hidden" th:field="${user.pwHash}" name="pwHash" />
+  <input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
+  <input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
+  <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
+
 
   <h3>General Information</h3>
   <div class="form-group">
@@ -90,9 +93,32 @@
     <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
   </div>
 
+  <h3>Interests</h3>
+  <h4>Select Interests that apply to you</h4>
+  <div>
+    <label>Walking</label>
+      <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
+    <label>Running</label>
+      <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
+    <label>Cycling</label>
+      <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
+    <label>Golf</label>
+      <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
+    <label>Baseball</label>
+      <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
+    <label>Basketball</label>
+      <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
+    <label>Swimming</label>
+      <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
+    <label>Tennis</label>
+      <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
+    </label>
+  </div>
+
   <div class="form-group">
     <input type="submit" value="Update" class="btn btn-secondary">
   </div>
+
 </form>
 <p><a th:href="@{/user/index}">Back to Home</a></p>
 

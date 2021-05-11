@@ -3,7 +3,7 @@ package org.launchcode.uTrain.models.dto;
 
 
 import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 
 import javax.validation.constraints.NotNull;
 

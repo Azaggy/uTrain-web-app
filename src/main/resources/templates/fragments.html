@@ -33,14 +33,15 @@
             <img src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
         </a>
     </li>
-    <li><a href="/company">About Us</a></li>
+    <li th:unless="${loggedIn}"><a href="/company">About Us</a></li>
 <!--    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>-->
     <li th:if="${loggedIn}"><a th:href="@{/user/index}">Back to Home</a></li>
     <li th:unless="${loggedIn}"><a  href="/index">Home</a></li>
     <li class="dropdown">
         <a th:if="${loggedIn}" href="javascript:void(0)" class="dropbtn">Services</a>
         <div class="dropdown-content">
-            <a href="/exercise/index">Exercises</a>
+            <a href="/workout/workouts">Workouts</a>
+            <a href="/workout/addworkout">Add Workout</a>
             <a href="/gym/index">Gym Locator</a>
             <a href="/gym/addgym">Add Gym</a>
             <a href="/park/index">Park Locator</a>

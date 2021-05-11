@@ -23,14 +23,17 @@ public class Gym extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Amenities amenities;
+
     public Gym (){}
 
-    public Gym(String name, String phoneNumber, String email, Address address){
+    public Gym(String name, String phoneNumber, String email, Address address, Amenities amenities) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.email= email;
+        this.email = email;
         this.address = address;
-
+        this.amenities = amenities;
     }
 
     public String getName() {
@@ -63,5 +66,13 @@ public class Gym extends AbstractEntity {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Amenities getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(Amenities amenities) {
+        this.amenities = amenities;
     }
 }

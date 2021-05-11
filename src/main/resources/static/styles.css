@@ -97,6 +97,31 @@ a.one {
 .foots{
     color: white;
 }
+
+.table {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 50%;
+ }
+
+ .table td, #table th {
+    color: #ffffff;
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+
+
+
+
+ .table th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #0602b9;
+   color: white;
+   }
+
 .image {
  }
 
@@ -128,3 +153,9 @@ a.one {
    text-align: left;
    background-color: #0602b9;
    color: white;
+
+.interests {
+color: #ffffff;
+}
+
+}
