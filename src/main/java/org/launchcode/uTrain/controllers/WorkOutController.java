@@ -104,6 +104,19 @@ public class WorkOutController {
             return "workout/addworkout";
         }
 
+        if (user.getUserDetail().getUserSex().getUserSex() == "Female") {
+
+            double burnedCals = workout.getCaloriesBurnedForFemale(user.getUserDetail().getWeight(),
+                    user.getUserDetail().getAge());
+            workout.setBurnedCal(Math.round(burnedCals));
+        } else if (user.getUserDetail().getUserSex().getUserSex() == "Male") {
+            double burnedCals = workout.getCaloriesBurnedForMale(user.getUserDetail().getWeight(),
+                    user.getUserDetail().getAge());
+            workout.setBurnedCal(Math.round(burnedCals));
+        }
+
+
+
         //we set the date and the user to the workout. The User's id will be stored on the workout table
         workout.setTimeStamp(currentDate);
         workout.setUser(user);

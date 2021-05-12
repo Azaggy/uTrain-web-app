@@ -25,7 +25,15 @@ public class Workout extends AbstractEntity {
 
     @Max(value = 10000, message = "We may need to call a doctor!!")
     @Min(value  = 0)
-    private Integer burnedCal;
+    private double burnedCal;
+
+    @Max(value = 180, message = "Workout can not be longer than 3 hours!!")
+    @Min(value = 0)
+    private Integer duration;
+
+    @Max(value = 250)
+    @Min(value = 0)
+    private Integer heartRate;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Exercise exercise;
@@ -40,11 +48,13 @@ public class Workout extends AbstractEntity {
     public Workout() {}
 
     public Workout(String description, Date timeStamp, Integer consumedCal, Integer burnedCal,
-                   Exercise exercise) {
+                   Integer duration, Integer heartRate, Exercise exercise) {
         this.description = description;
         this.timeStamp = timeStamp;
         this.consumedCal = consumedCal;
         this.burnedCal = burnedCal;
+        this.duration = duration;
+        this.heartRate = heartRate;
         this.exercise = exercise;
     }
 
@@ -72,12 +82,28 @@ public class Workout extends AbstractEntity {
         this.consumedCal = consumedCal;
     }
 
-    public Integer getBurnedCal() {
+    public double getBurnedCal() {
         return burnedCal;
     }
 
-    public void setBurnedCal(Integer burnedCal) {
+    public void setBurnedCal(double burnedCal) {
         this.burnedCal = burnedCal;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public Integer getHeartRate() {
+        return heartRate;
+    }
+
+    public void setHeartRate(Integer heartRate) {
+        this.heartRate = heartRate;
     }
 
     public Exercise getExercise() {
@@ -94,6 +120,34 @@ public class Workout extends AbstractEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public double getCaloriesBurnedForFemale(int weight, int age){
+        double heartRate = this.heartRate;
+        double duration = this.duration;
+        double altWeight = weight;
+        double altAge = age;
+
+        double calc =
+                ((-20.4022 + (0.4472 * heartRate) - (0.05741 * altWeight) + (0.2017 * altAge)) * duration) / 4.184;
+
+        double calsBurned = Math.round(calc);
+
+        return calsBurned;
+    }
+
+    public double getCaloriesBurnedForMale(int weight, int age){
+        double heartRate = this.heartRate;
+        double duration = this.duration;
+        double altWeight = (weight / 2.2);
+        double altAge = age;
+
+        double calc =
+                ((-55.0969 + (0.6309 * heartRate) - (0.0904 * altWeight) + (0.2017 * altAge)) * duration) / 4.184;
+
+        double calsBurned = Math.round(calc);
+
+        return calsBurned;
     }
 }
 
