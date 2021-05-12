@@ -30,6 +30,7 @@ public class UserDetail extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+
     public UserDetail() {};
 
     public UserDetail(int age, int height, int weight, String firstName, String lastName, UserSex userSex, Address address) {
@@ -106,6 +107,4 @@ public class UserDetail extends AbstractEntity {
 
         return bmi;
     }
-
-
 }

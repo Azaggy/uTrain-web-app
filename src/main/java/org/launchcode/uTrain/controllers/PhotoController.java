@@ -45,6 +45,7 @@ public class PhotoController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 
-        return "photos/photo";
+
+        return "/photo";
     }
 }
