@@ -5,6 +5,7 @@ package org.launchcode.uTrain.models.user;
 import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.Address;
 import org.launchcode.uTrain.models.Interests;
+import org.launchcode.uTrain.models.workout.ExerciseType;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -133,5 +134,8 @@ add necessary annotations later.
 
         return bmi;
     }
+
+
+
 
 }

@@ -149,5 +149,61 @@ public class Workout extends AbstractEntity {
 
         return calsBurned;
     }
+
+    public double metGetter(String exerciseType) {
+
+        double result;
+        switch(exerciseType) {
+            case "Active Recovery":
+                result =  3.3;
+                break;
+            case "Aerobic Exercise":
+            case "Anaerobic Exercise":
+                result =  8.0;
+                break;
+            case "Boot Camp":
+                result = 10.0;
+                break;
+            case "Cross Training":
+                result = 9.0;
+                break;
+            case "Everyday Moves":
+                result = 1.5;
+                break;
+            case "Intervals":
+                result = 8.5;
+                break;
+            case "Isometrics":
+                result = 3.6;
+                break;
+            case "Muscle Training":
+                result = 5.8;
+                break;
+            case "Repetitions":
+                result = 4.0;
+                break;
+            case "Steady-Cardio":
+                result = 7;
+                break;
+
+            default:
+                result = 0;
+                break;
+
+        }
+        return result;
+    }
+
+    public double getCaloriesBurnedUsingMet(int weight, double met) {
+
+        double newMet = met;
+        double newWeight = (weight / 2.2);
+        double time = this.duration;
+
+        double calc = ((newMet * 3.5 * newWeight) /200) * time;
+
+        return calc;
+
+    }
 }
 

@@ -104,14 +104,21 @@ public class WorkOutController {
             return "workout/addworkout";
         }
 
-        if (user.getUserDetail().getUserSex().getUserSex() == "Female") {
+//        if (user.getUserDetail().getUserSex().getUserSex() == "Female") {
+//
+//            double burnedCals = workout.getCaloriesBurnedForFemale(user.getUserDetail().getWeight(),
+//                    user.getUserDetail().getAge());
+//            workout.setBurnedCal(Math.round(burnedCals));
+//        } else if (user.getUserDetail().getUserSex().getUserSex() == "Male") {
+//            double burnedCals = workout.getCaloriesBurnedForMale(user.getUserDetail().getWeight(),
+//                    user.getUserDetail().getAge());
+//            workout.setBurnedCal(Math.round(burnedCals));
+//        }
 
-            double burnedCals = workout.getCaloriesBurnedForFemale(user.getUserDetail().getWeight(),
-                    user.getUserDetail().getAge());
-            workout.setBurnedCal(Math.round(burnedCals));
-        } else if (user.getUserDetail().getUserSex().getUserSex() == "Male") {
-            double burnedCals = workout.getCaloriesBurnedForMale(user.getUserDetail().getWeight(),
-                    user.getUserDetail().getAge());
+        if (user.getUserDetail().getUserSex().getUserSex() != null) {
+
+            double burnedCals = workout.getCaloriesBurnedUsingMet(user.getUserDetail().getWeight(),
+                    workout.metGetter(workout.getExercise().getExerciseType().getExerciseType()));
             workout.setBurnedCal(Math.round(burnedCals));
         }
 
