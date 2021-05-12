@@ -4,6 +4,7 @@
 <body>
 <header th:replace="fragments :: page-header"></header>
 
+
 <h2 th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
 <h2 th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
 
@@ -79,7 +80,9 @@
     </th:block>
 </table>
 
-<p><a href="/message/addmessage">Send New Message</a></p>
+    <form action="/message/addmessage" method="get">
+<button  type="submit" class="btn btn-success">Send New Message</button>
+    </form>
 
 </br>
 
