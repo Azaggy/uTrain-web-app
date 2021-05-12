@@ -115,6 +115,9 @@ public class WorkOutController {
 //            workout.setBurnedCal(Math.round(burnedCals));
 //        }
 
+        /*Used a MET calc which goes off of type of exercise. Incorporated a switch statement that returns
+        numbers based on exercise type.
+        */
         if (user.getUserDetail().getUserSex().getUserSex() != null) {
 
             double burnedCals = workout.getCaloriesBurnedUsingMet(user.getUserDetail().getWeight(),
