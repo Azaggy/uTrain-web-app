@@ -115,13 +115,23 @@ add necessary annotations later.
         this.interests = interests;
     }
 
-    // *1 Just call this method in the view to display BMI
+    // *Just add method to controller to be able to use in view*
     public double getBodyMassIndex(){
         double heightInMeters = (this.height / 39.37) ;
         double weightInKilos = (this.weight / 2.20);
 
-        double bmi = weightInKilos / (heightInMeters * heightInMeters);
+        double bmi = Math.round(weightInKilos / (heightInMeters * heightInMeters));
 
         return bmi;
     }
+
+    public double getBodyMassIndexStandard(){
+        double weight = this.weight;
+        double height = this.height;
+        double num = weight / (height * height);
+        double bmi = Math.round(num * 703);
+
+        return bmi;
+    }
+
 }
