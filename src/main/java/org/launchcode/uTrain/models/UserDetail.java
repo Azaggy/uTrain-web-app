@@ -4,7 +4,6 @@ package org.launchcode.uTrain.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserDetail extends AbstractEntity {
@@ -98,5 +97,15 @@ public class UserDetail extends AbstractEntity {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public double getBodyMassIndex() {
+        double weight = this.weight;
+        double height = this.height;
+        double num = weight / (height * height);
+        double bmi = Math.round(num*703);
+
+        return bmi;
+    }
+
 
 }

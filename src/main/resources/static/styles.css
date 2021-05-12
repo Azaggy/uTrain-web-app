@@ -81,8 +81,13 @@ a.one {
   font-size: 20 px;
   min-height:25px;
   color: white;
-  padding: 100px;
+  padding: 25px;
   text-align:center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width:100%;
+
 }
 .foots{
     color: white;
@@ -120,6 +125,44 @@ a.one {
    color: white;
  }
 
+
+table.bmiTable {
+    border: 3 px solid white;
+}
+
+.titleTable {
+    background-color: #06027e;
+    text-align: center;
+    color:white;
+    border: 3 px solid;
+    border-color: white;
+}
+
+td.subTitleTable {
+  background-color: #0602b9;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    border: 3 px solid;
+    border-color: white;
+}
+
+td.minTitleTable {
+    background-color: #06027e;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    border: 3 px solid ;
+    border-color: white;
+}
+
+td.numTable{
+    font-size: 18px;
+    text-align: center;
+    color:white;
+    border: 3 px solid;
+    border-color: white;
+}
  body {font-family: Arial, Helvetica, sans-serif;}
 
  /* Set a style for all buttons */

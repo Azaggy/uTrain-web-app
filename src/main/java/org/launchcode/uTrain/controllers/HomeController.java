@@ -24,13 +24,12 @@ public class HomeController {
         return "company";
     }
 
-//    @GetMapping("bmi")
-//    public String bmiCalc(Model model) {
-//
-//        model.addAttribute("title", "BMI Calculator");
-//        model.addAttribute("user", user);
-//        return "bmi";
-//    }
+    @GetMapping("bmiLoggedOut")
+    public String bmiCalc(Model model) {
+
+        model.addAttribute("title", "BMI Calculator");
+        return "bmiLoggedOut";
+    }
 
 
 
