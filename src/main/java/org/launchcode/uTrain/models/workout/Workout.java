@@ -150,6 +150,8 @@ public class Workout extends AbstractEntity {
         return calsBurned;
     }
 
+    // method to select correct MET numbed based on exercise type. Will probably refactor types to more
+    // accurate exercise for a better estimate calories burned.
     public double metGetter(String exerciseType) {
 
         double result;
@@ -194,6 +196,7 @@ public class Workout extends AbstractEntity {
         return result;
     }
 
+    // method for calculating calories burned based on MET and exercise type.
     public double getCaloriesBurnedUsingMet(int weight, double met) {
 
         double newMet = met;
