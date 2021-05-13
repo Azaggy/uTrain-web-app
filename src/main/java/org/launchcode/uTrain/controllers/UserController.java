@@ -79,8 +79,6 @@ public class UserController {
          */
 
         model.addAttribute("title", "Welcome!!");
-        model.addAttribute("bmi", user.getUserDetail().getBodyMassIndex());
-        model.addAttribute("bmiStandard", user.getUserDetail().getBodyMassIndexStandard());
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("receivedMessages", receivedMessages);

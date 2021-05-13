@@ -48,7 +48,7 @@
             <a href="/park/addpark">Add Park</a>
             <a href="/message/index">View Messages</a>
             <a href="/message/addmessage">Add Message</a>
-            <a href="/trainer/create">Create Trainer</a>
+            <a href="/trainer/create">Add Trainer</a>
             <a href="/trainer/">List of Trainers</a>
         </div>
     </li>
@@ -56,7 +56,7 @@
     <a th:if="${user.isNew}" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
         <a th:unless="${user.isNew}" href="/user/profile">Profile</a>
     </li>
-    <li class=""><a href="/exercise/workOut">Trainers</a></li>
+    <li class=""><a href="/trainer">Trainers</a></li>
     <li>
     <a th:unless="${loggedIn}" href="/reg">Sign Up</a>
     <a th:unless="${loggedIn}" href="/login">Login</a>
