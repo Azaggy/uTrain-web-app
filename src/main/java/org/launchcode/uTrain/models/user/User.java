@@ -29,6 +29,8 @@ public class User extends AbstractEntity {
     @NotNull
     private String email;
 
+    private String image;
+
     @OneToOne(cascade = CascadeType.ALL)
     private UserDetail userDetail;
 
@@ -58,7 +60,14 @@ public class User extends AbstractEntity {
         this.userDetail = userDetail;
     }
 
+    public User(String username, String password, String email, String image) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.email = email;
+        this.isNew = true;
+        this.image = image;
 
+    }
 
     public void setPwHash(String pwHash) {
         this.pwHash = pwHash;
