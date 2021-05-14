@@ -1,6 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 
+import org.launchcode.uTrain.data.BackgroundImage;
 import org.launchcode.uTrain.data.GymRepository;
 import org.launchcode.uTrain.data.ParkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ public class HomeController {
     private GymRepository gymRepository;
 
     @GetMapping("index")
-    public String hello() {
+    public String indexPage(Model model) {
+
+        model.addAttribute("title", "Welcome To The uTrain Web App!!");
+
         return "index";
     }
 

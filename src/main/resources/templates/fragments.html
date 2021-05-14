@@ -56,7 +56,7 @@
     <a th:if="${user.isNew}" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
         <a th:unless="${user.isNew}" href="/user/profile">Profile</a>
     </li>
-    <li class=""><a href="/trainer">Trainers</a></li>
+    <li th:if="${loggedIn}" class=""><a href="/trainer">Trainers</a></li>
     <li>
     <a th:unless="${loggedIn}" href="/reg">Sign Up</a>
     <a th:unless="${loggedIn}" href="/login">Login</a>

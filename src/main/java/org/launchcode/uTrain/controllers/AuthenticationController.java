@@ -1,5 +1,6 @@
 package org.launchcode.uTrain.controllers;
 
+import org.launchcode.uTrain.data.BackgroundImage;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.dto.LoginFormDTO;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -46,8 +49,12 @@ public class AuthenticationController {
 
     @GetMapping("/reg")
     public String displayRegistrationForm(Model model) {
+
+        BackgroundImage image = new BackgroundImage();
+
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register for uTrain");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
         return "reg";
     }
 
@@ -88,8 +95,11 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public  String displayLoginForm(Model model) {
+        BackgroundImage image = new BackgroundImage();
+
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
         return "login";
     }
 

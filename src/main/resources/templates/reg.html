@@ -14,34 +14,39 @@ body {
 
 }
 </style>
-<body class="text-center" style="background-color: #0056b9">
+<body class="text-center" th:style="'background-image: url(' + ${backgroundImage} + ');
+background-repeat: no-repeat;
+background-attachment: fixed
+background size: cover;
+background-position: center;
+background-color: #0056b9'">
 <!--<header th:replace="fragments :: page-header" ></header>-->
 <form class="form-signin form-back"  method="post">
     <img class="mb-4" src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
-    <h1 class="h3 mb-3 font-weight-normal">Please enter info below</h1>
+    <h1 style="color: white" class="h3 mb-3 font-weight-normal">Please enter info below</h1>
         <label class="sr-only" for="username">Username</label>
         <input class="form-control" id="username" th:field="${registerFormDTO.username}" placeholder="username" required autofocus/>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </br>
 
         <label class="sr-only" for="password">Password</label>
-            <input class="form-control" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="password" required/>
+            <input class="form-control" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="password" required autofocus/>
 
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </br>
 
         <label class="sr-only" for="verifyPassword">Verify Password</label>
-            <input class="form-control" id="verifyPassword" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="verify password" required/>
+            <input class="form-control" id="verifyPassword" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="verify password" required autofocus/>
     </br>
 
         <label class="sr-only" for="email">Email</label>
-            <input class="form-control" id="email" th:field="${registerFormDTO.email}" type="email" placeholder="email"/>
+            <input class="form-control" id="email" th:field="${registerFormDTO.email}" type="email" placeholder="email" required autofocus/>
 
         <p class="error" th:errors="${registerFormDTO.email}"></p>
     </br>
 
     <button class="btn btn-lg btn-light btn-block" type="submit">Register</button>
-    <p class="mt-5 mb-3">© 2021</p>
+    <p style="color: white" class="mt-5 mb-3">© 2021</p>
 
 </form>
 <!--<footer th:replace="fragments :: footer"></footer>-->
