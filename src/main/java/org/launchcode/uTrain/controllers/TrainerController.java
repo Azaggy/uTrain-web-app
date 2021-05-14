@@ -55,8 +55,13 @@ public class TrainerController {
     }
 
     @GetMapping("create")
-    public String displayCreateTrainerForm(Model model){
+    public String displayCreateTrainerForm(HttpServletRequest request, Model model){
+
+        User user = (User) getUserFromSession(request.getSession());
+
         model.addAttribute("title", "Create Trainer");
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
         model.addAttribute(new Trainer());
         return "trainer/create";
     }
