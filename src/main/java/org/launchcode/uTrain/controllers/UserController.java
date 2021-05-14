@@ -86,8 +86,10 @@ public class UserController {
             model.addAttribute("user", updatedUser);
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", userId);
+
             return "user/addprofile";
         }
+
 
         userRepository.deleteById(userId);
 

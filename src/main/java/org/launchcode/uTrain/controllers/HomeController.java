@@ -33,11 +33,5 @@ public class HomeController {
 
 
 
-
-    @GetMapping("photo")
-    public String profilePhoto(Model model) {
-        model.addAttribute("title", "Profile Photo");
-
-        return "photo";
-    }
+//
 }

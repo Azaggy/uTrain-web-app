@@ -2,6 +2,7 @@ package org.launchcode.uTrain.models;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,69 +12,18 @@ public class UserPhoto extends AbstractEntity {
     @OneToMany
     private final List<User> users = new ArrayList<>();
 
-    private String imgOne;
+    @NotNull
+    private String profilePic;
 
-
-
-    private String imgTwo;
-
-    private String imgThree;
-
-    private String imgFour;
-
-    private String imgFive;
-
-    private String imgSix;
-
-    private String imgSeven;
-
-    private String imgEight;
-
-    private String imgNine;
-
-    private String imgTen;
 
     public UserPhoto() {}
 
-    public String getImgOne() {
-       this.imgOne = "https://i.ibb.co/YjXPG54/IMG-1552.png";
-        return imgOne;
+    public String getProfilePic() {
+        return profilePic;
     }
 
-    public String getImgTwo() {
-        return imgTwo;
+    public String setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+        return profilePic;
     }
-
-    public String getImgThree() {
-        return imgThree;
-    }
-
-    public String getImgFour() {
-        return imgFour;
-    }
-
-    public String getImgFive() {
-        return imgFive;
-    }
-
-    public String getImgSix() {
-        return imgSix;
-    }
-
-    public String getImgSeven() {
-        return imgSeven;
-    }
-
-    public String getImgEight() {
-        return imgEight;
-    }
-
-    public String getImgNine() {
-        return imgNine;
-    }
-
-    public String getImgTen() {
-        return imgTen;
-    }
-
 }

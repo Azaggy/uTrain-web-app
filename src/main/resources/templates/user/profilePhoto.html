@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+
+<head th:replace="fragments :: head">
+</head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+
+<h1>Select a Profile Avatar</h1>
+
+
+<div class="profileContain">
+    <form method="post" th:action="@{/user/profilePhoto}">
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" alt="IMG-1588" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/JRZ8QWX/IMG-1602.png" alt="IMG-1602" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/Fm4B9wR/IMG-1555.png" alt="IMG-1555" border="0" height="400">
+            </label>
+        </div>
+
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/f2yBJh8/IMG-1601.png" alt="IMG-1601" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/yPYCJbH/IMG-1590.png" alt="IMG-1590" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/1Rdgc0g/IMG-1599.png" alt="IMG-1599" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/VS1wysR/IMG-1591.png" alt="IMG-1591" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/59gmT7S/IMG-1598.png" alt="IMG-1598" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/qyHttWH/IMG-1592.png" alt="IMG-1592" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/GR17Y94/IMG-1597.png" alt="IMG-1597" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/mNRrcDn/IMG-1593.png" alt="IMG-1593" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/chMFg2Y/IMG-1596.png" alt="IMG-1596" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/ctgxMpm/IMG-1594.png" alt="IMG-1594" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <label class="avatars">
+                <input type="radio" th:value="${profilePic}" name="avatar"/>
+                <img src="https://i.ibb.co/p4qyJQp/IMG-1595.png" alt="IMG-1595" border="0" height="300">
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
