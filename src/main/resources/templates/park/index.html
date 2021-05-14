@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 
 <head th:replace="fragments :: head"></head>
-<p th:replace="fragments :: bootstrap"></p>
+<!--<p th:replace="fragments :: bootstrap"></p>-->
 
 
 <body>
 
 <div th:replace="fragments :: page-header"></div>
 
-<h1>Welcome to uTrain!</h1>
+<h1 th:text="${title}"></h1>
 <!--<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >-->
 
 <table class="table"   id="example" >

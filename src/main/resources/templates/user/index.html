@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
 <body>
 <header th:replace="fragments :: page-header"></header>
 
@@ -11,7 +12,6 @@
 </a>
 
 <!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
-
 
 <h3>Received Messages</h3>
 <table class="table">
@@ -47,6 +47,7 @@
         </tr>
     </th:block>
 </table>
+
 
 <h3>Sent Messages</h3>
 <table class="table">
