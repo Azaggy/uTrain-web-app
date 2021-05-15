@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Entity
@@ -151,7 +152,11 @@ add necessary annotations later.
         return bmi;
     }
 
-
-
+    public void getAgeFromBirthDate(User user) {
+        LocalDate today = LocalDate.now();
+        Period computedAge = Period.between(user.getUserDetail().getBirthDay(), today);
+        int age = computedAge.getYears();
+        user.getUserDetail().setAge(age);
+    }
 
 }

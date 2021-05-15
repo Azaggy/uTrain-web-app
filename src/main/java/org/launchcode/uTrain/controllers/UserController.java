@@ -4,6 +4,7 @@ import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.user.User;
+import org.launchcode.uTrain.models.user.UserDetail;
 import org.launchcode.uTrain.models.user.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -132,17 +133,14 @@ public class UserController {
 
         user.setNew(false);
 
+        //If the user's birthday is set it will set age using function below. If not, no age is set. Check user detail
+        //class for function.
         if (user.getUserDetail().getBirthDay() != null) {
-
-            LocalDate today = LocalDate.now();
-            Period computedAge = Period.between(user.getUserDetail().getBirthDay(), today);
-            int age = computedAge.getYears();
-            user.getUserDetail().setAge(age);
+            user.getUserDetail().getAgeFromBirthDate(user);
         }
 
         // User info is updated and saved to the database with new information
        userRepository.save(user);
-
 
         return "redirect:/user/index";
     }
