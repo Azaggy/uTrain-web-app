@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
@@ -117,6 +119,7 @@ public class UserController {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Update " + updatedUser.getUsername() + "'s profile");
             model.addAttribute("user", updatedUser);
+            model.addAttribute("sexes", UserSex.values());
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
             return "user/addprofile";
@@ -128,6 +131,14 @@ public class UserController {
         // profile it will take them to the profile page.
 
         user.setNew(false);
+
+        if (user.getUserDetail().getBirthDay() != null) {
+
+            LocalDate today = LocalDate.now();
+            Period computedAge = Period.between(user.getUserDetail().getBirthDay(), today);
+            int age = computedAge.getYears();
+            user.getUserDetail().setAge(age);
+        }
 
         // User info is updated and saved to the database with new information
        userRepository.save(user);

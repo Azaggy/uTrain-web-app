@@ -51,10 +51,10 @@
     <p class="error" th:errors="${user.email}"></p>
   </div>
   <div>
-    <label class="form-label">Age
-      <input type="number"th:field="${user.userDetail.age}" class="form-control">
+    <label class="form-label">Birth Day Format(MM/DD/YYYY)
+      <input type="text" th:field="${user.userDetail.birthDay}" autocomplete="off" class="form-control">
     </label>
-    <p class="error" th:errors="${user.userDetail.age}"></p>
+    <p style="color: red" class="error" th:errors="${user.userDetail.birthDay}">Incorrect date format!!</p>
   </div>
   <div>
     <label class="form-label">Height (In Inches)
