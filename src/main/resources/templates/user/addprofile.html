@@ -3,6 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <header th:replace="fragments :: page-header"></header>
+<h1 style="color: white" th:text="${title}"></h1>
 
 <form method="post" th:action="@{/user/addprofile}">
 
@@ -13,27 +14,27 @@
   <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
 
 
-  <h3>General Information</h3>
+  <h3 style="color: white">General Information</h3>
   <div class="form-group">
-    <label>User Name
+    <label class="form-label">User Name
       <input  th:field="${user.username}" class="form-control">
     </label>
     <p class="error" th:errors="${user.username}"></p>
   </div>
   <div class="form-group">
-    <label>First Name
+    <label class="form-label">First Name
       <input th:field="${user.userDetail.firstName}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.firstName}"></p>
   </div>
   <div class="form-group">
-    <label>Last Name
+    <label class="form-label">Last Name
       <input th:field="${user.userDetail.lastName}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.lastName}"></p>
   </div>
   <div>
-  <label>Sex
+  <label class="form-label">Sex
     <select class="form-control" th:field="${user.userDetail.userSex}">
       <option th:each="userSex : ${sexes}"
               th:value="${userSex}"
@@ -44,73 +45,73 @@
   <p class="error" th:errors="${user.userDetail.userSex}"></p>
   </div>
   <div>
-    <label>Email
+    <label class="form-label">Email
       <input th:field="${user.email}" class="form-control">
     </label>
     <p class="error" th:errors="${user.email}"></p>
   </div>
   <div>
-    <label>Age
+    <label class="form-label">Age
       <input type="number"th:field="${user.userDetail.age}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.age}"></p>
   </div>
   <div>
-    <label>Height (In Inches)
+    <label class="form-label">Height (In Inches)
       <input type="number" th:field="${user.userDetail.height}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.height}"></p>
   </div>
   <div>
-    <label>Weight (In lbs)
+    <label class="form-label">Weight (In lbs)
       <input type="number" th:field="${user.userDetail.weight}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.weight}"></p>
   </div>
-  <h3>Address</h3>
+  <h3 style="color: white">Address</h3>
   <div>
-    <label>Street
+    <label class="form-label">Street
       <input th:field="${user.userDetail.address.street}"  class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.address.street}"></p>
   </div>
   <div>
-    <label>City
+    <label class="form-label">City
       <input th:field="${user.userDetail.address.city}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.address.city}"></p>
   </div>
   <div>
-    <label>State
+    <label class="form-label">State
       <input th:field="${user.userDetail.address.state}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.address.state}"></p>
   </div>
   <div>
-    <label>Zip Code
+    <label class="form-label">Zip Code
       <input th:field="${user.userDetail.address.zipCode}" class="form-control">
     </label>
     <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
   </div>
 
-  <h3>Interests</h3>
-  <h4>Select Interests that apply to you</h4>
+  <h3 style="color: white">Interests</h3>
+  <h4 style="color: white">Select Interests that apply to you</h4>
   <div>
-    <label>Walking</label>
+    <label class="form-label">Walking</label>
       <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
-    <label>Running</label>
+    <label class="form-label">Running</label>
       <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
-    <label>Cycling</label>
+    <label class="form-label">Cycling</label>
       <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
-    <label>Golf</label>
+    <label class="form-label">Golf</label>
       <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
-    <label>Baseball</label>
+    <label class="form-label">Baseball</label>
       <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
-    <label>Basketball</label>
+    <label class="form-label">Basketball</label>
       <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
-    <label>Swimming</label>
+    <label class="form-label">Swimming</label>
       <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
-    <label>Tennis</label>
+    <label class="form-label">Tennis</label>
       <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
     </label>
   </div>

@@ -100,7 +100,7 @@ public class UserController {
         Optional<User> result = userRepository.findById(userId);
         User updateUser = result.get();
 
-        model.addAttribute("title", "Update " + updateUser.getUsername());
+        model.addAttribute("title", "Update " + updateUser.getUsername() + "'s profile");
         model.addAttribute("user", updateUser);
         model.addAttribute("loggedIn", true);
         model.addAttribute("sexes", UserSex.values());
@@ -115,7 +115,7 @@ public class UserController {
         User updatedUser = result.get();
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Update " + updatedUser.getUsername());
+            model.addAttribute("title", "Update " + updatedUser.getUsername() + "'s profile");
             model.addAttribute("user", updatedUser);
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
