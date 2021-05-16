@@ -90,15 +90,15 @@ public class UserController {
             else return 1;
         });
 
-        if(user.isNew() == false) {
+        if(user.getUserDetail() == null) {
             for (Park park : parks) {
                 if (park.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingParks.add(park);
-                }
+                } 
             }
         }
 
-        if(user.isNew() == false) {
+        if(user.getUserDetail() == null) {
             for (Gym gym : gyms) {
                 if (gym.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingGyms.add(gym);
