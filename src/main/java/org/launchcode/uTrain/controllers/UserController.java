@@ -83,7 +83,9 @@ public class UserController {
             User myFriend = userRepository.findByUsername(friend);
 
             ArrayList<Workout> tempWorkout = new ArrayList<>();
-            tempWorkout.addAll(myFriend.getWorkouts());
+            for (Workout workout : myFriend.getWorkouts()){
+                tempWorkout.add(workout);
+            }
 
             Collections.sort(tempWorkout, (c1, c2) -> {
                 if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
