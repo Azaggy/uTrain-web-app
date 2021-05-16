@@ -1,8 +1,12 @@
 package org.launchcode.uTrain.controllers;
 
+import org.launchcode.uTrain.data.GymRepository;
 import org.launchcode.uTrain.data.MessageRepository;
+import org.launchcode.uTrain.data.ParkRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
+import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.user.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +48,12 @@ public class UserController {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    ParkRepository parkRepository;
+
+    @Autowired
+    GymRepository gymRepository;
+
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model) {
 
@@ -51,6 +61,13 @@ public class UserController {
         ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
         ArrayList<Message> sentMessages = new ArrayList<>();
         ArrayList<Message> receivedMessages = new ArrayList<>();
+
+
+        ArrayList<Park> parks= (ArrayList<Park>)parkRepository.findAll();
+        ArrayList<Park> matchingParks = new ArrayList<>();
+
+        ArrayList<Gym> gyms= (ArrayList<Gym>)gymRepository.findAll();
+        ArrayList<Gym> matchingGyms= new ArrayList<>();
 
         for (Message message : messages) {
             if (message.getRecipient().equals(user.getUsername())) {
@@ -73,6 +90,21 @@ public class UserController {
             else return 1;
         });
 
+//        if(user.getUserDetail().getAddress().getZipCode().) {
+            for (Park park : parks) {
+                if (park.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
+                    matchingParks.add(park);
+                }
+            }
+//        }
+
+//        if(user.getUserDetail().getAddress().getZipCode()>0) {
+            for (Gym gym : gyms) {
+                if (gym.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
+                    matchingGyms.add(gym);
+                }
+            }
+//        }
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
@@ -83,6 +115,8 @@ public class UserController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("receivedMessages", receivedMessages);
         model.addAttribute("sentMessages", sentMessages);
+        model.addAttribute("matchingParks", matchingParks);
+        model.addAttribute("matchingGyms", matchingGyms);
 
         return "user/index";
 
