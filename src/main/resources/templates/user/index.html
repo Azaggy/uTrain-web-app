@@ -88,6 +88,39 @@
 
 </br>
 
+<h3>Parks Near You</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Park Name</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>
+    <th:block>
+        <tr th:each="matchingPark:${matchingParks}">
+            <th th:text="${matchingPark.name}"></th>
+            <th th:text="${matchingPark.address.zipCode}"></th>
+        </tr>
+    </th:block>
+</table>
+
+<h3>Gyms Near You</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Gym Name</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>
+<!--    <th:block>-->
+    <th:block>
+        <tr th:each="matchingGym:${matchingGyms}">
+            <th th:text="${matchingGym.name}"></th>
+            <th th:text="${matchingGym.address.zipCode}"></th>
+        </tr>
+    </th:block>
+</table>
+
 <div class= "photos">
     <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
     <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >
