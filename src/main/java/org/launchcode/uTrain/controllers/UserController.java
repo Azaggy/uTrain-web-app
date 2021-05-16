@@ -91,20 +91,22 @@ public class UserController {
         });
 
 //        if(user.getUserDetail().getAddress().getZipCode().) {
+        if((user.getUserDetail()!=null)){
             for (Park park : parks) {
                 if (park.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
                     matchingParks.add(park);
                 }
             }
-//        }
+        }
 
 //        if(user.getUserDetail().getAddress().getZipCode()>0) {
+        if((user.getUserDetail()!=null)){
             for (Gym gym : gyms) {
                 if (gym.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
                     matchingGyms.add(gym);
                 }
             }
-//        }
+        }
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
