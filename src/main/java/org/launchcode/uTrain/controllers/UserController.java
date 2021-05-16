@@ -152,14 +152,27 @@ public class UserController {
 
         User user = (User) getUserFromSession(request.getSession());
 
-
-
-
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 
+
         return "user/profile";
+    }
+
+    @GetMapping("addfriend")
+    public String displayAddFriendForm(HttpServletRequest request, Model model) {
+
+        User user = (User) getUserFromSession(request.getSession());
+        String friend = "";
+
+        model.addAttribute("title", "Add Workout Buddy");
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+        model.addAttribute("friend", friend);
+
+        return "user/addfriend";
+
     }
 
 }

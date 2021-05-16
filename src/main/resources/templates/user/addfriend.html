@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post">
+
+    <h1>Add Workout Buddy</h1>
+
+
+    <div class="form-group">
+        <!--        <input type="hidden" th:field="${userMessage.user}">-->
+        <label>Enter User Name:
+            <input type="text" id="friend">
+        </label>
+        <p class="error" th:errors="${friend}"></p>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Add Buddy" class="btn btn-success">
+    </div>
+
+</form>
+
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
