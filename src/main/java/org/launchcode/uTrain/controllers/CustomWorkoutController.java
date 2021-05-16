@@ -1,6 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.WorkoutData;
+import org.launchcode.uTrain.models.workout.CustomWorkout;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,20 +27,20 @@ public class CustomWorkoutController {
     }
 
     @PostMapping("create")
-    public String createWorkout(@ModelAttribute Workout newWorkout,
+    public String createWorkout(@ModelAttribute CustomWorkout newCustomWorkout,
                                 Errors errors, Model model) {
         if(errors.hasErrors()) {
-            model.addAttribute("title", "Create Workout");
+            model.addAttribute("title", "Customize Your Workout");
             return "customworkout/create";
         }
-        WorkoutData.add(newWorkout);
+        WorkoutData.add(newCustomWorkout());
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String displayDeleteWorkoutForm(Model model) {
         model.addAttribute("title", "Delete Workouts");
-        model.addAttribute("workouts", WorkoutData.getAll());
+        model.addAttribute("customWorkouts", WorkoutData.getAll());
         return "customworkout/delete";
     }
 

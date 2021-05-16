@@ -8,11 +8,11 @@
 <form method="post">
 
 
-  <th:block th:each="workout : ${workouts}">
+  <th:block th:each="workout : ${customWorkouts}">
     <div class="form-group">
       <label>
-        <span th:text="${workout.name}"></span>
-        <input type="checkbox" name="workoutIds" th:value="${workout.id}" class="form-control">
+        <span th:text="${customWorkouts.name}"></span>
+        <input type="checkbox" name="workoutIds" th:value="${customWorkouts.id}" class="form-control">
       </label>
     </div>
   </th:block>
