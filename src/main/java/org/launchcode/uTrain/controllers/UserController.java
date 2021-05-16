@@ -3,9 +3,11 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Message;
+import org.launchcode.uTrain.models.friend.Friend;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.user.UserDetail;
 import org.launchcode.uTrain.models.user.UserSex;
+import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +56,7 @@ public class UserController {
         ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
         ArrayList<Message> sentMessages = new ArrayList<>();
         ArrayList<Message> receivedMessages = new ArrayList<>();
+        ArrayList<Workout> sharedWorkouts = new ArrayList<>();
 
         for (Message message : messages) {
             if (message.getRecipient().equals(user.getUsername())) {
@@ -76,6 +79,21 @@ public class UserController {
             else return 1;
         });
 
+        for (String friend : user.getFriends()) {
+            User myFriend = userRepository.findByUsername(friend);
+
+            ArrayList<Workout> tempWorkout = new ArrayList<>();
+            tempWorkout.addAll(myFriend.getWorkouts());
+
+            Collections.sort(tempWorkout, (c1, c2) -> {
+                if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                else return 1;
+            });
+
+            sharedWorkouts.add(tempWorkout.get(0));
+
+        }
+
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
@@ -86,6 +104,7 @@ public class UserController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("receivedMessages", receivedMessages);
         model.addAttribute("sentMessages", sentMessages);
+        model.addAttribute("shared", sharedWorkouts);
 
         return "user/index";
 
@@ -164,15 +183,49 @@ public class UserController {
     public String displayAddFriendForm(HttpServletRequest request, Model model) {
 
         User user = (User) getUserFromSession(request.getSession());
-        String friend = "";
 
         model.addAttribute("title", "Add Workout Buddy");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
-        model.addAttribute("friend", friend);
+        model.addAttribute("friend", new Friend());
 
         return "user/addfriend";
 
+    }
+
+    @PostMapping("addfriend")
+    public String renderAddFriendForm(@ModelAttribute @Valid Friend friend, HttpServletRequest request,
+                                      Model model, Errors errors) {
+        User user = (User) getUserFromSession(request.getSession());
+
+        User validateFriend = userRepository.findByUsername(friend.getUserName());
+
+        if(validateFriend == null) {
+
+            errors.rejectValue("userName", "userName.invalid", "That user doesn't" +
+                    "exist!!");
+            model.addAttribute("title", "Add Workout Buddy");
+            model.addAttribute("user", user);
+            model.addAttribute("loggedIn", true);
+            model.addAttribute("friend", friend);
+            return "user/addfriend";
+        }
+
+        if(user.getFriends().contains(friend.getUserName())) {
+            errors.rejectValue("userName", "userName.invalid", "That user is already your" +
+                    "workout buddy!");
+            model.addAttribute("title", "Add Workout Buddy");
+            model.addAttribute("user", user);
+            model.addAttribute("loggedIn", true);
+            model.addAttribute("friend", friend);
+            return "user/addfriend";
+        }
+
+
+        user.getFriends().add(friend.getUserName());
+        userRepository.save(user);
+
+        return "redirect:/user/index";
     }
 
 }
