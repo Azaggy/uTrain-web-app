@@ -8,5 +8,6 @@ import java.util.Date;
 public interface WorkoutRepository extends CrudRepository<Workout, Integer> {
 
     Workout findByTimeStamp(Date timestamp);
+    Workout findByUserId(int userId);
 
 }

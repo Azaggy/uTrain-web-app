@@ -38,6 +38,8 @@ public class User extends AbstractEntity {
     @OneToMany(mappedBy = "user")
     private List<Workout> workouts = new ArrayList<>();
 
+    private List<String> friends = new ArrayList<>();
+
     //this attribute is used to direct user to either profile or add profile page depending on whether attribute is true
     private boolean isNew;
 
@@ -121,4 +123,11 @@ public class User extends AbstractEntity {
         this.workouts = workouts;
     }
 
+    public List<String> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<String> friends) {
+        this.friends = friends;
+    }
 }
