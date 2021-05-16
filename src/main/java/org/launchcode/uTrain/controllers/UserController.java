@@ -90,21 +90,21 @@ public class UserController {
             else return 1;
         });
 
-//        if(user.getUserDetail().getAddress().getZipCode().) {
+        if(user.isNew() == false) {
             for (Park park : parks) {
-                if (park.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
+                if (park.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingParks.add(park);
                 }
             }
-//        }
+        }
 
-//        if(user.getUserDetail().getAddress().getZipCode()>0) {
+        if(user.isNew() == false) {
             for (Gym gym : gyms) {
-                if (gym.getAddress().getZipCode() == (user.getUserDetail().getAddress().getZipCode())) {
+                if (gym.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingGyms.add(gym);
                 }
             }
-//        }
+        }
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
@@ -117,6 +117,9 @@ public class UserController {
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
         model.addAttribute("matchingGyms", matchingGyms);
+
+
+
 
         return "user/index";
 
