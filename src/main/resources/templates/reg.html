@@ -22,7 +22,7 @@ background-position: center;
 background-color: #0056b9'">
 <!--<header th:replace="fragments :: page-header" ></header>-->
 <form class="form-signin form-back"  method="post">
-    <img class="mb-4" src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+    <img class="mb-4" th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51">
     <h1 style="color: white" class="h3 mb-3 font-weight-normal">Please enter info below</h1>
         <label class="sr-only" for="username">Username</label>
         <input class="form-control" id="username" th:field="${registerFormDTO.username}" placeholder="username" required autofocus/>

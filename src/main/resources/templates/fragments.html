@@ -30,7 +30,7 @@
 <ul th:fragment="page-header">
     <li class="logo">
         <a class="one" href="">
-            <img src="https://i.ibb.co/mFszRzy/IMG-1539.png" alt="logo" border="0" width="60" height="51">
+            <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
         </a>
     </li>
     <li th:unless="${loggedIn}"><a href="/company">About Us</a></li>
