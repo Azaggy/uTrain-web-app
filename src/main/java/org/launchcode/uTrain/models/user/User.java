@@ -6,10 +6,7 @@ import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +34,11 @@ public class User extends AbstractEntity {
     //This is linked to the workout class. Every instantiation of this class is tied to a certain user
     @OneToMany(mappedBy = "user")
     private List<Workout> workouts = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "friends_list", joinColumns = @JoinColumn(name = "id")) // 2
+    @Column(name = "friends")
+    private List<String> friends = new ArrayList<>();
 
     //this attribute is used to direct user to either profile or add profile page depending on whether attribute is true
     private boolean isNew;
@@ -121,4 +123,11 @@ public class User extends AbstractEntity {
         this.workouts = workouts;
     }
 
+    public List<String> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<String> friends) {
+        this.friends = friends;
+    }
 }

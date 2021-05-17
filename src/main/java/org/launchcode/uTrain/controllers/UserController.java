@@ -7,8 +7,11 @@ import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.Park;
+import org.launchcode.uTrain.models.friend.Friend;
 import org.launchcode.uTrain.models.user.User;
+import org.launchcode.uTrain.models.user.UserDetail;
 import org.launchcode.uTrain.models.user.UserSex;
+import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
@@ -61,6 +66,7 @@ public class UserController {
         ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
         ArrayList<Message> sentMessages = new ArrayList<>();
         ArrayList<Message> receivedMessages = new ArrayList<>();
+        ArrayList<Workout> sharedWorkouts = new ArrayList<>();
 
 
         ArrayList<Park> parks= (ArrayList<Park>)parkRepository.findAll();
@@ -105,6 +111,23 @@ public class UserController {
                 }
             }
         }
+        for (String friend : user.getFriends()) {
+            User myFriend = userRepository.findByUsername(friend);
+
+            ArrayList<Workout> tempWorkout = new ArrayList<>();
+            for (Workout workout : myFriend.getWorkouts()){
+                tempWorkout.add(workout);
+            }
+
+            Collections.sort(tempWorkout, (c1, c2) -> {
+                if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                else return 1;
+            });
+
+            sharedWorkouts.add(tempWorkout.get(0));
+
+        }
+
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
@@ -120,6 +143,7 @@ public class UserController {
 
 
 
+        model.addAttribute("shared", sharedWorkouts);
 
         return "user/index";
 
@@ -137,7 +161,7 @@ public class UserController {
         Optional<User> result = userRepository.findById(userId);
         User updateUser = result.get();
 
-        model.addAttribute("title", "Update " + updateUser.getUsername());
+        model.addAttribute("title", "Update " + updateUser.getUsername() + "'s profile");
         model.addAttribute("user", updateUser);
         model.addAttribute("loggedIn", true);
         model.addAttribute("sexes", UserSex.values());
@@ -152,8 +176,9 @@ public class UserController {
         User updatedUser = result.get();
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Update " + updatedUser.getUsername());
+            model.addAttribute("title", "Update " + updatedUser.getUsername() + "'s profile");
             model.addAttribute("user", updatedUser);
+            model.addAttribute("sexes", UserSex.values());
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
             return "user/addprofile";
@@ -166,9 +191,14 @@ public class UserController {
 
         user.setNew(false);
 
+        //If the user's birthday is set it will set age using function below. If not, no age is set. Check user detail
+        //class for function.
+        if (user.getUserDetail().getBirthDay() != null) {
+            user.getUserDetail().getAgeFromBirthDate(user);
+        }
+
         // User info is updated and saved to the database with new information
        userRepository.save(user);
-
 
         return "redirect:/user/index";
     }
@@ -180,14 +210,61 @@ public class UserController {
 
         User user = (User) getUserFromSession(request.getSession());
 
-
-
-
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 
+
         return "user/profile";
+    }
+
+    @GetMapping("addfriend")
+    public String displayAddFriendForm(HttpServletRequest request, Model model) {
+
+        User user = (User) getUserFromSession(request.getSession());
+
+        model.addAttribute("title", "Add Workout Buddy");
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+        model.addAttribute("friend", new Friend());
+
+        return "user/addfriend";
+
+    }
+
+    @PostMapping("addfriend")
+    public String renderAddFriendForm(@ModelAttribute @Valid Friend friend, HttpServletRequest request,
+                                      Model model, Errors errors) {
+        User user = (User) getUserFromSession(request.getSession());
+
+        User validateFriend = userRepository.findByUsername(friend.getUserName());
+
+        if(validateFriend == null) {
+
+            errors.rejectValue("userName", "userName.invalid", "That user doesn't" +
+                    "exist!!");
+            model.addAttribute("title", "Add Workout Buddy");
+            model.addAttribute("user", user);
+            model.addAttribute("loggedIn", true);
+            model.addAttribute("friend", friend);
+            return "user/addfriend";
+        }
+
+        if(user.getFriends().contains(friend.getUserName())) {
+            errors.rejectValue("userName", "userName.invalid", "That user is already your" +
+                    "workout buddy!");
+            model.addAttribute("title", "Add Workout Buddy");
+            model.addAttribute("user", user);
+            model.addAttribute("loggedIn", true);
+            model.addAttribute("friend", friend);
+            return "user/addfriend";
+        }
+
+
+        user.getFriends().add(friend.getUserName());
+        userRepository.save(user);
+
+        return "redirect:/user/index";
     }
 
 }

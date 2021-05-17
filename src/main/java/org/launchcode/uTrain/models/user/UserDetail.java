@@ -6,10 +6,16 @@ import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.Address;
 import org.launchcode.uTrain.models.Interests;
 import org.launchcode.uTrain.models.workout.ExerciseType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 
 @Entity
 public class UserDetail extends AbstractEntity {
@@ -18,6 +24,9 @@ public class UserDetail extends AbstractEntity {
 add necessary annotations later.
 
  */
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+
+    private LocalDate birthDay;
 
     private int age;
 
@@ -41,8 +50,8 @@ add necessary annotations later.
 
     public UserDetail() {};
 
-    public UserDetail(int age, int height, int weight, String firstName, String lastName, UserSex userSex, Address address, Interests interests) {
-        this.age = age;
+    public UserDetail(LocalDate birthDay, int height, int weight, String firstName, String lastName, UserSex userSex, Address address, Interests interests) {
+        this.birthDay = birthDay;
         this.height = height;
         this.weight = weight;
         this.firstName = firstName;
@@ -50,6 +59,14 @@ add necessary annotations later.
         this.userSex = userSex;
         this.address = address;
         this.interests = interests;
+    }
+
+    public LocalDate getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(LocalDate birthDay) {
+        this.birthDay = birthDay;
     }
 
     public int getAge() {
@@ -135,7 +152,11 @@ add necessary annotations later.
         return bmi;
     }
 
-
-
+    public void getAgeFromBirthDate(User user) {
+        LocalDate today = LocalDate.now();
+        Period computedAge = Period.between(user.getUserDetail().getBirthDay(), today);
+        int age = computedAge.getYears();
+        user.getUserDetail().setAge(age);
+    }
 
 }

@@ -127,9 +127,10 @@ a.one {
  }
 
 #formgroup, .form-control{
-    font-size: 40px;
+    font-size: 20px;
     margin: 10px;
  }
+
 
 
 .image {
@@ -154,9 +155,11 @@ a.one {
    text-align: left;
    background-color: #0602b9;
    color: white;
-
+}
 .interests {
 color: #ffffff;
 }
 
+.form-label {
+color: white;
 }
