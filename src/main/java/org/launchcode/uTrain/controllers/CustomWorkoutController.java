@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomWorkoutController {
 
 
-    @GetMapping
+    @GetMapping("index")
     public String displayAllExercises(Model model) {
         model.addAttribute("customWorkouts", WorkoutData.getAll());
         return "customworkout/index";
@@ -27,13 +27,13 @@ public class CustomWorkoutController {
     }
 
     @PostMapping("create")
-    public String createWorkout(@ModelAttribute CustomWorkout newCustomWorkout,
+    public String createWorkout(@ModelAttribute Workout newWorkout,
                                 Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Customize Your Workout");
             return "customworkout/create";
         }
-        WorkoutData.add(newCustomWorkout());
+        WorkoutData.add(newWorkout);
         return "redirect:";
     }
 

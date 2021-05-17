@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<h1>Customized Personal Workouts</h1>
 
 <table class="table table-striped">
     <thead>
@@ -12,9 +12,9 @@
         <th>Name</th>
     </tr>
     </thead>
-    <tr th:each="workout : ${customWorkouts}">
-        <td th:text="${customWorkouts.id}"></td>
-        <td th:text="${customWorkouts.name}"></td>
+    <tr th:each="workout : ${workouts}">
+        <td th:text="${workout.id}"></td>
+        <td th:text="${workout.name}"></td>
     </tr>
 </table>
 </body>

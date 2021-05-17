@@ -1,5 +1,6 @@
 package org.launchcode.uTrain.data;
 
+import org.launchcode.uTrain.models.workout.CustomWorkout;
 import org.launchcode.uTrain.models.workout.Workout;
 
 import java.util.Collection;
