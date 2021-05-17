@@ -21,7 +21,7 @@ background size: cover;
 background-position: center;
 background-color: #0056b9'">
 <!--<header th:replace="fragments :: page-header" ></header>-->
-<form class="form-signin form-back"  method="post">
+<form style="border-radius:10px" class="form-signin form-back"  method="post">
     <img class="mb-4" th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51">
     <h1 style="color: white" class="h3 mb-3 font-weight-normal">Please enter info below</h1>
         <label class="sr-only" for="username">Username</label>
@@ -45,7 +45,9 @@ background-color: #0056b9'">
         <p style="color: white" class="error" th:errors="${registerFormDTO.email}"></p>
     </br>
 
-    <button class="btn btn-lg btn-light btn-block" type="submit">Register</button>
+    <button style="background-color: #0056b9;
+                   color: white;
+                    border:1px solid #0056b9" class="btn btn-lg btn-light btn-block" type="submit">Register</button>
     <p style="color: white" class="mt-5 mb-3">© 2021</p>
 
 </form>

@@ -27,7 +27,7 @@ background-color: #0056b9'">
 
 <!--<header th:replace="fragments :: page-header"></header>-->
 
-<form class="form-signin form-back" method="post">
+<form style="border-radius:10px" class="form-signin form-back" method="post">
     <img class="mb-4" th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51">
         <h1 style="color: white" class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label class="sr-only" for="username">Username</label>
@@ -47,8 +47,10 @@ background-color: #0056b9'">
         </label>
     </div>
 
-    <button class="btn btn-lg btn-light btn-block" type="submit">Sign in</button>
-    <p style="color: white" class="mt-5 mb-3">Don't have an account? <a style="color: #0087ec" href="/reg">Register</a></p>
+    <button style="background-color: #0056b9;
+            color: white;
+            border:1px solid #0056b9" class="btn btn-lg btn-light btn-block" type="submit">Sign in</button>
+    <p style="color: white" class="mt-5 mb-3">Don't have an account? <a style="color: #0077FF" href="/reg">Register</a></p>
 
 
     <p style="color: white" class="mt-5 mb-3">© 2021</p>
