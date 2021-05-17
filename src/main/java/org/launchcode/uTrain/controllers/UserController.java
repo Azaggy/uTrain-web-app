@@ -62,19 +62,26 @@ public class UserController {
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model) {
 
+        //Pulling user from session
         User user = (User) getUserFromSession(request.getSession());
+
+        //Initiating Lists for loading message data onto user's index page
         ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
         ArrayList<Message> sentMessages = new ArrayList<>();
         ArrayList<Message> receivedMessages = new ArrayList<>();
+
+        //Initiating Lists for loading shared workout data onto user's index page
         ArrayList<Workout> sharedWorkouts = new ArrayList<>();
 
-
+        //Initiating Lists for loading park data onto user's index page
         ArrayList<Park> parks= (ArrayList<Park>)parkRepository.findAll();
         ArrayList<Park> matchingParks = new ArrayList<>();
 
+        //Initiating Lists for loading gym data onto user's index page
         ArrayList<Gym> gyms= (ArrayList<Gym>)gymRepository.findAll();
         ArrayList<Gym> matchingGyms= new ArrayList<>();
 
+        //Looping through messages to display onto page. Take messages and divides them by sent or receive
         for (Message message : messages) {
             if (message.getRecipient().equals(user.getUsername())) {
                 receivedMessages.add(message);
@@ -96,6 +103,7 @@ public class UserController {
             else return 1;
         });
 
+        //Looping through parks to display onto page. Finds parks that match user's zip code and add to list.
         if(user.getUserDetail() == null) {
             for (Park park : parks) {
                 if (park.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
@@ -104,6 +112,7 @@ public class UserController {
             }
         }
 
+        //Looping through gyms to display onto page. Finds gyms that match user's zip code and add to list.
         if(user.getUserDetail() == null) {
             for (Gym gym : gyms) {
                 if (gym.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
@@ -111,6 +120,9 @@ public class UserController {
                 }
             }
         }
+
+        //iterates through friends to find their respective user instance. Get workouts from particular
+        // user and then adds workouts to a list.
         for (String friend : user.getFriends()) {
             User myFriend = userRepository.findByUsername(friend);
 
@@ -119,11 +131,13 @@ public class UserController {
                 tempWorkout.add(workout);
             }
 
+            //workout list is then sorted from newest to oldest.
             Collections.sort(tempWorkout, (c1, c2) -> {
                 if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
                 else return 1;
             });
 
+            //takes newest workout from each user(friend/buddy) and adds it to list
             sharedWorkouts.add(tempWorkout.get(0));
 
         }
@@ -131,6 +145,7 @@ public class UserController {
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
+        All list are then assigned attributes to be passed into view.
          */
 
         model.addAttribute("title", "Welcome!!");

@@ -28,8 +28,13 @@
 
 <body>
 <ul th:fragment="page-header">
-    <li class="logo">
-        <a class="one" href="">
+    <li  th:if="${loggedIn}" class="logo">
+        <a class="one" th:href="@{/user/index}">
+            <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
+        </a>
+    </li>
+    <li  th:unless="${loggedIn}" class="logo">
+        <a class="one" href="/index">
             <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
         </a>
     </li>

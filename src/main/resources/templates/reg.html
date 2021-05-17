@@ -26,13 +26,13 @@ background-color: #0056b9'">
     <h1 style="color: white" class="h3 mb-3 font-weight-normal">Please enter info below</h1>
         <label class="sr-only" for="username">Username</label>
         <input class="form-control" id="username" th:field="${registerFormDTO.username}" placeholder="username" required autofocus/>
-        <p class="error" th:errors="${registerFormDTO.username}"></p>
+        <p style="color: white" class="error" th:errors="${registerFormDTO.username}"></p>
     </br>
 
         <label class="sr-only" for="password">Password</label>
             <input class="form-control" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="password" required autofocus/>
 
-        <p class="error" th:errors="${registerFormDTO.password}"></p>
+        <p style="color: white" class="error" th:errors="${registerFormDTO.password}"></p>
     </br>
 
         <label class="sr-only" for="verifyPassword">Verify Password</label>
@@ -42,7 +42,7 @@ background-color: #0056b9'">
         <label class="sr-only" for="email">Email</label>
             <input class="form-control" id="email" th:field="${registerFormDTO.email}" type="email" placeholder="email" required autofocus/>
 
-        <p class="error" th:errors="${registerFormDTO.email}"></p>
+        <p style="color: white" class="error" th:errors="${registerFormDTO.email}"></p>
     </br>
 
     <button class="btn btn-lg btn-light btn-block" type="submit">Register</button>

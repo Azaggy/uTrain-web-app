@@ -1,6 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 
+import org.launchcode.uTrain.AuthenticationFilter;
 import org.launchcode.uTrain.data.BackgroundImage;
 import org.launchcode.uTrain.data.GymRepository;
 import org.launchcode.uTrain.data.ParkRepository;
@@ -18,6 +19,8 @@ public class HomeController {
 
     @Autowired
     private GymRepository gymRepository;
+
+    AuthenticationFilter filter;
 
     @GetMapping("index")
     public String indexPage(Model model) {

@@ -33,13 +33,13 @@ background-color: #0056b9'">
         <label class="sr-only" for="username">Username</label>
             <input class="form-control" id="username"th:field="${loginFormDTO.username}" placeholder="username" required autofocus>
 
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
+        <p style="color: white" class="error" th:errors="${loginFormDTO.username}"></p>
     </br>
 
         <label class="sr-only" th:for="password">Password</label>
             <input class="form-control" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="password" required>
 
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
+        <p style="color: white" class="error" th:errors="${loginFormDTO.password}"></p>
 
     <div class="checkbox mb-3">
         <label style="color: white">
