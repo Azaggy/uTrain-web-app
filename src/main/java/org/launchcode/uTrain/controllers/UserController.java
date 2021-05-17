@@ -105,6 +105,8 @@ public class UserController {
                 }
             }
         }
+
+
         /*
         User is directed to the user index page after a successful login is completed.
         The variable loggedIn is used to display certain links if user is logged in.
