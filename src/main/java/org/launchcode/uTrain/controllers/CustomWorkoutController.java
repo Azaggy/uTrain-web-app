@@ -17,7 +17,7 @@ public class CustomWorkoutController {
 
     @GetMapping("index")
     public String displayAllExercises(Model model) {
-        model.addAttribute("customWorkouts", WorkoutData.getAll());
+        model.addAttribute("workouts", WorkoutData.getAll());
         return "customworkout/index";
     }
 
