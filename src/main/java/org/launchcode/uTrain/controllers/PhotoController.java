@@ -1,18 +1,24 @@
 package org.launchcode.uTrain.controllers;
 
 
+import org.launchcode.uTrain.FileUploadUtil;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -36,6 +42,20 @@ public class PhotoController {
 
     @Autowired
     UserRepository userRepository;
+
+    @PostMapping("user/profilePhoto")
+    public RedirectView saveUserPhoto(User user,
+                                      @RequestParam("image")MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        user.getUserPhoto().setProfilePic(fileName);
+
+        User savedUser = userRepository.save(user);
+
+        String uploadDir = "user-photos/" + savedUser.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        return new RedirectView("/user/profilePhoto", true);
+    }
 
     @GetMapping("profilePhoto")
     public String avatarPage(HttpServletRequest request, Model model) {

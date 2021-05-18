@@ -1,5 +1,6 @@
 package org.launchcode.uTrain.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -12,12 +13,18 @@ public class UserPhoto extends AbstractEntity {
     @OneToMany
     private final List<User> users = new ArrayList<>();
 
-    @NotNull
+    @Column( nullable = true)
     private String profilePic;
 
 
     public UserPhoto() {}
 
+    public String getProfilePicImagePath() {
+        AbstractEntity id;
+        if (profilePic == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + profilePic;
+    }
     public String getProfilePic() {
         return profilePic;
     }
@@ -26,4 +33,5 @@ public class UserPhoto extends AbstractEntity {
         this.profilePic = profilePic;
         return profilePic;
     }
+
 }
