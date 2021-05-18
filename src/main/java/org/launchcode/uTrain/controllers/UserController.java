@@ -136,16 +136,21 @@ public class UserController {
                 }
             }
 
-            //workout list is then sorted from newest to oldest.
-            Collections.sort(tempWorkout, (c1, c2) -> {
-                if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
-                else return 1;
-            });
+            if(tempWorkout.isEmpty()) {
+                break;
+            } else {
 
-            //takes newest workout from each user(friend/buddy) and adds it to list
-//            if(tempWorkout.get(0) != null) {
+                //workout list is then sorted from newest to oldest.
+                Collections.sort(tempWorkout, (c1, c2) -> {
+                    if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                    else return 1;
+                });
+
+                //takes newest workout from each user(friend/buddy) and adds it to list
+
                 sharedWorkouts.add(tempWorkout.get(0));
-//            }
+            }
+
 
         }
 
