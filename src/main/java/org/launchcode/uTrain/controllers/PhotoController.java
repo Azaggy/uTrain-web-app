@@ -39,18 +39,18 @@ public class PhotoController {
         }
         return  user.get();
     }
-    public UserPhoto getUserPhotoFromSession(HttpSession session) {
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
-        }
-        Optional<UserPhoto> userPhoto = photoRepository.findById(userId);
-        if (userPhoto.isEmpty()) {
-            return null;
-        }
-
-        return userPhoto.get();
-    }
+//    public UserPhoto getUserPhotoFromSession(HttpSession session) {
+//        Integer userId = (Integer) session.getAttribute(userSessionKey);
+//        if (userId == null) {
+//            return null;
+//        }
+//        Optional<UserPhoto> userPhoto = photoRepository.findById(userId);
+//        if (userPhoto.isEmpty()) {
+//            return null;
+//        }
+//
+//        return userPhoto.get();
+//    }
 
     @Autowired
     UserRepository userRepository;
@@ -59,14 +59,15 @@ public class PhotoController {
     PhotoRepository photoRepository;
 
     @PostMapping("user/profilePhoto")
-    public RedirectView RedirectView(User user, UserPhoto userPhoto,
+    public RedirectView RedirectView(UserPhoto userPhoto,
                                      @RequestParam("image")MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        user.getUserPhoto().setProfilePic(fileName);
+        userPhoto.setProfilePic(fileName);
 
-        UserPhoto savedUser = photoRepository.save(userPhoto);
+        UserPhoto savedPhoto = photoRepository.save(userPhoto);
+//        User savedUser = userRepository.save(user);
 
-        String uploadDir = "user-photo/" + savedUser.getId();
+        String uploadDir = "user-photo/" + savedPhoto.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         return new RedirectView("/user/profilePhoto", true);
@@ -75,15 +76,12 @@ public class PhotoController {
     @GetMapping("profilePhoto")
     public String avatarPage(HttpServletRequest request, Model model) {
 
-//        User user = (User) getUserFromSession(request.getSession());
         User user = (User) getUserFromSession(request.getSession());
-
-        UserPhoto userPhoto = (UserPhoto) getUserPhotoFromSession(request.getSession());
 
         model.addAttribute("title", "Photo Selection");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
-        model.addAttribute("userPhoto", userPhoto);
+        model.addAttribute("userPhoto", user.getUserPhoto());
 
 
         return "user/profilePhoto";
@@ -93,19 +91,14 @@ public class PhotoController {
     @GetMapping("profilePhoto/")
     public String displayEditProfilePhotoForm(Model model, HttpServletRequest request) {
 
-        /*
-        User is directed to add profile from link if the boolean isNew is true. If false they'll be
-        directed to the profile page.
-
-         */
 
         User user = (User) getUserFromSession(request.getSession());
-//
-//        Optional<User> result = userRepository.findById(userId);
-//        User updateUser = result.get();
 
-//        model.addAttribute("title", "Update " + updateUser.getUsername());
-//        model.addAttribute("user", updateUser);
+        Optional<User> result = userRepository.findById(user.getId());
+        User updateUser = result.get();
+
+        model.addAttribute("title", "Update " + updateUser.getUsername());
+        model.addAttribute("user", updateUser);
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("profilePic", user.getUserPhoto());
@@ -118,15 +111,15 @@ public class PhotoController {
                                          Errors errors, Model model, HttpServletRequest request) {
         User user = (User) getUserFromSession(request.getSession());
 
-        Optional<User> result = userRepository.findById(userId);
+        Optional<User> result = userRepository.findById(user.getId());
         User updatedUser = result.get();
 
 
         if (errors.hasErrors()) {
-//            model.addAttribute("title", "Update " + updatedUser.getUsername());
+            model.addAttribute("title", "Update " + updatedUser.getUsername());
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
-//            model.addAttribute("userId", userId);
+            model.addAttribute("userId", user.getId());
             errors.rejectValue("image","image.fail","Issue with uploading the image.");
 
 
@@ -134,13 +127,8 @@ public class PhotoController {
         }
         model.addAttribute("profilePic", userPhoto.getProfilePic());
 
-//        userRepository.deleteById(userId);
-
-        // Once user adds detailed information to profile it sets isNew to false. From there when they select
-        // profile it will take them to the profile page.
-
-        // User info is updated and saved to the database with new information
         photoRepository.save(userPhoto);
+//        userRepository.save(user);
 
         return "redirect:/user/profile";
     }
