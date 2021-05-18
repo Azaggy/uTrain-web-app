@@ -118,8 +118,8 @@ public class PhotoController {
                                          Errors errors, Model model, HttpServletRequest request) {
         User user = (User) getUserFromSession(request.getSession());
 
-//        Optional<User> result = userRepository.findById(userId);
-//        User updatedUser = result.get();
+        Optional<User> result = userRepository.findById(userId);
+        User updatedUser = result.get();
 
 
         if (errors.hasErrors()) {
