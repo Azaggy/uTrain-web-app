@@ -2,6 +2,7 @@ package org.launchcode.uTrain.controllers;
 
 
 import org.launchcode.uTrain.FileUploadUtil;
+import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.User;
 import org.launchcode.uTrain.models.UserPhoto;
@@ -39,9 +40,24 @@ public class PhotoController {
         }
         return  user.get();
     }
+    public UserPhoto getUserPhotoFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+        Optional<UserPhoto> userPhoto = photoRepository.findById(userId);
+        if (userPhoto.isEmpty()) {
+            return null;
+        }
+
+        return userPhoto.get();
+    }
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PhotoRepository photoRepository;
 
     @PostMapping("user/profilePhoto")
     public RedirectView saveUserPhoto(User user,
@@ -62,10 +78,12 @@ public class PhotoController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        UserPhoto userPhoto = (UserPhoto) getUserPhotoFromSession(request.getSession());
 
         model.addAttribute("title", "Photo Selection");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("userPhoto", userPhoto);
 
 
         return "user/profilePhoto";
