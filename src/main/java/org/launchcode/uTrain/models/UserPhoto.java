@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 public class UserPhoto extends AbstractEntity {
 
-//    @JoinColumn(name = "user_id")
     @OneToOne
     private User user;
 //    @OneToMany
@@ -21,12 +20,11 @@ public class UserPhoto extends AbstractEntity {
 
     public UserPhoto() {}
 
-    @Transient
-    public String getProfilePicImagePath() {
-        if (profilePic == null) return null;
-
-        return "/profilePic/" + profilePic;
+    public UserPhoto(String profilePic){
+        this.profilePic = profilePic;
     }
+
+
     public String getProfilePic() {
         return profilePic;
     }
@@ -34,6 +32,13 @@ public class UserPhoto extends AbstractEntity {
     public String setProfilePic(String profilePic) {
         this.profilePic = profilePic;
         return profilePic;
+    }
+
+    @Transient
+    public String getPhotoImagePath() {
+        if (profilePic == null) return null;
+
+        return "/profilePic/" + profilePic;
     }
 //
 //    public List<User> getUsers() {

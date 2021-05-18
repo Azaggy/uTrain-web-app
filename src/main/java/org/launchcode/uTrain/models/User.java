@@ -29,7 +29,7 @@ public class User extends AbstractEntity {
 
 
 //    @ManyToOne
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UserPhoto userPhoto;
 
 

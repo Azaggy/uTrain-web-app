@@ -44,7 +44,7 @@ public class UserController {
     UserRepository userRepository;
 
     @GetMapping("index")
-    public String userIndexPage(HttpServletRequest request, Model model) {
+    public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) {
 
         /*
         User is directed to the user index page after a successful login is completed.
@@ -56,6 +56,7 @@ public class UserController {
         model.addAttribute("title", "Welcome!!");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("userPhoto", userPhoto.getProfilePic());
 
         return "user/index";
     }

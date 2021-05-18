@@ -114,11 +114,11 @@ public class PhotoController {
 
 
     @GetMapping("profilePhoto/")
-    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request) {
+    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request, UserPhoto userPhoto) {
 
 
         User user = (User) getUserFromSession(request.getSession());
-
+        userPhoto.setUser(user);
         Optional<User> result = userRepository.findById(user.getId());
         User updateUser = result.get();
 
@@ -127,6 +127,7 @@ public class PhotoController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("profilePic", user.getUserPhoto());
+
 
         return "user/profilePhoto";
     }
@@ -137,12 +138,14 @@ public class PhotoController {
                                          Errors errors, Model model, HttpServletRequest request) throws IOException {
         User user = (User) getUserFromSession(request.getSession());
         userPhoto.setUser(user);
+        user.setUserPhoto(userPhoto);
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         userPhoto.setProfilePic(fileName);
         UserPhoto savedPhoto = photoRepository.save(userPhoto);
+        User savedUser = userRepository.save(user);
 
-        String uploadDir = "./src/main/resources/templates/user/profilePic/user-photos" + savedPhoto.getId();
+        String uploadDir = "./src/main/resources/templates/user/profilePic/";
 
         Path uploadPath = Paths.get(uploadDir);
 
@@ -152,7 +155,6 @@ public class PhotoController {
 
         try(InputStream inputStream = multipartFile.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toFile().getAbsolutePath());
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e){
             throw new IOException("Could not save" + fileName);
@@ -172,7 +174,7 @@ public class PhotoController {
 
             return "user/profilePhoto";
         }
-        model.addAttribute("profilePic", userPhoto.getProfilePic());
+        model.addAttribute("userPhoto", userPhoto);
 
         photoRepository.save(userPhoto);
 

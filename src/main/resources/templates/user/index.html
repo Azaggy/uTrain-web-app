@@ -4,6 +4,7 @@
 <body>
 <header th:replace="fragments :: page-header"></header>
 
+<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}">
 <h2 th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
 <h2 th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
 <div class= "photos">
