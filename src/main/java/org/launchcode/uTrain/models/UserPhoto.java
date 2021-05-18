@@ -11,7 +11,7 @@ import java.util.List;
 public class UserPhoto extends AbstractEntity {
 
     @OneToMany
-    private final List<User> users = new ArrayList<>();
+    private  List<User> users = new ArrayList<>();
 
     private String profilePic;
 
@@ -32,4 +32,11 @@ public class UserPhoto extends AbstractEntity {
         return profilePic;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

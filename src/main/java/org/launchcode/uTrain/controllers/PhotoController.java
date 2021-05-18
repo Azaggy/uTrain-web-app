@@ -127,6 +127,7 @@ public class PhotoController {
         }
         model.addAttribute("profilePic", userPhoto.getProfilePic());
 
+        userPhoto.setUsers(user);
         photoRepository.save(userPhoto);
 //        userRepository.save(user);
 
