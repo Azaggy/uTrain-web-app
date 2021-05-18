@@ -5,25 +5,26 @@
 <link rel="stylesheet" th:href="@{/workOut.css}"/>
 <!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
 <head th:replace="fragments :: head"></head>
-<!--<p th:replace="fragments :: bootstrap"></p>-->
+<p th:replace="fragments :: bootstrap"></p>
 
 
 <body>
 <header th:replace="fragments :: page-header"></header>
 <h1 th:text="${title}"></h1>
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+<table id="example" class="table table-striped table-bordered" style="  width:100%">
     <thead>
     <tr>
         <th>Name</th>
         <th>Contact Number</th>
         <th>Contact Email</th>
-
+        <th>Exercise</th>
     </tr>
     </thead>
     <tr class="table" th:each="trainer : ${trainers}">
         <th th:text="${trainer.name}"></th>
         <th th:text="${trainer.contactNumber}"></th>
         <th th:text="${trainer.contactEmail}"></th>
+        <th th:text="${trainer.type.exerciseType}"></th>
     </tr>
 </table>
 

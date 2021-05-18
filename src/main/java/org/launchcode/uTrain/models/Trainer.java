@@ -1,5 +1,8 @@
 package org.launchcode.uTrain.models;
 
+import org.launchcode.uTrain.models.workout.Exercise;
+import org.launchcode.uTrain.models.workout.ExerciseType;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -19,10 +22,13 @@ public class Trainer extends AbstractEntity{
     @Email
     private String contactEmail;
 
-    public Trainer(String name, String contactNumber, String contactEmail){
+    private ExerciseType type;
+
+    public Trainer(String name, String contactNumber, String contactEmail, ExerciseType type){
         this.name = name;
         this.contactNumber = contactNumber;
         this.contactEmail = contactEmail;
+        this.type = type;
     }
 
     public Trainer(){}
@@ -49,6 +55,14 @@ public class Trainer extends AbstractEntity{
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public ExerciseType getType() {
+        return type;
+    }
+
+    public void setType(ExerciseType type) {
+        this.type = type;
     }
 
     @Override
