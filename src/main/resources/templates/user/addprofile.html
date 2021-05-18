@@ -9,8 +9,11 @@
   <input type="hidden" th:value="${user.id}" name="userId" />
 <!--  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
   <input type="hidden" th:value="${user.pwHash}" name="pwHash" />
-  <a th:href="@{/user/profilePhoto}"><img src="https://i.ibb.co/16XFzpw/IMG-1589.png" alt="IMG-1589" border="0" height="300">
-  </a>
+
+  <img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">
+
+
+  <a th:href="@{/user/profilePhoto}">Change Your Profile Photo!</a>
   <h3>General Information</h3>
 
   <div class="form-group">
