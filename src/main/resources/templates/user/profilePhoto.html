@@ -8,7 +8,7 @@
 <div th:replace="fragments :: page-header"></div>
 
 <h1>Select a Profile Avatar</h1>
-<form th:action="@{/user/profilePhoto}" th:object="${userPhoto}" method="post" enctype="multipart/form-data">
+<form th:action="@{/user/profilePhoto}" th:object="${user}" method="post" enctype="multipart/form-data">
     <div>
         <label>Photos:</label>
         <input type="file" name="image">

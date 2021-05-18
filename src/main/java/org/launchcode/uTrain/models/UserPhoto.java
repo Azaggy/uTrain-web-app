@@ -13,7 +13,6 @@ public class UserPhoto extends AbstractEntity {
     @OneToMany
     private final List<User> users = new ArrayList<>();
 
-    @Column( nullable = true)
     private String profilePic;
 
 
@@ -22,7 +21,7 @@ public class UserPhoto extends AbstractEntity {
     public String getProfilePicImagePath() {
         if (profilePic == null) return null;
 
-        return "/user-photos/" + profilePic;
+        return "/user-photo/" + profilePic;
     }
     public String getProfilePic() {
         return profilePic;

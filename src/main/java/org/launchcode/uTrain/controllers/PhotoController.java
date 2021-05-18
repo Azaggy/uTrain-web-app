@@ -6,7 +6,6 @@ import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.User;
 import org.launchcode.uTrain.models.UserPhoto;
-import org.launchcode.uTrain.models.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,14 +59,14 @@ public class PhotoController {
     PhotoRepository photoRepository;
 
     @PostMapping("user/profilePhoto")
-    public RedirectView saveUserPhoto(User user, UserPhoto userPhoto,
-                                      @RequestParam("image")MultipartFile multipartFile) throws IOException {
+    public RedirectView RedirectView(User user, UserPhoto userPhoto,
+                                     @RequestParam("image")MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         user.getUserPhoto().setProfilePic(fileName);
 
         UserPhoto savedUser = photoRepository.save(userPhoto);
 
-        String uploadDir = "user-photos/" + savedUser.getId();
+        String uploadDir = "user-photo/" + savedUser.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         return new RedirectView("/user/profilePhoto", true);
@@ -91,8 +90,8 @@ public class PhotoController {
     }
 
 
-    @GetMapping("profilePhoto/{userId}")
-    public String displayEditProfilePhotoForm(Model model, @PathVariable int userId) {
+    @GetMapping("profilePhoto/")
+    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request) {
 
         /*
         User is directed to add profile from link if the boolean isNew is true. If false they'll be
@@ -100,32 +99,40 @@ public class PhotoController {
 
          */
 
-        Optional<User> result = userRepository.findById(userId);
-        User updateUser = result.get();
+        User user = (User) getUserFromSession(request.getSession());
+//
+//        Optional<User> result = userRepository.findById(userId);
+//        User updateUser = result.get();
 
-        model.addAttribute("title", "Update " + updateUser.getUsername());
-        model.addAttribute("user", updateUser);
+//        model.addAttribute("title", "Update " + updateUser.getUsername());
+//        model.addAttribute("user", updateUser);
+        model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
-        model.addAttribute("profilePic", updateUser.getUserPhoto());
+        model.addAttribute("profilePic", user.getUserPhoto());
 
         return "user/profilePhoto";
     }
 
     @PostMapping("profilePhoto")
-    public String processEditProfilePhotoForm(@ModelAttribute @Valid UserPhoto user, int userId,
-                                         Errors errors, Model model) {
-        Optional<User> result = userRepository.findById(userId);
-        User updatedUser = result.get();
+    public String processEditProfilePhotoForm(@ModelAttribute @Valid UserPhoto userPhoto,
+                                         Errors errors, Model model, HttpServletRequest request) {
+        User user = (User) getUserFromSession(request.getSession());
+
+//        Optional<User> result = userRepository.findById(userId);
+//        User updatedUser = result.get();
+
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Update " + updatedUser.getUsername());
-            model.addAttribute("user", updatedUser);
+//            model.addAttribute("title", "Update " + updatedUser.getUsername());
+            model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
-            model.addAttribute("userId", userId);
+//            model.addAttribute("userId", userId);
+            errors.rejectValue("image","image.fail","Issue with uploading the image.");
+
 
             return "user/profilePhoto";
         }
-        model.addAttribute("profilePic", user.getProfilePic());
+        model.addAttribute("profilePic", userPhoto.getProfilePic());
 
 //        userRepository.deleteById(userId);
 
@@ -133,7 +140,7 @@ public class PhotoController {
         // profile it will take them to the profile page.
 
         // User info is updated and saved to the database with new information
-        photoRepository.save(user);
+        photoRepository.save(userPhoto);
 
         return "redirect:/user/profile";
     }
