@@ -60,12 +60,12 @@ public class PhotoController {
     PhotoRepository photoRepository;
 
     @PostMapping("user/profilePhoto")
-    public RedirectView saveUserPhoto(User user,
+    public RedirectView saveUserPhoto(User user, UserPhoto userPhoto,
                                       @RequestParam("image")MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         user.getUserPhoto().setProfilePic(fileName);
 
-        User savedUser = userRepository.save(user);
+        UserPhoto savedUser = photoRepository.save(userPhoto);
 
         String uploadDir = "user-photos/" + savedUser.getId();
 
@@ -106,16 +106,14 @@ public class PhotoController {
         model.addAttribute("title", "Update " + updateUser.getUsername());
         model.addAttribute("user", updateUser);
         model.addAttribute("loggedIn", true);
-        model.addAttribute("sexes", UserSex.values());
         model.addAttribute("profilePic", updateUser.getUserPhoto());
 
         return "user/profilePhoto";
     }
 
     @PostMapping("profilePhoto")
-    public String processEditProfilePhotoForm(@ModelAttribute @Valid User user, int userId,
+    public String processEditProfilePhotoForm(@ModelAttribute @Valid UserPhoto user, int userId,
                                          Errors errors, Model model) {
-
         Optional<User> result = userRepository.findById(userId);
         User updatedUser = result.get();
 
@@ -127,7 +125,7 @@ public class PhotoController {
 
             return "user/profilePhoto";
         }
-        model.addAttribute("profilePic", user.getUserPhoto());
+        model.addAttribute("profilePic", user.getProfilePic());
 
 //        userRepository.deleteById(userId);
 
@@ -135,7 +133,7 @@ public class PhotoController {
         // profile it will take them to the profile page.
 
         // User info is updated and saved to the database with new information
-        userRepository.save(user);
+        photoRepository.save(user);
 
         return "redirect:/user/profile";
     }
