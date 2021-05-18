@@ -24,8 +24,10 @@ public class HomeController {
 
     @GetMapping("index")
     public String indexPage(Model model) {
+        BackgroundImage image = new BackgroundImage();
 
-        model.addAttribute("title", "Welcome To The uTrain Web App!!");
+        model.addAttribute("title", "Welcome To uTrain!!");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
 
         return "index";
     }

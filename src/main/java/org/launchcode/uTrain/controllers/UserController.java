@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -104,7 +105,7 @@ public class UserController {
         });
 
         //Looping through parks to display onto page. Finds parks that match user's zip code and add to list.
-        if(user.getUserDetail() == null) {
+        if(user.getUserDetail() != null) {
             for (Park park : parks) {
                 if (park.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingParks.add(park);
@@ -113,7 +114,7 @@ public class UserController {
         }
 
         //Looping through gyms to display onto page. Finds gyms that match user's zip code and add to list.
-        if(user.getUserDetail() == null) {
+        if(user.getUserDetail() != null) {
             for (Gym gym : gyms) {
                 if (gym.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingGyms.add(gym);
@@ -127,22 +128,32 @@ public class UserController {
             User myFriend = userRepository.findByUsername(friend);
 
             ArrayList<Workout> tempWorkout = new ArrayList<>();
-            for (Workout workout : myFriend.getWorkouts()){
-                tempWorkout.add(workout);
+            for (Workout workout : myFriend.getWorkouts()) {
+                if (myFriend.getWorkouts().isEmpty()) {
+                    break;
+                } else {
+                    tempWorkout.add(workout);
+                }
             }
 
-            //workout list is then sorted from newest to oldest.
-            Collections.sort(tempWorkout, (c1, c2) -> {
-                if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
-                else return 1;
-            });
+            if(tempWorkout.isEmpty()) {
+                break;
+            } else {
 
-            //takes newest workout from each user(friend/buddy) and adds it to list
-            if(!tempWorkout.isEmpty()) {
+                //workout list is then sorted from newest to oldest.
+                Collections.sort(tempWorkout, (c1, c2) -> {
+                    if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                    else return 1;
+                });
+
+                //takes newest workout from each user(friend/buddy) and adds it to list
+
                 sharedWorkouts.add(tempWorkout.get(0));
             }
 
+
         }
+
 
         /*
         User is directed to the user index page after a successful login is completed.
