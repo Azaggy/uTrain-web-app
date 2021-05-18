@@ -44,6 +44,10 @@
     <a th:unless="${loggedIn}" href="/login">Login</a>
     <a th:if="${loggedIn}" href="/logout">Logout</a>
     </li>
+    <li th:if="${loggedIn}">
+        <img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic" style="float: right;">
+
+    </li>
 
 </ul>
 
