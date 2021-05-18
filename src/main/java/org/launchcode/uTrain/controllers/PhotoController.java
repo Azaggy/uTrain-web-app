@@ -76,6 +76,7 @@ public class PhotoController {
     @GetMapping("profilePhoto")
     public String avatarPage(HttpServletRequest request, Model model) {
 
+//        User user = (User) getUserFromSession(request.getSession());
         User user = (User) getUserFromSession(request.getSession());
 
         UserPhoto userPhoto = (UserPhoto) getUserPhotoFromSession(request.getSession());

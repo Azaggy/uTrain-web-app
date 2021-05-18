@@ -20,10 +20,9 @@ public class UserPhoto extends AbstractEntity {
     public UserPhoto() {}
 
     public String getProfilePicImagePath() {
-        AbstractEntity id;
-        if (profilePic == null || id == null) return null;
+        if (profilePic == null) return null;
 
-        return "/user-photos/" + id + "/" + profilePic;
+        return "/user-photos/" + profilePic;
     }
     public String getProfilePic() {
         return profilePic;
