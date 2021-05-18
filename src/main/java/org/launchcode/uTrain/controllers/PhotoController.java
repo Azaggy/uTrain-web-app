@@ -13,12 +13,20 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -58,20 +66,37 @@ public class PhotoController {
     @Autowired
     PhotoRepository photoRepository;
 
-    @PostMapping("user/profilePhoto")
-    public RedirectView RedirectView(UserPhoto userPhoto,
-                                     @RequestParam("image")MultipartFile multipartFile) throws IOException {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        userPhoto.setProfilePic(fileName);
-
-        UserPhoto savedPhoto = photoRepository.save(userPhoto);
-//        User savedUser = userRepository.save(user);
-
-        String uploadDir = "user-photo/" + savedPhoto.getId();
-
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-        return new RedirectView("/user/profilePhoto", true);
-    }
+//    String fileName;
+//    @PostMapping("user/profilePhoto")
+//    public RedirectView saveUserPhoto(UserPhoto userPhoto, HttpServletRequest request,
+//                                     @RequestParam("image")MultipartFile multipartFile) throws IOException {
+//
+//        User user = (User) getUserFromSession(request.getSession());
+//        userPhoto.setUser(user);
+//
+//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+////        userPhoto.setProfilePic(fileName);
+//
+//        UserPhoto savedPhoto = photoRepository.save(userPhoto);
+////        User savedUser = userRepository.save(user);
+//
+//        String uploadDir = "profilePic/" + savedPhoto.getProfilePic();
+//
+//        Path uploadPath = Paths.get(uploadDir);
+//
+//        if (!Files.exists(uploadPath)) {
+//            Files.createDirectories(uploadPath);
+//        }
+//
+//        try (InputStream inputStream = multipartFile.getInputStream()) {
+//            Path filePath = uploadPath.resolve(fileName);
+//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+//        } catch (IOException ioException) {
+//            throw new IOException("could not save image file: " + fileName, ioException);
+//        }
+////        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//        return new RedirectView("/user/profilePhoto", true);
+//    }
 
     @GetMapping("profilePhoto")
     public String avatarPage(HttpServletRequest request, Model model) {
@@ -107,13 +132,35 @@ public class PhotoController {
     }
 
     @PostMapping("profilePhoto")
-    public String processEditProfilePhotoForm(@ModelAttribute @Valid UserPhoto userPhoto,
-                                         Errors errors, Model model, HttpServletRequest request) {
+    public String SavePhotoForm(@ModelAttribute @Valid UserPhoto userPhoto, RedirectAttributes ra,
+                                         @RequestParam("image") MultipartFile multipartFile,
+                                         Errors errors, Model model, HttpServletRequest request) throws IOException {
         User user = (User) getUserFromSession(request.getSession());
+        userPhoto.setUser(user);
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        userPhoto.setProfilePic(fileName);
+        UserPhoto savedPhoto = photoRepository.save(userPhoto);
+
+        String uploadDir = "./src/main/resources/templates/user/profilePic/user-photos" + savedPhoto.getId();
+
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try(InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            System.out.println(filePath.toFile().getAbsolutePath());
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e){
+            throw new IOException("Could not save" + fileName);
+        }
+
 
         Optional<User> result = userRepository.findById(user.getId());
         User updatedUser = result.get();
-
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Update " + updatedUser.getUsername());
@@ -127,9 +174,7 @@ public class PhotoController {
         }
         model.addAttribute("profilePic", userPhoto.getProfilePic());
 
-        userPhoto.setUsers(user);
         photoRepository.save(userPhoto);
-//        userRepository.save(user);
 
         return "redirect:/user/profile";
     }

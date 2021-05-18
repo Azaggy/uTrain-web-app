@@ -122,6 +122,8 @@ public class UserController {
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("userPhoto", user.getUserPhoto());
+
 
 
         return "user/profile";

@@ -5,24 +5,27 @@
 <head th:replace="fragments :: head">
 </head>
 <body>
+
 <div th:replace="fragments :: page-header"></div>
 
-<h1>Select a Profile Avatar</h1>
-<form th:action="@{/user/profilePhoto}" method="post">
+<h1>Select a Profile Photo</h1>
+<form th:action="@{/user/profilePhoto}" method="post" enctype="multipart/form-data">
     <div>
         <label>Photos:</label>
         <input type="file" th:object="${userPhoto}" name="image">
     </div>
     <div>
-        <input type="submit" name="submit" >
+        <input type="submit" value="Update" th:href="@{/user/addprofile}">
     </div>
+
 </form>
 
+<!--<h1>Or Select an Avatar</h1>-->
 <!--<div class="profileContain">-->
-<!--    <form method="post" th:action="@{/user/profilePhoto}">-->
+<!--    <form method="post" th:action="@{/user/profilePhoto}" enctype="multipart/form-data" name="avatar">-->
 <!--        <div>-->
 <!--            <label class="avatars">-->
-<!--                <input type="radio" th:value="${profilePic}" name="avatar"/>-->
+<!--                <input type="radio" th:value="${userPhoto}" name="avatar"/>-->
 <!--                <img src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" alt="IMG-1588" border="0" height="300">-->
 <!--            </label>-->
 <!--        </div>-->

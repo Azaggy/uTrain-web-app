@@ -28,7 +28,8 @@ public class User extends AbstractEntity {
     private boolean isNew;
 
 
-    @ManyToOne
+//    @ManyToOne
+    @OneToOne
     private UserPhoto userPhoto;
 
 

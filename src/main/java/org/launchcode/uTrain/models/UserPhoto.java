@@ -1,8 +1,6 @@
 package org.launchcode.uTrain.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +8,24 @@ import java.util.List;
 @Entity
 public class UserPhoto extends AbstractEntity {
 
-    @OneToMany
-    private  List<User> users = new ArrayList<>();
+//    @JoinColumn(name = "user_id")
+    @OneToOne
+    private User user;
+//    @OneToMany
+//    private  List<User> users = new ArrayList<>();
 
     private String profilePic;
 
 
+//    private String profilePicImagePath;
+
     public UserPhoto() {}
 
+    @Transient
     public String getProfilePicImagePath() {
         if (profilePic == null) return null;
 
-        return "/user-photo/" + profilePic;
+        return "/profilePic/" + profilePic;
     }
     public String getProfilePic() {
         return profilePic;
@@ -31,12 +35,20 @@ public class UserPhoto extends AbstractEntity {
         this.profilePic = profilePic;
         return profilePic;
     }
+//
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
