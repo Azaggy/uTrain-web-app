@@ -86,8 +86,8 @@
 <p style="color: white"><a href="/message/addmessage">Send New Message</a></p>
 </br>
 
-<h3 style="color: white">My Buddy's Workouts</h3>
-<table class="table">
+<h3 th:unless="${shared.isEmpty}" style="color: white">My Buddy's Workouts</h3>
+<table th:unless="${shared.isEmpty}" table class="table">
     <th:block>
         <thead>
         <tr>

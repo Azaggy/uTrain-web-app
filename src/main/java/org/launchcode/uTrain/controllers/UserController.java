@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -138,11 +139,12 @@ public class UserController {
             });
 
             //takes newest workout from each user(friend/buddy) and adds it to list
-            if(!tempWorkout.isEmpty()) {
+            if(tempWorkout.get(0) != null) {
                 sharedWorkouts.add(tempWorkout.get(0));
             }
 
         }
+
 
         /*
         User is directed to the user index page after a successful login is completed.
