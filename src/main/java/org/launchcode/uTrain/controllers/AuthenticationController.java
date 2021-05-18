@@ -61,9 +61,11 @@ public class AuthenticationController {
     @PostMapping("/reg")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, Model model) {
+        BackgroundImage image = new BackgroundImage();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register for uTrain");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "reg";
         }
 
@@ -106,9 +108,13 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO, Errors errors,
                                    HttpServletRequest request, Model model) {
+        BackgroundImage image = new BackgroundImage();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
+            return "login";
+            
             return "login";
         }
 

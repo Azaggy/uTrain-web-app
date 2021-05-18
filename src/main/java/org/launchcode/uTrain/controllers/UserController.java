@@ -138,7 +138,9 @@ public class UserController {
             });
 
             //takes newest workout from each user(friend/buddy) and adds it to list
-            sharedWorkouts.add(tempWorkout.get(0));
+            if(!tempWorkout.isEmpty()) {
+                sharedWorkouts.add(tempWorkout.get(0));
+            }
 
         }
 
