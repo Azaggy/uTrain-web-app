@@ -96,10 +96,10 @@
             <th>Workout Description</th>
         </tr>
         </thead>
-        <tr th:each="share : ${shared}">
-            <th th:text="${share.timeStamp}"></th>
-            <th th:text="${share.user.username}"></th>
-            <th th:text="${share.description}"></th>
+        <tr th:each="sharedWorkout : ${sharedWorkouts}">
+            <th th:text="${sharedWorkout.timeStamp}"></th>
+            <th th:text="${sharedWorkout.user.username}"></th>
+            <th th:text="${sharedWorkout.description}"></th>
         </tr>
     </th:block>
 </table>

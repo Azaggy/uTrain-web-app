@@ -1,9 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
-import org.launchcode.uTrain.data.GymRepository;
-import org.launchcode.uTrain.data.MessageRepository;
-import org.launchcode.uTrain.data.ParkRepository;
-import org.launchcode.uTrain.data.UserRepository;
+import org.hibernate.jdbc.Work;
+import org.launchcode.uTrain.data.*;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.Park;
@@ -59,6 +57,9 @@ public class UserController {
     @Autowired
     GymRepository gymRepository;
 
+    @Autowired
+    WorkoutRepository workoutRepository;
+
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model) {
 
@@ -80,6 +81,10 @@ public class UserController {
         //Initiating Lists for loading gym data onto user's index page
         ArrayList<Gym> gyms= (ArrayList<Gym>)gymRepository.findAll();
         ArrayList<Gym> matchingGyms= new ArrayList<>();
+
+        //Initiating Lists for loading friends workout data onto user's index page
+        ArrayList<Workout> workouts=(ArrayList<Workout>) workoutRepository.findAll();
+
 
         //Looping through messages to display onto page. Take messages and divides them by sent or receive
         for (Message message : messages) {
@@ -104,16 +109,16 @@ public class UserController {
         });
 
         //Looping through parks to display onto page. Finds parks that match user's zip code and add to list.
-        if(user.getUserDetail() == null) {
+        if(user.getUserDetail() != null) {
             for (Park park : parks) {
                 if (park.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
-                    matchingParks.add(park);
-                } 
+                        matchingParks.add(park);
+                }
             }
         }
 
         //Looping through gyms to display onto page. Finds gyms that match user's zip code and add to list.
-        if(user.getUserDetail() == null) {
+        if(user.getUserDetail() != null) {
             for (Gym gym : gyms) {
                 if (gym.getAddress().getZipCode() == user.getUserDetail().getAddress().getZipCode()) {
                     matchingGyms.add(gym);
@@ -125,10 +130,13 @@ public class UserController {
         // user and then adds workouts to a list.
         for (String friend : user.getFriends()) {
             User myFriend = userRepository.findByUsername(friend);
-
             ArrayList<Workout> tempWorkout = new ArrayList<>();
-            for (Workout workout : myFriend.getWorkouts()){
-                tempWorkout.add(workout);
+
+
+            for (Workout workout : workouts){
+                if(workout.getUser().equals(myFriend.getId())){
+                    tempWorkout.add(workout);
+                }
             }
 
             //workout list is then sorted from newest to oldest.
@@ -138,7 +146,7 @@ public class UserController {
             });
 
             //takes newest workout from each user(friend/buddy) and adds it to list
-            if(!tempWorkout.isEmpty()) {
+            if(tempWorkout.isEmpty()==false) {
                 sharedWorkouts.add(tempWorkout.get(0));
             }
 
@@ -157,10 +165,7 @@ public class UserController {
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
         model.addAttribute("matchingGyms", matchingGyms);
-
-
-
-        model.addAttribute("shared", sharedWorkouts);
+        model.addAttribute("sharedWorkouts", sharedWorkouts);
 
         return "user/index";
 

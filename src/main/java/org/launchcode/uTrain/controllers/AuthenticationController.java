@@ -115,7 +115,7 @@ public class AuthenticationController {
             model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "login";
             
-            return "login";
+
         }
 
         User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
