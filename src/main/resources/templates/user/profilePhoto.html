@@ -11,15 +11,15 @@
 <h1>Select a Profile Photo</h1>
 <form th:action="@{/user/profilePhoto}" method="post" enctype="multipart/form-data">
     <div>
-        <label>Photos:</label>
-        <input type="file" th:object="${userPhoto}" name="image">
+        <label class="photosLabel">Photos:</label>
+        <input type="file" th:object="${userPhoto}" name="image" id="fileImage">
     </div>
     <div>
         <input type="submit" value="Update" th:href="@{/user/addprofile}">
     </div>
 
 </form>
-<img onload="@{${thumbnail}}" >
+
 
 
 <!--<h1>Or Select an Avatar</h1>-->
@@ -116,6 +116,7 @@
 <!--    </form>-->
 <!--</div>-->
 
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

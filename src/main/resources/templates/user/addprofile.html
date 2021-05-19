@@ -9,11 +9,17 @@
   <input type="hidden" th:value="${user.id}" name="userId" />
 <!--  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
   <input type="hidden" th:value="${user.pwHash}" name="pwHash" />
+<div>
+  <div>
+    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
+    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
+  </div>
+  <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>
+</div>
+<!--  <img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
+<!-- <a th:href="@{/user/profilePhoto}" > <button class="proPicXchange">Change Your Profile Photo!</button></a>-->
+<!--  <a th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>-->
 
-  <img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">
-
-
-  <a th:href="@{/user/profilePhoto}">Change Your Profile Photo!</a>
   <h3>General Information</h3>
 
   <div class="form-group">
@@ -108,10 +114,10 @@
 <!--https://developer.mozilla.org/en-US/docs/Web/API/FileList-->
 <!--https://www.internetingishard.com/html-and-css/links-and-images/-->
 <!--(look over javascript again)-->
-<script>
-  let pullfiles=function() {
-    let fileInput=document.querySelector("#profilePic");
-    let files
-  }
-</script>
+<!--<script>-->
+<!--  let pullfiles=function() {-->
+<!--    let fileInput=document.querySelector("#profilePic");-->
+<!--    let files-->
+<!--  }-->
+<!--</script>-->
 </html>
