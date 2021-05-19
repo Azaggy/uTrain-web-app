@@ -9,6 +9,8 @@ public class CustomWorkout {
     @Size(min = 3, max = 30, message = "Workout must be between 3 and 50 characters")
     private String name;
 
+    public CustomWorkout () {};
+
 
     public CustomWorkout(String name) {
         this.name = name;

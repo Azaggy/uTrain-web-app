@@ -9,25 +9,25 @@ import java.util.Map;
 
 public class WorkoutData {
     //    need a place to put workout
-    private static Map<Integer, Workout> workouts = new HashMap<>();
+    private static Map<Integer, CustomWorkout> customworkouts = new HashMap<>();
 
     //    get all workout
-    public static Collection<Workout> getAll() {
-        return workouts.values();
+    public static Collection<CustomWorkout> getAll() {
+        return customworkouts.values();
     }
 
 
     //    get a single workout
-    public static Workout getById(int id) {
-        return workouts.get(id);
+    public static CustomWorkout getById(int id) {
+        return CustomWorkout.get(id);
     }
     //    add a workout
-    public static void add(Workout workout) {
-        workouts.put(workout.getId(), workout);
+    public static void add(CustomWorkout customWorkout) {
+        customworkouts.put(customWorkout.getId(), customWorkout);
     }
 
     //    remove an workout
     public static void remove(int id) {
-        workouts.remove(id);
+        customworkouts.remove(id);
     }
 }

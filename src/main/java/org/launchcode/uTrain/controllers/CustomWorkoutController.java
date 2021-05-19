@@ -27,14 +27,18 @@ public class CustomWorkoutController {
     }
 
     @PostMapping("create")
-    public String createWorkout(@ModelAttribute Workout newWorkout,
-                                Errors errors, Model model) {
+    public <CustomWorkout> String createWorkout(@ModelAttribute CustomWorkout customWorkout,
+                                                Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Customize Your Workout");
             return "customworkout/create";
         }
-        WorkoutData.add(newWorkout);
+        WorkoutData.add(getCustomWorkout());
         return "redirect:";
+    }
+
+    private CustomWorkout getCustomWorkout() {
+        return CustomWorkout;
     }
 
     @GetMapping("delete")
