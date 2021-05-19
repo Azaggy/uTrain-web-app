@@ -22,7 +22,7 @@
     </tr>
     </thead>
     <tr class="table" th:each="trainer : ${trainers}">
-        <th ><a style="color: white;" th:href="'/trainer/edit?trainerId=' + ${trainer.id}" th:text="${trainer.name}"></a></th>
+        <th ><a style="color: white;" th:href="@{/trainer/edit/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></th>
         <th th:text="${trainer.contactNumber}"></th>
         <th th:text="${trainer.contactEmail}"></th>
         <th th:text="${trainer.type.exerciseType}"></th>
