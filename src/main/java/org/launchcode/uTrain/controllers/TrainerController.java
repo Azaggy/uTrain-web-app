@@ -42,7 +42,7 @@ public class TrainerController {
     @Autowired
     private TrainerRepository trainerRepository;
 
-    @GetMapping
+    @GetMapping("index")
     public String displayAllTrainers(HttpServletRequest request, Model model) {
 
         User user = (User) getUserFromSession(request.getSession());
@@ -79,26 +79,48 @@ public class TrainerController {
     }
 
     @GetMapping("edit/{trainerId}")
-    public String displayEditForm(Model model, @PathVariable int trainerId){
+    public String displayEditForm(HttpServletRequest request, Model model, @PathVariable int trainerId){
+
+        User user = (User) getUserFromSession(request.getSession());
         Optional<Trainer> result = trainerRepository.findById(trainerId);
         Trainer trainer = result.get();
+
         model.addAttribute("title", "Edit Trainers" + trainer.getName() + " (id=" + trainer.getId() + ")");
-        model.addAttribute("trainer", "trainer");
-        model.addAttribute("title", "title");
-        return"trainer/edit";
+        model.addAttribute("trainer", trainer);
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+        model.addAttribute("types", ExerciseType.values());
+        model.addAttribute("trainerId", trainer.getId());
+
+        return "trainer/edit";
     }
 
     @PostMapping("edit")
-    public String processEditForm(int trainerId, String name, String contactNumber,
-                                    String contactEmail, ExerciseType type){
-        Optional<Trainer> result = trainerRepository.findById(trainerId);
-        Trainer trainer = result.get();
-        trainer.setName(name);
-        trainer.setContactNumber(contactNumber);
-        trainer.setContactEmail(contactEmail);
-        trainer.setType(type);
+    public String processEditForm(@ModelAttribute @Valid Trainer trainer, Errors errors, Model model,
+                                  HttpServletRequest request){
 
-        return"redirect:/edit";
+        User user = (User) getUserFromSession(request.getSession());
+        Optional<Trainer> result = trainerRepository.findById(trainer.getId());
+        Trainer newTrainer = result.get();
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Edit Trainers " + trainer.getName() + " (id=" + trainer.getId() +
+                    ")");
+            model.addAttribute("trainer", newTrainer);
+            model.addAttribute("user", user);
+            model.addAttribute("loggedIn", true);
+            model.addAttribute("types", ExerciseType.values());
+            model.addAttribute("trainerId",trainer.getId());
+
+            return "trainer/edit";
+        }
+
+        trainerRepository.save(trainer);
+
+
+
+
+        return "redirect:/trainer/index";
     }
 
 

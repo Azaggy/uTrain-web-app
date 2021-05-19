@@ -5,7 +5,7 @@
 <link rel="stylesheet" th:href="@{/workOut.css}"/>
 <!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
 <head th:replace="fragments :: head"></head>
-<p th:replace="fragments :: bootstrap"></p>
+<!--<p th:replace="fragments :: bootstrap"></p>-->
 
 
 <body>
@@ -21,10 +21,10 @@
     </tr>
     </thead>
     <tr class="table" th:each="trainer : ${trainers}">
-        <th th:text="${trainer.name}"></th>
+        <th><a style="color: white;" th:href="@{/trainer/edit/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></th>
         <th th:text="${trainer.contactNumber}"></th>
         <th th:text="${trainer.contactEmail}"></th>
-        <th th:text="${trainer.type.exerciseType}"></th>
+        <th th:text="${trainer.type}"></th>
     </tr>
 </table>
 
