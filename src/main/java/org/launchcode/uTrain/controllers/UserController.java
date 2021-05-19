@@ -4,6 +4,7 @@ import org.launchcode.uTrain.data.GymRepository;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.ParkRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.Park;
@@ -61,7 +62,7 @@ public class UserController {
     GymRepository gymRepository;
 
     @GetMapping("index")
-    public String userIndexPage(HttpServletRequest request, Model model) {
+    public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) {
 
         //Pulling user from session
         User user = (User) getUserFromSession(request.getSession());
@@ -164,6 +165,7 @@ public class UserController {
         model.addAttribute("title", "Welcome!!");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("userPhoto", userPhoto.getProfilePic());
         model.addAttribute("receivedMessages", receivedMessages);
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
@@ -241,11 +243,25 @@ public class UserController {
         model.addAttribute("title", user.getUserDetail().getFirstName() + "'s Profile");
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("userPhoto", user.getUserPhoto());
+
+
 
 
         return "user/profile";
     }
 
+    @GetMapping("bmi")
+    public String bmiCalc(HttpServletRequest request, Model model) {
+
+        User user = (User) getUserFromSession(request.getSession());
+
+        model.addAttribute("title", "BMI Calculator");
+        model.addAttribute("bmi1", user.getUserDetail().getBodyMassIndex());
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+
+        return "user/bmi";
     @GetMapping("addfriend")
     public String displayAddFriendForm(HttpServletRequest request, Model model) {
 

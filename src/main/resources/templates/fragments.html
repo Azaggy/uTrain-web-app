@@ -21,7 +21,7 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/styles.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>-->
 
     <title>uTrain</title>
 </head>
@@ -38,6 +38,11 @@
             <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
         </a>
     </li>
+    <li th:if="${loggedIn}"><a href="/user/bmi">BMI</a> </li>
+    <li th:unless="${loggedIn}"><a href="/bmiLoggedOut">BMI</a> </li>
+
+
+    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>
     <li th:unless="${loggedIn}"><a href="/company">About Us</a></li>
 <!--    <li th:if="${loggedIn}"><a  href="/user/index">Home</a></li>-->
     <li th:if="${loggedIn}"><a th:href="@{/user/index}">Back to Home</a></li>
@@ -69,6 +74,12 @@
     <a th:if="${loggedIn}" href="/logout">Logout</a>
 
     </li>
+    <li th:if="${loggedIn}">
+        <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic" id="fragProPic">
+        <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic" id="fragProPic2">
+
+    </li>
+
 </ul>
 
 <!--<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">-->

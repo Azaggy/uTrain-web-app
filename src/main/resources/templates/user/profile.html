@@ -3,7 +3,15 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <header th:replace="fragments :: page-header"></header>
+<div>
+    <div>
+        <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
+        <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
+    </div>
 
+    <a  th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>
+</div>
+<!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">-->
 <h2 style="color: white">General Info</h2>
 
 <table class="table">
@@ -73,5 +81,16 @@
 
 <footer th:replace="fragments :: footer"></footer>
 
+<script>
+// Get the modal
+let modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>

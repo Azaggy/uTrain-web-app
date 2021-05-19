@@ -4,8 +4,13 @@
 
 <body>
 <header th:replace="fragments :: page-header"></header>
+<div>
+    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
+    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
 
-<a><img src="https://i.ibb.co/Fm4B9wR/IMG-1555.png" alt="logo" border="0" width="100" height="100">
+</div>
+<!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
+
     <h2 style="color: white" th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
 <h2 style="color: white" th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
 

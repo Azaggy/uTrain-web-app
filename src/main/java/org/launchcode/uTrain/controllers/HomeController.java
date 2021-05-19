@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+
     //Controller for display pages with hardly any interaction.
     @Autowired
     private ParkRepository parkRepository;
@@ -44,4 +45,14 @@ public class HomeController {
         return "company";
     }
 
+    @GetMapping("bmiLoggedOut")
+    public String bmiCalc(Model model) {
+
+        model.addAttribute("title", "BMI Calculator");
+        return "bmiLoggedOut";
+    }
+
+
+
+//
 }
