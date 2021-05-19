@@ -5,12 +5,22 @@
 <body>
 <div th:replace="fragments :: page-header"></div>
 
+
 <form name="calculator">
     <table>
         <tr>
+            <td><h3 style="color: white; text-align: center;">Calculator</h3></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="display" id="display"
+                       disabled></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
             <td>
-                <input type="text" name="display" id="display"
-                       disabled>
+<!--                <input type="text" name="display" id="display"-->
+<!--                       disabled>-->
             </td>
         </tr>
         <tr>
@@ -41,7 +51,7 @@
     </table>
 </form>
 
-<div cla="bmiTable" style="float: right">
+<div class="bmiTable" style="float: right">
     <h1 class="titleTable"> BMI Table</h1>
     <table class="bmiTable">
         <tr>
@@ -69,7 +79,7 @@
 </div>
 
 
-<footer th:replace="fragments :: footer"></footer>
+<footer style="position: sticky; bottom: 0;" th:replace="fragments :: footer"></footer>
 
 
 </body>
