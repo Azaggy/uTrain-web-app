@@ -1,9 +1,10 @@
 package org.launchcode.uTrain.models;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import org.launchcode.uTrain.models.user.User;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class UserPhoto extends AbstractEntity {
