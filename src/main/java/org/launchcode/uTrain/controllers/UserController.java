@@ -262,6 +262,9 @@ public class UserController {
         model.addAttribute("loggedIn", true);
 
         return "user/bmi";
+
+    }
+
     @GetMapping("addfriend")
     public String displayAddFriendForm(HttpServletRequest request, Model model) {
 
