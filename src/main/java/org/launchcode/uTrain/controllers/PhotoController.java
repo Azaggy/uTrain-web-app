@@ -4,7 +4,7 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.FileUploadUtil;
 import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.UserPhoto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

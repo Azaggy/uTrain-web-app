@@ -1,5 +1,7 @@
 package org.launchcode.uTrain.models;
 
+import org.launchcode.uTrain.models.user.User;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;

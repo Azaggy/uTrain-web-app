@@ -1,6 +1,7 @@
 package org.launchcode.uTrain.models.user;
 
 import org.launchcode.uTrain.models.AbstractEntity;
+import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.workout.Exercise;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -126,6 +127,7 @@ public class User extends AbstractEntity {
 
     public void setUserPhoto(UserPhoto userPhoto) {
         this.userPhoto = userPhoto;
+    }
     public List<Workout> getWorkouts() {
         return workouts;
     }
