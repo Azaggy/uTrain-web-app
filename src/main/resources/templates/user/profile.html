@@ -12,7 +12,7 @@
     <a  th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>
 </div>
 <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">-->
-<h2>General Info</h2>
+<h2 style="color: white">General Info</h2>
 
 <table class="table">
     <thead>
@@ -44,7 +44,20 @@
         <td th:text="${user.userDetail.userSex}"></td>
     </tr>
 </table>
-<h2>Address</h2>
+
+<h2 style="color: white">Interests</h2>
+<div>
+<p class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>
+<p class="interests" th:if="${user.userDetail.interests.running}">Running</p>
+<p class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>
+<p class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>
+<p class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>
+<p class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>
+<p class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>
+<p class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>
+</div>
+
+<h2 style="color: white">Address</h2>
 <table class="table">
     <thead>
     <tr>

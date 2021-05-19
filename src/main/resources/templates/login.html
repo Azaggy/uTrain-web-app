@@ -1,33 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body>
+<!--<head th:replace="fragments :: head"></head>-->
+<head>
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">-->
+<!--    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="signin.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/examples/heroes/heroes.css">
+    <link rel="stylesheet" th:href="@{/signin.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+<!--<style th:inline="text">-->
+<!--body {-->
+<!--  background-image: url([[${Back;-->
+<!--  background-repeat: no-repeat;-->
+<!--background-color: #0056b9-->
+<!--  background-attachment: fixed;-->
+<!--  background-size: cover;-->
 
-<header th:replace="fragments :: page-header"></header>
-<div class="form-new">
-<form method="post">
-    <div class="form-group">
-        <label class="stroke" th:for="username">Username
-            <input class="input" th:field="${loginFormDTO.username}">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
+<!--}-->
+<!--</style>-->
+<body class="text-center" th:style="'background-image: url(' + ${backgroundImage} + ');
+background-repeat: no-repeat;
+background-attachment: fixed
+background size: cover;
+background-position: center;
+background-color: #0056b9'">
+
+<!--<header th:replace="fragments :: page-header"></header>-->
+
+<form style="border-radius:10px" class="p-4 p-md-5 form-back" method="post">
+    <img class="mb-4" th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51">
+        <h1 style="color: white" class="h3 mb-3 font-weight-heavy">Please Sign In</h1>
+    <div class="form-floating mb-3">
+        <label class="sr-only" for="username">Username</label>
+            <input class="form-control-lg" id="username"th:field="${loginFormDTO.username}" placeholder="username" required autofocus>
     </div>
-    <div class="form-group">
-        <label class="stroke" th:for="password">Password
-            <input class="input" th:field="${loginFormDTO.password}" type="password">
+        <p style="color: white" class="error" th:errors="${loginFormDTO.username}"></p>
+    </br>
+    <div class="form-floating mb-3">
+        <label class="sr-only" th:for="password">Password</label>
+            <input class="form-control-lg" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="password" required>
+    </div>
+        <p style="color: white" class="error" th:errors="${loginFormDTO.password}"></p>
+
+    <div class="checkbox mb-3">
+        <label style="color: white">
+            <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
     </div>
 
-    <input type="submit" class="input-submit" value="Log In" />
+    <button style="background-color: #0056b9;
+            color: white;
+            border:1px solid #0056b9" class="btn btn-lg btn-light btn-block" type="submit">Sign in</button>
+    <p style="color: white" class="mt-5 mb-3">Don't have an account? <a style="color: #0077FF" href="/reg">Register</a></p>
+
+
+    <p style="color: white" class="mt-5 mb-3">© 2021</p>
+
 </form>
 
 
-<p class="stroke">Don't have an account? <a href="/reg">Register</a></p>
-</div>
 
 
-<footer th:replace="fragments :: footer"></footer>
+
+<!--<footer th:replace="fragments :: footer"></footer>-->
 </body>
 
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post">
+
+    <h1>Add An Activity</h1>
+
+    <div class="form-group">
+        <label>Name
+            <input  th:field="${exercise.name}" class="form-control">
+        </label>
+        <p class="error" th:errors="${exercise.name}"></p>
+    </div>
+
+    <div>
+        <label>Type
+            <select class="form-control" th:field="${exercise.exerciseType}">
+                <option th:each="type : ${types}"
+                        th:value="${type}"
+                        th:text="${type.exerciseType}"
+                ></option>
+            </select>
+        </label>
+        <p class="error" th:errors="${exercise.exerciseType}"></p>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+
+</form>
+
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

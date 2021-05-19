@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <scritp src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></scritp>
+
+</head>
+
+<header th:replace="fragments :: page-header">
+
+</header>
+
+<body>
+
+<h1 th:text="${title}"></h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Name
+            <input th:field="${trainer.name}" class="Form-control">
+        </label>
+        <p class="error" th:errors="${trainer.name}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Contact Number
+            <input th:field="${trainer.contactNumber}" class="Form-control">
+        </label>
+        <p class="error" th:errors="${trainer.contactNumber}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Contact Email
+            <input th:field="${trainer.contactEmail}" class="Form-control">
+        </label>
+        <p class="error" th:errors="${trainer.contactEmail}"></p>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-success">
+    </div>
+</form>
+
+
+</body>
+</html>

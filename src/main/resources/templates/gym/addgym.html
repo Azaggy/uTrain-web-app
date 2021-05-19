@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: page-header"></header>
+
+<form method="post">
+
+    <h1>Add Gym</h1>
+
+    <div class="form-group">
+        <label>Gym Name
+            <input  th:field="${gym.name}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.name}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym Phone
+            <input  th:field="${gym.phoneNumber}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.phoneNumber}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym Email
+            <input  th:field="${gym.email}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.email}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Num/Street
+            <input  th:field="${gym.address.street}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.address.street}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym City
+            <input  th:field="${gym.address.city}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.address.city}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Gym State
+            <input  th:field="${gym.address.state}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.address.state}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Zip Code
+            <input th:field="${gym.address.zipCode}" class="form-control">
+        </label>
+        <p class="error" th:errors="${gym.address.zipCode}"></p>
+    </div>
+    <h4>List Amenities At This Location</h4>
+    <div class="form-group">
+        <label>Swimming Pool</label>
+        <input th:field="${gym.amenities.swimmingPool}" type="checkbox" name="swimmingPool">
+        <label>Tennis Court</label>
+        <input th:field="${gym.amenities.tennisCourt}" type="checkbox" name="tennisCourt">
+        <label>Bike Path</label>
+        <input th:field="${gym.amenities.bikePath}" type="checkbox" name="bikePath">
+        <label>Walking Path</label>
+        <input th:field="${gym.amenities.walkingPath}" type="checkbox" name="walkingPath">
+        <label>Golf Course</label>
+        <input th:field="${gym.amenities.golfCourse}" type="checkbox" name="golfCourse">
+        <label>Driving Range</label>
+        <input th:field="${gym.amenities.drivingRange}" type="checkbox" name="drivingRange">
+        <label>Baseball Field</label>
+        <input th:field="${gym.amenities.baseballField}" type="checkbox" name="baseballField">
+        <label>Basketball Court</label>
+        <input th:field="${gym.amenities.basketballCourt}" type="checkbox" name="basketballCourt">
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
+</form>
+<p><a th:href="@{/user/index}">Back to Home</a></p>
+
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>

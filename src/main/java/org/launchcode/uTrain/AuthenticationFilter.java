@@ -1,7 +1,7 @@
 package org.launchcode.uTrain;
 
 import org.launchcode.uTrain.controllers.AuthenticationController;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -18,7 +18,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     AuthenticationController authenticationController;
 
     private static final List<String> whitelist = Arrays.asList("/login", "/reg", "/logout", "/css",
-            "/styles.css", "/index", "/company", "/bmiLoggedOut");
+            "/styles.css", "/index", "/company", "/bmiLoggedOut", "/bootstrap.min.css", "/signin.css", "/images/icon.png");
 
     private static boolean isWhiteListed(String path) {
         for (String pathRoot: whitelist) {

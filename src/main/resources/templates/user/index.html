@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head">
+
 <body>
 <header th:replace="fragments :: page-header"></header>
 <div>
@@ -9,8 +10,141 @@
 
 </div>
 <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
-<h2 th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
-<h2 th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
+
+    <h2 style="color: white" th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
+<h2 style="color: white" th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
+
+</a>
+
+<!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
+
+<h3 style="color: white">Received Messages</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>From</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <th:block th:if="${receivedMessages.size > 2}">
+    <tr>
+        <th th:text="${receivedMessages[0].sender}"></th>
+        <th th:text="${receivedMessages[0].body}"></th>
+        <th th:text="${receivedMessages[0].date}"></th>
+    </tr>
+    <tr>
+        <th th:text="${receivedMessages[1].sender}"></th>
+        <th th:text="${receivedMessages[1].body}"></th>
+        <th th:text="${receivedMessages[1].date}"></th>
+    </tr>
+    <tr>
+        <th th:text="${receivedMessages[2].sender}"></th>
+        <th th:text="${receivedMessages[2].body}"></th>
+        <th th:text="${receivedMessages[2].date}"></th>
+    </tr>
+    </th:block>
+    <th:block th:unless="${receivedMessages.size > 2}">
+        <tr th:each="message : ${receivedMessages}">
+            <th th:text="${message.sender}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.date}"></th>
+        </tr>
+    </th:block>
+</table>
+
+
+<h3 style="color: white">Sent Messages</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>To</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <th:block th:if="${sentMessages.size > 2}">
+        <tr>
+            <th th:text="${sentMessages[0].recipient}"></th>
+            <th th:text="${sentMessages[0].body}"></th>
+            <th th:text="${sentMessages[0].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${sentMessages[1].recipient}"></th>
+            <th th:text="${sentMessages[1].body}"></th>
+            <th th:text="${sentMessages[1].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${sentMessages[2].recipient}"></th>
+            <th th:text="${sentMessages[2].body}"></th>
+            <th th:text="${sentMessages[2].date}"></th>
+        </tr>
+    </th:block>
+    <th:block th:unless="${sentMessages.size > 2}">
+        <tr th:each="message : ${sentMessages}">
+            <th th:text="${message.recipient}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.date}"></th>
+        </tr>
+    </th:block>
+</table>
+<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>
+</br>
+
+<h3 th:unless="${shared.isEmpty}" style="color: white">My Buddy's Workouts</h3>
+<table th:unless="${shared.isEmpty}" table class="table">
+    <th:block>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Buddy</th>
+            <th>Workout Description</th>
+        </tr>
+        </thead>
+        <tr th:each="share : ${shared}">
+            <th th:text="${share.timeStamp}"></th>
+            <th th:text="${share.user.username}"></th>
+            <th th:text="${share.description}"></th>
+        </tr>
+    </th:block>
+</table>
+
+</br>
+
+<h3 style="color: white">Parks Near You</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Park Name</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>
+    <th:block>
+        <tr th:each="matchingPark:${matchingParks}">
+            <th th:text="${matchingPark.name}"></th>
+            <th th:text="${matchingPark.address.zipCode}"></th>
+        </tr>
+    </th:block>
+</table>
+
+<h3 style="color: white">Gyms Near You</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Gym Name</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>
+<!--    <th:block>-->
+    <th:block>
+        <tr th:each="matchingGym:${matchingGyms}">
+            <th th:text="${matchingGym.name}"></th>
+            <th th:text="${matchingGym.address.zipCode}"></th>
+        </tr>
+    </th:block>
+</table>
+</br>
+
 <div class= "photos">
     <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
     <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >

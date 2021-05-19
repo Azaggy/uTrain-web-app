@@ -1,7 +1,8 @@
 package org.launchcode.uTrain.controllers;
 
+import org.launchcode.uTrain.data.BackgroundImage;
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.User;
+import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.dto.LoginFormDTO;
 import org.launchcode.uTrain.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -46,17 +49,23 @@ public class AuthenticationController {
 
     @GetMapping("/reg")
     public String displayRegistrationForm(Model model) {
+
+        BackgroundImage image = new BackgroundImage();
+
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register for uTrain");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
         return "reg";
     }
 
     @PostMapping("/reg")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, Model model) {
+        BackgroundImage image = new BackgroundImage();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register for uTrain");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "reg";
         }
 
@@ -66,6 +75,7 @@ public class AuthenticationController {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already " +
                     "exists");
             model.addAttribute("title", "Register for uTrain");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "reg";
         }
 
@@ -75,6 +85,7 @@ public class AuthenticationController {
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match!");
             model.addAttribute("title", "Register for uTrain");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "reg";
         }
 
@@ -88,17 +99,24 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public  String displayLoginForm(Model model) {
+        BackgroundImage image = new BackgroundImage();
+
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
         return "login";
     }
 
     @PostMapping("/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO, Errors errors,
                                    HttpServletRequest request, Model model) {
+        BackgroundImage image = new BackgroundImage();
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
+
+
             return "login";
         }
 
@@ -107,6 +125,7 @@ public class AuthenticationController {
         if(theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "login";
         }
 
@@ -115,6 +134,7 @@ public class AuthenticationController {
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password!");
             model.addAttribute("title", "Log In");
+            model.addAttribute("backgroundImage", image.randomImageGenerator());
             return "login";
         }
 

@@ -63,9 +63,11 @@ li a, .dropbtn {
     padding: 14px 16px;
     text-decoration: none;
 }
+
 li a:hover, .dropdown:hover .dropbtn {
     background-color: #06027e;
 }
+
 li.dropdown {
     display: inline-block;
     float: left;
@@ -74,12 +76,15 @@ a.one {
     padding: 0px;
     margin: 0px;
 }
+
 .signUp {
     float: right;
 }
+
 .logIn {
     float: right;
 }
+
 .logo {
     background-color: #0602b9;
     border: none;
@@ -100,17 +105,22 @@ a.one {
   display: block;
   text-align: left;
 }
+
 .dropdown-content a:hover {
   background-color: #00676c;
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .photos{
   margin-left: auto;
   margin-right: auto;
   display: block;
+
 }
+
 .image2 {
     padding-left: 8px;
     padding-right: 8px;
@@ -123,23 +133,46 @@ a.one {
   font-size: 20 px;
   min-height:25px;
   color: white;
-  padding: 15px;
+  padding: 5px;
   text-align:center;
-  left: 0;
-  bottom: 0;
-  width:100%;
 
 }
 .foots{
     color: white;
 }
+
+.table {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 50%;
+ }
+
+ .table td, #table th {
+    color: #ffffff;
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+
+
+
+
+ .table th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #0602b9;
+   color: white;
+   }
+
 .image {
  }
 
 #formgroup, .form-control{
-    font-size: 40px;
+    font-size: 20px;
     margin: 10px;
  }
+
 
 
 .image {
@@ -149,7 +182,7 @@ a.one {
  .table {
    font-family: Arial, Helvetica, sans-serif;
    border-collapse: collapse;
-   width: 50%;
+   width: 100%;
  }
 
  .table td, #table th {
@@ -339,4 +372,12 @@ td.numTable{
 .avatars {
     height: 50px
 
+}
+}
+.interests {
+color: #ffffff;
+}
+
+.form-label {
+color: white;
 }
