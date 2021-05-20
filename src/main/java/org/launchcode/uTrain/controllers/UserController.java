@@ -1,9 +1,6 @@
 package org.launchcode.uTrain.controllers;
 
-import org.launchcode.uTrain.data.GymRepository;
-import org.launchcode.uTrain.data.MessageRepository;
-import org.launchcode.uTrain.data.ParkRepository;
-import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.data.*;
 import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
@@ -63,6 +60,8 @@ public class UserController {
 
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) {
+
+        BackgroundImage image = new BackgroundImage();
 
         //Pulling user from session
         User user = (User) getUserFromSession(request.getSession());
@@ -170,6 +169,7 @@ public class UserController {
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
         model.addAttribute("matchingGyms", matchingGyms);
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
 
 
 
