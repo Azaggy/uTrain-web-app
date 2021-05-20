@@ -41,9 +41,9 @@
 <body>
 <!--<header th:replace="fragments :: page-header"></header>-->
 <main style="background-color: white">
-    <div class="container py-4">
+    <div class="container py-3">
         <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
-            <div style="background-color: #0056b9" class="container-fluid rounded-3">
+            <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
                 <a class="navbar-brand" th:href="@{/user/index}">
                     <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
                 </a>
@@ -112,10 +112,9 @@
             </div>
         </nav>
 <div th:style="'background-image: url(' + ${backgroundImage} + ');
-background-repeat: no-repeat;
-background size: cover;
-background-position: center;'"
-        class="p-3 mb-4 bg-light rounded-3 border shadow-lg">
+                background-repeat: no-repeat;
+                background size: cover;
+                background-position: center;'" class="p-3 mb-4 bg-light rounded-3 border shadow-lg">
     <div class="container-fluid py-4">
         <h1 class="display-5 fw-bold"></h1>
 <div>
@@ -132,11 +131,15 @@ background-position: center;'"
     </div>
 </div>
 <!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
-<div class="row align-items-md-stretch">
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
     <div class="col-md-6">
-        <div style="background-color: #0056b9" class="h-100 p-4 rounded-3">
-<h3 style="color: white">Received Messages</h3>
-<table class="table">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                    <h4 class="my-0 fw-normal">Received Messages</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
     <thead>
     <tr>
         <th>From</th>
@@ -169,13 +172,17 @@ background-position: center;'"
         </tr>
     </th:block>
 </table>
-        </div>
+                </div>
+            </div>
     </div>
-</br>
+
     <div class="col-md-6">
-        <div class="h-100 p-4 bg-light border rounded-3 shadow-lg">
-<h3 style="color: #0056b9">Sent Messages</h3>
-<table class="table">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 style="color: #0056b9" class="my-0 fw-normal">Sent Messages</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
     <thead>
     <tr>
         <th>To</th>
@@ -208,17 +215,21 @@ background-position: center;'"
         </tr>
     </th:block>
 </table>
-<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>
-        </div>
+<!--<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>-->
+                </div>
+            </div>
     </div>
 </div>
         </br>
 
-<div class="row align-items-md-stretch">
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     <div class="col-md-6">
-        <div style="background-color: #0056b9" class="h-100 p-4 rounded-3 shadow-lg">
-<h3 style="color: white">Parks Near You</h3>
-<table class="table">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                    <h4 class="my-0 fw-normal">Parks Near You</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
     <thead>
     <tr>
         <th>Park Name</th>
@@ -232,13 +243,17 @@ background-position: center;'"
         </tr>
     </th:block>
 </table>
-        </div>
+                </div>
+            </div>
     </div>
-</br>
+
     <div class="col-md-6">
-        <div class="h-100 p-4 bg-light border rounded-3 shadow-lg">
-<h3 style="color: #0056b9">Gyms Near You</h3>
-<table class="table">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 style="color: #0056b9" class="my-0 fw-normal">Gyms Near You</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
     <thead>
     <tr>
         <th>Gym Name</th>
@@ -255,13 +270,18 @@ background-position: center;'"
 </table>
         </div>
     </div>
+
 </div>
-        </br>
-        <div th:unless="${shared.isEmpty}" class="row align-items-md-stretch">
+</div>
+
+        <div th:unless="${shared.isEmpty}" class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col-md-6">
-                <div style="background-color: #0056b9" class="h-100 p-4 text-white rounded-3 shadow-lg">
-                <h3 style="color: white">My Buddy's Workouts</h3>
-                <table table class="table">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                        <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
+                    </div>
+                    <div class="card-body">
+                <table table class="table table-striped">
                     <th:block>
                         <thead>
                         <tr>
@@ -277,12 +297,19 @@ background-position: center;'"
                         </tr>
                     </th:block>
                 </table>
+                    </div>
             </div>
         </div>
         </div>
 
 
+
 <!--<footer th:replace="fragments :: footer"></footer>-->
+        <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
+            <div class="container py-3">
+                <p style="color: #0056b9; font-size: 1.125rem; " class="fw-bold">uTrain ©2021</p>
+            </div>
+        </footer>
     </div>
 </main>
 <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
