@@ -5,17 +5,13 @@ package org.launchcode.uTrain.models.user;
 import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.Address;
 import org.launchcode.uTrain.models.Interests;
-import org.launchcode.uTrain.models.workout.ExerciseType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
 @Entity
 public class UserDetail extends AbstractEntity {
@@ -134,20 +130,29 @@ add necessary annotations later.
     }
 
     // *Just add method to controller to be able to use in view*
-    public double getBodyMassIndex(){
-        double heightInMeters = (this.height / 39.37) ;
-        double weightInKilos = (this.weight / 2.20);
+//    public double getBodyMassIndex(){
+//        double heightInMeters = (this.height / 39.37) ;
+//        double weightInKilos = (this.weight / 2.20);
+//
+//        double bmi = Math.round(weightInKilos / (heightInMeters * heightInMeters));
+//
+//        return bmi;
+//    }
+//
+//    public double getBodyMassIndexStandard(){
+//        double weight = this.weight;
+//        double height = this.height;
+//        double num = weight / (height * height);
+//        double bmi = Math.round(num * 703);
+//
+//        return bmi;
+//    }
 
-        double bmi = Math.round(weightInKilos / (heightInMeters * heightInMeters));
-
-        return bmi;
-    }
-
-    public double getBodyMassIndexStandard(){
+    public double getBodyMassIndex() {
         double weight = this.weight;
         double height = this.height;
         double num = weight / (height * height);
-        double bmi = Math.round(num * 703);
+        double bmi = Math.round(num*703);
 
         return bmi;
     }

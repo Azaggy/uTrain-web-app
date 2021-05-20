@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+
     //Controller for display pages with hardly any interaction.
     @Autowired
     private ParkRepository parkRepository;
@@ -24,8 +25,10 @@ public class HomeController {
 
     @GetMapping("index")
     public String indexPage(Model model) {
+        BackgroundImage image = new BackgroundImage();
 
-        model.addAttribute("title", "Welcome To The uTrain Web App!!");
+        model.addAttribute("title", "Welcome To uTrain!!");
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
 
         return "index";
     }
@@ -42,4 +45,14 @@ public class HomeController {
         return "company";
     }
 
+    @GetMapping("bmiLoggedOut")
+    public String bmiCalc(Model model) {
+
+        model.addAttribute("title", "BMI Calculator");
+        return "bmiLoggedOut";
+    }
+
+
+
+//
 }

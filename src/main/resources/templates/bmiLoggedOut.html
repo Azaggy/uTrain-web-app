@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+
+<form name="calculator">
+    <table>
+        <tr>
+            <td>
+                <input type="text" name="display" id="display"
+                       disabled>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="one" value="1" onclick="calculator.display.value += '1'"> </td>
+            <td><input type="button" name="two" value="2" onclick="calculator.display.value += '2'"> </td>
+            <td><input type="button" name="three" value="3" onclick="calculator.display.value += '3'"> </td>
+            <td><input type="button" name="plus" value="+" onclick="calculator.display.value += '+'"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="four" value="4" onclick="calculator.display.value += '4'"> </td>
+            <td><input type="button" name="five" value="5" onclick="calculator.display.value += '5'"> </td>
+            <td><input type="button" name="six" value="6" onclick="calculator.display.value += '6'"> </td>
+            <td><input type="button" name="minus" value="-" onclick="calculator.display.value += '-'"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="seven" value="7" onclick="calculator.display.value += '7'"> </td>
+            <td><input type="button" name="eight" value="8" onclick="calculator.display.value += '8'"> </td>
+            <td><input type="button" name="nine" value="9" onclick="calculator.display.value += '9'"> </td>
+            <td><input type="button" name="times" value="*" onclick="calculator.display.value += '*'"> </td>
+            <td><input type="button" name="period" value="." onclick="calculator.display.value += '.'"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="clear" value="c" onclick="calculator.display.value = ''"> </td>
+            <td><input type="button" name="zero" value="0" onclick="calculator.display.value += '0'"> </td>
+            <td><input type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"> </td>
+            <td><input type="button" name="divide" value="/" onclick="calculator.display.value += '/'"> </td>
+        </tr>
+    </table>
+</form>
+
+<div cla="bmiTable" style="float: right">
+    <h1 class="titleTable"> BMI Table</h1>
+    <table class="bmiTable">
+        <tr>
+            <td class="subTitleTable">Classification </td>
+            <td class="subTitleTable">BMI Target</td>
+        </tr>
+        <tr>
+            <td class="miniTitleTable">Underweight</td>
+            <td class="numTable">Below 18.5</td>
+        </tr>
+        <tr>
+            <td class="miniTitleTable">Healthy</td>
+            <td class="numTable">Between 18.5 -24.9</td>
+
+        </tr>
+        <tr>
+            <td class="miniTitleTable">Overweight</td>
+            <td class="numTable">25 - 29.9</td>
+        </tr>
+        <tr>
+            <td class="miniTitleTable">Obese</td>
+            <td class="numTable">Over 30</td>
+        </tr>
+    </table>
+</div>
+
+
+<footer th:replace="fragments :: footer"></footer>
+
+
+</body>
+</html>

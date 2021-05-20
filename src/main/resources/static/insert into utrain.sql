@@ -1,0 +1,15 @@
+INSERT INTO `utrain-web-app`.`trainer` (`id`, `contact_email`, `contact_number`, `name`) 
+VALUES  ('1', 'TedWilkons@gmail.com', '3158827', 'Ted Wilkons'), 
+('2', 'MikeW@gmail.com', '8768851', 'Mike Wilkerson'),
+('3', 'TimBailenger@gmail.com', '3158827', 'Tim Bail'), 
+('4', 'Arlington1275animal@gmail.com', '3158827', 'xina Arlington'),
+('5', 'Agustus@gmail.com', '5732298', 'Andre Dreje'),
+('6', 'MichealJ@gmail.com', '5732273', 'Micheal Jackerson'),
+('7', 'MaryAnnSanBelle@gmail.com', '7731533', 'Mary ann Sanbelle'), 
+('8', 'DeonDock@gmail.com', '7781533', 'Deon Dockers'),
+('9', 'TinaTack@gmail.com', '7709893', 'Tina Tackerson'),
+('10', 'JackJiv@gmail.com', '1095829', 'Jack Jiverson'),
+('11', 'BenDeck@gmail.com', '3858801', 'Benjamin Decker'),	 
+('12', 'AndreStartersnacks@gmail.com', '5325890', 'Andre Starskan'), 
+('13', 'DeonD@gmail.com', '1531189', 'Deon Drakestone'),
+('14', 'BenjamineStokster@gmail.com', '5366622', 'Benjamin Stakester');

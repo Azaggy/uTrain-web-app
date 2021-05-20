@@ -1,16 +1,14 @@
 package org.launchcode.uTrain.models.user;
 
 import org.launchcode.uTrain.models.AbstractEntity;
-import org.launchcode.uTrain.models.workout.Exercise;
+import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -40,6 +38,10 @@ public class User extends AbstractEntity {
     @Column(name = "friends")
     private List<String> friends = new ArrayList<>();
 
+//    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserPhoto userPhoto;
+
     //this attribute is used to direct user to either profile or add profile page depending on whether attribute is true
     private boolean isNew;
 
@@ -55,11 +57,12 @@ public class User extends AbstractEntity {
         this.isNew = true;
     }
 
-    public User(String username, String password, String email, UserDetail userDetail) {
+    public User(String username, String password, String email, UserDetail userDetail, UserPhoto userPhoto) {
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.email = email;
         this.userDetail = userDetail;
+        this.userPhoto = userPhoto;
     }
 
     public User(String username, String password, String email, String image) {
@@ -113,6 +116,14 @@ public class User extends AbstractEntity {
 
     public void setNew(boolean aNew) {
         isNew = aNew;
+    }
+
+    public UserPhoto getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(UserPhoto userPhoto) {
+        this.userPhoto = userPhoto;
     }
 
     public List<Workout> getWorkouts() {
