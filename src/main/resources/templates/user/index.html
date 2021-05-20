@@ -103,26 +103,32 @@
                         <li class="nav-item">
                             <a style="color: white" class="nav-link" href="/logout">Logout</a>
                         </li>
-                        <li style="float: right" class="nav-item">
-                            <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>
-                            <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>
-                        </li>
+<!--                        <li style="float: right" class="nav-item">-->
+<!--                            -->
+<!--                        </li>-->
+
                     </ul>
                 </div>
+                <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>
+                <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>
+                <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="51" height="51">
+                <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="51" height="51">
             </div>
         </nav>
 <div th:style="'background-image: url(' + ${backgroundImage} + ');
                 background-repeat: no-repeat;
-                background size: cover;
-                background-position: center;'" class="p-3 mb-4 bg-light rounded-3 border shadow-lg">
+                background-size: cover;
+                background-position: center;
+                height: 400px'"
+     class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
     <div class="container-fluid py-4">
         <h1 class="display-5 fw-bold"></h1>
-<div>
-    <p style="text-align: center;">
-    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="300" height="300">
-    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="300" height="300">
-    </p>
-</div>
+<!--<div>-->
+<!--    <p style="text-align: center;">-->
+<!--    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="300" height="300">-->
+<!--    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="300" height="300">-->
+<!--    </p>-->
+<!--</div>-->
 <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
 
 <!--    <h3 style="color: #0056b9; background-color: rgba(0, 0, 0, 0.3)" th:if="${user.isNew}" class="fw-bold"  th:text="'Welcome, ' + ${user.username} + '!'"></h3>-->
