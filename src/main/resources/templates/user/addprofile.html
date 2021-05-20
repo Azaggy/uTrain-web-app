@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head><!--th:replace="fragments :: head"-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<head th:replace="fragments :: head">
+
   <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
-
+<header th:replace="fragments :: page-header"></header>
 
 <body class="container">
 
-<header th:replace="fragments :: page-header"></header>
+
 <div> <!-- th:replace="fragmentsnew :: bootstrap"-->
   <h1 style="color: white" th:text="${title}"></h1>
 
