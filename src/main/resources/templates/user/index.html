@@ -1,158 +1,368 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head">
+    <style>
+<!--  /* Make the image fully responsive */-->
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+</head>
 
 <body>
 <header th:replace="fragments :: page-header"></header>
-<div>
-    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
-    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
+<!--    </div>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">-->
+<!--    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">-->
 
-</div>
+<!--</div>-->
 <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
 
-    <h2 style="color: white" th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
-<h2 style="color: white" th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
-
-</a>
-
-<!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
-
-<h3 style="color: white">Received Messages</h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th>From</th>
-        <th>Message</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <th:block th:if="${receivedMessages.size > 2}">
-    <tr>
-        <th th:text="${receivedMessages[0].sender}"></th>
-        <th th:text="${receivedMessages[0].body}"></th>
-        <th th:text="${receivedMessages[0].date}"></th>
-    </tr>
-    <tr>
-        <th th:text="${receivedMessages[1].sender}"></th>
-        <th th:text="${receivedMessages[1].body}"></th>
-        <th th:text="${receivedMessages[1].date}"></th>
-    </tr>
-    <tr>
-        <th th:text="${receivedMessages[2].sender}"></th>
-        <th th:text="${receivedMessages[2].body}"></th>
-        <th th:text="${receivedMessages[2].date}"></th>
-    </tr>
-    </th:block>
-    <th:block th:unless="${receivedMessages.size > 2}">
-        <tr th:each="message : ${receivedMessages}">
-            <th th:text="${message.sender}"></th>
-            <th th:text="${message.body}"></th>
-            <th th:text="${message.date}"></th>
-        </tr>
-    </th:block>
-</table>
+    <h2 style="color: white; text-align: center;" th:if="${user.isNew}" class="stroke"  th:text="'Welcome, ' + ${user.username} + '!'"></h2>
+<h2 style="color: white; text-align: center;" th:unless="${user.isNew}" class="stroke" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h2>
 
 
-<h3 style="color: white">Sent Messages</h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th>To</th>
-        <th>Message</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <th:block th:if="${sentMessages.size > 2}">
-        <tr>
-            <th th:text="${sentMessages[0].recipient}"></th>
-            <th th:text="${sentMessages[0].body}"></th>
-            <th th:text="${sentMessages[0].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${sentMessages[1].recipient}"></th>
-            <th th:text="${sentMessages[1].body}"></th>
-            <th th:text="${sentMessages[1].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${sentMessages[2].recipient}"></th>
-            <th th:text="${sentMessages[2].body}"></th>
-            <th th:text="${sentMessages[2].date}"></th>
-        </tr>
-    </th:block>
-    <th:block th:unless="${sentMessages.size > 2}">
-        <tr th:each="message : ${sentMessages}">
-            <th th:text="${message.recipient}"></th>
-            <th th:text="${message.body}"></th>
-            <th th:text="${message.date}"></th>
-        </tr>
-    </th:block>
-</table>
-<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>
-</br>
-
-<h3 th:unless="${shared.isEmpty}" style="color: white">My Buddy's Workouts</h3>
-<table th:unless="${shared.isEmpty}" table class="table">
-    <th:block>
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Buddy</th>
-            <th>Workout Description</th>
-        </tr>
-        </thead>
-        <tr th:each="share : ${shared}">
-            <th th:text="${share.timeStamp}"></th>
-            <th th:text="${share.user.username}"></th>
-            <th th:text="${share.description}"></th>
-        </tr>
-    </th:block>
-</table>
-
-</br>
-
-<h3 style="color: white">Parks Near You</h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Park Name</th>
-        <th>Zip Code</th>
-    </tr>
-    </thead>
-    <th:block>
-        <tr th:each="matchingPark:${matchingParks}">
-            <th th:text="${matchingPark.name}"></th>
-            <th th:text="${matchingPark.address.zipCode}"></th>
-        </tr>
-    </th:block>
-</table>
-
-<h3 style="color: white">Gyms Near You</h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Gym Name</th>
-        <th>Zip Code</th>
-    </tr>
-    </thead>
-<!--    <th:block>-->
-    <th:block>
-        <tr th:each="matchingGym:${matchingGyms}">
-            <th th:text="${matchingGym.name}"></th>
-            <th th:text="${matchingGym.address.zipCode}"></th>
-        </tr>
-    </th:block>
-</table>
-</br>
-
-<div class= "photos">
-    <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
-    <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >
-    <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="465" height="300" >
-    <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >
+<!--On user index page only 6 messages will appear. The newest 3 sent and received messages  width: 750px; -->
+<div class="row" style="margin-left: auto; margin-right: auto; padding: 10px 5px;">
+    <div class="col-sm-4">
+        <div class="card" style="background-color: #0250ab;">
+            <div class="card-body">
+<!--                <h5 class="card-title">Special title treatment</h5>-->
+                <h5 class="card-title" style="color: white">Received Messages</h5>
+                <p class="card-text">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <th:block th:if="${receivedMessages.size > 2}">
+                            <tr>
+                                <th th:text="${receivedMessages[0].sender}"></th>
+                                <th th:text="${receivedMessages[0].body}"></th>
+                                <th th:text="${receivedMessages[0].date}"></th>
+                            </tr>
+                            <tr>
+                                <th th:text="${receivedMessages[1].sender}"></th>
+                                <th th:text="${receivedMessages[1].body}"></th>
+                                <th th:text="${receivedMessages[1].date}"></th>
+                            </tr>
+                            <tr>
+                                <th th:text="${receivedMessages[2].sender}"></th>
+                                <th th:text="${receivedMessages[2].body}"></th>
+                                <th th:text="${receivedMessages[2].date}"></th>
+                            </tr>
+                        </th:block>
+                        <th:block th:unless="${receivedMessages.size > 2}">
+                            <tr th:each="message : ${receivedMessages}">
+                                <th th:text="${message.sender}"></th>
+                                <th th:text="${message.body}"></th>
+                                <th th:text="${message.date}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </p>
+                <a href="/message/index" class="btn btn-primary">Go to Messages</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="background-color: #0250ab;">
+            <div class="card-body">
+                <h3 class="card-title" style="color: white">Sent Messages</h3>
+                <p class="card-text">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>To</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <th:block th:if="${sentMessages.size > 2}">
+                            <tr>
+                                <th th:text="${sentMessages[0].recipient}"></th>
+                                <th th:text="${sentMessages[0].body}"></th>
+                                <th th:text="${sentMessages[0].date}"></th>
+                            </tr>
+                            <tr>
+                                <th th:text="${sentMessages[1].recipient}"></th>
+                                <th th:text="${sentMessages[1].body}"></th>
+                                <th th:text="${sentMessages[1].date}"></th>
+                            </tr>
+                            <tr>
+                                <th th:text="${sentMessages[2].recipient}"></th>
+                                <th th:text="${sentMessages[2].body}"></th>
+                                <th th:text="${sentMessages[2].date}"></th>
+                            </tr>
+                        </th:block>
+                        <th:block th:unless="${sentMessages.size > 2}">
+                            <tr th:each="message : ${sentMessages}">
+                                <th th:text="${message.recipient}"></th>
+                                <th th:text="${message.body}"></th>
+                                <th th:text="${message.date}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </p>
+                <a href="/message/addmessage" class="btn btn-primary">Send New Message</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="background-color: #0250ab; text-align: center;">
+            <div class="card-body">
+                <h3 th:unless="${shared.isEmpty}" class="card-title" style="color: white">My Buddy's Workouts</h3>
+                <p class="card-text">
+                    <h4 th:if="${shared.isEmpty}" style="color: white;">All alone on your journey? </br> Add a workout buddy today to help get you motivated!</h4>
+                    <table th:unless="${shared.isEmpty}" table class="table">
+                        <th:block>
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Buddy</th>
+                                <th>Workout Description</th>
+                            </tr>
+                            </thead>
+                            <tr th:each="share : ${shared}">
+                                <th th:text="${share.timeStamp}"></th>
+                                <th th:text="${share.user.username}"></th>
+                                <th th:text="${share.description}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </p>
+                <a href="/user/addfriend" class="btn btn-primary">Add a workout buddy</a>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="jumbotron" style="background-color: #0250ab; width: 750px; height:415px; float: left; padding: 15px 20px; margin-left: 25px; margin-right: auto; ">
+    <div class="container">
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel" style=" object-fit: cover;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" class="d-block w-100" alt="Woman working out with jump rope" height="350px" width="750px" style="height: 400; object-fit: fit">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.kym-cdn.com/entries/icons/original/000/032/767/Fitness_Is_My_Passion_Banner.jpg" class="d-block w-100" alt="Fitness is my Passion" width="750px" height="350px" style="object-fit: fit;">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" class="d-block w-100" alt="Two cyclists on pathed road" width="750px" height="350px" style="height: 400; object-fit: fit">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" class="d-block w-100" alt="Running on the side of a road." width="750px" height="350px" style=" object-fit: fit">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2j2N8fKxcGohFQ1PPCKOJMXuAh5EZqR4TLw&usqp=CAU" class="d-block w-100" alt="Funeral for the Fat." height="350px" width="750px" style=" object-fit: fit">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" class="d-block w-100" alt="Trainer glaring at trainee." height="350px" width="750px" style="height: 400; object-fit: fit">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTojk2x0RdJ1c-1g7W-3UshUw5EEJmskcjEEA&usqp=CAU" class="d-block w-100" alt="Loading Perfect Body." height="350px" width="750px" style="height: 400; object-fit: fit">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row" style=" padding: 10px 5px;margin-left: auto; margin-right: auto;">
+    <div class="col">
+        <div class="card" style="background-color: #0250ab; margin-left: auto; margin-right: auto;">
+            <div class="card-body">
+                <h3 class="card-title" style="color: white">Parks Near You</h3>
+                <p class="card-text">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Park Name</th>
+                            <th>Zip Code</th>
+                        </tr>
+                        </thead>
+                        <th:block>
+                            <tr th:each="matchingPark:${matchingParks}">
+                                <th th:text="${matchingPark.name}"></th>
+                                <th th:text="${matchingPark.address.zipCode}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </p>
+                <a href="/park/index" class="btn btn-primary">List of Parks</a>
+                <a href="/park/addpark" class="btn btn-primary">Add a Park</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style=" padding: 10px 5px;margin-left: auto; margin-right: auto;">
+    <div class="col">
+        <div class="card" style="background-color: #0250ab;">
+            <div class="card-body">
+                <h3 class="card-title" style="color: white">Gyms Near You</h3>
+                <p class="card-text">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Gym Name</th>
+                            <th>Zip Code</th>
+                        </tr>
+                        </thead>
+                        <!--    <th:block>-->
+                        <th:block>
+                            <tr th:each="matchingGym:${matchingGyms}">
+                                <th th:text="${matchingGym.name}"></th>
+                                <th th:text="${matchingGym.address.zipCode}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </p>
+                <a href="/gym/index" class="btn btn-primary">List of Gyms</a>
+                <a href="/gym/addgym" class="btn btn-primary">Add a Gym</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<h3 style="color: white">Received Messages</h3>-->
+<!--<table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>From</th>-->
+<!--        <th>Message</th>-->
+<!--        <th>Date</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <th:block th:if="${receivedMessages.size > 2}">-->
+<!--    <tr>-->
+<!--        <th th:text="${receivedMessages[0].sender}"></th>-->
+<!--        <th th:text="${receivedMessages[0].body}"></th>-->
+<!--        <th th:text="${receivedMessages[0].date}"></th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th th:text="${receivedMessages[1].sender}"></th>-->
+<!--        <th th:text="${receivedMessages[1].body}"></th>-->
+<!--        <th th:text="${receivedMessages[1].date}"></th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th th:text="${receivedMessages[2].sender}"></th>-->
+<!--        <th th:text="${receivedMessages[2].body}"></th>-->
+<!--        <th th:text="${receivedMessages[2].date}"></th>-->
+<!--    </tr>-->
+<!--    </th:block>-->
+<!--    <th:block th:unless="${receivedMessages.size > 2}">-->
+<!--        <tr th:each="message : ${receivedMessages}">-->
+<!--            <th th:text="${message.sender}"></th>-->
+<!--            <th th:text="${message.body}"></th>-->
+<!--            <th th:text="${message.date}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+
+<!--<h3 style="color: white">Sent Messages</h3>-->
+<!--<table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>To</th>-->
+<!--        <th>Message</th>-->
+<!--        <th>Date</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <th:block th:if="${sentMessages.size > 2}">-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[0].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[0].body}"></th>-->
+<!--            <th th:text="${sentMessages[0].date}"></th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[1].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[1].body}"></th>-->
+<!--            <th th:text="${sentMessages[1].date}"></th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[2].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[2].body}"></th>-->
+<!--            <th th:text="${sentMessages[2].date}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--    <th:block th:unless="${sentMessages.size > 2}">-->
+<!--        <tr th:each="message : ${sentMessages}">-->
+<!--            <th th:text="${message.recipient}"></th>-->
+<!--            <th th:text="${message.body}"></th>-->
+<!--            <th th:text="${message.date}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+<!--<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>-->
+<!--</br>-->
+
+<!--<h3 th:unless="${shared.isEmpty}" style="color: white">My Buddy's Workouts</h3>-->
+<!--<table th:unless="${shared.isEmpty}" table class="table">-->
+<!--    <th:block>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Date</th>-->
+<!--            <th>Buddy</th>-->
+<!--            <th>Workout Description</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tr th:each="share : ${shared}">-->
+<!--            <th th:text="${share.timeStamp}"></th>-->
+<!--            <th th:text="${share.user.username}"></th>-->
+<!--            <th th:text="${share.description}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+
+<!--</br>-->
+
+<!--<h3 style="color: white">Parks Near You</h3>-->
+<!--<table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Park Name</th>-->
+<!--        <th>Zip Code</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <th:block>-->
+<!--        <tr th:each="matchingPark:${matchingParks}">-->
+<!--            <th th:text="${matchingPark.name}"></th>-->
+<!--            <th th:text="${matchingPark.address.zipCode}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+
+<!--<h3 style="color: white">Gyms Near You</h3>-->
+<!--<table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Gym Name</th>-->
+<!--        <th>Zip Code</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--&lt;!&ndash;    <th:block>&ndash;&gt;-->
+<!--    <th:block>-->
+<!--        <tr th:each="matchingGym:${matchingGyms}">-->
+<!--            <th th:text="${matchingGym.name}"></th>-->
+<!--            <th th:text="${matchingGym.address.zipCode}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+</br>
+
+<!--<div class= "photos">-->
+<!--    <img class="img-fluid" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >-->
+<!--    <img class="img-fluid" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >-->
+<!--    <img class="img-fluid" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="465" height="300" >-->
+<!--    <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >-->
+<!--</div>-->
 
 <footer th:replace="fragments :: footer"></footer>
-
+<!--<script>-->
+<!--    $('.carousel').carousel()-->
+<!--</script>-->
 </body>
 </html>

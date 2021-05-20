@@ -114,7 +114,7 @@ a.one {
   display: block;
 }
 
-.photos{
+#photos{
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -165,8 +165,7 @@ a.one {
    color: white;
    }
 
-.image {
- }
+
 
 #formgroup, .form-control{
     font-size: 20px;
