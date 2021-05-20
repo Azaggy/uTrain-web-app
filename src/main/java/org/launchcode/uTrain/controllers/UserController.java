@@ -74,6 +74,9 @@ public class UserController {
         //Initiating Lists for loading shared workout data onto user's index page
         ArrayList<Workout> sharedWorkouts = new ArrayList<>();
 
+        //Initiating Lists for loading user's workouts onto user's index page
+        ArrayList<Workout> userWorkouts = new ArrayList<>();
+
         //Initiating Lists for loading park data onto user's index page
         ArrayList<Park> parks= (ArrayList<Park>)parkRepository.findAll();
         ArrayList<Park> matchingParks = new ArrayList<>();
@@ -136,7 +139,7 @@ public class UserController {
                 }
             }
 
-            if(tempWorkout.isEmpty()) {
+            if (tempWorkout.isEmpty()) {
                 break;
             } else {
 
@@ -153,6 +156,21 @@ public class UserController {
 
 
         }
+                for (Workout workout : user.getWorkouts()) {
+                    if(user.getWorkouts().isEmpty()) {
+                        break;
+                    } else {
+                    userWorkouts.add(workout);
+                    }
+                }
+
+                if(!userWorkouts.isEmpty()){
+
+                    Collections.sort(userWorkouts, (c1, c2) -> {
+                        if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                        else return 1;
+                        });
+                }
 
 
         /*
@@ -169,6 +187,7 @@ public class UserController {
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
         model.addAttribute("matchingGyms", matchingGyms);
+        model.addAttribute("workouts", userWorkouts);
         model.addAttribute("backgroundImage", image.randomImageGenerator());
 
 

@@ -137,6 +137,66 @@
     </div>
 </div>
 <!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
+        <div th:unless="${workouts.isEmpty}" class="mb-4">
+<!--            <div class="col-md-6">-->
+                <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-sm">
+                    <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+                        <h4 class="my-0 fw-normal">Recent Workouts</h4>
+                    </div>
+                    <div class="body p-3">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Description</th>
+<!--                                <th>Calories Consumed</th>-->
+                                <th>Calories Burned</th>
+                                <th>Exercise Name</th>
+                                <th>Exercise Type</th>
+                                <th>Date of Workout</th>
+                            </tr>
+                            </thead>
+                            <th:block th:if="${workouts.size > 2}">
+                                <tr>
+                                    <th th:text="${workouts[0].description}"></th>
+<!--                                    <th th:text="${workouts[0].consumedCal}"></th>-->
+                                    <th th:text="${workouts[0].burnedCal}"></th>
+                                    <th th:text="${workouts[0].exercise.name}"></th>
+                                    <th th:text="${workouts[0].exercise.exerciseType.exerciseType}"></th>
+                                    <th th:text="${workouts[0].timeStamp}"></th>
+                                </tr>
+                                <tr>
+                                    <th th:text="${workouts[1].description}"></th>
+<!--                                    <th th:text="${workouts[1].consumedCal}"></th>-->
+                                    <th th:text="${workouts[1].burnedCal}"></th>
+                                    <th th:text="${workouts[1].exercise.name}"></th>
+                                    <th th:text="${workouts[1].exercise.exerciseType.exerciseType}"></th>
+                                    <th th:text="${workouts[1].timeStamp}"></th>
+                                </tr>
+                                <tr>
+                                    <th th:text="${workouts[2].description}"></th>
+<!--                                    <th th:text="${workouts[2].consumedCal}"></th>-->
+                                    <th th:text="${workouts[2].burnedCal}"></th>
+                                    <th th:text="${workouts[2].exercise.name}"></th>
+                                    <th th:text="${workouts[2].exercise.exerciseType.exerciseType}"></th>
+                                    <th th:text="${workouts[2].timeStamp}"></th>
+                                </tr>
+                            </th:block>
+                            <th:block th:unless="${workouts.size > 2}">
+                                <tr th:each="workout : ${workouts}">
+                                    <th th:text="${workout.description}"></th>
+<!--                                    <th th:text="${workout.consumedCal}"></th>-->
+                                    <th th:text="${workout.burnedCal}"></th>
+                                    <th th:text="${workout.exercise.name}"></th>
+                                    <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
+                                    <th th:text="${workout.timeStamp}"></th>
+                                </tr>
+                            </th:block>
+                        </table>
+                    </div>
+                </div>
+<!--            </div>-->
+        </div>
+
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
     <div class="col-md-6">
