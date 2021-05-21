@@ -94,6 +94,7 @@ public class WorkOutController {
 
         //grabbing the current date to add to the workout before it's saved to the repository
         Date currentDate = Calendar.getInstance().getTime();
+        Date dateInSec = user.truncToSec(currentDate);
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Workout");
@@ -128,7 +129,7 @@ public class WorkOutController {
 
 
         //we set the date and the user to the workout. The User's id will be stored on the workout table
-        workout.setTimeStamp(currentDate);
+        workout.setTimeStamp(dateInSec);
         workout.setUser(user);
         workoutRepository.save(workout);
 
