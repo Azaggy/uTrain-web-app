@@ -1,9 +1,6 @@
 package org.launchcode.uTrain.controllers;
 
-import org.launchcode.uTrain.data.GymRepository;
-import org.launchcode.uTrain.data.MessageRepository;
-import org.launchcode.uTrain.data.ParkRepository;
-import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.data.*;
 import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
@@ -64,6 +61,8 @@ public class UserController {
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) {
 
+        BackgroundImage image = new BackgroundImage();
+
         //Pulling user from session
         User user = (User) getUserFromSession(request.getSession());
 
@@ -74,6 +73,9 @@ public class UserController {
 
         //Initiating Lists for loading shared workout data onto user's index page
         ArrayList<Workout> sharedWorkouts = new ArrayList<>();
+
+        //Initiating Lists for loading user's workouts onto user's index page
+        ArrayList<Workout> userWorkouts = new ArrayList<>();
 
         //Initiating Lists for loading park data onto user's index page
         ArrayList<Park> parks= (ArrayList<Park>)parkRepository.findAll();
@@ -137,7 +139,7 @@ public class UserController {
                 }
             }
 
-            if(tempWorkout.isEmpty()) {
+            if (tempWorkout.isEmpty()) {
                 break;
             } else {
 
@@ -154,6 +156,21 @@ public class UserController {
 
 
         }
+                for (Workout workout : user.getWorkouts()) {
+                    if(user.getWorkouts().isEmpty()) {
+                        break;
+                    } else {
+                    userWorkouts.add(workout);
+                    }
+                }
+
+                if(!userWorkouts.isEmpty()){
+
+                    Collections.sort(userWorkouts, (c1, c2) -> {
+                        if (c1.getTimeStamp().after(c2.getTimeStamp())) return -1;
+                        else return 1;
+                        });
+                }
 
 
         /*
@@ -170,6 +187,8 @@ public class UserController {
         model.addAttribute("sentMessages", sentMessages);
         model.addAttribute("matchingParks", matchingParks);
         model.addAttribute("matchingGyms", matchingGyms);
+        model.addAttribute("workouts", userWorkouts);
+        model.addAttribute("backgroundImage", image.randomImageGenerator());
 
 
 
