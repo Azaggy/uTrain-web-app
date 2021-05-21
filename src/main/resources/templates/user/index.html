@@ -39,317 +39,316 @@
     </style>
 </head>
 <body>
-<!--<header th:replace="fragments :: page-header"></header>-->
-<main style="background-color: white">
-    <div class="container py-3">
-        <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
-            <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
-                <a class="navbar-brand" th:href="@{/user/index}">
-                    <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExample03">
-                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <li class="nav-item">
-                            <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
-                        </li>
-                        <li class="nav-item">
-                            <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
-                            <a th:unless="${user.isNew}" style="color: white;" class="nav-link" href="/user/profile">Profile</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                        <ul style="background-color: #0056b9" class="dropdown-menu" aria-labelledby="dropdown03">
-                            <li>
-                                <a class="dropdown-item" href="/user/addfriend">Add Workout Buddy</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/workout/workouts">Workouts</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/workout/addworkout">Add Workout</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/gym/index">Gym Locator</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/gym/addgym">Add Gym</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/park/index">Park Locator</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/par/addpark">Add Park</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/message/index">All Messages</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/message/addmessage">Send Message</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/trainer/index">List of Trainers</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/trainer/create">Add Trainer</a>
-                            </li>
-                        </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: white" class="nav-link" href="/logout">Logout</a>
-                        </li>
-<!--                        <li style="float: right" class="nav-item">-->
-<!--                            -->
+<header th:replace="fragments :: page-header"></header>
+<!--    <div class="container py-3">-->
+<!--        <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">-->
+<!--            <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">-->
+<!--                <a class="navbar-brand" th:href="@{/user/index}">-->
+<!--                    <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>-->
+<!--                </a>-->
+<!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                    <span class="navbar-toggler-icon"></span>-->
+<!--                </button>-->
+<!--                <div class="collapse navbar-collapse" id="navbarsExample03">-->
+<!--                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">-->
+<!--                        <li class="nav-item">-->
+<!--                            <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>-->
 <!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>-->
+<!--                            <a th:unless="${user.isNew}" style="color: white;" class="nav-link" href="/user/profile">Profile</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item dropdown">-->
+<!--                            <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Services</a>-->
+<!--                        <ul style="background-color: #0056b9" class="dropdown-menu" aria-labelledby="dropdown03">-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/user/addfriend">Add Workout Buddy</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/workout/workouts">Workouts</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/workout/addworkout">Add Workout</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/gym/index">Gym Locator</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/gym/addgym">Add Gym</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/park/index">Park Locator</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/par/addpark">Add Park</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/message/index">All Messages</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/message/addmessage">Send Message</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/trainer/index">List of Trainers</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="/trainer/create">Add Trainer</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a style="color: white" class="nav-link" href="/logout">Logout</a>-->
+<!--                        </li>-->
+<!--&lt;!&ndash;                        <li style="float: right" class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            &ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
 
-                    </ul>
-                </div>
-                <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>
-                <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>
-                <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="51" height="51">
-                <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="51" height="51">
-            </div>
-        </nav>
-<div th:style="'background-image: url(' + ${backgroundImage} + ');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                height: 400px'"
-     class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
-    <div class="container-fluid py-4">
-        <h1 class="display-5 fw-bold"></h1>
-<!--<div>-->
-<!--    <p style="text-align: center;">-->
-<!--    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="300" height="300">-->
-<!--    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="300" height="300">-->
-<!--    </p>-->
-<!--</div>-->
-<!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>-->
+<!--                <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>-->
+<!--                <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="51" height="51">-->
+<!--                <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="51" height="51">-->
+<!--            </div>-->
+<!--        </nav>-->
+<div class="container py-3">
+    <div th:style="'background-image: url(' + ${backgroundImage} + ');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    height: 400px'"
+         class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold"></h1>
+    <!--<div>-->
+    <!--    <p style="text-align: center;">-->
+    <!--    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="300" height="300">-->
+    <!--    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="300" height="300">-->
+    <!--    </p>-->
+    <!--</div>-->
+    <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
 
-<!--    <h3 style="color: #0056b9; background-color: rgba(0, 0, 0, 0.3)" th:if="${user.isNew}" class="fw-bold"  th:text="'Welcome, ' + ${user.username} + '!'"></h3>-->
-<!--    <h3 style="color: #0056b9; background-color: rgba(0, 0, 0, 0.3)" th:unless="${user.isNew}" class="fw-bold" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h3>-->
+    <!--    <h3 style="color: #0056b9; background-color: rgba(0, 0, 0, 0.3)" th:if="${user.isNew}" class="fw-bold"  th:text="'Welcome, ' + ${user.username} + '!'"></h3>-->
+    <!--    <h3 style="color: #0056b9; background-color: rgba(0, 0, 0, 0.3)" th:unless="${user.isNew}" class="fw-bold" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h3>-->
 
+        </div>
     </div>
-</div>
-<!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
-        <div th:unless="${workouts.isEmpty}" class="mb-4">
-<!--            <div class="col-md-6">-->
-                <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-sm">
-                    <div style="background-color: #0056b9" class="header py-3 text-white text-center">
-                        <h4 class="my-0 fw-normal">Recent Workouts</h4>
+    <!--On user index page only 6 messages will appear. The newest 3 sent and received messages-->
+            <div th:unless="${workouts.isEmpty}" class="mb-4">
+    <!--            <div class="col-md-6">-->
+                    <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-sm">
+                        <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+                            <h4 class="my-0 fw-normal">Recent Workouts</h4>
+                        </div>
+                        <div class="body p-3">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Description</th>
+    <!--                                <th>Calories Consumed</th>-->
+                                    <th>Calories Burned</th>
+                                    <th>Exercise Name</th>
+                                    <th>Exercise Type</th>
+                                    <th>Date of Workout</th>
+                                </tr>
+                                </thead>
+                                <th:block th:if="${workouts.size > 2}">
+                                    <tr>
+                                        <th th:text="${workouts[0].description}"></th>
+    <!--                                    <th th:text="${workouts[0].consumedCal}"></th>-->
+                                        <th th:text="${workouts[0].burnedCal}"></th>
+                                        <th th:text="${workouts[0].exercise.name}"></th>
+                                        <th th:text="${workouts[0].exercise.exerciseType.exerciseType}"></th>
+                                        <th th:text="${workouts[0].timeStamp}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th th:text="${workouts[1].description}"></th>
+    <!--                                    <th th:text="${workouts[1].consumedCal}"></th>-->
+                                        <th th:text="${workouts[1].burnedCal}"></th>
+                                        <th th:text="${workouts[1].exercise.name}"></th>
+                                        <th th:text="${workouts[1].exercise.exerciseType.exerciseType}"></th>
+                                        <th th:text="${workouts[1].timeStamp}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th th:text="${workouts[2].description}"></th>
+    <!--                                    <th th:text="${workouts[2].consumedCal}"></th>-->
+                                        <th th:text="${workouts[2].burnedCal}"></th>
+                                        <th th:text="${workouts[2].exercise.name}"></th>
+                                        <th th:text="${workouts[2].exercise.exerciseType.exerciseType}"></th>
+                                        <th th:text="${workouts[2].timeStamp}"></th>
+                                    </tr>
+                                </th:block>
+                                <th:block th:unless="${workouts.size > 2}">
+                                    <tr th:each="workout : ${workouts}">
+                                        <th th:text="${workout.description}"></th>
+    <!--                                    <th th:text="${workout.consumedCal}"></th>-->
+                                        <th th:text="${workout.burnedCal}"></th>
+                                        <th th:text="${workout.exercise.name}"></th>
+                                        <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
+                                        <th th:text="${workout.timeStamp}"></th>
+                                    </tr>
+                                </th:block>
+                            </table>
+                        </div>
                     </div>
-                    <div class="body p-3">
-                        <table class="table table-striped">
+    <!--            </div>-->
+            </div>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+
+            <div th:if="${shared.isEmpty}" class="col-md-6">
+                <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                    <div style="background-color: #0056b9" class=" py-3 text-white">
+                        <h4 class="my-0 fw-normal">Don't Have A Buddy?</h4>
+                    </div>
+                    <div class="body">
+                    <div>
+                        <h4 class="my-4 px-4">All alone on your journey? </br> Add a workout buddy today to help get you motivated!</h4>
+                    </div>
+                    <a href="/user/addfriend">
+                    <button style="background-color: #0056b9" class="btn btn-primary btn-lg my-4" type="button">Add Buddy</button>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        <div th:unless="${shared.isEmpty}" class="col-md-6">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                    <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <th:block>
                             <thead>
                             <tr>
-                                <th>Description</th>
-<!--                                <th>Calories Consumed</th>-->
-                                <th>Calories Burned</th>
-                                <th>Exercise Name</th>
-                                <th>Exercise Type</th>
-                                <th>Date of Workout</th>
+                                <th>Date</th>
+                                <th>Buddy</th>
+                                <th>Workout Description</th>
                             </tr>
                             </thead>
-                            <th:block th:if="${workouts.size > 2}">
-                                <tr>
-                                    <th th:text="${workouts[0].description}"></th>
-<!--                                    <th th:text="${workouts[0].consumedCal}"></th>-->
-                                    <th th:text="${workouts[0].burnedCal}"></th>
-                                    <th th:text="${workouts[0].exercise.name}"></th>
-                                    <th th:text="${workouts[0].exercise.exerciseType.exerciseType}"></th>
-                                    <th th:text="${workouts[0].timeStamp}"></th>
-                                </tr>
-                                <tr>
-                                    <th th:text="${workouts[1].description}"></th>
-<!--                                    <th th:text="${workouts[1].consumedCal}"></th>-->
-                                    <th th:text="${workouts[1].burnedCal}"></th>
-                                    <th th:text="${workouts[1].exercise.name}"></th>
-                                    <th th:text="${workouts[1].exercise.exerciseType.exerciseType}"></th>
-                                    <th th:text="${workouts[1].timeStamp}"></th>
-                                </tr>
-                                <tr>
-                                    <th th:text="${workouts[2].description}"></th>
-<!--                                    <th th:text="${workouts[2].consumedCal}"></th>-->
-                                    <th th:text="${workouts[2].burnedCal}"></th>
-                                    <th th:text="${workouts[2].exercise.name}"></th>
-                                    <th th:text="${workouts[2].exercise.exerciseType.exerciseType}"></th>
-                                    <th th:text="${workouts[2].timeStamp}"></th>
-                                </tr>
-                            </th:block>
-                            <th:block th:unless="${workouts.size > 2}">
-                                <tr th:each="workout : ${workouts}">
-                                    <th th:text="${workout.description}"></th>
-<!--                                    <th th:text="${workout.consumedCal}"></th>-->
-                                    <th th:text="${workout.burnedCal}"></th>
-                                    <th th:text="${workout.exercise.name}"></th>
-                                    <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
-                                    <th th:text="${workout.timeStamp}"></th>
-                                </tr>
-                            </th:block>
-                        </table>
+                            <tr th:each="share : ${shared}">
+                                <th th:text="${share.timeStamp}"></th>
+                                <th th:text="${share.user.username}"></th>
+                                <th th:text="${share.description}"></th>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+                <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                    <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                        <h4 class="my-0 fw-normal">Received Messages</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>From</th>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <th:block th:if="${receivedMessages.size > 2}">
+        <tr>
+            <th th:text="${receivedMessages[0].sender}"></th>
+            <th th:text="${receivedMessages[0].body}"></th>
+            <th th:text="${receivedMessages[0].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${receivedMessages[1].sender}"></th>
+            <th th:text="${receivedMessages[1].body}"></th>
+            <th th:text="${receivedMessages[1].date}"></th>
+        </tr>
+        <tr>
+            <th th:text="${receivedMessages[2].sender}"></th>
+            <th th:text="${receivedMessages[2].body}"></th>
+            <th th:text="${receivedMessages[2].date}"></th>
+        </tr>
+        </th:block>
+        <th:block th:unless="${receivedMessages.size > 2}">
+            <tr th:each="message : ${receivedMessages}">
+                <th th:text="${message.sender}"></th>
+                <th th:text="${message.body}"></th>
+                <th th:text="${message.date}"></th>
+            </tr>
+        </th:block>
+    </table>
                     </div>
                 </div>
+        </div>
+
+
+    </div>
+            </br>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col-md-6">
+                <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                    <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                        <h4 class="my-0 fw-normal">Parks Near You</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Park Name</th>
+            <th>Zip Code</th>
+        </tr>
+        </thead>
+        <th:block>
+            <tr th:each="matchingPark:${matchingParks}">
+                <th th:text="${matchingPark.name}"></th>
+                <th th:text="${matchingPark.address.zipCode}"></th>
+            </tr>
+        </th:block>
+    </table>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-md-6">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                    <h4 class="my-0 fw-normal">Gyms Near You</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Gym Name</th>
+            <th>Zip Code</th>
+        </tr>
+        </thead>
+    <!--    <th:block>-->
+        <th:block>
+            <tr th:each="matchingGym:${matchingGyms}">
+                <th th:text="${matchingGym.name}"></th>
+                <th th:text="${matchingGym.address.zipCode}"></th>
+            </tr>
+        </th:block>
+    </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+<!--        <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">-->
+<!--            <div class="container py-3">-->
+<!--                <p style="color: #0056b9; font-size: 1.125rem; " class="fw-bold">uTrain ©2021</p>-->
 <!--            </div>-->
-        </div>
-
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-
-
-        <div th:if="${shared.isEmpty}" class="col-md-6">
-            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-                <div style="background-color: #0056b9" class=" py-3 text-white">
-                    <h4 class="my-0 fw-normal">Don't Have A Buddy?</h4>
-                </div>
-                <div class="body">
-                <div>
-                    <h4 class="my-4 px-4">All alone on your journey? </br> Add a workout buddy today to help get you motivated!</h4>
-                </div>
-                <a href="/user/addfriend">
-                <button style="background-color: #0056b9" class="btn btn-primary btn-lg my-4" type="button">Add Buddy</button>
-                </a>
-                </div>
-            </div>
-        </div>
-    <div th:unless="${shared.isEmpty}" class="col-md-6">
-        <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-            <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <th:block>
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Buddy</th>
-                            <th>Workout Description</th>
-                        </tr>
-                        </thead>
-                        <tr th:each="share : ${shared}">
-                            <th th:text="${share.timeStamp}"></th>
-                            <th th:text="${share.user.username}"></th>
-                            <th th:text="${share.description}"></th>
-                        </tr>
-                    </th:block>
-                </table>
-            </div>
-        </div>
+<!--        </footer>-->
     </div>
-
-
-
-    <div class="col-md-6">
-            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-                <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                    <h4 class="my-0 fw-normal">Received Messages</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>From</th>
-        <th>Message</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <th:block th:if="${receivedMessages.size > 2}">
-    <tr>
-        <th th:text="${receivedMessages[0].sender}"></th>
-        <th th:text="${receivedMessages[0].body}"></th>
-        <th th:text="${receivedMessages[0].date}"></th>
-    </tr>
-    <tr>
-        <th th:text="${receivedMessages[1].sender}"></th>
-        <th th:text="${receivedMessages[1].body}"></th>
-        <th th:text="${receivedMessages[1].date}"></th>
-    </tr>
-    <tr>
-        <th th:text="${receivedMessages[2].sender}"></th>
-        <th th:text="${receivedMessages[2].body}"></th>
-        <th th:text="${receivedMessages[2].date}"></th>
-    </tr>
-    </th:block>
-    <th:block th:unless="${receivedMessages.size > 2}">
-        <tr th:each="message : ${receivedMessages}">
-            <th th:text="${message.sender}"></th>
-            <th th:text="${message.body}"></th>
-            <th th:text="${message.date}"></th>
-        </tr>
-    </th:block>
-</table>
-                </div>
-            </div>
-    </div>
-
-
-</div>
-        </br>
-
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    <div class="col-md-6">
-            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-                <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                    <h4 class="my-0 fw-normal">Parks Near You</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Park Name</th>
-        <th>Zip Code</th>
-    </tr>
-    </thead>
-    <th:block>
-        <tr th:each="matchingPark:${matchingParks}">
-            <th th:text="${matchingPark.name}"></th>
-            <th th:text="${matchingPark.address.zipCode}"></th>
-        </tr>
-    </th:block>
-</table>
-                </div>
-            </div>
-    </div>
-
-    <div class="col-md-6">
-        <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-            <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                <h4 class="my-0 fw-normal">Gyms Near You</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Gym Name</th>
-        <th>Zip Code</th>
-    </tr>
-    </thead>
-<!--    <th:block>-->
-    <th:block>
-        <tr th:each="matchingGym:${matchingGyms}">
-            <th th:text="${matchingGym.name}"></th>
-            <th th:text="${matchingGym.address.zipCode}"></th>
-        </tr>
-    </th:block>
-</table>
-        </div>
-    </div>
-
-</div>
-</div>
-
-<!--<footer th:replace="fragments :: footer"></footer>-->
-        <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
-            <div class="container py-3">
-                <p style="color: #0056b9; font-size: 1.125rem; " class="fw-bold">uTrain ©2021</p>
-            </div>
-        </footer>
-    </div>
-</main>
 <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
