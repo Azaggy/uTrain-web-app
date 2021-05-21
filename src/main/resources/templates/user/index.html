@@ -199,6 +199,50 @@
 
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
+
+        <div th:if="${shared.isEmpty}" class="col-md-6">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class=" py-3 text-white">
+                    <h4 class="my-0 fw-normal">Don't Have A Buddy?</h4>
+                </div>
+                <div class="body">
+                <div>
+                    <h4 class="my-4 px-4">All alone on your journey? </br> Add a workout buddy today to help get you motivated!</h4>
+                </div>
+                <a href="/user/addfriend">
+                <button style="background-color: #0056b9" class="btn btn-primary btn-lg my-4" type="button">Add Buddy</button>
+                </a>
+                </div>
+            </div>
+        </div>
+    <div th:unless="${shared.isEmpty}" class="col-md-6">
+        <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+            <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <th:block>
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Buddy</th>
+                            <th>Workout Description</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="share : ${shared}">
+                            <th th:text="${share.timeStamp}"></th>
+                            <th th:text="${share.user.username}"></th>
+                            <th th:text="${share.description}"></th>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="col-md-6">
             <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
                 <div style="background-color: #0056b9" class="card-header py-3 text-white">
@@ -242,49 +286,49 @@
             </div>
     </div>
 
-    <div class="col-md-6">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h4 style="color: #0056b9" class="my-0 fw-normal">Sent Messages</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-    <thead>
-    <tr>
-        <th>To</th>
-        <th>Message</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <th:block th:if="${sentMessages.size > 2}">
-        <tr>
-            <th th:text="${sentMessages[0].recipient}"></th>
-            <th th:text="${sentMessages[0].body}"></th>
-            <th th:text="${sentMessages[0].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${sentMessages[1].recipient}"></th>
-            <th th:text="${sentMessages[1].body}"></th>
-            <th th:text="${sentMessages[1].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${sentMessages[2].recipient}"></th>
-            <th th:text="${sentMessages[2].body}"></th>
-            <th th:text="${sentMessages[2].date}"></th>
-        </tr>
-    </th:block>
-    <th:block th:unless="${sentMessages.size > 2}">
-        <tr th:each="message : ${sentMessages}">
-            <th th:text="${message.recipient}"></th>
-            <th th:text="${message.body}"></th>
-            <th th:text="${message.date}"></th>
-        </tr>
-    </th:block>
-</table>
-<!--<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>-->
-                </div>
-            </div>
-    </div>
+<!--    <div class="col-md-6">-->
+<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--                <div class="card-header py-3">-->
+<!--                    <h4 style="color: #0056b9" class="my-0 fw-normal">Sent Messages</h4>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>To</th>-->
+<!--        <th>Message</th>-->
+<!--        <th>Date</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <th:block th:if="${sentMessages.size > 2}">-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[0].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[0].body}"></th>-->
+<!--            <th th:text="${sentMessages[0].date}"></th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[1].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[1].body}"></th>-->
+<!--            <th th:text="${sentMessages[1].date}"></th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th th:text="${sentMessages[2].recipient}"></th>-->
+<!--            <th th:text="${sentMessages[2].body}"></th>-->
+<!--            <th th:text="${sentMessages[2].date}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--    <th:block th:unless="${sentMessages.size > 2}">-->
+<!--        <tr th:each="message : ${sentMessages}">-->
+<!--            <th th:text="${message.recipient}"></th>-->
+<!--            <th th:text="${message.body}"></th>-->
+<!--            <th th:text="${message.date}"></th>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+<!--&lt;!&ndash;<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--    </div>-->
 </div>
         </br>
 
@@ -339,36 +383,6 @@
 
 </div>
 </div>
-
-        <div th:unless="${shared.isEmpty}" class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col-md-6">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                        <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
-                    </div>
-                    <div class="card-body">
-                <table table class="table table-striped">
-                    <th:block>
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Buddy</th>
-                            <th>Workout Description</th>
-                        </tr>
-                        </thead>
-                        <tr th:each="share : ${shared}">
-                            <th th:text="${share.timeStamp}"></th>
-                            <th th:text="${share.user.username}"></th>
-                            <th th:text="${share.description}"></th>
-                        </tr>
-                    </th:block>
-                </table>
-                    </div>
-            </div>
-        </div>
-        </div>
-
-
 
 <!--<footer th:replace="fragments :: footer"></footer>-->
         <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
