@@ -286,49 +286,7 @@
             </div>
     </div>
 
-<!--    <div class="col-md-6">-->
-<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
-<!--                <div class="card-header py-3">-->
-<!--                    <h4 style="color: #0056b9" class="my-0 fw-normal">Sent Messages</h4>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <table class="table table-striped">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>To</th>-->
-<!--        <th>Message</th>-->
-<!--        <th>Date</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <th:block th:if="${sentMessages.size > 2}">-->
-<!--        <tr>-->
-<!--            <th th:text="${sentMessages[0].recipient}"></th>-->
-<!--            <th th:text="${sentMessages[0].body}"></th>-->
-<!--            <th th:text="${sentMessages[0].date}"></th>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th th:text="${sentMessages[1].recipient}"></th>-->
-<!--            <th th:text="${sentMessages[1].body}"></th>-->
-<!--            <th th:text="${sentMessages[1].date}"></th>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th th:text="${sentMessages[2].recipient}"></th>-->
-<!--            <th th:text="${sentMessages[2].body}"></th>-->
-<!--            <th th:text="${sentMessages[2].date}"></th>-->
-<!--        </tr>-->
-<!--    </th:block>-->
-<!--    <th:block th:unless="${sentMessages.size > 2}">-->
-<!--        <tr th:each="message : ${sentMessages}">-->
-<!--            <th th:text="${message.recipient}"></th>-->
-<!--            <th th:text="${message.body}"></th>-->
-<!--            <th th:text="${message.date}"></th>-->
-<!--        </tr>-->
-<!--    </th:block>-->
-<!--</table>-->
-<!--&lt;!&ndash;<p style="color: white"><a href="/message/addmessage">Send New Message</a></p>&ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--    </div>-->
+
 </div>
         </br>
 
@@ -358,9 +316,9 @@
     </div>
 
     <div class="col-md-6">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 style="color: #0056b9" class="my-0 fw-normal">Gyms Near You</h4>
+        <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+            <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                <h4 class="my-0 fw-normal">Gyms Near You</h4>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
