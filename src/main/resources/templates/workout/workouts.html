@@ -1,43 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<head><div th:replace="fragments :: new-head"></div></head>
 <body>
-<header th:replace="fragments :: page-header"></header>
-
-<h2 th:if="${user.isNew}" class="stroke"  th:text="${user.username} + '`s Workouts!'"></h2>
-<h2 th:unless="${user.isNew}" class="stroke" th:text="${user.userDetail.firstName} + '`s Workouts!'"></h2>
-<h3></h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Description</th>
-        <th>Calories Consumed</th>
-        <th>Calories Burned</th>
-        <th>Exercise Name</th>
-        <th>Exercise Type</th>
-        <th>Date of Workout</th>
-    </tr>
-    </thead>
-    <tr th:each="workout : ${workouts}">
-        <th th:text="${workout.description}"></th>
-        <th th:text="${workout.consumedCal}"></th>
-        <th th:text="${workout.burnedCal}"></th>
-        <th th:text="${workout.exercise.name}"></th>
-        <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
-        <th th:text="${workout.timeStamp}"></th>
-    </tr>
-</table>
+<main style="background-color: white">
+    <div class="container py-3">
+        <div th:replace="fragments :: nav-bar"></div>
+        <h1 th:text="${title}"></h1>
+        <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
+            <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+                <h4 th:if="${user.isNew}" class="my-0 fw-normal"  th:text="${user.username} + '`s Workouts!'"></h4>
+                <h4 th:unless="${user.isNew}" class="my-0 fw-normal" th:text="${user.userDetail.firstName} + '`s Workouts!'"></h4>
+            </div>
+            <div class="body p-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Calories Consumed</th>
+                            <th>Calories Burned</th>
+                            <th>Exercise Name</th>
+                            <th>Exercise Type</th>
+                            <th>Date of Workout</th>
+                        </tr>
+                    </thead>
+                        <tr th:each="workout : ${workouts}">
+                            <th th:text="${workout.description}"></th>
+                            <th th:text="${workout.consumedCal}"></th>
+                            <th th:text="${workout.burnedCal}"></th>
+                            <th th:text="${workout.exercise.name}"></th>
+                            <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
+                            <th th:text="${workout.dateFormatter}"></th>
+                        </tr>
+                </table>
+            </div>
+         </div>
 
 </br>
 
-<div class= "photos">
-    <img class="image" src="https://i2.wp.com/www.eatthis.com/wp-content/uploads/2020/05/running.jpg?resize=640%2C360&ssl=1" alt="washingCars" width="465" height="300" >
-    <img class="image" src="https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/01/acp-algarve-road_12.jpg" alt="washingCars" width="465" height="300" >
-    <img class="image" src="https://www.wellandgood.com/wp-content/uploads/2020/02/GettyImages-1128646064.jpg" alt="cycling" width="465" height="300" >
-    <img class="image" src="https://cdn.shopify.com/s/files/1/0009/1112/products/personal-trainer_1800x.jpg?v=1586368428" alt="trainer" width="465" height="300" >
-</div>
-
-<footer th:replace="fragments :: footer"></footer>
-
+    <div th:replace="fragments :: nav-footer"></div>
+    </div>
+</main>
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

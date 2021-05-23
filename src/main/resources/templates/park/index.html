@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 
-<head th:replace="fragments :: head"></head>
-<!--<p th:replace="fragments :: bootstrap"></p>-->
-
-
+<head><div th:replace="fragments :: new-head"></div></head>
 <body>
-
-<div th:replace="fragments :: page-header"></div>
-
-<h1 th:text="${title}"></h1>
-<!--<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >-->
-
-<table class="table"   id="example" >
+<main style="background-color: white">
+    <div class="container py-3">
+        <div th:replace="fragments :: nav-bar"></div>
+        <h1 th:text="${title}"></h1>
+        <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
+            <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+                <h4 class="my-0 fw-normal">Gyms</h4>
+            </div>
+            <div class="body p-3">
+                <table class="table table-striped"   id="example" >
     <thead>
     <tr>
         <th>Name</th>
@@ -35,15 +35,16 @@
         </th>
     </tr>
 </table>
+            </div>
+        </div>
+        </br>
 
-
-
-
-
-
-</br>
-<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: nav-footer"></div>
 
 <p th:replace="fragments :: java"></p>
+
+    </div>
+</main>
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -2,112 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns="http://www.w3.org/1999/html">
 <!--<head th:replace="fragments :: head">-->
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="uTrain User Home Page">
-    <title>uTrain</title>
-    <link rel="icon" th:href="@{/favicon.png}" type="image/png">
-<!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">-->
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <link rel="shortcut icon" th:href="@{/favicon.png}" sizes="16X16" type="image/png">
-    <link rel="apple-touch-icon" th:href="@{/images/icon.png}" sizes="180x180">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      background-color: #0056b9;
-    </style>
-</head>
+<head> <div th:replace="fragments :: new-head"></div></head>
 <body>
 <!--<header th:replace="fragments :: page-header"></header>-->
 <main style="background-color: white">
     <div class="container py-3">
-        <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
-            <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
-                <a class="navbar-brand" th:href="@{/user/index}">
-                    <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExample03">
-                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <li class="nav-item">
-                            <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
-                        </li>
-                        <li class="nav-item">
-                            <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
-                            <a th:unless="${user.isNew}" style="color: white;" class="nav-link" href="/user/profile">Profile</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                        <ul style="background-color: #0056b9" class="dropdown-menu" aria-labelledby="dropdown03">
-                            <li>
-                                <a class="dropdown-item" href="/user/addfriend">Add Workout Buddy</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/workout/workouts">Workouts</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/workout/addworkout">Add Workout</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/gym/index">Gym Locator</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/gym/addgym">Add Gym</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/park/index">Park Locator</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/par/addpark">Add Park</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/message/index">All Messages</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/message/addmessage">Send Message</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/trainer/index">List of Trainers</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="/trainer/create">Add Trainer</a>
-                            </li>
-                        </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: white" class="nav-link" href="/logout">Logout</a>
-                        </li>
-<!--                        <li style="float: right" class="nav-item">-->
-<!--                            -->
-<!--                        </li>-->
-
-                    </ul>
-                </div>
-                <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>
-                <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>
-                <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="51" height="51">
-                <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" width="51" height="51">
-            </div>
-        </nav>
+        <div th:replace="fragments :: nav-bar"></div>
 <div th:style="'background-image: url(' + ${backgroundImage} + ');
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -362,12 +262,8 @@
 </div>
 </div>
 
-<!--<footer th:replace="fragments :: footer"></footer>-->
-        <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
-            <div class="container py-3">
-                <p style="color: #0056b9; font-size: 1.125rem; " class="fw-bold">uTrain ©2021</p>
-            </div>
-        </footer>
+<div th:replace="fragments :: nav-footer"></div>
+
     </div>
 </main>
 <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
