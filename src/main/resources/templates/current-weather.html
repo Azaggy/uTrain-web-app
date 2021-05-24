@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Current Weather</title>
-</head>
-<body>
+
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<div th:replace="fragments :: page-header"></div>
+
+
 
 <div>
   <h3>Current Conditions</h3>
