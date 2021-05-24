@@ -30,7 +30,7 @@ public class CurrentWeatherController {
         if (user.isEmpty()) {
             return null;
         }
-        return  user.get();
+        return user.get();
     }
 
     @Autowired
@@ -59,4 +59,14 @@ public class CurrentWeatherController {
         return "current-weather";
 
     }
+
+    @GetMapping("/maps")
+    public String getMaps(Model model, HttpServletRequest request) {
+        User user = (User) getUserFromSession(request.getSession());
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+
+        return "maps";
+    }
+
 }
