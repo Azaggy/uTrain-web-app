@@ -5,6 +5,7 @@ import org.launchcode.uTrain.models.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Workout extends AbstractEntity {
     private Integer consumedCal;
 
     @Max(value = 10000, message = "We may need to call a doctor!!")
-    @Min(value  = 0)
+    @Min(value = 0)
     private double burnedCal;
 
     @Max(value = 180, message = "Workout can not be longer than 3 hours!!")
@@ -45,7 +46,8 @@ public class Workout extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Workout() {}
+    public Workout() {
+    }
 
     public Workout(String description, Date timeStamp, Integer consumedCal, Integer burnedCal,
                    Integer duration, Integer heartRate, Exercise exercise) {
@@ -122,7 +124,7 @@ public class Workout extends AbstractEntity {
         this.user = user;
     }
 
-    public double getCaloriesBurnedForFemale(int weight, int age){
+    public double getCaloriesBurnedForFemale(int weight, int age) {
         double heartRate = this.heartRate;
         double duration = this.duration;
         double altWeight = weight;
@@ -136,7 +138,7 @@ public class Workout extends AbstractEntity {
         return calsBurned;
     }
 
-    public double getCaloriesBurnedForMale(int weight, int age){
+    public double getCaloriesBurnedForMale(int weight, int age) {
         double heartRate = this.heartRate;
         double duration = this.duration;
         double altWeight = (weight / 2.2);
@@ -155,13 +157,13 @@ public class Workout extends AbstractEntity {
     public double metGetter(String exerciseType) {
 
         double result;
-        switch(exerciseType) {
+        switch (exerciseType) {
             case "Active Recovery":
-                result =  3.3;
+                result = 3.3;
                 break;
             case "Aerobic Exercise":
             case "Anaerobic Exercise":
-                result =  8.0;
+                result = 8.0;
                 break;
             case "Boot Camp":
                 result = 10.0;
@@ -203,10 +205,15 @@ public class Workout extends AbstractEntity {
         double newWeight = (weight / 2.2);
         double time = this.duration;
 
-        double calc = ((newMet * 3.5 * newWeight) /200) * time;
+        double calc = ((newMet * 3.5 * newWeight) / 200) * time;
 
         return calc;
 
+    }
+
+    public String dateFormatter() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm a");
+    return (formatter.format(this.timeStamp));
     }
 }
 
