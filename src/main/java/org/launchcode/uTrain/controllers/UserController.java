@@ -1,10 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.*;
-import org.launchcode.uTrain.models.UserPhoto;
-import org.launchcode.uTrain.models.Gym;
-import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.Park;
+import org.launchcode.uTrain.models.*;
 import org.launchcode.uTrain.models.friend.Friend;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.user.UserDetail;
@@ -271,12 +268,13 @@ public class UserController {
     }
 
     @GetMapping("bmi")
-    public String bmiCalc(HttpServletRequest request, Model model) {
+    public String bmiCalc(HttpServletRequest request, Model model, LiveWeatherService liveWeatherService, StubWeatherService stubWeatherService) {
 
         User user = (User) getUserFromSession(request.getSession());
 
         model.addAttribute("title", "BMI Calculator");
         model.addAttribute("bmi1", user.getUserDetail().getBodyMassIndex());
+        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 

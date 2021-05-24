@@ -59,4 +59,5 @@ public class CurrentWeatherController {
         return "current-weather";
 
     }
+
 }

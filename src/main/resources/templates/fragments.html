@@ -73,6 +73,12 @@
     <a th:if="${loggedIn}" href="/logout">Logout</a>
 
     </li>
+    <li th:unless="${user.userDetail == null}">
+        <h3>Current Weather</h3>
+        <p th:text="${currentWeatherTemp} + '&#8457;'"></p>
+        <h3>Feels Like:</h3>
+<!--        <p th:text="${currentWeather.feelsLike} + '&#8457;'"></p>-->
+    </li>
     <li th:if="${loggedIn}">
         <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic" id="fragProPic">
         <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic" id="fragProPic2">
