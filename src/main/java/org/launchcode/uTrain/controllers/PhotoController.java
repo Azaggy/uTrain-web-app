@@ -3,7 +3,7 @@ package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.UserPhoto;
+import org.launchcode.uTrain.models.user.UserPhoto;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

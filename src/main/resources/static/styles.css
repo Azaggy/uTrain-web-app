@@ -1,7 +1,7 @@
 .proPic {
   vertical-align: middle;
-  width: 100px;
-  height: 100px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -15,7 +15,7 @@
     float: right;
 }
 .proPicXchange {
-    background-color: #0602b9;
+    background-color: #0656b9;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -116,7 +116,6 @@ body {
  }
 
  .table td, #table th {
-    color: #ffffff;
    border: 1px solid #ddd;
    padding: 8px;
  }
@@ -154,8 +153,8 @@ body {
  }
 
  .table td, #table th {
-    color: #ffffff;
-   border: 1px solid #ddd;
+    color: ##0056b9;
+   border: 1px solid ##0056b9;
    padding: 8px;
  }
 
@@ -169,41 +168,40 @@ body {
 
 
 table.bmiTable {
-    border: 3 px solid white;
+    border: 3 px solid #0056b9;
 }
 
 .titleTable {
     background-color: #06027e;
     text-align: center;
-    color:white;
+    color:#0056b9;
     border: 3 px solid;
-    border-color: white;
+    border-color: #0056b9;
 }
 
 td.subTitleTable {
   background-color: #0602b9;
     font-size: 24px;
     text-align: center;
-    color: white;
+    color: #0056b9;
     border: 3 px solid;
-    border-color: white;
+    border-color: #0056b9;
 }
 
 td.minTitleTable {
     background-color: #06027e;
     font-size: 20px;
     text-align: center;
-    color: white;
+    color: #0056b9;
     border: 3 px solid ;
-    border-color: white;
+    border-color: #0056b9;
 }
 
 td.numTable{
     font-size: 18px;
     text-align: center;
-    color:white;
     border: 3 px solid;
-    border-color: white;
+    border-color: #0056b9;
 }
  body {font-family: Arial, Helvetica, sans-serif;}
 
@@ -343,9 +341,9 @@ td.numTable{
 }
 }
 .interests {
-color: #ffffff;
+    color: #0056b9;
 }
 
 .form-label {
-color: white;
+    color: #0056b9;
 }

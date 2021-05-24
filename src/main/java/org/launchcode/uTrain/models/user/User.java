@@ -1,7 +1,6 @@
 package org.launchcode.uTrain.models.user;
 
 import org.launchcode.uTrain.models.AbstractEntity;
-import org.launchcode.uTrain.models.UserPhoto;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

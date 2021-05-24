@@ -3,47 +3,100 @@
     <head th:replace="fragments :: head">
     </head>
     <body>
-        <div th:replace="fragments :: page-header"></div>
+        <div class="container">
+            <div th:replace="fragments :: page-header"></div>
 
 
-        <h1>Your height is: </h1>
-        <h1 th:text="${user.userDetail.height}"></h1>
-        <h2>Your weight is: </h2>
-        <h2 th:text="${user.userDetail.weight}"></h2>
-        <h3>Your BMI is: </h3>
-        <h3 th:text="${bmi1}"></h3>
-        <div name="bmiTable" style="float: right">
-            <table>
-                <tr>
-                    <td class="titleTable">
-                        BMI
-                    </td>
-                </tr>
-                <tr>
-                    <td class="subTitleTable">Classification </td>
-                    <td class="subTitleTable">BMI Target</td>
-                </tr>
-                <tr>
-                    <td class="miniTitleTable">Underweight</td>
-                    <td class="numTable">Below 18.5</td>
-                </tr>
-                <tr>
-                    <td class="miniTitleTable">Healthy</td>
-                    <td>Between 18.5 -24.9</td>
+            <!--        <h1>Your height is: </h1>-->
+            <!--        <h1 th:text="${user.userDetail.height}"></h1>-->
+            <!--        <h2>Your weight is: </h2>-->
+            <!--        <h2 th:text="${user.userDetail.weight}"></h2>-->
+            <!--        <h3>Your BMI is: </h3>-->
+            <!--        <h3 th:text="${bmi1}"></h3>-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="border: 1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                        <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
+                            <h1 class="my-0 fw-normal" style="text-shadow: 2px 2px grey">Your BMI</h1>
+                        </div>
+                        <div class="card-body">
+                            <h1 style="text-align: center; color: #0056b9;">Your BMI is: </h1>
+                            <h1 style="text-align: center; color: #0056b9;" th:text="${bmi1}"></h1>
+                            <h2 style="text-align: center; color: #0056b9;">Your height is: </h2>
+                            <h2 style="text-align: center; color: #0056b9;" th:text="${user.userDetail.height}"></h2>
+                            <h3 style="text-align: center; color: #0056b9;">Your weight is: </h3>
+                            <h3 style="text-align: center; color: #0056b9;" th:text="${user.userDetail.weight}"></h3>
 
-                </tr>
-                <tr>
-                    <td class="miniTitleTable">Overweight</td>
-                    <td>25 - 29.9</td>
-                </tr>
-                <tr>
-                    <td class="miniTitleTable">Obese</td>
-                    <td>Over 30</td>
-                </tr>
-            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                        <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
+                            <h1 class="my-0 fw-normal" style="text-shadow: 2px 2px grey"> BMI Table</h1>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td style="text-align: center; color: #0056b9;" class="subTitleTable"><h3 style="font-weight: bold;">Classification</h3></td>
+                                    <td style="text-align: center; color: #0056b9;" class="subTitleTable"><h3 style="font-weight: bold;">BMI Target</h3></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
+                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Below 18.5</h5></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
+                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Between 18.5 -24.9</h5></td>
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
+                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>25 - 29.9</h5></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
+                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Over 30</h5></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--        <div name="bmiTable" style="float: right">-->
+            <!--            <table>-->
+            <!--                <tr>-->
+            <!--                    <td class="titleTable">-->
+            <!--                        BMI-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td class="subTitleTable">Classification </td>-->
+            <!--                    <td class="subTitleTable">BMI Target</td>-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td class="miniTitleTable">Underweight</td>-->
+            <!--                    <td class="numTable">Below 18.5</td>-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td class="miniTitleTable">Healthy</td>-->
+            <!--                    <td>Between 18.5 -24.9</td>-->
+
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td class="miniTitleTable">Overweight</td>-->
+            <!--                    <td>25 - 29.9</td>-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td class="miniTitleTable">Obese</td>-->
+            <!--                    <td>Over 30</td>-->
+            <!--                </tr>-->
+            <!--            </table>-->
+            <!--        </div>-->
+
+            <footer th:replace="fragments :: footer"></footer>
         </div>
-
-        <footer th:replace="fragments :: footer"></footer>
 
     </body>
 </html>
