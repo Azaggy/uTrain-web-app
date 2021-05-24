@@ -25,59 +25,51 @@
 <div class="b-example-divider" style="background-color: #0056b9;" >
 
 </div>
-<div class="col-md-6">
-    <div class="card mb-4 rounded-3 shadow-sm" style="border:1px solid #0056b9;">
-        <div style="background-color: #00056b9;" class="card-header py-3 text-color-white">
-            <h1 class="my-0 fw-normal">Calculator</h1>
-        </div>
-        <div class="card-body">
-            <form name="calculator">
-                <table>
-                    <tr style="margin: 5px 5px;">
-                        <td colspan="3">
-                            <input class="form-control form-control-lg" type="text" name="display" id="display"
-                                   disabled>
-                        </td>
-                        <td><input class="btn btn-primary" type="button" name="clear" value="c" onclick="calculator.display.value = ''"> </td>
-                    </tr>
-                    <tr>
-                        <div class="btn-group btn-group-lg">
-                            <td><input class="btn btn-primary" type="button" name="one" value="1" onclick="calculator.display.value += '1'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="two" value="2" onclick="calculator.display.value += '2'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="three" value="3" onclick="calculator.display.value += '3'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="divide" value="/" onclick="calculator.display.value += '/'"> </td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="btn-group btn-group-lg">
-                            <td><input class="btn btn-primary" type="button" name="four" value="4" onclick="calculator.display.value += '4'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="five" value="5" onclick="calculator.display.value += '5'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="six" value="6" onclick="calculator.display.value += '6'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="minus" value="-" onclick="calculator.display.value += '-'"> </td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="btn-group btn-group-lg">
-                            <td><input class="btn btn-primary" type="button" name="seven" value="7" onclick="calculator.display.value += '7'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="eight" value="8" onclick="calculator.display.value += '8'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="nine" value="9" onclick="calculator.display.value += '9'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="plus" value="+" onclick="calculator.display.value += '+'"> </td>
-                        </div>
+<form name="calculator">
+    <table>
+        <tr style="margin: 5px 5px;">
+            <td colspan="3">
+                <input class="form-control form-control-lg" type="text" name="display" id="display"
+                       disabled>
+            </td>
+            <td><input class="btn btn-primary" type="button" name="clear" value="c" onclick="calculator.display.value = ''"> </td>
+        </tr>
+        <tr>
+            <div class="btn-group btn-group-lg">
+                <td><input class="btn btn-primary" type="button" name="one" value="1" onclick="calculator.display.value += '1'"> </td>
+                <td><input class="btn btn-primary" type="button" name="two" value="2" onclick="calculator.display.value += '2'"> </td>
+                <td><input class="btn btn-primary" type="button" name="three" value="3" onclick="calculator.display.value += '3'"> </td>
+                <td><input class="btn btn-primary" type="button" name="divide" value="/" onclick="calculator.display.value += '/'"> </td>
+            </div>
+        </tr>
+        <tr>
+            <div class="btn-group btn-group-lg">
+                <td><input class="btn btn-primary" type="button" name="four" value="4" onclick="calculator.display.value += '4'"> </td>
+                <td><input class="btn btn-primary" type="button" name="five" value="5" onclick="calculator.display.value += '5'"> </td>
+                <td><input class="btn btn-primary" type="button" name="six" value="6" onclick="calculator.display.value += '6'"> </td>
+                <td><input class="btn btn-primary" type="button" name="minus" value="-" onclick="calculator.display.value += '-'"> </td>
+            </div>
+        </tr>
+        <tr>
+            <div class="btn-group btn-group-lg">
+                <td><input class="btn btn-primary" type="button" name="seven" value="7" onclick="calculator.display.value += '7'"> </td>
+                <td><input class="btn btn-primary" type="button" name="eight" value="8" onclick="calculator.display.value += '8'"> </td>
+                <td><input class="btn btn-primary" type="button" name="nine" value="9" onclick="calculator.display.value += '9'"> </td>
+                <td><input class="btn btn-primary" type="button" name="plus" value="+" onclick="calculator.display.value += '+'"> </td>
+            </div>
 
-                    </tr>
-                    <tr>
-                        <div  class="btn-group btn-group-lg">
-                            <td><input class="btn btn-primary" type="button" name="period" value="." onclick="calculator.display.value += '.'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="zero" value="0" onclick="calculator.display.value += '0'"> </td>
-                            <td><input class="btn btn-primary" type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"> </td>
-                            <td><input class="btn btn-primary" type="button" name="times" value="*" onclick="calculator.display.value += '*'"> </td>
-                        </div>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-</div>
+        </tr>
+        <tr>
+            <div  class="btn-group btn-group-lg">
+                <td><input class="btn btn-primary" type="button" name="period" value="." onclick="calculator.display.value += '.'"> </td>
+                <td><input class="btn btn-primary" type="button" name="zero" value="0" onclick="calculator.display.value += '0'"> </td>
+                <td><input class="btn btn-primary" type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"> </td>
+                <td><input class="btn btn-primary" type="button" name="times" value="*" onclick="calculator.display.value += '*'"> </td>
+            </div>
+        </tr>
+    </table>
+</form>
+
 <div class="col-md-6">
     <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
         <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
