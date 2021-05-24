@@ -16,7 +16,9 @@ import java.net.URI;
 @Service
 public class LiveWeatherService {
 
-    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city},{country}&APPID={key}&units=metric";
+//    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city},{country}&APPID={key}&units=metric";
+
+    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?zip={zipCode},{country}&APPID={key}&units=metric";
 
     @Value("${api.openweathermap.key}")
     private String apiKey;
@@ -30,8 +32,15 @@ public class LiveWeatherService {
         this.objectMapper = objectMapper;
     }
 
-    public CurrentWeather getCurrentWeather(String city, String country) {
-        URI url = new UriTemplate(WEATHER_URL).expand(city, country, apiKey);
+//    public CurrentWeather getCurrentWeather(String city, String country) {
+//        URI url = new UriTemplate(WEATHER_URL).expand(city, country, apiKey);
+//        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+//
+//        return convert(response);
+//    }
+
+    public CurrentWeather getCurrentWeather(Integer zipCode, String country) {
+        URI url = new UriTemplate(WEATHER_URL).expand(zipCode, country, apiKey);
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         return convert(response);
