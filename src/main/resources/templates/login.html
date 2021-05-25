@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<!--<head th:replace="fragments :: head"></head>-->
+
 <head>
-<!--    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">-->
-<!--    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
-<!--    <link href="signin.css" rel="stylesheet">-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/examples/heroes/heroes.css">
     <link rel="stylesheet" th:href="@{/signin.css}">
     <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="icon" th:href="@{/favicon.png}" sized="32X32" type="image/png">
+    <link rel="shortcut icon" th:href="@{/favicon.png}" sized="16X16" type="image/png">
+    <link rel="apple-touch-icon" th:href="@{/images/icon.png}" sized="180x180">
 </head>
-<!--<style th:inline="text">-->
-<!--body {-->
-<!--  background-image: url([[${Back;-->
-<!--  background-repeat: no-repeat;-->
-<!--background-color: #0056b9-->
-<!--  background-attachment: fixed;-->
-<!--  background-size: cover;-->
 
-<!--}-->
-<!--</style>-->
 <body class="text-center" th:style="'background-image: url(' + ${backgroundImage} + ');
 background-repeat: no-repeat;
 background-attachment: fixed
 background size: cover;
 background-position: center;
 background-color: #0056b9'">
-
-<!--<header th:replace="fragments :: page-header"></header>-->
 
 <form style="border-radius:10px" class="p-4 p-md-5 form-back" method="post">
     <img class="mb-4" th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51">
