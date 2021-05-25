@@ -1,13 +1,12 @@
 package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.*;
-import org.launchcode.uTrain.models.UserPhoto;
+import org.launchcode.uTrain.models.user.UserPhoto;
 import org.launchcode.uTrain.models.Gym;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.friend.Friend;
 import org.launchcode.uTrain.models.user.User;
-import org.launchcode.uTrain.models.user.UserDetail;
 import org.launchcode.uTrain.models.user.UserSex;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
