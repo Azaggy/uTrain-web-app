@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="uTrain User Home Page">
     <title th:text="'uTrain: ' + ${title}">uTrain</title>
 <!--    <title>uTrain</title>-->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
@@ -21,6 +21,11 @@
     <link rel="manifest" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/manifest.json">
 <!--    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">-->
     <link rel="icon" href="https://i.ibb.co/nCbHBN8/icon.png" size="16x16" type="image/png">
+    
+    <!-- <link rel="icon" th:href="@{/favicon.png}" type="image/png"> -->
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">-->
+    <!-- <link rel="shortcut icon" th:href="@{/favicon.png}" sizes="16X16" type="image/png">
+    <link rel="apple-touch-icon" th:href="@{/images/icon.png}" sizes="180x180"> -->
 
     <style>
       .bd-placeholder-img {
@@ -195,8 +200,14 @@
                             </table>
                         </div>
                     </div>
-    <!--            </div>-->
-            </div>
+                    <div class="text-center">
+                    <a href="/workout/workouts">
+                        <button style="background-color: #0056b9; border:1px solid #0056b9;" class="btn btn-primary btn-lg" type="button">My Workouts</button>
+                    </a>
+                    </div>
+                </div>
+<!--            </div>-->
+        </div>
 
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
@@ -221,70 +232,100 @@
                 <div style="background-color: #0056b9" class="card-header py-3 text-white">
                     <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <th:block>
-                            <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Buddy</th>
-                                <th>Workout Description</th>
-                            </tr>
-                            </thead>
-                            <tr th:each="share : ${shared}">
-                                <th th:text="${share.timeStamp}"></th>
-                                <th th:text="${share.user.username}"></th>
-                                <th th:text="${share.description}"></th>
-                            </tr>
-                        </th:block>
-                    </table>
+                <a href="/user/addfriend">
+                <button style="background-color: #0056b9; border: 1px solid #0056b9" class="btn btn-primary btn-lg my-4" type="button">Add Buddy</button>
+                </a>
                 </div>
             </div>
         </div>
+    <div th:unless="${shared.isEmpty}" class="col-md-6">
+        <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+            <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                <h4 class="my-0 fw-normal">My Buddy's Workouts</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <th:block th:if="${shared.size > 2}">
+                        <tr>
+                            <th th:text="${shared[0].sender}"></th>
+                            <th th:text="${shared[0].body}"></th>
+                            <th th:text="${shared[0].dateFormatter}"></th>
+                        </tr>
+                        <tr>
+                            <th th:text="${shared[1].sender}"></th>
+                            <th th:text="${shared[1].body}"></th>
+                            <th th:text="${shared[1].dateFormatter}"></th>
+                        </tr>
+                        <tr>
+                            <th th:text="${shared[2].sender}"></th>
+                            <th th:text="${shared[2].body}"></th>
+                            <th th:text="${shared[2].dateFormatter}"></th>
+                        </tr>
+                    </th:block>
+                    <th:block th:unless="${shared.size > 2}">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Buddy</th>
+                            <th>Workout Description</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="share : ${shared}">
+                            <th th:text="${share.dateFormatter}"></th>
+                            <th th:text="${share.user.username}"></th>
+                            <th th:text="${share.description}"></th>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+        </div>
+    </div>
 
-
-
-        <div class="col-md-6">
-                <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-                    <div style="background-color: #0056b9" class="card-header py-3 text-white">
-                        <h4 class="my-0 fw-normal">Received Messages</h4>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>From</th>
-            <th>Message</th>
-            <th>Date</th>
+    <div class="col-md-6">
+            <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9" class="card-header py-3 text-white">
+                    <h4 class="my-0 fw-normal">Received Messages</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>From</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <th:block th:if="${receivedMessages.size > 2}">
+    <tr>
+        <th th:text="${receivedMessages[0].sender}"></th>
+        <th th:text="${receivedMessages[0].body}"></th>
+        <th th:text="${receivedMessages[0].dateFormatter}"></th>
+    </tr>
+    <tr>
+        <th th:text="${receivedMessages[1].sender}"></th>
+        <th th:text="${receivedMessages[1].body}"></th>
+        <th th:text="${receivedMessages[1].dateFormatter}"></th>
+    </tr>
+    <tr>
+        <th th:text="${receivedMessages[2].sender}"></th>
+        <th th:text="${receivedMessages[2].body}"></th>
+        <th th:text="${receivedMessages[2].dateFormatter}"></th>
+    </tr>
+    </th:block>
+    <th:block th:unless="${receivedMessages.size > 2}">
+        <tr th:each="message : ${receivedMessages}">
+            <th th:text="${message.sender}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.dateFormatter}"></th>
         </tr>
-        </thead>
-        <th:block th:if="${receivedMessages.size > 2}">
-        <tr>
-            <th th:text="${receivedMessages[0].sender}"></th>
-            <th th:text="${receivedMessages[0].body}"></th>
-            <th th:text="${receivedMessages[0].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${receivedMessages[1].sender}"></th>
-            <th th:text="${receivedMessages[1].body}"></th>
-            <th th:text="${receivedMessages[1].date}"></th>
-        </tr>
-        <tr>
-            <th th:text="${receivedMessages[2].sender}"></th>
-            <th th:text="${receivedMessages[2].body}"></th>
-            <th th:text="${receivedMessages[2].date}"></th>
-        </tr>
-        </th:block>
-        <th:block th:unless="${receivedMessages.size > 2}">
-            <tr th:each="message : ${receivedMessages}">
-                <th th:text="${message.sender}"></th>
-                <th th:text="${message.body}"></th>
-                <th th:text="${message.date}"></th>
-            </tr>
         </th:block>
     </table>
-                    </div>
-                </div>
+        <a href="/message/index">
+                    <button style="background-color: #0056b9; border:1px solid #0056b9;" class="btn btn-primary btn-lg mb-4" type="button">My Messages</button>
+                </a>
+            </div>
+            </div>
+        </div>
         </div>
 
 
@@ -312,9 +353,18 @@
             </tr>
         </th:block>
     </table>
+</div>
+                <a href="/park/index">
+                    <button style="background-color: #0056b9; border:1px solid #0056b9;" class="btn btn-primary btn-lg mb-4" type="button">Parks</button>
+                </a>
+            </div>
+        </div>
                     </div>
                 </div>
         </div>
+    </div>
+
+</div>
 
         <div class="col-md-6">
             <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
@@ -337,8 +387,12 @@
             </tr>
         </th:block>
     </table>
-            </div>
-        </div>
+    </th:block>
+</table>
+            <a href="/gym/index">
+                <button style="background-color: #0056b9; border:1px solid #0056b9;" class="btn btn-primary btn-lg mb-4" type="button">Gyms</button>
+            </a>
+    </div>
 
     </div>
 </div>

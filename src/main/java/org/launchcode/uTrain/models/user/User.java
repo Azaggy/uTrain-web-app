@@ -6,7 +6,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -140,4 +143,13 @@ public class User extends AbstractEntity {
     public void setFriends(List<String> friends) {
         this.friends = friends;
     }
+
+    public Date truncToSec(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.MILLISECOND, 0);
+        Date newDate = c.getTime();
+        return newDate;
+    }
+
 }
