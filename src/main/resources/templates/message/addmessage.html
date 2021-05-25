@@ -45,28 +45,31 @@
 <body class="container" style="background-color: white;">
 <header th:replace="fragments :: page-header"></header>
 <div class="col-lg-8" style="margin: auto; width: 50%; padding: 10px;">
-    <div style="border: 1px solid #0056b9;" class="card mb-4 rounded-1 shadow-md">
-        <div style="background-color: #0056b9;" class="card-header py-3 text-white text-center">
-            <h1 class="my-0 fw-normal">Send Message to Workout Buddy</h1>
+    <div style="border: 3px solid #0056b9; border-radius: 32px;" class="card mb-4 rounded-1 shadow-md">
+        <div style="background-color: #0056b9; border-top-left-radius: 24px; border-top-right-radius: 24px;" class="card-header py-3 text-white text-center">
+            <h1 class="my-0 fw-normal">Send Message to </br> Workout Buddy</h1>
         </div>
         <div class="card-body">
             <form method="post">
                 <!--<form>-->
                 <div class="form-group">
                     <label for="exampleFormControlInput1"><h1>To:</h1></label>
-                    <input class="form-control-lg" col="3" th:field="${message.recipient}" id="exampleFormControlInput1" placeholder="uTrain Username">
+                    <input class="form-control" style="border-radius: 25px; border: 3px solid #0056b9;" th:field="${message.recipient}" id="exampleFormControlInput1" placeholder="uTrain Username">
                     <p class="error" th:errors="${message.recipient}"></p>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1"><h1>Message</h1></label>
-                    <textarea th:field="${message.body}" col="3" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <label for="exampleFormControlTextarea1"><h1>Message:</h1></label>
+                    <textarea style="border-radius: 25px; border: 3px solid #0056b9" th:field="${message.body}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <!--        <textarea th:field="${message.body}" class="form-control" rows="2"></textarea>-->
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Send" class="btn btn-primary btn-lg" style="background-color: #0056b9; text-align: center;">
+                        <input type="submit" value="Send" class="btn btn-primary btn-lg btn-block" style="background-color: #0056b9; text-align: center; width: 200px; height: 50px; margin: auto; border-radius: 24px; ">
+<!--                        <img src="https://i.ibb.co/BTtgwGn/84-844707-paper-airplane-vector-png-paper-plane-icon-png.jpg" alt="84-844707-paper-airplane-vector-png-paper-plane-icon-png" border="0">-->
+<!--                    <input type="submit" value="Send" class="btn btn-primary btn-lg" style="background-color: #0056b9; text-align: center; width: 135px; height: 50px; margin: auto; border-radius: 24px;">-->
                 </div>
+
             </form>
         </div>
     </div>
