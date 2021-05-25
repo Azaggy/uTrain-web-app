@@ -18,7 +18,7 @@ public class LiveWeatherService {
 
 //    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city},{country}&APPID={key}&units=metric";
 
-    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?zip={zipCode},{country}&APPID={key}&units=metric";
+    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?zip={zipCode},{country}&APPID={key}&units=imperial";
 
     @Value("${api.openweathermap.key}")
     private String apiKey;
@@ -57,4 +57,9 @@ public class LiveWeatherService {
             throw new RuntimeException("Error parsing JSON", e);
         }
     }
+
+//    private WeatherResponse convert(ResponseEntity<String> response) {
+//            JsonNode root = objectMapper.readTree(response.getBody());
+//
+//    }
 }
