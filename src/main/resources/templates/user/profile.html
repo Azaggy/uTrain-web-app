@@ -2,112 +2,266 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body>
-<div class="container">
-    <header th:replace="fragments :: page-header"></header>
-    <div class="row">
-        <div class="col-md-6">
-            <div style="text-align: center; border: 1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
-                <div class="header py-3 text-white text-center" style="text-align: center; background-color: #0056b9;">
-                    <a  th:href="@{/user/profilePhoto}" class="proPicXchange"><h1 style="text-shadow: 2px 2px grey">Change Your Profile Photo!</h1></a>
-                </div>
-                <div class="card-body">
-                    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic">
-                    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">
-                </div>
+<header th:replace="fragments :: page-header"></header>
+<div class="container py-3">
+    <div class="col-sm-12" style="text-align: center; margin: 32px 5px;">
+        <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic">
+        <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">
+        <div style="margin: 5px 5px;">
+            <a  th:href="@{/user/profilePhoto}" class="proPicXchange"><h2 style="text-shadow: 2px 2px grey">Change Your Profile Photo!</h2></a>
+        </div>
+    </div>
+    <div class="col-lg-12" style="margin: 32px 5px;">
+        <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+            <div class="header py-3 text-white text-center" style="background-color: #0056b9;">
+                <h1 style="text-shadow: 2px 2px grey"> General Info</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" style="text-align: center; color: #0056b9; border: 1px solid #0056b9">
+                    <thead>
+                    <tr>
+                        <th style="color: #0056b9; text-align: center;">Username</th>
+                        <th style="color: #0056b9; text-align: center;">First Name</th>
+                        <th style="color: #0056b9; text-align: center;">Last Name</th>
+                        <th style="color: #0056b9; text-align: center;">Email</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td style="text-align: center;" th:text="${user.username}"></td>
+                        <td style="text-align: center;" th:text="${user.userDetail.firstName}"></td>
+                        <td style="text-align: center;" th:text="${user.userDetail.lastName}"></td>
+                        <td style="text-align: center;" th:text="${user.email}"></td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <th style="color: #0056b9; text-align: center;">Age</th>
+                        <th style="color: #0056b9; text-align: center;">Height</th>
+                        <th style="color: #0056b9; text-align: center;">Weight</th>
+                        <th style="color: #0056b9; text-align: center;">Sex</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td style="text-align: center;" th:text="${user.userDetail.age}"></td>
+                        <td style="text-align: center;" th:text="${user.userDetail.height}"></td>
+                        <td style="text-align: center;" th:text="${user.userDetail.weight}"></td>
+                        <td style="text-align: center;" th:text="${user.userDetail.userSex}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
+    </div>
+    <div class="row" style="margin: 32px 5px;">
         <div class="col-md-6">
             <div style="border: 1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
                 <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
                     <h1 style="text-shadow: 2px 2px grey" class="interests">Interests</h1>
                 </div>
                     <div class="card-body">
-                        <p style="text-align: center; color: #0056b9;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>
-                        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>
+                                <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>
+                            </div>
+                        </div>
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>-->
+<!--                        <p style="text-align: center;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>-->
                     </div>
             </div>
         </div>
-    </div>
-    <div style="text-align: center;">
-        <div>
-            <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic">
-            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">
+        <div class="col-md-6">
+            <div class="card md-4 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                <div class="header py-3 text-white text-center" style="background-color: #0056b9;">
+                    <h1 style="text-shadow: 2px 2px grey">Address</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered" style="border: 1px solid #0056b9;">
+                        <thead>
+                        <tr>
+                            <th style="color: #0056b9; text-align: center;">Street</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td style="text-align: center;" th:text="${user.userDetail.address.street}"></td>
+                        </tr>
+                        <thead>
+                        <tr>
+                            <th style="color: #0056b9; text-align: center;">City, State, Zip</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td style="text-align: center;" th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        <a  th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>
     </div>
-    <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">-->
-    <h2 style="color: #0056b9;">General Info</h2>
 
-    <table class="table table-striped table-bordered" style="text-align: center; color: #0056b9; border: 1px solid #0056b9">
-        <thead>
-        <tr>
-            <th style="color: #0056b9;">Username</th>
-            <th style="color: #0056b9;">First Name</th>
-            <th style="color: #0056b9;">Last Name</th>
-            <th style="color: #0056b9;">Email</th>
-        </tr>
-        </thead>
-        <tr>
-            <td style="color: #0056b9;" th:text="${user.username}"></td>
-            <td style="color: #0056b9;" th:text="${user.userDetail.firstName}"></td>
-            <td style="color: #0056b9;" th:text="${user.userDetail.lastName}"></td>
-            <td style="color: #0056b9;" th:text="${user.email}"></td>
-        </tr>
-        <thead>
-        <tr>
-            <th style="color: #0056b9;">Age</th>
-            <th style="color: #0056b9;">Height</th>
-            <th style="color: #0056b9;">Weight</th>
-            <th style="color: #0056b9;">Sex</th>
-        </tr>
-        </thead>
-        <tr>
-            <td style="color: #0056b9;" th:text="${user.userDetail.age}"></td>
-            <td style="color: #0056b9;" th:text="${user.userDetail.height}"></td>
-            <td style="color: #0056b9;" th:text="${user.userDetail.weight}"></td>
-            <td style="color: #0056b9;" th:text="${user.userDetail.userSex}"></td>
-        </tr>
-    </table>
-
-<!--    <h2 style="color: #0056b9;" class="interests">Interests</h2>-->
-<!--    <div>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>-->
-<!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>-->
+<!--    <div style="text-align: center;">-->
+<!--        <div>-->
+<!--            <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic">-->
+<!--            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
+<!--        </div>-->
+<!--        <a  th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>-->
 <!--    </div>-->
+    <!--<img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">-->
+<!--    <div class="container">-->
+<!--        <h1 style="color: #0056b9;">General Info</h1>-->
 
-    <h2 style="color: #0056b9;">Address</h2>
-    <table class="table table-striped table-bordered" style="border: 1px solid #0056b9;">
-        <thead>
-        <tr>
-            <th style="color: #0056b9;">Street</th>
-        </tr>
-        </thead>
-        <tr>
-            <td style="color: #0056b9;" th:text="${user.userDetail.address.street}"></td>
-        </tr>
-        <thead>
-        <tr>
-            <th style="color: #0056b9;">City, State, Zip</th>
-        </tr>
-        </thead>
-        <tr>
-            <td style="color: #0056b9;" th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>
-        </tr>
-    </table>
-    <p><a style="color: #0056b9;" th:href="@{/user/addprofile/{id}(id=${user.id})}">Edit Profile</a> <a style="color: #0056b9;" th:href="@{/user/index}">Back to Home</a></p>
-    </br>
+<!--        <table class="table table-striped table-bordered" style="text-align: center; color: #0056b9; border: 1px solid #0056b9">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th style="color: #0056b9;">Username</th>-->
+<!--                <th style="color: #0056b9;">First Name</th>-->
+<!--                <th style="color: #0056b9;">Last Name</th>-->
+<!--                <th style="color: #0056b9;">Email</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tr>-->
+<!--                <td style="color: #0056b9;" th:text="${user.username}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.firstName}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.lastName}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.email}"></td>-->
+<!--            </tr>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th style="color: #0056b9;">Age</th>-->
+<!--                <th style="color: #0056b9;">Height</th>-->
+<!--                <th style="color: #0056b9;">Weight</th>-->
+<!--                <th style="color: #0056b9;">Sex</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tr>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.age}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.height}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.weight}"></td>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.userSex}"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+
+        <!--    <h2 style="color: #0056b9;" class="interests">Interests</h2>-->
+        <!--    <div>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>-->
+        <!--        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>-->
+        <!--    </div>-->
+
+<!--        <h2 style="color: #0056b9;">Address</h2>-->
+<!--        <table class="table table-striped table-bordered" style="border: 1px solid #0056b9;">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th style="color: #0056b9;">Street</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tr>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.address.street}"></td>-->
+<!--            </tr>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th style="color: #0056b9;">City, State, Zip</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tr>-->
+<!--                <td style="color: #0056b9;" th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <h1 style="color: #0056b9;">General Info</h1>-->
+
+<!--    <table class="table table-striped table-bordered" style="text-align: center; color: #0056b9; border: 1px solid #0056b9">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th style="color: #0056b9;">Username</th>-->
+<!--            <th style="color: #0056b9;">First Name</th>-->
+<!--            <th style="color: #0056b9;">Last Name</th>-->
+<!--            <th style="color: #0056b9;">Email</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tr>-->
+<!--            <td style="color: #0056b9;" th:text="${user.username}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.firstName}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.lastName}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.email}"></td>-->
+<!--        </tr>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th style="color: #0056b9;">Age</th>-->
+<!--            <th style="color: #0056b9;">Height</th>-->
+<!--            <th style="color: #0056b9;">Weight</th>-->
+<!--            <th style="color: #0056b9;">Sex</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tr>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.age}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.height}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.weight}"></td>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.userSex}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+<!--&lt;!&ndash;    <h2 style="color: #0056b9;" class="interests">Interests</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.walking}">Walking</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.running}">Running</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.cycling}">Cycling</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.golf}">Golf</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.baseball}">Baseball</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.basketball}">Basketball</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.swimming}">Swimming</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: #0056b9;" class="interests" th:if="${user.userDetail.interests.tennis}">Tennis</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--    <h2 style="color: #0056b9;">Address</h2>-->
+<!--    <table class="table table-striped table-bordered" style="border: 1px solid #0056b9;">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th style="color: #0056b9;">Street</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tr>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.address.street}"></td>-->
+<!--        </tr>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th style="color: #0056b9;">City, State, Zip</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tr>-->
+<!--            <td style="color: #0056b9;" th:text="${user.userDetail.address.city} + ', ' + ${user.userDetail.address.state} + ', ' + ${user.userDetail.address.zipCode}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+    <div style="text-align: center; margin: 15px 5px;" class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a th:href="@{/user/index}">
+            <button style="background-color: #0056b9; border: 1px solid #0056b9" type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Back to Home</button>
+        </a>
+        <a th:href="@{/user/addprofile/{id}(id=${user.id})}">
+            <button style="color: #0056b9; border: 1px solid #0056b9" type="button" class="btn btn-outline-secondary btn-lg px-4 me-sm-3">Edit Profile</button>
+        </a>
+    </div>
+
+<!--    <p><a style="color: #0056b9;" th:href="@{/user/addprofile/{id}(id=${user.id})}">Edit Profile</a>-->
+<!--        <a style="color: #0056b9;" th:href="@{/user/index}">Back to Home</a></p>-->
+<!--    </br>-->
 
     <footer th:replace="fragments :: footer"></footer>
 </div>

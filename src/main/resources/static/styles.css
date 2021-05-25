@@ -1,14 +1,14 @@
 .proPic {
   vertical-align: middle;
-  width: 350px;
-  height: 350px;
+  width: 500px;
+  height: 450px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 #fragProPic {
     float: right;
-
+      border-radius: 50%;
 }
 
 #fragProPic2 {
@@ -183,7 +183,6 @@ td.subTitleTable {
   background-color: #0602b9;
     font-size: 24px;
     text-align: center;
-    color: #0056b9;
     border: 3 px solid;
     border-color: #0056b9;
 }

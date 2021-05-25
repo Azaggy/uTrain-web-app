@@ -3,8 +3,8 @@
     <head th:replace="fragments :: head">
     </head>
     <body>
-        <div class="container">
-            <div th:replace="fragments :: page-header"></div>
+    <div th:replace="fragments :: page-header"></div>
+        <div class="container py-3">
 
 
             <!--        <h1>Your height is: </h1>-->
@@ -20,13 +20,20 @@
                             <h1 class="my-0 fw-normal" style="text-shadow: 2px 2px grey">Your BMI</h1>
                         </div>
                         <div class="card-body">
-                            <h1 style="text-align: center; color: #0056b9;">Your BMI is: </h1>
-                            <h1 style="text-align: center; color: #0056b9;" th:text="${bmi1}"></h1>
-                            <h2 style="text-align: center; color: #0056b9;">Your height is: </h2>
-                            <h2 style="text-align: center; color: #0056b9;" th:text="${user.userDetail.height}"></h2>
-                            <h3 style="text-align: center; color: #0056b9;">Your weight is: </h3>
-                            <h3 style="text-align: center; color: #0056b9;" th:text="${user.userDetail.weight}"></h3>
-
+                            <table class="table table-striped">
+                                <tr>
+                                    <td style="text-align: center;  border:1px solid #0056b9; border:1px solid #0056b9;" class="miniTitleTable"><h2 style="text-decoration: underline;">Your BMI</h2></td>
+                                    <td style="text-align: center; " class="numTable"><h3 style="font-weight: bold;" th:text="${bmi1}">Below 18.5</h3></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;  border:1px solid #0056b9;" class="miniTitleTable"><h2 style="text-decoration: underline;">Your Height</h2></td>
+                                    <td style="text-align: center; " class="numTable"><h3 style="font-weight: bold;" th:text="${user.userDetail.height}">Between 18.5 -24.9</h3></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;  border:1px solid #0056b9;" class="miniTitleTable"><h2 style="text-decoration: underline;">Your Weight</h2></td>
+                                    <td style="text-align: center; " class="numTable"><h3 style="font-weight: bold;" th:text="${user.userDetail.weight}">25 - 29.9</h3></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -39,25 +46,24 @@
                         <div class="card-body">
                             <table class="table table-striped">
                                 <tr>
-                                    <td style="text-align: center; color: #0056b9;" class="subTitleTable"><h3 style="font-weight: bold;">Classification</h3></td>
-                                    <td style="text-align: center; color: #0056b9;" class="subTitleTable"><h3 style="font-weight: bold;">BMI Target</h3></td>
+                                    <td style="text-align: center; " class="subTitleTable"><h3 style="font-weight: bold;">Classification</h3></td>
+                                    <td style="text-align: center; " class="subTitleTable"><h3 style="font-weight: bold;">BMI Target</h3></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
-                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Below 18.5</h5></td>
+                                    <td style="text-align: center;  border:1px solid #0056b9; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
+                                    <td style="text-align: center; " class="numTable"><h5>Below 18.5</h5></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
-                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Between 18.5 -24.9</h5></td>
-
+                                    <td style="text-align: center;  border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
+                                    <td style="text-align: center; " class="numTable"><h5>Between 18.5 -24.9</h5></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
-                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>25 - 29.9</h5></td>
+                                    <td style="text-align: center;  border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
+                                    <td style="text-align: center; " class="numTable"><h5>25 - 29.9</h5></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center; color: #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
-                                    <td style="text-align: center; color: #0056b9;" class="numTable"><h5>Over 30</h5></td>
+                                    <td style="text-align: center;  border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
+                                    <td style="text-align: center; " class="numTable"><h5>Over 30</h5></td>
                                 </tr>
                             </table>
                         </div>
