@@ -137,6 +137,15 @@ public class WorkOutController {
 
     }
 
+    @GetMapping("instructionalVideos")
+    public String presentInstructionalVideos (HttpServletRequest request, Model model) {
+        User user = (User) getUserFromSession(request.getSession());
+
+        model.addAttribute("user", user);
+        return "workout/instructionalVideos";
+    }
+
+
 //    @GetMapping("activities")
 //    public String displayCurrentActivities(HttpServletRequest request, Model model) {
 //
