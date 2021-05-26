@@ -1,9 +1,7 @@
 package org.launchcode.uTrain.controllers;
 
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.CurrentWeather;
 import org.launchcode.uTrain.models.LiveWeatherService;
-import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.StubWeatherService;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
 import java.util.Optional;
 
 
@@ -50,6 +47,7 @@ public class CurrentWeatherController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
 
+        model.addAttribute("title", "Weather Report");
 
         if (true) {
             model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
