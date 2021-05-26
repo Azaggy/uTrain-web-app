@@ -55,7 +55,11 @@ public class LiveWeatherService {
                     BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()),
                     BigDecimal.valueOf(root.path("wind").path("speed").asDouble()),
                     BigDecimal.valueOf(root.path("coord").path("lon").asDouble()),
-                    BigDecimal.valueOf(root.path("coord").path("lat").asDouble()));
+                    BigDecimal.valueOf(root.path("coord").path("lat").asDouble()),
+                    BigDecimal.valueOf(root.path("sys").path("sunrise").asDouble()),
+                    BigDecimal.valueOf(root.path("sys").path("sunset").asDouble()),
+                    BigDecimal.valueOf(root.path("main").path("temp_min").asDouble()),
+                    BigDecimal.valueOf(root.path("main").path("temp_max").asDouble()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error parsing JSON", e);
         }
