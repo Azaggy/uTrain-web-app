@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 <header th:replace="fragments :: page-header"></header>
 
     <form method="post">
@@ -23,22 +23,22 @@
     </div>
         <h4>List Amenities At This Location</h4>
         <div>
-            <label>Swimming Pool</label>
             <input th:field="${park.amenities.swimmingPool}" type="checkbox" name="swimmingPool">
-            <label>Tennis Court</label>
+            <label>Swimming Pool</label>
             <input th:field="${park.amenities.tennisCourt}" type="checkbox" name="tennisCourt">
-            <label>Bike Path</label>
+            <label>Tennis Court</label>
             <input th:field="${park.amenities.bikePath}" type="checkbox" name="bikePath">
-            <label>Walking Path</label>
+            <label>Bike Path</label>
             <input th:field="${park.amenities.walkingPath}" type="checkbox" name="walkingPath">
-            <label>Golf Course</label>
+            <label>Walking Path</label>
             <input th:field="${park.amenities.golfCourse}" type="checkbox" name="golfCourse">
-            <label>Driving Range</label>
+            <label>Golf Course</label>
             <input th:field="${park.amenities.drivingRange}" type="checkbox" name="drivingRange">
-            <label>Baseball Field</label>
+            <label>Driving Range</label>
             <input th:field="${park.amenities.baseballField}" type="checkbox" name="baseballField">
-            <label>Basketball Court</label>
+            <label>Baseball Field</label>
             <input th:field="${park.amenities.basketballCourt}" type="checkbox" name="basketballCourt">
+            <label>Basketball Court</label>
             </label>
         </div>
 

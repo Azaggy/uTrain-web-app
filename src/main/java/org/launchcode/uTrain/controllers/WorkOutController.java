@@ -3,25 +3,17 @@ package org.launchcode.uTrain.controllers;
 import org.launchcode.uTrain.data.ExerciseRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.data.WorkoutRepository;
-import org.launchcode.uTrain.models.Video;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.user.UserSex;
 import org.launchcode.uTrain.models.workout.Exercise;
 import org.launchcode.uTrain.models.workout.ExerciseType;
 import org.launchcode.uTrain.models.workout.Workout;
-import org.launchcode.uTrain.service.VideoStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -53,9 +45,6 @@ public class WorkOutController {
 
     @Autowired
     WorkoutRepository workoutRepository;
-
-    @Autowired
-    private VideoStorageService videoStorageService;
 
 
     @GetMapping("workouts")
@@ -105,6 +94,7 @@ public class WorkOutController {
 
         //grabbing the current date to add to the workout before it's saved to the repository
         Date currentDate = Calendar.getInstance().getTime();
+        Date dateInSec = user.truncToSec(currentDate);
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Workout");
@@ -141,7 +131,7 @@ public class WorkOutController {
 
 
         //we set the date and the user to the workout. The User's id will be stored on the workout table
-        workout.setTimeStamp(currentDate);
+        workout.setTimeStamp(dateInSec);
         workout.setUser(user);
         workoutRepository.save(workout);
 

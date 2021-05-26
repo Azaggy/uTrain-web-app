@@ -1,9 +1,7 @@
 package org.launchcode.uTrain.data;
 
-import org.launchcode.uTrain.models.UserPhoto;
+import org.launchcode.uTrain.models.user.UserPhoto;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.Optional;
 
 public interface PhotoRepository extends CrudRepository<UserPhoto, Integer> {
 

@@ -5,6 +5,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
@@ -74,5 +75,10 @@ public class Message extends AbstractEntity{
 
     public String recipientExtraction(String username) {
         return username;
+    }
+
+    public String dateFormatter() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm a");
+        return (formatter.format(this.date));
     }
 }
