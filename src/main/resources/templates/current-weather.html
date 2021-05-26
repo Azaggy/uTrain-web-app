@@ -17,6 +17,12 @@
   <p th:text="${currentWeather.feelsLike} + ' &#8457;'">Feels Like</p>
   <h3>Wind Speed</h3>
   <p th:text="${currentWeather.windSpeed} + ' mph'"></p>
+  <h3>Humidity</h3>
+  <p th:text="${currentWeather.humidity}"></p>
+  <h3>Latitude</h3>
+  <p th:text="${currentWeather.lat}"></p>
+  <h3>Longitude</h3>
+  <p th:text="${currentWeather.lon}"></p>
 </div>
 </body>
 </html>

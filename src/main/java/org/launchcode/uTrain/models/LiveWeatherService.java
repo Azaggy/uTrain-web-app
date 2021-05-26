@@ -39,7 +39,7 @@ public class LiveWeatherService {
 //        return convert(response);
 //    }
 
-    public CurrentWeather getCurrentWeather(Integer zipCode, String country) {
+    public CurrentWeather getCurrentWeather(Integer zipCode, String country) throws JsonProcessingException {
         URI url = new UriTemplate(WEATHER_URL).expand(zipCode, country, apiKey);
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
@@ -50,13 +50,26 @@ public class LiveWeatherService {
         try {
             JsonNode root = objectMapper.readTree(response.getBody());
             return new CurrentWeather(root.path("weather").get(0).path("main").asText(),
+                    BigDecimal.valueOf(root.path("main").path("humidity").asDouble()),
                     BigDecimal.valueOf(root.path("main").path("temp").asDouble()),
                     BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()),
-                    BigDecimal.valueOf(root.path("wind").path("speed").asDouble()));
+                    BigDecimal.valueOf(root.path("wind").path("speed").asDouble()),
+                    BigDecimal.valueOf(root.path("coord").path("lon").asDouble()),
+                    BigDecimal.valueOf(root.path("coord").path("lat").asDouble()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error parsing JSON", e);
         }
     }
+//    public CurrentWeather convert(ResponseEntity<String> response) throws JsonProcessingException {
+//        Main main = new Main();
+//        JsonNode node = objectMapper.readTree(response.getBody());
+//
+//        // try catch block
+//        JsonNode colorNode = node.get("temp");
+//        double temp = colorNode.asDouble();
+//        main.setTemp(temp);
+//        return main;
+//    }
 
 //    private WeatherResponse convert(ResponseEntity<String> response) {
 //            JsonNode root = objectMapper.readTree(response.getBody());
