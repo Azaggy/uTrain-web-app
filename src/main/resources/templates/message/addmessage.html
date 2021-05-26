@@ -1,36 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body class="container" style="background-color: white;">
 <header th:replace="fragments :: page-header"></header>
+<div class="col-lg-8" style="margin: auto; width: 50%; padding: 10px;">
+    <div style="border: 3px solid #0056b9; border-radius: 32px;" class="card mb-4 shadow-md">
+        <div style="background-color: #0056b9; border-top-left-radius: 24px; border-top-right-radius: 24px;" class="card-header py-3 text-white text-center">
+            <h1 class="my-0 fw-normal">Send Message to </br> Workout Buddy</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <!--<form>-->
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><h1>To:</h1></label>
+                    <input class="form-control" style="border-radius: 25px; border: 3px solid #0056b9;" th:field="${message.recipient}" id="exampleFormControlInput1" placeholder="uTrain Username">
+                    <p class="error" th:errors="${message.recipient}"></p>
+                </div>
 
-<form method="post">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"><h1>Message:</h1></label>
+                    <textarea style="border-radius: 25px; border: 3px solid #0056b9" th:field="${message.body}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <!--        <textarea th:field="${message.body}" class="form-control" rows="2"></textarea>-->
+                </div>
 
-    <h1>Send Message</h1>
+                <div class="form-group">
+                    <input type="submit" value="Send" class="btn btn-primary btn-lg btn-block" style="background-color: #0056b9; text-align: center; width: 200px; height: 50px; margin: auto; border-radius: 24px; ">
+                    <!--                        <img src="https://i.ibb.co/BTtgwGn/84-844707-paper-airplane-vector-png-paper-plane-icon-png.jpg" alt="84-844707-paper-airplane-vector-png-paper-plane-icon-png" border="0">-->
+                    <!--                    <input type="submit" value="Send" class="btn btn-primary btn-lg" style="background-color: #0056b9; text-align: center; width: 135px; height: 50px; margin: auto; border-radius: 24px;">-->
+                </div>
 
-
-    <div class="form-group">
-<!--        <input type="hidden" th:field="${userMessage.user}">-->
-        <label>To:
-            <input th:field="${message.recipient}">
-        </label>
-        <p class="error" th:errors="${message.recipient}"></p>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-        <label>Message
-            <input th:field="${message.body}" class="form-control">
-        </label>
-<!--        <p class="error" th:errors="${message.body}"></p>-->
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Send" class="btn btn-success">
-    </div>
-
-</form>
-
-<p><a th:href="@{/user/index}">Back to Home</a></p>
+<!--    <p><a th:href="@{/user/index}">Back to Home</a></p>-->
 
 <footer th:replace="fragments :: footer"></footer>
 
