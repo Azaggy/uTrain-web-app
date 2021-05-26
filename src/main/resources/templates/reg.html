@@ -27,23 +27,23 @@ background-color: #0056b9'">
     <h1 style="color: white" class="h3 mb-3 font-weight-heavy">Please Enter Info Below</h1>
     <div class="form-floating mb-3">
         <label class="sr-only" for="username">Username</label>
-        <input class="form-control-lg" id="username" th:field="${registerFormDTO.username}" placeholder="Username" required autofocus/>
+        <input class="form-control-lg" id="username" th:field="${registerFormDTO.username}" placeholder="username" required autofocus/>
     </div>
         <p style="color: white" class="error" th:errors="${registerFormDTO.username}"></p>
 
     <div class="form-floating mb-3">
         <label class="sr-only" for="password">Password</label>
-            <input class="form-control-lg" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="Password" required autofocus/>
+            <input class="form-control-lg" id="password" th:field="${registerFormDTO.password}" type="password" placeholder="password" required autofocus/>
     </div>
         <p style="color: white" class="error" th:errors="${registerFormDTO.password}"></p>
 
     <div class="form-floating mb-3">
         <label class="sr-only" for="verifyPassword">Verify Password</label>
-            <input class="form-control-lg" id="verifyPassword" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="Verify password" required autofocus/>
+            <input class="form-control-lg" id="verifyPassword" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="verify password" required autofocus/>
     </div>
     <div class="form-floating mb-3">
         <label class="sr-only" for="email">Email</label>
-            <input class="form-control-lg" id="email" th:field="${registerFormDTO.email}" type="email" placeholder="Email" required autofocus/>
+            <input class="form-control-lg" id="email" th:field="${registerFormDTO.email}" type="email" placeholder="email" required autofocus/>
     </div>
         <p style="color: white" class="error" th:errors="${registerFormDTO.email}"></p>
 
