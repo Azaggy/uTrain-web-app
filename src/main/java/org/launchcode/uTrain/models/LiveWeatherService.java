@@ -12,6 +12,7 @@ import org.springframework.web.util.UriTemplate;
 
 import java.math.BigDecimal;
 import java.net.URI;
+import java.net.URL;
 
 @Service
 public class LiveWeatherService {
@@ -46,20 +47,32 @@ public class LiveWeatherService {
         return convert(response);
     }
 
+//    private CurrentWeather convert(ResponseEntity<String> response) {
+//        try {
+//            JsonNode root = objectMapper.readTree(response.getBody());
+//            return new CurrentWeather(root.path("weather").get(0).path("main").asText(),
+//                    BigDecimal.valueOf(root.path("main").path("temp").asDouble()),
+//                    BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()),
+//                    BigDecimal.valueOf(root.path("wind").path("speed").asDouble()));
+//        } catch (JsonProcessingException e) {
+//            throw new RuntimeException("Error parsing JSON", e);
+//        }
+//    }
+
     private CurrentWeather convert(ResponseEntity<String> response) {
         try {
             JsonNode root = objectMapper.readTree(response.getBody());
-            return new CurrentWeather(root.path("weather").get(0).path("main").asText(),
-                    BigDecimal.valueOf(root.path("main").path("temp").asDouble()),
-                    BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()),
-                    BigDecimal.valueOf(root.path("wind").path("speed").asDouble()));
+//            Wind wind = objectMapper.readValue(new Wind(WEATHER_URL), Wind.class);
+            Main main = new Main();
+            long humid = root.get("humidity").asLong();
+            main.setHumidity(humid);
+
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error parsing JSON", e);
+
         }
+        return null;
     }
 
-//    private WeatherResponse convert(ResponseEntity<String> response) {
-//            JsonNode root = objectMapper.readTree(response.getBody());
-//
-//    }
 }
+
