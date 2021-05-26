@@ -63,8 +63,8 @@
 
 <body>
 
-<div class="container sticky-top" style="padding: 0px;" th:fragment="page-header">
-    <nav class="navbar navbar-expand-sm navbar-dark py-0" style="padding: 0px;" aria-label="Third navbar example">
+<div class="container py-3" th:fragment="page-header">
+    <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
         <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
             <a class="navbar-brand" th:href="@{/user/index}">
                 <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
@@ -124,7 +124,7 @@
                                 <a class="dropdown-item" href="/trainer/create">Add Trainer</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="/current-weather">Current Weather</a>
+                                <a href="/current-weather">Current Weather</a>
                             </li>
                         </ul>
                     </li>
