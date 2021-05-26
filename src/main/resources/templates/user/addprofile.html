@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-
   <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+
 <header th:replace="fragments :: page-header"></header>
 
 <body class="container">
 
+  <div>
+    <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
+    <hr style="border: 0; border-top: 6px solid #0056b9;">
+<!--    <hr style="border: 1; border-top: 1px solid #0056b9; border-bottom: 1px solid #0056b9;">-->
 
-<div> <!-- th:replace="fragmentsnew :: bootstrap"-->
-  <h1 style="color: white" th:text="${title}"></h1>
+    <form method="post" th:action="@{/user/addprofile}">
 
-  <form method="post" th:action="@{/user/addprofile}">
-<!-- 
-  <input type="hidden" th:value="${user.id}" name="userId" />
-  <input type="hidden" th:field="${user.username}" th:value="${user.username}" name="username" />-->
-  <!-- <input type="hidden" th:value="${user.pwHash}" name="pwHash" /> --> 
-<!--    <div>-->
-<!--      <div>-->
-<!--          <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">-->
-<!--&lt;!&ndash;          <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">&ndash;&gt;-->
-<!--      <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>-->
-<!--    </div>-->
-<!--    </div>-->
-<!--  <img th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic">-->
-<!-- <a th:href="@{/user/profilePhoto}" > <button class="proPicXchange">Change Your Profile Photo!</button></a>-->
-<!--  <a th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>-->
-
-<input type="hidden" th:field="${user.id}" name="userId" />
-<input type="hidden" th:field="${user.pwHash}" name="pwHash" />
-<input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
-<input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
-<input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
+      <input type="hidden" th:field="${user.id}" name="userId" />
+      <input type="hidden" th:field="${user.pwHash}" name="pwHash" />
+      <input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
+      <input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
+      <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
 
 
-  <h3 style="color: white">General Information</h3>
+    <h3 style="color: #0056b9">General Information</h3>
 
-  <div class="container">
-    <div class="row justify-content-start">
-      <div class="col">
-        <label class="form-label">First Name
-          <input th:field="${user.userDetail.firstName}" class="form-control">
-        </label>
-        <p class="error" th:errors="${user.userDetail.firstName}"></p>
+    <div class="container">
+      <div class="row justify-content-start">
+        <div class="col">
+          <label class="form-label">First Name
+            <input th:field="${user.userDetail.firstName}" class="form-control">
+          </label>
+          <p class="error" th:errors="${user.userDetail.firstName}"></p>
 
         <label class="form-label">Last Name
           <input th:field="${user.userDetail.lastName}" class="form-control">
         </label>
         <p class="error" th:errors="${user.userDetail.lastName}"></p>
 
-        <label class="form-label">Birth Day Format(MM/DD/YYYY)
+        <label class="form-label">Birthday (MM/DD/YYYY)
           <input type="text" th:field="${user.userDetail.birthDay}" autocomplete="off" class="form-control">
         </label>
         <p style="color: red" class="error" th:errors="${user.userDetail.birthDay}">Incorrect date format!!</p>
@@ -65,12 +52,12 @@
         </label>
         <p class="error" th:errors="${user.userDetail.userSex}"></p>
 
-        <label class="form-label">Height (In Inches)
+        <label class="form-label">Height (Inches)
           <input type="number" th:field="${user.userDetail.height}" class="form-control">
         </label>
         <p class="error" th:errors="${user.userDetail.height}"></p>
 
-        <label class="form-label">Weight (In lbs)
+        <label class="form-label">Weight (lbs)
           <input type="number" th:field="${user.userDetail.weight}" class="form-control">
         </label>
         <p class="error" th:errors="${user.userDetail.weight}"></p>
@@ -109,26 +96,38 @@
       </div>
 
       <div>
-        <h3 style="color: white">Interests</h3>
-        <h4 style="color: white">Select Interests that apply to you</h4>
-        <div>
-          <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
-          <label class="form-label">Walking</label><br>
-          <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
-          <label class="form-label">Running</label><br>
-          <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
-          <label class="form-label">Cycling</label><br>
-          <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
-          <label class="form-label">Golf</label><br>
-          <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
-          <label class="form-label">Baseball</label><br>
-          <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
-          <label class="form-label">Basketball</label><br>
-          <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
-          <label class="form-label">Swimming</label><br>
-          <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
-          <label class="form-label">Tennis</label>
+        <h3 style="color: #0056b9">Interests</h3>
+        <h4 style="color: #0056b9">Select interests that apply to you</h4>
 
+        <hr style=" border : 0; height: 4px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 86, 185, 0.75), rgba(0, 0, 0, 0));">
+
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col">
+              <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
+              <label class="form-label" style="padding-left: 10px">Walking</label><br>
+              <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
+              <label class="form-label" style="padding-left: 10px">Running</label><br>
+              <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
+              <label class="form-label" style="padding-left: 10px">Cycling</label><br>
+            </div>
+
+            <div class="col">
+              <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
+              <label class="form-label" style="padding-left: 10px">Golf</label><br>
+              <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
+              <label class="form-label" style="padding-left: 10px">Baseball</label><br>
+              <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
+              <label class="form-label" style="padding-left: 10px">Basketball</label><br>
+            </div>
+
+            <div class="col">
+              <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
+              <label class="form-label" style="padding-left: 10px">Swimming</label><br>
+              <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
+              <label class="form-label" style="padding-left: 10px">Tennis</label>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -136,13 +135,13 @@
             <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
             <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
             <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange">Change Your Profile Photo!</a>
-          </div>
-          <br>
+          </div><br>
+
           <input class="btn btn-success" type="submit" value="Update" th:href="@{/user/index}">
 
         </div>
 
-              </div>
+      </div>
     </div>
   </div>
 
