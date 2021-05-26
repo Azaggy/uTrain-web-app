@@ -24,13 +24,13 @@ background-color: #0056b9'">
         <h1 style="color: white" class="h3 mb-3 font-weight-heavy">Please Sign In</h1>
     <div class="form-floating mb-3">
         <label class="sr-only" for="username">Username</label>
-            <input class="form-control-lg" id="username"th:field="${loginFormDTO.username}" placeholder="username" required autofocus>
+            <input class="form-control-lg" id="username"th:field="${loginFormDTO.username}" placeholder="Username" required autofocus>
     </div>
         <p style="color: white" class="error" th:errors="${loginFormDTO.username}"></p>
     </br>
     <div class="form-floating mb-3">
         <label class="sr-only" th:for="password">Password</label>
-            <input class="form-control-lg" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="password" required>
+            <input class="form-control-lg" id="password" th:field="${loginFormDTO.password}" type="password" placeholder="Password" required>
     </div>
         <p style="color: white" class="error" th:errors="${loginFormDTO.password}"></p>
 
