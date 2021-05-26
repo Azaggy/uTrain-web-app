@@ -63,8 +63,8 @@
 
 <body>
 
-<div class="container py-3" th:fragment="page-header">
-    <nav class="navbar navbar-expand-sm navbar-dark sticky-top" aria-label="Third navbar example">
+<div class="container py-0 sticky-top" th:fragment="page-header" >
+    <nav class="navbar navbar-expand-sm navbar-dark py-0" aria-label="Third navbar example">
         <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
             <a class="navbar-brand" th:href="@{/user/index}">
                 <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>
@@ -75,7 +75,7 @@
             <div class="collapse navbar-collapse" id="navbarsExample03">
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li class="nav-item">
-                        <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
+                        <a style="color: white;" class="nav-link " aria-current="page" th:href="@{/user/index}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
