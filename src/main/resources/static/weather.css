@@ -12,7 +12,7 @@ body {
 
 .card1 {
     background-image: linear-gradient(#2196F3, #81D4FA);
-    padding: 30px 20px 30px 50px
+    padding: 30px 20px 30px 50px;
 }
 
 .image {
@@ -31,7 +31,7 @@ body {
 
 .card2 {
     background-color: #607D8B;
-    padding: 0px 0px 40px 40px
+    padding: 0px 0px 40px 40px;
 }
 
 input {
