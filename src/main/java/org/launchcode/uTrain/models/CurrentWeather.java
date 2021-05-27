@@ -25,6 +25,8 @@ public class CurrentWeather implements Serializable {
     private BigDecimal temp_min;
     private BigDecimal temp_max;
     private String timeZone;
+    private String timeUpdated;
+    private String cityName;
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
@@ -41,7 +43,7 @@ public class CurrentWeather implements Serializable {
 
     public CurrentWeather(String description, BigDecimal humidity, BigDecimal temperature, BigDecimal feelsLike,
                           BigDecimal windSpeed, BigDecimal lat, BigDecimal lon, String sunrise, String sunset,
-                          BigDecimal temp_min, BigDecimal temp_max, String timeZone) {
+                          BigDecimal temp_min, BigDecimal temp_max, String timeZone, String timeUpdated, String cityName) {
         this.description = description;
         this.temperature = temperature;
         this.feelsLike = feelsLike;
@@ -54,6 +56,8 @@ public class CurrentWeather implements Serializable {
         this.temp_min = temp_min;
         this.temp_max = temp_max;
         this.timeZone = timeZone;
+        this.timeUpdated = timeUpdated;
+        this.cityName = cityName;
 
     }
 
@@ -157,7 +161,26 @@ public class CurrentWeather implements Serializable {
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
     }
-//    private String getDateString(BigDecimal timeInMilliseconds) {
+
+    public String getTimeUpdated() {
+        Integer integer = Integer.parseInt(timeUpdated);
+        String timeUpdated2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date (integer *1000L));
+        return timeUpdated2;
+    }
+
+    public void setTimeUpdated(String timeUpdated) {
+        this.timeUpdated = timeUpdated;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
 //        normiesDate = formatter.format(new Date(String.valueOf(timeInMilliseconds)));
 //        return normiesDate;
