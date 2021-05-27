@@ -12,7 +12,6 @@ import org.springframework.web.util.UriTemplate;
 
 import java.math.BigDecimal;
 import java.net.URI;
-import java.time.Instant;
 
 @Service
 public class LiveWeatherService {
@@ -57,7 +56,7 @@ public class LiveWeatherService {
                     BigDecimal.valueOf(root.path("wind").path("speed").asDouble()),
                     BigDecimal.valueOf(root.path("coord").path("lon").asDouble()),
                     BigDecimal.valueOf(root.path("coord").path("lat").asDouble()),
-                    root.path("sys").path("sunset").asText(),  root.path("sys").path("sunrise").asText(),
+                    root.path("sys").path("sunrise").asText(),  root.path("sys").path("sunset").asText(),
                     BigDecimal.valueOf(root.path("main").path("temp_min").asDouble()),
                     BigDecimal.valueOf(root.path("main").path("temp_max").asDouble()),
                     root.path("timezone").asText(), root.path("dt").asText(), root.path("name").asText());
