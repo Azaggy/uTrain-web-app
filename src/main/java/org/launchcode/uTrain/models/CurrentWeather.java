@@ -24,8 +24,6 @@ public class CurrentWeather implements Serializable {
     private String sunset;
     private BigDecimal temp_min;
     private BigDecimal temp_max;
-    private String normiesDate;
-    private String normiesDate2;
     private String timeZone;
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
@@ -122,7 +120,7 @@ public class CurrentWeather implements Serializable {
     }
 
     public void setSunrise(String sunrise) {
-//        this.sunrise = getDateString(sunrise);
+        this.sunrise = sunrise;
     }
 
     public String getSunset() {
@@ -159,22 +157,6 @@ public class CurrentWeather implements Serializable {
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
     }
-
-    public void setNormiesDate(String normiesDate) {
-        this.normiesDate = normiesDate;
-    }
-
-    public void setNormiesDate2(BigDecimal sunset) {
-//        this.normiesDate2 = normiesDate2;
-//        this.normiesDate2 = getDateString(sunset);
-    }
-
-    public String getNormiesDate() {
-//        this.normiesDate = getDateString(sunrise);
-
-
-        return normiesDate;
-    }
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
 //        normiesDate = formatter.format(new Date(String.valueOf(timeInMilliseconds)));
@@ -187,15 +169,6 @@ public class CurrentWeather implements Serializable {
 //        String normiesDate = formatter.format(date);
 //        System.out.println(normiesDate);
 //        return normiesDate;
-//    }
-
-    public String getNormiesDate2() {
-//        this.normiesDate2 = getDateString(sunset);
-//        normiesDate2 = getDateString(sunset);
-        return normiesDate2;
-    }
-//    public String getNormiesDate2() {
-//        return normiesDate2;
 //    }
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
