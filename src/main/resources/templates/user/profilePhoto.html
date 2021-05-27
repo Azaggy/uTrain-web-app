@@ -7,19 +7,28 @@
 <body>
 
 <div th:replace="fragments :: page-header"></div>
-
-<h1>Select a Profile Photo</h1>
-<form th:action="@{/user/profilePhoto}" method="post" enctype="multipart/form-data">
-    <div>
-        <label class="photosLabel">Photos:</label>
-        <input type="file" th:object="${userPhoto}" name="image" id="fileImage">
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-8" style="margin: auto;">
+            <div style="border: 1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+                <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
+                    <h1>Select a Profile Photo</h1>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/user/profilePhoto}" style="text-align: center;" method="post" enctype="multipart/form-data">
+                        <div style="margin: auto; padding: 32px 8px" >
+                            <label class="photosLabel" style="padding: 5px 5px">Photos:</label>
+                            <input type="file" th:object="${userPhoto}" name="image" id="fileImage">
+                        </div>
+                        <div>
+                            <input class="btn btn primary btn-lg btn-block" style="background-color: #0056b9; text-align: center; width: 200px; height: 50px;" type="submit" value="Update" th:href="@{/user/profile}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <input type="submit" value="Update" th:href="@{/user/addprofile}">
-    </div>
-
-</form>
-
+</div>
 
 
 <!--<h1>Or Select an Avatar</h1>-->

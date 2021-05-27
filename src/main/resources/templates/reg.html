@@ -2,9 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <!--<head th:replace="fragments :: head"></head>-->
 <head>
+    <title>uTrain</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/examples/heroes/heroes.css">
     <link rel="stylesheet" th:href="@{/signin.css}">
     <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <link rel="icon" href="https://i.ibb.co/nCbHBN8/icon.png" size="16x16" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="shortcut icon" th:href="@{/favicon.png}" sized="16X16" type="image/png">
+    <link rel="apple-touch-icon" th:href="@{/images/icon.png}" sized="180x180"> -->
 </head>
 
 <body class="text-center" th:style="'background-image: url(' + ${backgroundImage} + ');

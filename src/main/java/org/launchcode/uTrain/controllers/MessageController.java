@@ -71,7 +71,7 @@ public class MessageController {
 
             //Pulling current date info from Date class to add to message instance.
             Date currentDate = Calendar.getInstance().getTime();
-
+            Date dateInSecs = user.truncToSec(currentDate);
 //            Message message = userMessage.getMessage();
 //            User sender = userMessage.getUser();
 
@@ -96,7 +96,7 @@ public class MessageController {
              */
 
             Message message = new Message(newMessage.getBody(), newMessage.getRecipient(),
-                    user.getUsername(), currentDate);
+                    user.getUsername(), dateInSecs);
 
             messageRepository.save(message);
 
