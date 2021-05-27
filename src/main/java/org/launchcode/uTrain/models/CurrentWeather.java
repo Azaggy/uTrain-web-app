@@ -125,7 +125,7 @@ public class CurrentWeather implements Serializable {
 
     public String getSunset() {
         Integer integer = Integer.parseInt(sunset);
-        String sunset2 = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date (integer *1000L));
+        String sunset2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date (integer *1000L));
         return sunset2;
     }
 
