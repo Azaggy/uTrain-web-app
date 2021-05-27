@@ -2,8 +2,14 @@ package org.launchcode.uTrain.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
+
+import static java.util.Date.parse;
 
 public class CurrentWeather implements Serializable {
 
@@ -14,12 +20,13 @@ public class CurrentWeather implements Serializable {
     private BigDecimal humidity;
     private BigDecimal lat;
     private BigDecimal lon;
-    private BigDecimal sunrise;
-    private BigDecimal sunset;
+    private String sunrise;
+    private String sunset;
     private BigDecimal temp_min;
     private BigDecimal temp_max;
     private String normiesDate;
     private String normiesDate2;
+    private String timeZone;
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
@@ -35,8 +42,8 @@ public class CurrentWeather implements Serializable {
 //    }
 
     public CurrentWeather(String description, BigDecimal humidity, BigDecimal temperature, BigDecimal feelsLike,
-                          BigDecimal windSpeed, BigDecimal lat, BigDecimal lon, BigDecimal sunrise, BigDecimal sunset,
-                          BigDecimal temp_min, BigDecimal temp_max) {
+                          BigDecimal windSpeed, BigDecimal lat, BigDecimal lon, String sunrise, String sunset,
+                          BigDecimal temp_min, BigDecimal temp_max, String timeZone) {
         this.description = description;
         this.temperature = temperature;
         this.feelsLike = feelsLike;
@@ -48,6 +55,8 @@ public class CurrentWeather implements Serializable {
         this.sunset = sunset;
         this.temp_min = temp_min;
         this.temp_max = temp_max;
+        this.timeZone = timeZone;
+
     }
 
     public String getDescription() {
@@ -106,19 +115,24 @@ public class CurrentWeather implements Serializable {
         this.lon = lon;
     }
 
-    public BigDecimal getSunrise() {
-        return sunrise;
+    public String getSunrise() {
+        Integer integer = Integer.parseInt(sunrise);
+        String sunrise2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date(integer *1000L));
+        return sunrise2;
     }
 
-    public void setSunrise(BigDecimal sunrise) {
-        this.sunrise = sunrise;
+    public void setSunrise(String sunrise) {
+//        this.sunrise = getDateString(sunrise);
     }
 
-    public BigDecimal getSunset() {
-        return sunset;
+    public String getSunset() {
+        Integer integer = Integer.parseInt(sunset);
+        String sunset2 = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date (integer *1000L));
+        return sunset2;
     }
 
-    public void setSunset(BigDecimal sunset) {
+
+    public void setSunset(String sunset) {
         this.sunset = sunset;
     }
 
@@ -138,33 +152,51 @@ public class CurrentWeather implements Serializable {
         this.temp_max = temp_max;
     }
 
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
+
     public void setNormiesDate(String normiesDate) {
         this.normiesDate = normiesDate;
     }
 
     public void setNormiesDate2(BigDecimal sunset) {
 //        this.normiesDate2 = normiesDate2;
-        this.normiesDate2 = getDateString(sunset);
+//        this.normiesDate2 = getDateString(sunset);
     }
 
     public String getNormiesDate() {
+//        this.normiesDate = getDateString(sunrise);
+
 
         return normiesDate;
     }
-    private String getDateString(BigDecimal timeInMilliseconds) {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
-        normiesDate = formatter.format(new Date(String.valueOf(timeInMilliseconds)));
-        return normiesDate;
+//    private String getDateString(BigDecimal timeInMilliseconds) {
+//        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
+//        normiesDate = formatter.format(new Date(String.valueOf(timeInMilliseconds)));
+//        return normiesDate;
+//
+//    }
+//    private String getDateString(String timeInMilliseconds) {
+//        Date date = new Date(timeInMilliseconds);
+//        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
+//        String normiesDate = formatter.format(date);
+//        System.out.println(normiesDate);
+//        return normiesDate;
+//    }
 
-    }
-
-    public String getNormiesDate2(BigDecimal sunset) {
-        normiesDate2 = getDateString(sunset);
-        return normiesDate2;
-    }
     public String getNormiesDate2() {
+//        this.normiesDate2 = getDateString(sunset);
+//        normiesDate2 = getDateString(sunset);
         return normiesDate2;
     }
+//    public String getNormiesDate2() {
+//        return normiesDate2;
+//    }
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
