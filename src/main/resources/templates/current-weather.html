@@ -1,42 +1,122 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head th:replace="fragments :: head"></head>-->
+<!--<body class="container">-->
+
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+
+
+<!--<div>-->
+<!--  <h3>Current Conditions</h3>-->
+<!--  <p th:text="${currentWeather.description}">Description</p>-->
+<!--  <h3>Temperature</h3>-->
+<!--  <p th:text="${currentWeather.temperature} + ' &#8457;'">Temperature</p>-->
+<!--  <h3>Feels Like</h3>-->
+<!--  <p th:text="${currentWeather.feelsLike} + ' &#8457;'">Feels Like</p>-->
+<!--  <h3>Wind Speed</h3>-->
+<!--  <p th:text="${currentWeather.windSpeed} + ' mph'"></p>-->
+<!--  <h3>Humidity</h3>-->
+<!--  <p th:text="${currentWeather.humidity}"></p>-->
+<!--  <h3>Latitude</h3>-->
+<!--  <p th:text="${currentWeather.lat}"></p>-->
+<!--  <h3>Longitude</h3>-->
+<!--  <p th:text="${currentWeather.lon}"></p>-->
+<!--  <h3>Sunrise</h3>-->
+<!--  <p th:text="${currentWeather.sunrise}"></p>-->
+<!--  <h3>Sunset</h3>-->
+<!--  <p th:text="${currentWeather.sunset}"></p>-->
+<!--  <h3>Low Daily Temperature</h3>-->
+<!--  <p th:text="${currentWeather.temp_min}"></p>-->
+<!--  <h3>High Daily Temperature</h3>-->
+<!--  <p th:text="${currentWeather.temp_max}"></p>-->
+<!--  <h3>Time Zone</h3>-->
+<!--  <p th:text="${currentWeather.timeZone}"></p>-->
+<!--  <h3>Time Updated</h3>-->
+<!--  <p th:text="${currentWeather.timeUpdated}"></p>-->
+<!--  <h3>City Name</h3>-->
+<!--  <p th:text="${currentWeather.cityName}"></p>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="fragments :: head"></head>
-<body class="container">
-
-<div th:replace="fragments :: page-header"></div>
-
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="weather.css">
+</head>
 
 
-<div>
-  <h3>Current Conditions</h3>
-  <p th:text="${currentWeather.description}">Description</p>
-  <h3>Temperature</h3>
-  <p th:text="${currentWeather.temperature} + ' &#8457;'">Temperature</p>
-  <h3>Feels Like</h3>
-  <p th:text="${currentWeather.feelsLike} + ' &#8457;'">Feels Like</p>
-  <h3>Wind Speed</h3>
-  <p th:text="${currentWeather.windSpeed} + ' mph'"></p>
-  <h3>Humidity</h3>
-  <p th:text="${currentWeather.humidity}"></p>
-  <h3>Latitude</h3>
-  <p th:text="${currentWeather.lat}"></p>
-  <h3>Longitude</h3>
-  <p th:text="${currentWeather.lon}"></p>
-  <h3>Sunrise</h3>
-  <p th:text="${currentWeather.sunrise}"></p>
-  <h3>Sunset</h3>
-  <p th:text="${currentWeather.sunset}"></p>
-  <h3>Low Daily Temperature</h3>
-  <p th:text="${currentWeather.temp_min}"></p>
-  <h3>High Daily Temperature</h3>
-  <p th:text="${currentWeather.temp_max}"></p>
-  <h3>Time Zone</h3>
-  <p th:text="${currentWeather.timeZone}"></p>
-  <h3>Time Updated</h3>
-  <p th:text="${currentWeather.timeUpdated}"></p>
-  <h3>City Name</h3>
-  <p th:text="${currentWeather.cityName}"></p>
+<body>
+
+<div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="row card0">
+      <div class="card1 col-lg-8 col-md-7"> <small>the.weather</small>
+        <div class="text-center"> <img class="image mt-5" src="https://i.imgur.com/M8VyA2h.png"> </div>
+        <div class="row px-3 mt-3 mb-3">
+          <h1 class="large-font mr-3" th:text="${currentWeather.temperature} + ' &#8457;'"></h1>
+          <div class="d-flex flex-column mr-3">
+            <h2 class="mt-3 mb-0" th:text="${currentWeather.cityName}"></h2> <small th:text="${currentWeather.timeUpdated}"></small>
+          </div>
+          <div class="d-flex flex-column text-center">
+            <h3 class="fa fa-sun-o mt-4"></h3> <small th:text="${currentWeather.description}"></small>
+          </div>
+        </div>
+      </div>
+      <div class="card2 col-lg-4 col-md-5">
+        <div class="row px-3"> <input type="text" name="location" placeholder="Another location" class="mb-5">
+          <div class="fa fa-search mb-5 mr-0 text-center"></div>
+        </div>
+        <div class="mr-5">
+          <p>Weather Details</p>
+          <div class="row px-3">
+            <p class="light-text">Feels like</p>
+            <p class="ml-auto" th:text="${currentWeather.feelsLike} + ' &#8457;'"></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Humidity</p>
+            <p class="ml-auto" th:text="${currentWeather.humidity}"></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Wind Speed</p>
+            <p class="ml-auto" th:text="${currentWeather.windSpeed} + ' mph'"></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Max Temp</p>
+            <p class="ml-auto" th:text="${currentWeather.temp_max}" ></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Min Temp</p>
+            <p class="ml-auto" th:text="${currentWeather.temp_min}" ></p>
+          </div>
+          <div class="line my-5"></div>
+<!--          <p>Weather Details</p>-->
+          <div class="row px-3">
+            <p class="light-text">Sunrise</p>
+            <p class="ml-auto" th:text="${currentWeather.sunrise}">1</p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Sunset</p>
+            <p class="ml-auto" th:text="${currentWeather.sunset}"></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Latitude</p>
+            <p class="ml-auto" th:text="${currentWeather.lat}"></p>
+          </div>
+          <div class="row px-3">
+            <p class="light-text">Longitude</p>
+            <p class="ml-auto" th:text="${currentWeather.lon}"></p>
+          </div>
+          <div class="line mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 </body>
 </html>
