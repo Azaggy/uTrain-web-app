@@ -60,7 +60,7 @@ public class LiveWeatherService {
                     root.path("sys").path("sunset").asText(),  root.path("sys").path("sunrise").asText(),
                     BigDecimal.valueOf(root.path("main").path("temp_min").asDouble()),
                     BigDecimal.valueOf(root.path("main").path("temp_max").asDouble()),
-                    root.path("timezone").asText());
+                    root.path("timezone").asText(), root.path("dt").asText(), root.path("name").asText());
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error parsing JSON", e);
         }

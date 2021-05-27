@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 public class StubWeatherService {
 
     public CurrentWeather getCurrentWeather(String city, String country) {
-        return new CurrentWeather("Clear", BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.TEN, BigDecimal.ONE, BigDecimal.ONE, "BigDecimal.ONE","BigDecimal.ONE",BigDecimal.ONE,BigDecimal.ONE, "Central");
+        return new CurrentWeather("Clear", BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.TEN, BigDecimal.ONE, BigDecimal.ONE, "BigDecimal.ONE","BigDecimal.ONE",BigDecimal.ONE,BigDecimal.ONE, "Central", "BigDecimal.ONE", "BigDecimal.ONE");
     }
 }
