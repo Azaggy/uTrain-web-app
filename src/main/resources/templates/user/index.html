@@ -168,7 +168,7 @@
                                         <th th:text="${workouts[0].burnedCal}"></th>
                                         <th th:text="${workouts[0].exercise.name}"></th>
                                         <th th:text="${workouts[0].exercise.exerciseType.exerciseType}"></th>
-                                        <th th:text="${workouts[0].timeStamp}"></th>
+                                        <th th:text="${workouts[0].dateFormatter}"></th>
                                     </tr>
                                     <tr>
                                         <th th:text="${workouts[1].description}"></th>
@@ -176,7 +176,7 @@
                                         <th th:text="${workouts[1].burnedCal}"></th>
                                         <th th:text="${workouts[1].exercise.name}"></th>
                                         <th th:text="${workouts[1].exercise.exerciseType.exerciseType}"></th>
-                                        <th th:text="${workouts[1].timeStamp}"></th>
+                                        <th th:text="${workouts[1].dateFormatter}"></th>
                                     </tr>
                                     <tr>
                                         <th th:text="${workouts[2].description}"></th>
@@ -184,7 +184,7 @@
                                         <th th:text="${workouts[2].burnedCal}"></th>
                                         <th th:text="${workouts[2].exercise.name}"></th>
                                         <th th:text="${workouts[2].exercise.exerciseType.exerciseType}"></th>
-                                        <th th:text="${workouts[2].timeStamp}"></th>
+                                        <th th:text="${workouts[2].dateFormatter}"></th>
                                     </tr>
                                 </th:block>
                                 <th:block th:unless="${workouts.size > 2}">
@@ -194,7 +194,7 @@
                                         <th th:text="${workout.burnedCal}"></th>
                                         <th th:text="${workout.exercise.name}"></th>
                                         <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
-                                        <th th:text="${workout.timeStamp}"></th>
+                                        <th th:text="${workout.dateFormatter}"></th>
                                     </tr>
                                 </th:block>
                             </table>
@@ -373,7 +373,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <footer th:replace="fragments :: footer"></footer>
 <!--        <footer class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">-->
 <!--            <div class="container py-3">-->
