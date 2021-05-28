@@ -2,13 +2,15 @@
 
 <html xmlns:th="http://www.thymeleaf.org/">
 <!--<script th:src="@{/main.js}"></script>-->
-<link rel="stylesheet" th:href="@{/workOut.css}"/>
+<!--<link rel="stylesheet" th:href="@{/workOut.css}"/>-->
 <!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
-<head th:replace="fragments :: head"></head>
-<!--<p th:replace="fragments :: bootstrap"></p>-->
+<head th:replace="fragments :: head">
+<!--    <p th:replace="fragmentsnew :: bootstrap"></p>-->
+</head>
+<p th:replace="fragments :: bootstrap"></p>
 
 
-<body>
+<body class="container">
 <header th:replace="fragments :: page-header"></header>
 <h1 th:text="${title}"></h1>
 <table id="example" class="table table-striped table-bordered" style="  width:100%">
