@@ -271,6 +271,16 @@ public class UserController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getHeight() < 1 || user.getUserDetail().getWeight() < 1) {
+                model.addAttribute("title", "BMI Page");
+                model.addAttribute("user", user);
+
+                return "/user/bmiNoDetail";
+            }
+        }
+
+
         model.addAttribute("title", "BMI Calculator");
         model.addAttribute("bmi1", user.getUserDetail().getBodyMassIndex());
         model.addAttribute("user", user);
@@ -278,6 +288,17 @@ public class UserController {
 
         return "user/bmi";
 
+    }
+
+    @GetMapping("bmiNoDetail")
+    public String bmiCalc(Model model, HttpServletRequest request) {
+
+        User user = (User) getUserFromSession(request.getSession());
+
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+        model.addAttribute("title", "BMI Calculator");
+        return "user/bmiNoDetail";
     }
 
     @GetMapping("addfriend")

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<!--<head th:replace="fragments :: head">-->
+<!--</head>-->
+<head th:replace="fragments :: head">
+<!--  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">-->
+
+<!--  <title>uTrain: BMI Calculator</title>-->
+
+<!--  <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+
+<!--  &lt;!&ndash;    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">&ndash;&gt;-->
+<!--  <link rel="manifest" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/manifest.json">-->
+<!--  &lt;!&ndash;    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">&ndash;&gt;-->
+<!--  <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+<!--  <link href="https://getbootstrap.com/docs/5.0/examples/heroes/heroes.css" rel="stylesheet">-->
+<!--  <link rel="icon" href="https://i.ibb.co/nCbHBN8/icon.png" size="16x16" type="image/png">-->
+
+</head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+<div class="container">
+  <div class="b-example-divider" style="background-color: #0056b9;" >
+    <h2 style="text-align: center; color: white;">Calculate your BMI with the formula: (weight / (height * height))* 703</h2>
+    <p style="text-align: center; color: white; ">weight divided by height times height, all multiplied by 703</p>
+  </div>
+
+  <div style="margin: 32px 5px;" class="row">
+    <div class="col-md-6">
+      <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+        <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
+          <h1 class="my-0 fw-normal">Calculator</h1>
+        </div>
+        <!--                style="border: 1px solid #0056b9;" class="card rounded-3" class="card-body"-->
+        <div class="card-body">
+          <form name="calculator">
+            <table style="margin-left: auto; margin-right: auto; margin-bottom:32px;" class="table-borderless">
+              <tr>
+                <td colspan="3">
+                  <input style="color: #0056b9;" class="form-control form-control-lg" type="text" name="display" id="display"
+                         disabled>
+                </td>
+                <td><input class="btn btn-primary" style="background-color: #0056b9; width: 100px; height: 50px;" type="button" name="clear" value="c" onclick="calculator.display.value = ''"> </td>
+              </tr>
+              <tr>
+                <div class="btn-group btn-group-lg">
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="one" value="1" onclick="calculator.display.value += '1'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="two" value="2" onclick="calculator.display.value += '2'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="three" value="3" onclick="calculator.display.value += '3'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 100px; height: 50px;" type="button" name="divide" value="/" onclick="calculator.display.value += '/'"> </td>
+                </div>
+              </tr>
+              <tr>
+                <div class="btn-group btn-group-lg">
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="four" value="4" onclick="calculator.display.value += '4'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="five" value="5" onclick="calculator.display.value += '5'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="six" value="6" onclick="calculator.display.value += '6'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 100px; height: 50px;" type="button" name="minus" value="-" onclick="calculator.display.value += '-'"> </td>
+                </div>
+              </tr>
+              <tr>
+                <div class="btn-group btn-group-lg">
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="seven" value="7" onclick="calculator.display.value += '7'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="eight" value="8" onclick="calculator.display.value += '8'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="nine" value="9" onclick="calculator.display.value += '9'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 100px; height: 50px;" type="button" name="plus" value="+" onclick="calculator.display.value += '+'"> </td>
+                </div>
+
+              </tr>
+              <tr>
+                <div class="btn-group btn-group-lg">
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="period" value="." onclick="calculator.display.value += '.'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="zero" value="0" onclick="calculator.display.value += '0'"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 135px; height: 50px;" type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"> </td>
+                  <td><input class="btn btn-primary" style="background-color: #0056b9; width: 100px; height: 50px;" type="button" name="times" value="*" onclick="calculator.display.value += '*'"> </td>
+                </div>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div style="border:1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
+        <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
+          <h1 class="my-0 fw-normal"> BMI Table</h1>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped" style="border:1px solid #0056b9;">
+            <tr>
+              <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">Classification</h2></td>
+              <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">BMI Target</h2></td>
+            </tr>
+            <tr>
+              <td style="text-align: center; border:1px solid #0056b9; " class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
+              <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Below 18.5</h5></td>
+            </tr>
+            <tr>
+              <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
+              <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Between 18.5 -24.9</h5></td>
+
+            </tr>
+            <tr>
+              <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
+              <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>25 - 29.9</h5></td>
+            </tr>
+            <tr>
+              <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
+              <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Over 30</h5></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer th:replace="fragments :: footer"></footer>
+</div>
+
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
