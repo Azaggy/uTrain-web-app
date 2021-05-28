@@ -4,28 +4,52 @@
 <body class="container">
 <header th:replace="fragments :: page-header"></header>
 
-<form method="post">
+<div class="container py-3">
 
-    <h1>Add Workout Buddy</h1>
 
-<!--    <input type="hidden" th:field="${user.id}" name="userId" />-->
-    <div class="form-group">
-        <!--        <input type="hidden" th:field="${userMessage.user}">-->
-        <label>Enter User Name:
-            <input type="text" th:field="${friend.userName}" id="friend">
-        </label>
-        <p class="error" th:errors="${friend.userName}"></p>
+    <div style="background-image: url('https://i2.wp.com/www.uactiv.com/blog/wp-content/uploads/2018/07/012018_gym_buddies.jpg?fit=2048%2C1365&ssl=1');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 300px"
+         class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold"></h1>
+
+
+        </div>
     </div>
 
-    <div class="form-group">
-        <input type="submit" value="Add Buddy" class="btn btn-success">
+    <div style="background-color: #0056b9; border:1px solid #0056b9;" class="rounded-3 text-white shadow-lg">
+        <div class="body p-3">
+            <form method="post">
+
+                <h1>Add Workout Buddy</h1>
+
+                <!--    <input type="hidden" th:field="${user.id}" name="userId" />-->
+                <div class="form-group">
+                    <!--        <input type="hidden" th:field="${userMessage.user}">-->
+                    <label>Enter User Name:
+                        <input type="text" th:field="${friend.userName}" id="friend" class="form-control">
+                    </label>
+                    <p class="error" th:errors="${friend.userName}"></p>
+                </div>
+
+                <div class="form-group py-2">
+                    <input style="color: #0056b9; border: 1px solid #0056b9" type="submit" value="Add Buddy" class="btn btn-light py-2">
+                    <p class="pt-2"><a style="color: white;" th:href="@{/user/index}">Back to Home</a></p>
+                </div>
+
+            </form>
+
+
+
+
+        </div>
     </div>
-
-</form>
-
-<p><a th:href="@{/user/index}">Back to Home</a></p>
-
-<footer th:replace="fragments :: footer"></footer>
+    </br>
+    <div th:replace="fragments :: footer"></div>
+</div>
 
 </body>
 </html>

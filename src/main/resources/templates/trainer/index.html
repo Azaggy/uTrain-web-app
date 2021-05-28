@@ -2,7 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org/">
 <!--<script th:src="@{/main.js}"></script>-->
-<link rel="stylesheet" th:href="@{/workOut.css}"/>
+<!--<link rel="stylesheet" th:href="@{/workOut.css}"/>-->
 <!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
 <head th:replace="fragments :: head"></head>
 <!--<p th:replace="fragments :: bootstrap"></p>-->
@@ -10,27 +10,46 @@
 
 <body>
 <header th:replace="fragments :: page-header"></header>
-<h1 th:text="${title}"></h1>
-<table id="example" class="table table-striped table-bordered" style="  width:100%">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Contact Number</th>
-        <th>Contact Email</th>
-        <th>Exercise</th>
+<div class="container py-3">
+    <div style="background-image: url('https://images2.minutemediacdn.com/image/upload/c_crop,h_1414,w_2101,x_9,y_0/v1554734334/shape/mentalfloss/568122-istock-869062004.jpg?itok=Qdyd92ux');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 300px"
+         class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold"></h1>
+        </div>
+    </div>
+    <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
+        <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+            <h4 class="my-0 fw-normal">Trainers</h4>
+        </div>
+        <div class="body p-3">
 
-    </tr>
-    </thead>
-    <tr class="table" th:each="trainer : ${trainers}">
-        <th ><a style="color: white;" th:href="@{/trainer/edit/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></th>
-        <th th:text="${trainer.contactNumber}"></th>
-        <th th:text="${trainer.contactEmail}"></th>
-        <th th:text="${trainer.type.exerciseType}"></th>
+            <table id="example" class="table table-striped" style="width:100%; color: black;">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Contact Email</th>
+                    <th>Exercise</th>
+                </tr>
+                </thead>
+                <tr class="table" th:each="trainer : ${trainers}">
+                    <th ><a style="color: #0056b9;" th:href="@{/trainer/edit/{id}(id=${trainer.id})}" th:text="${trainer.name}"></a></th>
+                    <th th:text="${trainer.contactNumber}"></th>
+                    <th th:text="${trainer.contactEmail}"></th>
+                    <th th:text="${trainer.type.exerciseType}"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </br>
+    <div th:replace="fragments :: footer"></div>
 
-    </tr>
-</table>
-
-
-<p th:replace="fragments :: java"></p>
+    <p th:replace="fragments :: java"></p>
+</div>
+<!--<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>-->
 </body>
 </html>
