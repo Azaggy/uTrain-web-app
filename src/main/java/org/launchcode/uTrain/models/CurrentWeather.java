@@ -2,14 +2,8 @@ package org.launchcode.uTrain.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
-
-import static java.util.Date.parse;
 
 public class CurrentWeather implements Serializable {
 
@@ -70,7 +64,8 @@ public class CurrentWeather implements Serializable {
     }
 
     public BigDecimal getTemperature() {
-        return temperature;
+        BigDecimal temp2 = BigDecimal.valueOf(Math.round(temperature.doubleValue()));
+        return temp2;
     }
 
     public void setTemperature(BigDecimal temperature) {
@@ -78,7 +73,8 @@ public class CurrentWeather implements Serializable {
     }
 
     public BigDecimal getFeelsLike() {
-        return feelsLike;
+        BigDecimal feelsLike2 = BigDecimal.valueOf(Math.round(temperature.doubleValue()));
+        return feelsLike2;
     }
 
     public void setFeelsLike(BigDecimal feelsLike) {
@@ -94,7 +90,8 @@ public class CurrentWeather implements Serializable {
     }
 
     public BigDecimal getHumidity() {
-        return humidity;
+        BigDecimal humidity2 = BigDecimal.valueOf(Math.round(temperature.doubleValue()));
+        return humidity2;
     }
 
     public void setHumidity(BigDecimal humidity) {
@@ -119,7 +116,7 @@ public class CurrentWeather implements Serializable {
 
     public String getSunrise() {
         Integer integer = Integer.parseInt(sunrise);
-        String sunrise2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date(integer *1000L));
+        String sunrise2 = new SimpleDateFormat("HH:mm a").format(new Date(integer *1000L));
         return sunrise2;
     }
 
@@ -129,7 +126,7 @@ public class CurrentWeather implements Serializable {
 
     public String getSunset() {
         Integer integer = Integer.parseInt(sunset);
-        String sunset2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date (integer *1000L));
+        String sunset2 = new SimpleDateFormat("hh:mm  aa").format(new Date (integer *1000L));
         return sunset2;
     }
 
@@ -139,7 +136,8 @@ public class CurrentWeather implements Serializable {
     }
 
     public BigDecimal getTemp_min() {
-        return temp_min;
+        BigDecimal temp_min2 = BigDecimal.valueOf(Math.round(temperature.doubleValue()));
+        return temp_min2;
     }
 
     public void setTemp_min(BigDecimal temp_min) {
@@ -147,7 +145,8 @@ public class CurrentWeather implements Serializable {
     }
 
     public BigDecimal getTemp_max() {
-        return temp_max;
+        BigDecimal temp_max2 = BigDecimal.valueOf(Math.round(temperature.doubleValue()));
+        return temp_max2;
     }
 
     public void setTemp_max(BigDecimal temp_max) {
@@ -164,7 +163,7 @@ public class CurrentWeather implements Serializable {
 
     public String getTimeUpdated() {
         Integer integer = Integer.parseInt(timeUpdated);
-        String timeUpdated2 = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss").format(new Date (integer *1000L));
+        String timeUpdated2 = new SimpleDateFormat("MM/dd/yyyy hh:mm aa").format(new Date (integer *1000L));
         return timeUpdated2;
     }
 

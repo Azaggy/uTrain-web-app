@@ -1,10 +1,9 @@
 package org.launchcode.uTrain.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.*;
+import org.launchcode.uTrain.models.*;
 import org.launchcode.uTrain.models.user.UserPhoto;
-import org.launchcode.uTrain.models.Gym;
-import org.launchcode.uTrain.models.Message;
-import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.friend.Friend;
 import org.launchcode.uTrain.models.user.User;
 import org.launchcode.uTrain.models.user.UserSex;
@@ -54,13 +53,22 @@ public class UserController {
     @Autowired
     GymRepository gymRepository;
 
+    StubWeatherService stubWeatherService;
+    LiveWeatherService liveWeatherService;
+
     @GetMapping("index")
-    public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) {
+    public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) throws JsonProcessingException {
+
+
+
 
         BackgroundImage image = new BackgroundImage();
 
         //Pulling user from session
         User user = (User) getUserFromSession(request.getSession());
+
+//        CurrentWeather currentWeather = liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us");
+//        CurrentWeather
 
         //Initiating Lists for loading message data onto user's index page
         ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
@@ -271,6 +279,16 @@ public class UserController {
 
         User user = (User) getUserFromSession(request.getSession());
 
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getHeight() < 1 || user.getUserDetail().getWeight() < 1) {
+                model.addAttribute("title", "BMI Page");
+                model.addAttribute("user", user);
+
+                return "/user/bmiNoDetail";
+            }
+        }
+
+
         model.addAttribute("title", "BMI Calculator");
         model.addAttribute("bmi1", user.getUserDetail().getBodyMassIndex());
         model.addAttribute("user", user);
@@ -278,6 +296,17 @@ public class UserController {
 
         return "user/bmi";
 
+    }
+
+    @GetMapping("bmiNoDetail")
+    public String bmiCalc(Model model, HttpServletRequest request) {
+
+        User user = (User) getUserFromSession(request.getSession());
+
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+        model.addAttribute("title", "BMI Calculator");
+        return "user/bmiNoDetail";
     }
 
     @GetMapping("addfriend")
