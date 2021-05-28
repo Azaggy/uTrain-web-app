@@ -81,7 +81,8 @@
                         <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
+                        <a th:if="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
+                        <a th:unless="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmiNoDetail">BMI</a>
                     </li>
                     <li class="nav-item">
                         <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
