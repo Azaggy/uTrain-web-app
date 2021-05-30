@@ -1,322 +1,169 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-  <head th:replace="fragments :: head">
-    <link rel="stylesheet" th:href="@{/styles.css}">
-  </head>
-  <body>
-  <header th:replace="fragments :: page-header"></header>
+    <head th:replace="fragments :: head">
+        <link rel="stylesheet" th:href="@{/styles.css}">
+    </head>
+    <body>
+        <header th:replace="fragments :: page-header"></header>
 
+        <div class="container px-5">
+            <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
 
-    <div class="container px-5">
-      <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
-<!--      <hr style="border: 0; border-top: 6px solid #0056b9;">-->
-<!--      <hr style="border: 1; border-top: 1px solid #0056b9; border-bottom: 1px solid #0056b9;">-->
+        <form method="post" th:action="@{/user/addprofile}">
+            <input type="hidden" th:field="${user.id}" name="userId" />
+            <input type="hidden" th:field="${user.pwHash}" name="pwHash" />
+            <input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
+            <input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
+            <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
 
-      <form method="post" th:action="@{/user/addprofile}">
+        <!--Personal Info card header-->
+            <div class="row justify-content-start">
+                <div class="col-md-6">
+                    <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                        <h5 class="card-header" style="background-color:#0056b9; color: white">Personal Information</h5>
 
-        <input type="hidden" th:field="${user.id}" name="userId" />
-        <input type="hidden" th:field="${user.pwHash}" name="pwHash" />
-        <input type="hidden" th:field="${user.userDetail.id}" name="userDetailId"/>
-        <input type="hidden" th:field="${user.userDetail.address.id}" name="userDetailAddressId"/>
-        <input type="hidden" th:field="${user.userDetail.interests.id}" name="userDetailAddressId"/>
+                    <!--Personal Info card body-->
+                        <div class="card-body">
+                            <label class="form-label">First Name
+                                <input th:field="${user.userDetail.firstName}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.firstName}"></p>
 
-<!--        <div class="card">&lt;!&ndash; full width header&ndash;&gt;-->
-<!--            <h3 class="card-header" style="background-color:#0056b9; color: white">General Information</h3>-->
-<!--        </div>-->
+                            <label class="form-label" style="margin-left:20px;">Last Name
+                                <input th:field="${user.userDetail.lastName}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.lastName}"></p>
 
+                            <label class="form-label">Height (inches)
+                                <input type="number" th:field="${user.userDetail.height}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.height}"></p>
 
-<!--        <div class="container">-->
-          <div class="row justify-content-start">
-<!--            <div class="col-lg-12" style="margin: 32px 5px;">-->
-            <div class="col-md-6">
-                <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
-                    <h5 class="card-header" style="background-color:#0056b9; color: white">Personal Information</h5>
-<!--                </div>-->
-                    <div class="card-body">
-                        <label class="form-label">First Name
-                <input th:field="${user.userDetail.firstName}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.userDetail.firstName}"></p>
+                            <label class="form-label" style="margin-left:20px;">Weight (lbs)
+                                <input type="number" th:field="${user.userDetail.weight}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.weight}"></p>
 
-          <label class="form-label">Last Name
-            <input th:field="${user.userDetail.lastName}" class="form-control">
-          </label>
-          <p class="error" th:errors="${user.userDetail.lastName}"></p>
+                            <label class="form-label">Birthday (mm/dd/yyyy)
+                                <input type="text" th:field="${user.userDetail.birthDay}" autocomplete="off" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p style="color: red" class="error" th:errors="${user.userDetail.birthDay}">Incorrect date format!!</p>
 
-          <label class="form-label">Birthday (mm/dd/yyyy)
-            <input type="text" th:field="${user.userDetail.birthDay}" autocomplete="off" class="form-control">
-          </label>
-          <p style="color: red" class="error" th:errors="${user.userDetail.birthDay}">Incorrect date format!!</p>
+                            <label class="form-label" style="margin-left:20px;">Sex
+                                <select class="form-control" th:field="${user.userDetail.userSex}" style="border: 1px solid #0056b9">
+                                    <option th:each="userSex : ${sexes}"
+                                    th:value="${userSex}"
+                                    th:text="${userSex.userSex}"
+                                    ></option>
+                                </select>
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.userSex}"></p><br>
+                        </div>
+                    </div>
+                </div>
 
-          <label class="form-label">Sex
-            <select class="form-control" th:field="${user.userDetail.userSex}">
-              <option th:each="userSex : ${sexes}"
-                      th:value="${userSex}"
-                      th:text="${userSex.userSex}"
-              ></option>
-            </select>
-          </label>
-          <p class="error" th:errors="${user.userDetail.userSex}"></p><br>
+            <!--Other Info card header-->
+                <div class="col-md-6">
+                    <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                        <h5 class="card-header" style="background-color:#0056b9; color: white">Other Information</h5>
 
-          <label class="form-label">Height (Inches)
-            <input type="number" th:field="${user.userDetail.height}" class="form-control">
-          </label>
-          <p class="error" th:errors="${user.userDetail.height}"></p>
+                    <!--Other Info card body-->
+                        <div class="card-body">
+                            <label class="form-label">User Name
+                                <input  th:field="${user.username}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.username}"></p>
 
-          <label class="form-label">Weight (lbs)
-            <input type="number" th:field="${user.userDetail.weight}" class="form-control">
-          </label>
-          <p class="error" th:errors="${user.userDetail.weight}"></p>
-              </div>
-          </div>
-       </div>
+                            <label class="form-label" style="margin-left:20px;">Email
+                                <input th:field="${user.email}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.email}"></p>
 
-        <div class="col-md-6">
-            <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
-            <h5 class="card-header" style="background-color:#0056b9; color: white">Other Information</h5>
-<!--          </div>-->
-            <div class="card-body">
-              <label class="form-label">User Name
-                <input  th:field="${user.username}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.username}"></p>
+                            <label class="form-label">Street
+                                <input th:field="${user.userDetail.address.street}"  class="form-control" placeholder="Street" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.address.street}"></p>
 
-              <label class="form-label">Email
-                <input th:field="${user.email}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.email}"></p>
+                            <label class="form-label" style="margin-left:20px;">City
+                                <input th:field="${user.userDetail.address.city}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.address.city}"></p>
 
-              <label class="form-label">Street
-                <input th:field="${user.userDetail.address.street}"  class="form-control" placeholder="Street">
-              </label>
-              <p class="error" th:errors="${user.userDetail.address.street}"></p>
+                            <label class="form-label">State
+                                <input th:field="${user.userDetail.address.state}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.address.state}"></p>
 
-              <label class="form-label">City
-                <input th:field="${user.userDetail.address.city}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.userDetail.address.city}"></p>
+                            <label class="form-label" style="margin-left:20px;">Zip Code
+                                <input th:field="${user.userDetail.address.zipCode}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
+                        </div>
+                    </div>
+                </div>
 
-              <label class="form-label">State
-                <input th:field="${user.userDetail.address.state}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.userDetail.address.state}"></p>
+            <!--Interests card header-->
+                <div class="col-md-6 py-3">
+                    <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                        <h5 class="card-header" style="background-color:#0056b9; color: white">Interests</h5>
 
-              <label class="form-label">Zip Code
-                <input th:field="${user.userDetail.address.zipCode}" class="form-control">
-              </label>
-              <p class="error" th:errors="${user.userDetail.address.zipCode}"></p>
+                    <!--Interests card body-->
+                        <div class="card-body">
+                            <h6 style="color: #0056b9;">Select interests that apply to you</h6>
+                            <div class="row justify-content-start">
+                                <div class="col">
+                                    <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
+                                    <label class="form-label" style="padding-left: 10px">Walking</label><br>
+                                    <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
+                                    <label class="form-label" style="padding-left: 10px">Running</label><br>
+                                    <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
+                                    <label class="form-label" style="padding-left: 10px">Cycling</label><br>
+                                </div>
+
+                                <div class="col">
+                                    <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
+                                    <label class="form-label" style="padding-left: 10px">Golf</label><br>
+                                    <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
+                                    <label class="form-label" style="padding-left: 10px">Baseball</label><br>
+                                    <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
+                                    <label class="form-label" style="padding-left: 10px">Basketball</label><br>
+                                </div>
+
+                                <div class="col">
+                                    <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
+                                    <label class="form-label" style="padding-left: 10px">Swimming</label><br>
+                                    <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
+                                    <label class="form-label" style="padding-left: 10px">Tennis</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Profile picture card header-->
+                <div class="col-md-6 py-3">
+                    <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+
+                    <!--Profile picture card body-->
+                        <h5 class="card-header" style="background-color:#0056b9; color: white">Profile Picture</h5>
+                        <div class="card-body">
+                            <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
+                            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" style="width:123px; height:123px; margin-right:50px;">
+                            <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange"> <button style=" mx-3; rounded-3; background-color: #0056b9; border:1px solid #0056b9;
+                            text-shadow: 2px 2px grey" class="btn btn-primary btn-lg" type="button">Change Your Profile Photo!</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Submit button-->
+                <div class="form-group">
+                    <input class="btn" style="background-color: #0056b9; color: white;"  type="submit" value="Update" th:href="@{/user/index}">
+                </div>
             </div>
-          </div>
-        </div>
-
-          <div class="col-md-7 py-3">
-              <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
-                <h5 class="card-header" style="background-color:#0056b9; color: white">Interests</h5>
-  <!--        <h6 style="color: #0056b9">Select interests that apply to you</h6>-->
-              <div class="card-body">
-                <div class="row justify-content-start">
-                  <div class="col">
-                    <input th:field="${user.userDetail.interests.walking}" type="checkbox" name="walking">
-                    <label class="form-label" style="padding-left: 10px">Walking</label><br>
-                    <input th:field="${user.userDetail.interests.running}" type="checkbox" name="running">
-                    <label class="form-label" style="padding-left: 10px">Running</label><br>
-                    <input th:field="${user.userDetail.interests.cycling}" type="checkbox" name="cycling">
-                    <label class="form-label" style="padding-left: 10px">Cycling</label><br>
-                  </div>
-
-                  <div class="col">
-                    <input th:field="${user.userDetail.interests.golf}" type="checkbox" name="golf">
-                    <label class="form-label" style="padding-left: 10px">Golf</label><br>
-                    <input th:field="${user.userDetail.interests.baseball}" type="checkbox" name="baseball">
-                    <label class="form-label" style="padding-left: 10px">Baseball</label><br>
-                    <input th:field="${user.userDetail.interests.basketball}" type="checkbox" name="basketball">
-                    <label class="form-label" style="padding-left: 10px">Basketball</label><br>
-                  </div>
-
-                  <div class="col">
-                    <input th:field="${user.userDetail.interests.swimming}" type="checkbox" name="swimming">
-                    <label class="form-label" style="padding-left: 10px">Swimming</label><br>
-                    <input th:field="${user.userDetail.interests.tennis}" type="checkbox" name="tennis">
-                    <label class="form-label" style="padding-left: 10px">Tennis</label>
-                  </div>
-                </div>
-              </div>
-          </div>
-          </div>
-              <div class="col-md-5 py-3">
-                  <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
-                      <h5 class="card-header" style="background-color:#0056b9; color: white">Profile Picture</h5>
-                      <div class="card-body">
-                    <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
-                    <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2">
-                    <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange"> <button style="background-color: #0056b9; border:1px solid #0056b9; text-shadow: 2px 2px grey" class="btn btn-primary btn-lg" type="button">Change Your Profile Photo!</button></a>
-                </div>
-              </div>
-          </div>
-
-          <div class="form-group">
-            <div>
-
-            </div><br>
-
-            <input class="btn" style="background-color: #0056b9; color: white;"  type="submit" value="Update" th:href="@{/user/index}">
-
-          </div>
-
-      </form>
-    <p><a th:href="@{/user/index}">Back to Home</a></p>
+        </form>
     </div>
+        <!--Page footer-->
     <footer th:replace="fragments :: footer"></footer>
 
-
-  </body>
-
+    </body>
 </html>
-
-<!--Matt-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org/">-->
-<!--<head>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css ">-->
-<!--    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css ">-->
-
-
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-
-<!--    <form class="well form-horizontal" action=" " method="post"  id="contact_form">-->
-<!--        <fieldset>-->
-
-<!--            &lt;!&ndash; Form Name &ndash;&gt;-->
-<!--            <legend><center><h2><b>Registration Form</b></h2></center></legend><br>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">First Name</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
-<!--                        <input  name="first_name" placeholder="First Name" class="form-control"  type="text">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label" >Last Name</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
-<!--                        <input name="last_name" placeholder="Last Name" class="form-control"  type="text">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">Department / Office</label>-->
-<!--                <div class="col-md-4 selectContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>-->
-<!--                        <select name="department" class="form-control selectpicker">-->
-<!--                            <option value="">Select your Department/Office</option>-->
-<!--                            <option>Department of Engineering</option>-->
-<!--                            <option>Department of Agriculture</option>-->
-<!--                            <option >Accounting Office</option>-->
-<!--                            <option >Tresurer's Office</option>-->
-<!--                            <option >MPDC</option>-->
-<!--                            <option >MCTC</option>-->
-<!--                            <option >MCR</option>-->
-<!--                            <option >Mayor's Office</option>-->
-<!--                            <option >Tourism Office</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">Username</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
-<!--                        <input  name="user_name" placeholder="Username" class="form-control"  type="text">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label" >Password</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
-<!--                        <input name="user_password" placeholder="Password" class="form-control"  type="password">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label" >Confirm Password</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
-<!--                        <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">E-Mail</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>-->
-<!--                        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--            &lt;!&ndash; Text input&ndash;&gt;-->
-
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">Contact No.</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>-->
-<!--                        <input name="contact_no" placeholder="(639)" class="form-control" type="text">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Select Basic &ndash;&gt;-->
-
-<!--            &lt;!&ndash; Success message &ndash;&gt;-->
-<!--            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>-->
-
-<!--            &lt;!&ndash; Button &ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label"></label>-->
-<!--                <div class="col-md-4"><br>-->
-<!--                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </fieldset>-->
-<!--    </form>-->
-<!--</div>-->
-<!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
-
-
-<!--</body>-->
-
-<!--</html>-->
