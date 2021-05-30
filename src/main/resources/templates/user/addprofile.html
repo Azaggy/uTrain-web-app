@@ -151,7 +151,7 @@
                         <h5 class="card-header" style="background-color:#0056b9; color: white">Profile Picture</h5>
                         <div class="card-body">
                             <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
-                            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" style="width:123px; height:123px; margin-right:50px;">
+                            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" style="border-radius: 50%; width:123px; height:123px; margin-right:50px;">
                             <a th:unless="${user.userDetail == null}" th:href="@{/user/profilePhoto}" class="proPicXchange"> <button style=" mx-3; rounded-3; background-color: #0056b9; border:1px solid #0056b9;
                             text-shadow: 2px 2px grey" class="btn btn-primary btn-lg" type="button">Change Your Profile Photo!</button></a>
                         </div>
