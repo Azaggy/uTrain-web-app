@@ -6,48 +6,62 @@
 </head>
 <body class="container">
 <div th:replace="fragments :: page-header"></div>
-<h1 th:text="${title}"></h1>
-<!--<img class="image" src="https://freesvg.org/img/under-construction_geek_man_01.png" alt="trainer" width="615" height="450" >-->
+<div class="py-3">
+    <div style="background-image: url('https://www.smalux.com/wp-content/uploads/2019/07/Highlighted-gym.jpeg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 300px"
+     class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
+    <div class="container-fluid py-4">
+        <h1 class="display-5 fw-bold"></h1>
+    </div>
+</div>
 
+    <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
+    <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+        <h4 class="my-0 fw-normal">Gyms</h4>
+    </div>
+    <div class="body p-3">
+        <table class="table table-striped"  id="example">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Amenities</th>
+            </tr>
+            </thead>
+            <tr  th:each="gym : ${gyms}">
+                <th th:text="${gym.name}"></th>
+                <th th:text="${gym.email}"></th>
+                <th th:text="${gym.phoneNumber}"></th>
+                <th th:text="${gym.address.street}"></th>
+                <th th:text="${gym.address.city}"></th>
+                <th th:text="${gym.address.state}"></th>
+                <th th:text="${gym.address.zipCode}"></th>
+                <th>
+                    <span th:if="${gym.amenities.swimmingPool}">Swimming Pool </span>
+                    <span th:if="${gym.amenities.tennisCourt}">Tennis Court </span>
+                    <span th:if="${gym.amenities.bikePath}">Bike Path </span>
+                    <span th:if="${gym.amenities.walkingPath}">Walking Path </span>
+                    <span th:if="${gym.amenities.golfCourse}">Golf Course </span>
+                    <span th:if="${gym.amenities.drivingRange}">Driving Range </span>
+                    <span th:if="${gym.amenities.baseballField}">Baseball Field </span>
+                    <span th:if="${gym.amenities.basketballCourt}">Basketball Court </span>
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
 
-<table class="table"  id="example">
-<thead>
-<tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone Number</th>
-    <th>Street</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip Code</th>
-    <th>Amenities</th>
-</tr>
-</thead>
-<tr  th:each="gym : ${gyms}">
-    <th th:text="${gym.name}"></th>
-    <th th:text="${gym.email}"></th>
-    <th th:text="${gym.phoneNumber}"></th>
-    <th th:text="${gym.address.street}"></th>
-    <th th:text="${gym.address.city}"></th>
-    <th th:text="${gym.address.state}"></th>
-    <th th:text="${gym.address.zipCode}"></th>
-    <th>
-        <span th:if="${gym.amenities.swimmingPool}">Swimming Pool </span>
-        <span th:if="${gym.amenities.tennisCourt}">Tennis Court </span>
-        <span th:if="${gym.amenities.bikePath}">Bike Path </span>
-        <span th:if="${gym.amenities.walkingPath}">Walking Path </span>
-        <span th:if="${gym.amenities.golfCourse}">Golf Course </span>
-        <span th:if="${gym.amenities.drivingRange}">Driving Range </span>
-        <span th:if="${gym.amenities.baseballField}">Baseball Field </span>
-        <span th:if="${gym.amenities.basketballCourt}">Basketball Court </span>
-    </th>
-</tr>
-</table>
+</div>
 
-</br>
-
-
-<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: footer"></div>
 <p th:replace="fragments :: java"></p>
 </body>
 </html>

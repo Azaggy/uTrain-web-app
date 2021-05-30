@@ -1,9 +1,8 @@
 package org.launchcode.uTrain.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.UserRepository;
-import org.launchcode.uTrain.models.CurrentWeather;
 import org.launchcode.uTrain.models.LiveWeatherService;
-import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.StubWeatherService;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
 import java.util.Optional;
 
 
@@ -30,7 +28,7 @@ public class CurrentWeatherController {
         if (user.isEmpty()) {
             return null;
         }
-        return  user.get();
+        return user.get();
     }
 
     @Autowired
@@ -45,10 +43,11 @@ public class CurrentWeatherController {
     }
 
     @GetMapping("/current-weather")
-    public String getCurrentWeather(Model model, HttpServletRequest request) {
+    public String getCurrentWeather(Model model, HttpServletRequest request) throws JsonProcessingException {
         User user = (User) getUserFromSession(request.getSession());
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
+        model.addAttribute("title", "Weather");
 
 
         if (true) {
@@ -59,4 +58,14 @@ public class CurrentWeatherController {
         return "current-weather";
 
     }
+
+    @GetMapping("/maps")
+    public String getMaps(Model model, HttpServletRequest request) {
+        User user = (User) getUserFromSession(request.getSession());
+        model.addAttribute("user", user);
+        model.addAttribute("loggedIn", true);
+
+        return "maps";
+    }
+
 }
