@@ -29,6 +29,10 @@ public class UserController {
 
     private static final String userSessionKey = "user";
 
+    public UserController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
+
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
@@ -54,7 +58,7 @@ public class UserController {
     GymRepository gymRepository;
 
     StubWeatherService stubWeatherService;
-    LiveWeatherService liveWeatherService;
+    private final LiveWeatherService liveWeatherService;
 
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) throws JsonProcessingException {
@@ -193,6 +197,12 @@ public class UserController {
         model.addAttribute("matchingGyms", matchingGyms);
         model.addAttribute("workouts", userWorkouts);
         model.addAttribute("backgroundImage", image.randomImageGenerator());
+
+        if (true) {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+        } else {
+            model.addAttribute("currentWeather", stubWeatherService.getCurrentWeather("St. Louis", "us"));
+        }
 
 
 
