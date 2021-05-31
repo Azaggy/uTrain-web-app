@@ -347,7 +347,7 @@ public class UserController {
             return "user/addfriend";
         }
 
-        if(user.getFriends().contains(friend.getUserName())) {
+        if(user.getFriends().contains(validateFriend.getUsername())) {
             errors.rejectValue("userName", "userName.invalid", "That user is already your" +
                     "workout buddy!");
             model.addAttribute("title", "Add Workout Buddy");
@@ -358,7 +358,7 @@ public class UserController {
         }
 
 
-        user.getFriends().add(friend.getUserName());
+        user.getFriends().add(validateFriend.getUsername());
         userRepository.save(user);
 
         return "redirect:/user/index";

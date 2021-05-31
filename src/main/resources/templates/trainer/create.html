@@ -7,12 +7,11 @@
 
 </head>
 
-<header th:replace="fragments :: page-header">
 
-</header>
 
 <body class="container">
-
+<header th:replace="fragments :: page-header"></header>
+<div class="container py-3">
 <h1 th:text="${title}"></h1>
 
 <form method="post">
@@ -55,6 +54,7 @@
     </div>
 </form>
 
-
+<footer th:replace="fragments :: footer"></footer>
+</div>
 </body>
 </html>

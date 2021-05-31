@@ -14,14 +14,15 @@
                 <!--<form>-->
                 <div class="form-group">
                     <label for="exampleFormControlInput1"><h1>To:</h1></label>
-                    <input class="form-control" style="border-radius: 25px; border: 3px solid #0056b9;" th:field="${message.recipient}" id="exampleFormControlInput1" placeholder="uTrain Username">
+                    <input class="form-control" style="border-radius: 25px; border: 3px solid #0056b9;" th:field="${message.recipient}" id="exampleFormControlInput1" placeholder="uTrain Username" name="recipient">
                     <p class="error" th:errors="${message.recipient}"></p>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1"><h1>Message:</h1></label>
                     <textarea style="border-radius: 25px; border: 3px solid #0056b9" th:field="${message.body}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <!--        <textarea th:field="${message.body}" class="form-control" rows="2"></textarea>-->
+                    <p class="error" th:errors="${message.body}"></p>
+
                 </div>
 
                 <div class="form-group">
