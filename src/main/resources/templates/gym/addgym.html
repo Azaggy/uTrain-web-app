@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: page-header"></header>
-
+<div class="container py-3">
 <form method="post">
 
     <h1>Add Gym</h1>
@@ -77,12 +77,11 @@
         </label>
     </div>
     <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-success">
+        <input style="background-color: #0056b9; border:1px solid #0056b9; color: white;" type="submit" value="Add Gym" class="btn btn-lg">
     </div>
 </form>
-<p><a th:href="@{/user/index}">Back to Home</a></p>
 
 <footer th:replace="fragments :: footer"></footer>
-
+</div>
 </body>
 </html>

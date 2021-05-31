@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 
-<head th:replace="fragments :: head">
-
-</head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
 <div th:replace="fragments :: page-header"></div>
-<h1 th:text="${title}"></h1>
+<div class="container py-3">
+    <div style="background-image: url('https://mobilemarketingwatch.com/wp-content/uploads/2016/07/SMS-1132x670.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 300px"
+         class="p-5 mb-4 bg-light rounded-3 border shadow-lg">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold"></h1>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>Message</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tr th:each="message : ${messages}">
-        <th th:text="${message.sender}"></th>
-        <th th:text="${message.recipient}"></th>
-        <th th:text="${message.body}"></th>
-        <th th:text="${message.date}"></th>
-    </tr>
-</table>
 
+        </div>
+    </div>
+    <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
+        <div style="background-color: #0056b9" class="header py-3 text-white text-center">
+            <h4 class="my-0 fw-normal">Messages</h4>
+        </div>
+        <div class="body p-3">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tr th:each="message : ${messages}">
+            <th th:text="${message.sender}"></th>
+            <th th:text="${message.recipient}"></th>
+            <th th:text="${message.body}"></th>
+            <th th:text="${message.date}"></th>
+        </tr>
+    </table>
+        </div>
+    </div>
 </br>
 
-
 <footer th:replace="fragments :: footer"></footer>
+</div>
 </body>
 </html>
