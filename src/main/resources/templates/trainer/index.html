@@ -4,7 +4,27 @@
 <!--<script th:src="@{/main.js}"></script>-->
 <!--<link rel="stylesheet" th:href="@{/workOut.css}"/>-->
 <!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+    <style>
+        @media screen and (max-width: 767px) {
+        .exampleAZ {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        .goodBye {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 250px) {
+        .byeBye {
+            display: none;
+        }
+      }
+    </style>
+</head>
 <!--<p th:replace="fragments :: bootstrap"></p>-->
 
 

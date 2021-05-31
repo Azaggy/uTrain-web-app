@@ -28,6 +28,7 @@ public class CurrentWeather implements Serializable {
     private String timeUpdated;
     private String cityName;
     private String iconName;
+    private Integer zipCode;
 
     private static final String iconUrl = "http://openweathermap.org/img/wn/{iconName}@2x.png";
 
@@ -205,6 +206,14 @@ public class CurrentWeather implements Serializable {
 
     public void setIconName(String iconName) {
         this.iconName = iconName;
+    }
+
+    public Integer getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(Integer zipCode) {
+        this.zipCode = zipCode;
     }
 
     //    private String getDateString(BigDecimal timeInMilliseconds) {

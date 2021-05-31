@@ -5,13 +5,18 @@ import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.StubWeatherService;
 import org.launchcode.uTrain.models.user.User;
+import org.launchcode.uTrain.models.user.UserSex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Optional;
 
 
@@ -63,6 +68,7 @@ public class CurrentWeatherController {
         return "current-weather";
 
     }
+
 
     @GetMapping("/maps")
     public String getMaps(Model model, HttpServletRequest request) {

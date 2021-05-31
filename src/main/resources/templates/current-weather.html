@@ -47,13 +47,34 @@
 <head th:replace="fragments :: head">
 <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">-->
   <link rel="stylesheet" href="weather.css">
+    <style>
+        @media screen and (max-width: 767px) {
+        .exampleAZ {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        .goodBye {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 250px) {
+        .byeBye {
+            display: none;
+        }
+      }
+    </style>
 </head>
 
 
 <body>
-<div class="container py-3" style="background-image: linear-gradient(#81D4FA, #2196F3);">
 
+<div class="container py-3" style="background-image: linear-gradient(#81D4FA, #2196F3);">
     <header th:replace="fragments :: page-header"></header>
+
+
 
     <div th:if="${user.userDetail.address.zipCode > 1}" class="container-fluid  mx-auto" style="padding-top: 11px; padding-bottom: 32px;">
       <div class="row d-flex justify-content-center" style="">
@@ -144,15 +165,25 @@
                         <div class="d-flex flex-column text-center" style="width: 50px; padding: 0px;">
                             <img th:src="@{${currentWeather2.iconName}}"></img> <small th:text=" '   ' + ${currentWeather2.description}"></small>
                         </div>
+
+                        <small>To customize location, add zip code to profile.</small>
                         <!--                class="fa fa-sun-o mt-4"-->
                     </div>
+
                 </div>
                 <!--      col-md-5-->
                 <div class="card2 col-lg-4 text-center">
                     <!--        px-3  mb-5-->
-                    <!--        <div class="row px-3"><input type="text" name="location" placeholder="Another location" class="mb-5">-->
-                    <!--          <div class="fa fa-search mb-5 mr-0 text-center" style="height: 56px; width: auto; float: right;" ></div>-->
-                    <!--        </div>-->
+<!--                    <div class="row px-3">-->
+<!--                        <form method="post" th:action="@{/current-weather}">-->
+<!--                            <input th:field="${currentWeather2.zipCode}" type="text" name="location" placeholder="Zip code, please!" class="mb-5">-->
+<!--                            <div class="fa fa-search mb-5 mr-0 text-center" style="height: 56px; width: auto; float: right;" >-->
+<!--                                <input class="btn" type="submit" th:href="@{current-weather}">-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--&lt;!&ndash;                        <input th:field="${currentWeather2.zipCode}" type="text" name="location" placeholder="Zip code, please!" class="mb-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="fa fa-search mb-5 mr-0 text-center" style="height: 56px; width: auto; float: right;" ></div>&ndash;&gt;-->
+<!--                    </div>-->
                     <!--        < class="mr-5">-->
                     <div class="line mt-5 mb-1"></div>
                     <h4 style="color: white;" class="my-3">Weather Details</h4>

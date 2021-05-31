@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+    <style>
+        @media screen and (max-width: 767px) {
+        .exampleAZ {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        .goodBye {
+            display: none;
+        }
+      }
+
+      @media screen and (max-width: 250px) {
+        .byeBye {
+            display: none;
+        }
+      }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
     <scritp src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></scritp>
