@@ -1,88 +1,120 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
-<header th:replace="fragments :: page-header"></header>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+        <head th:replace="fragments :: head">
+            <link rel="stylesheet" th:href="@{/styles.css}">
+        </head>
 
-<form method="post">
+        <body>
+            <header th:replace="fragments :: page-header"></header>
 
-    <h1>Add Gym</h1>
+            <div class="container px-5">
+                <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
 
-    <div class="form-group">
-        <label>Gym Name
-            <input  th:field="${gym.name}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.name}"></p>
-    </div>
+                <form method="post" th:action="@{/gym/addgym}">
 
-    <div class="form-group">
-        <label>Gym Phone
-            <input  th:field="${gym.phoneNumber}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.phoneNumber}"></p>
-    </div>
+                <!--Gym Info card header-->
+                    <div class="row justify-content-start">
+                        <div class="col-md-12" py-3>
+                            <div class="card md-8 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                                <h5 class="card-header" style="background-color:#0056b9; color: white">Gym Information</h5>
 
-    <div class="form-group">
-        <label>Gym Email
-            <input  th:field="${gym.email}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.email}"></p>
-    </div>
+                                <!--Gym Info card body-->
+                                <div class="card-body">
+                                    <div class="row justify-content-start">
+                                        <div class="col">
+                                            <label class="form-label" style="margin-right:20px">Name
+                                                <input  th:field="${gym.name}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.name}"></p>
 
-    <div class="form-group">
-        <label>Num/Street
-            <input  th:field="${gym.address.street}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.address.street}"></p>
-    </div>
+                                            <label class="form-label" style="margin-right: 20px">Phone
+                                                <input  th:field="${gym.phoneNumber}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.phoneNumber}"></p>
 
-    <div class="form-group">
-        <label>Gym City
-            <input  th:field="${gym.address.city}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.address.city}"></p>
-    </div>
+                                            <label class="form-label" style="margin-right: 20px">Email
+                                                <input  th:field="${gym.email}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.email}"></p>
+                                        </div>
 
-    <div class="form-group">
-        <label>Gym State
-            <input  th:field="${gym.address.state}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.address.state}"></p>
-    </div>
+                                        <div class="col" style="width: 30%;">
+                                            <label class="form-label" style="margin-right: 20px">Address
+                                                <input  th:field="${gym.address.street}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.address.street}"></p>
+                                        </div>
 
-    <div class="form-group">
-        <label>Zip Code
-            <input th:field="${gym.address.zipCode}" class="form-control">
-        </label>
-        <p class="error" th:errors="${gym.address.zipCode}"></p>
-    </div>
-    <h4>List Amenities At This Location</h4>
-    <div class="form-group">
-        <input th:field="${gym.amenities.swimmingPool}" type="checkbox" name="swimmingPool">
-        <label>Swimming Pool</label>
-        <input th:field="${gym.amenities.tennisCourt}" type="checkbox" name="tennisCourt">
-        <label>Tennis Court</label>
-        <input th:field="${gym.amenities.bikePath}" type="checkbox" name="bikePath">
-        <label>Bike Path</label>
-        <input th:field="${gym.amenities.walkingPath}" type="checkbox" name="walkingPath">
-        <label>Walking Path</label>
-        <input th:field="${gym.amenities.golfCourse}" type="checkbox" name="golfCourse">
-        <label>Golf Course</label>
-        <input th:field="${gym.amenities.drivingRange}" type="checkbox" name="drivingRange">
-        <label>Driving Range</label>
-        <input th:field="${gym.amenities.baseballField}" type="checkbox" name="baseballField">
-        <label>Baseball Field</label>
-        <input th:field="${gym.amenities.basketballCourt}" type="checkbox" name="basketballCourt">
-        <label>Basketball Court</label>
-        </label>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-success">
-    </div>
-</form>
-<p><a th:href="@{/user/index}">Back to Home</a></p>
+                                        <div class="col px-3">
+                                            <label class="form-label" style="margin-right: 20px">City
+                                                <input  th:field="${gym.address.city}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.address.city}"></p>
 
-<footer th:replace="fragments :: footer"></footer>
+                                            <label class="form-label" style="margin-right: 20px">State
+                                                <input  th:field="${gym.address.state}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.address.state}"></p>
+
+                                            <label class="form-label" style="margin-right: 20px">Zip Code
+                                                <input th:field="${gym.address.zipCode}" class="form-control">
+                                            </label>
+                                            <p class="error" th:errors="${gym.address.zipCode}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Amenities card header-->
+                        <div class="col-md-12 py-3">
+                            <div class="card md-12 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                                <h5 class="card-header" style="background-color:#0056b9; color: white">Amenities</h5>
+
+                                <div class="card-body">
+                                    <h6 style="color: #0056b9;">List Amenities At This Location</h6>
+                                    <div class="row justify-content-start">
+                                        <div class="col">
+                                            <input th:field="${gym.amenities.swimmingPool}" type="checkbox" name="swimmingPool">
+                                            <label>Swimming Pool</label><br>
+                                            <input th:field="${gym.amenities.tennisCourt}" type="checkbox" name="tennisCourt">
+                                            <label>Tennis Court</label><br>
+                                            <input th:field="${gym.amenities.bikePath}" type="checkbox" name="bikePath">
+                                            <label>Bike Path</label><br>
+                                        </div>
+
+                                        <div class="col">
+                                            <input th:field="${gym.amenities.walkingPath}" type="checkbox" name="walkingPath">
+                                            <label>Walking Path</label><br>
+                                            <input th:field="${gym.amenities.golfCourse}" type="checkbox" name="golfCourse">
+                                            <label>Golf Course</label><br>
+                                            <input th:field="${gym.amenities.drivingRange}" type="checkbox" name="drivingRange">
+                                            <label>Driving Range</label><br>
+                                        </div>
+
+                                        <div class="col">
+                                            <input th:field="${gym.amenities.baseballField}" type="checkbox" name="baseballField">
+                                            <label>Baseball Field</label><br>
+                                            <input th:field="${gym.amenities.basketballCourt}" type="checkbox" name="basketballCourt">
+                                            <label>Basketball Court</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Submit button-->
+                        <div class="form-group">
+                            <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Submit" th:href="@{/gym/addgym}">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+<!--<p><a th:href="@{/user/index}">Back to Home</a></p>-->
+
+    <footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>
