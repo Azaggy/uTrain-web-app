@@ -35,9 +35,12 @@
             <th th:text="${message.sender}"></th>
             <th th:text="${message.recipient}"></th>
             <th th:text="${message.body}"></th>
-            <th th:text="${message.date}"></th>
+            <th th:text="${message.dateFormatter}"></th>
         </tr>
     </table>
+            <a href="/message/addmessage">
+                <button style="background-color: #0056b9; border:1px solid #0056b9;" class="btn btn-primary btn-lg mb-4" type="button">New Message</button>
+            </a>
         </div>
     </div>
 </br>

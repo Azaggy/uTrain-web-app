@@ -75,11 +75,6 @@ public class MessageController {
 //            Message message = userMessage.getMessage();
 //            User sender = userMessage.getUser();
 
-            if(errors.hasErrors()) {
-                model.addAttribute("title", "Send Message");
-                return "message/addmessage";
-            }
-
             //Query the user repository to see if the entered user exists.
             User recipient = userRepository.findByUsername(newMessage.getRecipient());
 
@@ -87,6 +82,17 @@ public class MessageController {
                 errors.rejectValue("recipient", "recipient.invalid", "The provided " +
                         "recipient doesn't exist");
                 model.addAttribute("title", "Send Message");
+                model.addAttribute("user", user);
+                model.addAttribute("loggedIn", true);
+                model.addAttribute("message", new Message());
+                return "message/addmessage";
+            }
+
+            if(errors.hasErrors()) {
+                model.addAttribute("title", "Send Message");
+                model.addAttribute("user", user);
+                model.addAttribute("loggedIn", true);
+                model.addAttribute("message", new Message());
                 return "message/addmessage";
             }
 
@@ -95,7 +101,7 @@ public class MessageController {
             other attributes are from the form from the view.
              */
 
-            Message message = new Message(newMessage.getBody(), newMessage.getRecipient(),
+            Message message = new Message(newMessage.getBody(), recipient.getUsername(),
                     user.getUsername(), dateInSecs);
 
             messageRepository.save(message);
@@ -131,7 +137,7 @@ public class MessageController {
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
 //            model.addAttribute("messages", MessageRepository.findAll());
-            model.addAttribute("title", "Message List");
+            model.addAttribute("title", "Messages");
             model.addAttribute("messages", userMessages);
 
 
