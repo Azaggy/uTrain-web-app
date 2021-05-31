@@ -16,6 +16,10 @@
 </div>
 <head th:fragment="head">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="uTrain User Home Page">
+    <title th:text="'uTrain: ' + ${title}">uTrain</title>
     <link rel="stylesheet" href="weather.css">
 
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
@@ -66,7 +70,7 @@
 
 <body>
 
-<div class="container py-3" th:fragment="page-header">
+<div th:fragment="page-header">
     <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
         <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
             <a class="navbar-brand" th:href="@{/user/index}">
@@ -81,8 +85,7 @@
                         <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a th:if="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
-                        <a th:unless="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmiNoDetail">BMI</a>
+                        <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
                     </li>
                     <li class="nav-item">
                         <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
@@ -90,7 +93,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                        <ul style="background-color: #0056b9" class="dropdown-menu" aria-labelledby="dropdown03">
+                        <ul style="background-color: #FFFFFF;" class="dropdown-menu" aria-labelledby="dropdown03">
                             <li>
                                 <a class="dropdown-item" href="/user/addfriend">Add Workout Buddy</a>
                             </li>

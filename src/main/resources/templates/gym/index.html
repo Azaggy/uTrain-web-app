@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 
-<head th:replace="fragments :: head">
-
-</head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
 <div th:replace="fragments :: page-header"></div>
-<div class="py-3">
+<div class="container py-3">
     <div style="background-image: url('https://www.smalux.com/wp-content/uploads/2019/07/Highlighted-gym.jpeg');
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -58,10 +56,10 @@
         </table>
     </div>
 </div>
-
+    <div th:replace="fragments :: footer"></div>
 </div>
 
-<div th:replace="fragments :: footer"></div>
+
 <p th:replace="fragments :: java"></p>
 </body>
 </html>

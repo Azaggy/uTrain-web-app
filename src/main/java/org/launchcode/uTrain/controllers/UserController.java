@@ -286,6 +286,12 @@ public class UserController {
 
                 return "/user/bmiNoDetail";
             }
+
+        } else {
+            model.addAttribute("title", "BMI Page");
+            model.addAttribute("user", user);
+
+            return "/user/bmiNoDetail";
         }
 
 
