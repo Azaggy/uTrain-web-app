@@ -27,7 +27,7 @@
 
                     <!--Personal Info card body-->
                         <div class="card-body">
-                            <label class="form-label" style="margin-right:20px">First Name
+                            <label class="form-label">First Name
                                 <input th:field="${user.userDetail.firstName}" class="form-control" style="border: 1px solid #0056b9">
                             </label>
                             <p class="error" th:errors="${user.userDetail.firstName}"></p>
@@ -148,7 +148,7 @@
                     <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
 
                     <!--Profile picture card body-->
-                        <h5 class="card-header" style="background-color:#0056b9; color: white">Profile Photo</h5>
+                        <h5 class="card-header" style="background-color:#0056b9; color: white">Profile Picture</h5>
                         <div class="card-body">
                             <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2">
                             <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic2" style="width:123px; height:123px; margin-right:50px;">
@@ -160,7 +160,7 @@
 
                 <!--Submit button-->
                 <div class="form-group">
-                    <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Update" th:href="@{/user/index}">
+                    <input class="btn" style="background-color: #0056b9; color: white;"  type="submit" value="Update" th:href="@{/user/index}">
                 </div>
             </div>
         </form>
