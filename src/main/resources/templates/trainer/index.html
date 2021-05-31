@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org/">
-<!--<script th:src="@{/main.js}"></script>-->
-<!--<link rel="stylesheet" th:href="@{/workOut.css}"/>-->
-<!--<link rel="stylesheet" th:href="@{/styles.css}" />-->
 <head th:replace="fragments :: head"></head>
-<!--<p th:replace="fragments :: bootstrap"></p>-->
-
-
-<body>
+<body class="container">
 <header th:replace="fragments :: page-header"></header>
 <div class="container py-3">
     <div style="background-image: url('https://images2.minutemediacdn.com/image/upload/c_crop,h_1414,w_2101,x_9,y_0/v1554734334/shape/mentalfloss/568122-istock-869062004.jpg?itok=Qdyd92ux');
@@ -50,6 +44,5 @@
 
     <p th:replace="fragments :: java"></p>
 </div>
-<!--<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>-->
 </body>
 </html>

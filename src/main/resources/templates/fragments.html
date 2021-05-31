@@ -16,6 +16,10 @@
 </div>
 <head th:fragment="head">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="uTrain User Home Page">
+    <title th:text="'uTrain: ' + ${title}">uTrain</title>
     <link rel="stylesheet" href="weather.css">
 
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
@@ -61,12 +65,11 @@
       }
       background-color: #0056b9;
     </style>
-    <title>uTrain</title>
 </head>
 
 <body>
 
-<div class="container py-3" th:fragment="page-header">
+<div th:fragment="page-header">
     <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
         <div style="background-color: #0056b9" class="container-fluid rounded-3 shadow-sm">
             <a class="navbar-brand" th:href="@{/user/index}">
@@ -81,8 +84,7 @@
                         <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a th:if="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
-                        <a th:unless="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmiNoDetail">BMI</a>
+                        <a style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
                     </li>
                     <li class="nav-item">
                         <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
@@ -90,7 +92,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                        <ul style="background-color: #0056b9" class="dropdown-menu" aria-labelledby="dropdown03">
+                        <ul style="background-color: #FFFFFF;" class="dropdown-menu" aria-labelledby="dropdown03">
                             <li>
                                 <a class="dropdown-item" href="/user/addfriend">Add Workout Buddy</a>
                             </li>
@@ -148,66 +150,11 @@
         </div>
     </nav>
 </div>
-<!--<ul th:fragment="page-header">-->
-<!--    <li  th:if="${loggedIn}" class="logo">-->
-<!--        <a class="one" th:href="@{/user/index}">-->
-<!--            <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>-->
-<!--        </a>-->
-<!--    </li>-->
-<!--    <li  th:unless="${loggedIn}" class="logo">-->
-<!--        <a class="one" href="/index">-->
-<!--            <img th:src="@{/images/icon.png}" alt="logo" border="0" width="68" height="51"/>-->
-<!--        </a>-->
-<!--    </li>-->
-<!--    <li th:if="${loggedIn}"><a href="/user/bmi">BMI</a> </li>-->
-<!--    <li th:unless="${loggedIn}"><a href="/bmiLoggedOut">BMI</a> </li>-->
-
-<!--    <li th:unless="${loggedIn}"><a href="/company">About Us</a></li>-->
-<!--    <li th:if="${loggedIn}"><a th:href="@{/user/index}">Back to Home</a></li>-->
-<!--    <li th:unless="${loggedIn}"><a  href="/index">Home</a></li>-->
-<!--    <li class="dropdown1">-->
-<!--        <a th:if="${loggedIn}" href="javascript:void(0)" class="dropbtn">Services</a>-->
-<!--        <div class="dropdown-content1">-->
-<!--            <a href="/user/addfriend">Add Workout Buddy</a>-->
-<!--            <a href="/workout/workouts">Workouts</a>-->
-<!--            <a href="/workout/addworkout">Add Workout</a>-->
-<!--            <a href="/gym/index">Gym Locator</a>-->
-<!--            <a href="/gym/addgym">Add Gym</a>-->
-<!--            <a href="/park/index">Park Locator</a>-->
-<!--            <a href="/park/addpark">Add Park</a>-->
-<!--            <a href="/message/index">View Messages</a>-->
-<!--            <a href="/message/addmessage">Add Message</a>-->
-<!--            <a href="/trainer/index">List of Trainers</a>-->
-<!--            <a href="/trainer/create">Add Trainer</a>-->
-<!--        </div>-->
-<!--    </li>-->
-<!--    <li th:if="${loggedIn}">-->
-<!--    <a th:if="${user.isNew}" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>-->
-<!--        <a th:unless="${user.isNew}" href="/user/profile">Profile</a>-->
-<!--    </li>-->
-<!--    <li th:if="${loggedIn}" class=""><a href="/trainer/index">Trainers</a></li>-->
-<!--    <li>-->
-<!--    <a th:unless="${loggedIn}" href="/reg">Sign Up</a>-->
-<!--    <a th:unless="${loggedIn}" href="/login">Login</a>-->
-<!--    <a th:if="${loggedIn}" href="/logout">Logout</a>-->
-
-<!--    </li>-->
-<!--    <li th:if="${loggedIn}">-->
-<!--        <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic" id="fragProPic">-->
-<!--        <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic" id="fragProPic2">-->
-
-<!--    </li>-->
-
-<!--</ul>-->
-    <footer th:fragment="footer" class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
+<footer th:fragment="footer" class="navbar-fixed-bottom border rounded-3 text-center bg-light shadow-sm">
         <div class="container py-3">
             <p style="color: #0056b9; font-size: 1.125rem; " class="fw-bold">uTrain ©2021</p>
         </div>
     </footer>
-<!--<footer th:fragment="footer" class="footer">-->
-<!--    <p>uTrain 2021<br>St. Louis, MO<br>-->
-<!--        <a class="foots" href="Customer.Service@uTrain.com">Customer.Service@uTrain.com</a></p>-->
-<!--</footer>-->
 
 </body>
 </html>
