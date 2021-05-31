@@ -22,36 +22,36 @@
                                 <div class="card-body">
                                     <div class="row justify-content-start">
                                         <div class="col">
-                                            <label class="form-label" style="margin-right:20px">Gym Name
+                                            <label class="form-label" style="margin-right:20px">Name
                                                 <input  th:field="${gym.name}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.name}"></p>
 
-                                            <label class="form-label" style="margin-right: 20px">Gym Phone
+                                            <label class="form-label" style="margin-right: 20px">Phone
                                                 <input  th:field="${gym.phoneNumber}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.phoneNumber}"></p>
 
-                                            <label class="form-label" style="margin-right: 20px">Gym Email
+                                            <label class="form-label" style="margin-right: 20px">Email
                                                 <input  th:field="${gym.email}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.email}"></p>
                                         </div>
 
                                         <div class="col" style="width: 30%;">
-                                            <label class="form-label" style="margin-right: 20px">Num/Street
+                                            <label class="form-label" style="margin-right: 20px">Address
                                                 <input  th:field="${gym.address.street}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.address.street}"></p>
                                         </div>
 
                                         <div class="col px-3">
-                                            <label class="form-label" style="margin-right: 20px">Gym City
+                                            <label class="form-label" style="margin-right: 20px">City
                                                 <input  th:field="${gym.address.city}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.address.city}"></p>
 
-                                            <label class="form-label" style="margin-right: 20px">Gym State
+                                            <label class="form-label" style="margin-right: 20px">State
                                                 <input  th:field="${gym.address.state}" class="form-control">
                                             </label>
                                             <p class="error" th:errors="${gym.address.state}"></p>
