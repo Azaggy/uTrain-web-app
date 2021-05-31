@@ -1,13 +1,65 @@
 package org.launchcode.uTrain.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriTemplate;
 
 import java.math.BigDecimal;
+import java.net.URI;
 
 @Service
 public class StubWeatherService {
 
-    public CurrentWeather getCurrentWeather(String city, String country) {
-        return new CurrentWeather("Clear", BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.TEN, BigDecimal.ONE, BigDecimal.ONE, "BigDecimal.ONE","BigDecimal.ONE",BigDecimal.ONE,BigDecimal.ONE, "Central", "BigDecimal.ONE", "BigDecimal.ONE");
+    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?zip={zipCode},{country}&APPID={key}&units=imperial";
+
+    @Value("${api.openweathermap.key}")
+    private String apiKey;
+
+
+    private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
+
+
+    public StubWeatherService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper) {
+        this.restTemplate = restTemplateBuilder.build();
+        this.objectMapper = objectMapper;
     }
+
+    public CurrentWeather getCurrentWeather(Integer zipCode, String country) throws JsonProcessingException {
+        URI url = new UriTemplate(WEATHER_URL).expand(zipCode, country, apiKey);
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+        return convert(response);
+    }
+
+    private CurrentWeather convert(ResponseEntity<String> response) throws JsonProcessingException {
+        try {
+            JsonNode root = objectMapper.readTree(response.getBody());
+            return new CurrentWeather(root.path("weather").get(0).path("main").asText(),
+                    BigDecimal.valueOf(root.path("main").path("humidity").asDouble()),
+                    BigDecimal.valueOf(root.path("main").path("temp").asDouble()),
+                    BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()),
+                    BigDecimal.valueOf(root.path("wind").path("speed").asDouble()),
+                    BigDecimal.valueOf(root.path("coord").path("lon").asDouble()),
+                    BigDecimal.valueOf(root.path("coord").path("lat").asDouble()),
+                    root.path("sys").path("sunrise").asText(), root.path("sys").path("sunset").asText(),
+                    BigDecimal.valueOf(root.path("main").path("temp_min").asDouble()),
+                    BigDecimal.valueOf(root.path("main").path("temp_max").asDouble()),
+                    root.path("timezone").asText(), root.path("dt").asText(), root.path("name").asText(),
+                    root.path("weather").get(0).path("icon").asText());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error parsing JSON", e);
+        }
+    }
+//
+//    public CurrentWeather convert(String zipCode, String country) {
+//        JsonNode root = objectMapper.readTree(response.getBody());
+//        return new CurrentWeather(root.path, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.TEN, BigDecimal.ONE, BigDecimal.ONE, "BigDecimal.ONE","BigDecimal.ONE",BigDecimal.ONE,BigDecimal.ONE, "Central", "BigDecimal.ONE", "BigDecimal.ONE", "iconName");
+//    }
 }

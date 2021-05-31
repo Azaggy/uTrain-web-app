@@ -81,8 +81,8 @@
                         <a style="color: white;" class="nav-link active" aria-current="page" th:href="@{/user/index}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a th:if="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
-                        <a th:unless="${user.userDetail.height != null}" style="color: white;" class="nav-link" href="/user/bmiNoDetail">BMI</a>
+                        <a th:if="${user.userDetail != null}" style="color: white;" class="nav-link" href="/user/bmi">BMI</a>
+                        <a th:unless="${user.userDetail != null}" style="color: white;" class="nav-link" href="/user/bmiNoDetail">BMI</a>
                     </li>
                     <li class="nav-item">
                         <a th:if="${user.isNew}" style="color: white;" class="nav-link" th:href="@{/user/addprofile/{id}(id=${user.id})}">Profile</a>
@@ -129,6 +129,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="/current-weather">Current Weather</a>
+
                             </li>
                         </ul>
                     </li>
@@ -136,19 +137,26 @@
                         <a style="color: white" class="nav-link" href="/logout">Logout</a>
                     </li>
 
-                    <li>
-                        <h5 class="float-end text-white" style="" th:text="${currentWeather.temperature} + '&#8457;'"></h5>
-                    </li>
+<!--                    <li>-->
+<!--                        <h5 class="nav-link fw-bold text-white" style="padding-left: 300px; padding-right: 5px;" th:text="${currentWeather.temperature} + '&#8457;'"></h5>-->
+<!--                        <img th:src="@{${currentWeather.iconName}}" class="proPic2">-->
+<!--                    </li>-->
                     <!--                        <li style="float: right" class="nav-item">-->
                     <!--                            -->
                     <!--                        </li>-->
 
                 </ul>
             </div>
+            <h5 th:if="${user.userDetail.address.zipCode > 1}" class="nav-link fw-bold text-white" style="padding-top: 15px; padding-right: 10px; width: 50px;" th:text="${currentWeather.temperature} + '&#8457;'"></h5>
+            <img th:if="${user.userDetail.address.zipCode > 1}" th:src="@{${currentWeather.iconName}}" style=" width: 50px;">
+            <h5 th:unless="${user.userDetail.address.zipCode > 1}" class="nav-link fw-bold text-white" style="padding-top: 15px; padding-right: 10px; width: 50px;" th:text="${currentWeather2.temperature} + '&#8457;'"></h5>
+            <img th:unless="${user.userDetail.address.zipCode > 1}" th:src="@{${currentWeather2.iconName}}" style=" width: 50px;">
             <h5 style="color: white" th:if="${user.isNew}" class="nav-link fw-bold float-end"  th:text="'Welcome, ' + ${user.username} + '!'"></h5>
             <h5 style="color: white" th:unless="${user.isNew}" class="nav-link fw-bold float-end" th:text="'Welcome, ' + ${user.userDetail.firstName} + '!'"></h5>
-            <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic2" width="51" height="51" style="border-radius: 50%; object-fit: cover;">
-            <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" style="border-radius: 50%; object-fit: cover;" alt="avatar" class="proPic2" width="51" height="51">
+
+            <img th:if="${user.userPhoto == null || user.userPhoto == '' || user.userPhoto == ' '}" th:src="@{https://i.ibb.co/z4wjxxQ/IMG-1588.png}"  class="proPic2" width="51" height="51" style="border-radius: 50%; object-fit: cover;">
+            <img th:unless="${user.userPhoto == null || user.userPhoto == '' || user.userPhoto == ' '}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" style="border-radius: 50%; object-fit: cover;" alt="avatar" class="proPic2" width="51" height="51">
+
         </div>
     </nav>
 </div>

@@ -1,11 +1,11 @@
 package org.launchcode.uTrain.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.ExerciseRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.data.WorkoutRepository;
+import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.user.User;
-import org.launchcode.uTrain.models.user.UserSex;
-import org.launchcode.uTrain.models.workout.Exercise;
 import org.launchcode.uTrain.models.workout.ExerciseType;
 import org.launchcode.uTrain.models.workout.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,10 @@ import java.util.*;
 public class WorkOutController {
 
     private static final String userSessionKey = "user";
+
+    public WorkOutController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -46,9 +50,11 @@ public class WorkOutController {
     @Autowired
     WorkoutRepository workoutRepository;
 
+    private final LiveWeatherService liveWeatherService;
+
 
     @GetMapping("workouts")
-    public String displayWorkouts(HttpServletRequest request, Model model){
+    public String displayWorkouts(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -68,12 +74,21 @@ public class WorkOutController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("workouts", workouts);
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         return"workout/workouts";
     }
 
     @GetMapping("addworkout")
-    public String addWorkouts(HttpServletRequest request, Model model){
+    public String addWorkouts(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -82,13 +97,22 @@ public class WorkOutController {
         model.addAttribute("types", ExerciseType.values());
         model.addAttribute("loggedIn", true);
         model.addAttribute("workout", new Workout());
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         return "workout/addworkout";
     }
 
     @PostMapping("addworkout")
     public String renderAddWorkouts(@ModelAttribute @Valid Workout workout, HttpServletRequest request, Errors errors,
-                                    Model model) {
+                                    Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -101,6 +125,16 @@ public class WorkOutController {
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
             model.addAttribute("workout", new Workout());
+
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
 
             return "workout/addworkout";
         }
@@ -138,10 +172,21 @@ public class WorkOutController {
     }
 
     @GetMapping("instructionalVideos")
-    public String presentInstructionalVideos (HttpServletRequest request, Model model) {
+    public String presentInstructionalVideos (HttpServletRequest request, Model model) throws JsonProcessingException {
         User user = (User) getUserFromSession(request.getSession());
 
         model.addAttribute("user", user);
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
+
         return "workout/instructionalVideos";
     }
 

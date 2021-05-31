@@ -1,7 +1,9 @@
 package org.launchcode.uTrain.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.MessageRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.Message;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,15 @@ import java.util.*;
 //@RequestMapping("message")
 public class MessageController {
 
+    private final LiveWeatherService liveWeatherService;
+
         private static final String userSessionKey = "user";
 
-        public User getUserFromSession(HttpSession session) {
+    public MessageController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
+
+    public User getUserFromSession(HttpSession session) {
             Integer userId = (Integer) session.getAttribute(userSessionKey);
             if (userId == null) {
                 return null;
@@ -44,7 +52,7 @@ public class MessageController {
 
 
         @GetMapping("message/addmessage")
-        public String displayAddMessage(Model model, HttpServletRequest request){
+        public String displayAddMessage(Model model, HttpServletRequest request) throws JsonProcessingException {
 
             User user = (User) getUserFromSession(request.getSession());
             
@@ -59,13 +67,23 @@ public class MessageController {
 //            userMessage.setUser(user);
 //            model.addAttribute("userMessage", userMessage);
 
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+
             return "message/addmessage";
 
         }
 
         @PostMapping("message/addmessage")
         public String processAddMessage(@ModelAttribute @Valid Message newMessage, Errors errors, Model model,
-                                        HttpServletRequest request) {
+                                        HttpServletRequest request) throws JsonProcessingException {
 
             User user = (User) getUserFromSession(request.getSession());
 
@@ -77,6 +95,17 @@ public class MessageController {
 
             if(errors.hasErrors()) {
                 model.addAttribute("title", "Send Message");
+
+                if (user.getUserDetail() != null) {
+                    if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                    } else {
+                        model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                    }
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+
                 return "message/addmessage";
             }
 
@@ -87,6 +116,17 @@ public class MessageController {
                 errors.rejectValue("recipient", "recipient.invalid", "The provided " +
                         "recipient doesn't exist");
                 model.addAttribute("title", "Send Message");
+
+                if (user.getUserDetail() != null) {
+                    if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                    } else {
+                        model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                    }
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+
                 return "message/addmessage";
             }
 
@@ -101,11 +141,22 @@ public class MessageController {
             messageRepository.save(message);
 
             model.addAttribute("user", user);
+
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+
             return "redirect:/user/index";
         }
 
         @GetMapping("message/index")
-        public String messageIndex(Model model, HttpServletRequest request){
+        public String messageIndex(Model model, HttpServletRequest request) throws JsonProcessingException {
 
             User user = (User) getUserFromSession(request.getSession());
             ArrayList<Message> messages = (ArrayList<Message>) messageRepository.findAll();
@@ -134,6 +185,15 @@ public class MessageController {
             model.addAttribute("title", "Message List");
             model.addAttribute("messages", userMessages);
 
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
 
             return "message/index";
 

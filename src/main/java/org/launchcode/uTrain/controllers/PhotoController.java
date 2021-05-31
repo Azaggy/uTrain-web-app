@@ -1,8 +1,10 @@
 package org.launchcode.uTrain.controllers;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.user.UserPhoto;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,13 @@ import java.util.Optional;
 @RequestMapping("user")
 public class PhotoController {
 
+    private final LiveWeatherService liveWeatherService;
+
     private static final String userSessionKey = "user";
+
+    public PhotoController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
 
 
     public User getUserFromSession(HttpSession session) {
@@ -95,9 +103,19 @@ public class PhotoController {
 //    }
 
     @GetMapping("profilePhoto")
-    public String avatarPage(HttpServletRequest request, Model model) {
+    public String avatarPage(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("title", "Photo Selection");
         model.addAttribute("user", user);
@@ -110,13 +128,23 @@ public class PhotoController {
 
 
     @GetMapping("profilePhoto/")
-    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request, UserPhoto userPhoto) {
+    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request, UserPhoto userPhoto) throws JsonProcessingException {
 
 
         User user = (User) getUserFromSession(request.getSession());
         userPhoto.setUser(user);
         Optional<User> result = userRepository.findById(user.getId());
         User updateUser = result.get();
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("title", "Update " + updateUser.getUsername());
         model.addAttribute("user", updateUser);
@@ -166,6 +194,15 @@ public class PhotoController {
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
             errors.rejectValue("image","image.fail","Issue with uploading the image.");
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather2", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
 
 
             return "user/profilePhoto";
