@@ -23,6 +23,7 @@
 <!--                            <div class="form-group">-->
                             <div class="card-body">
                                 <div class="row justify-content-start">
+                                    <div>
                                     <div class="col">
                                         <label class="form-label" style="margin-right:20px">Name
                                             <input th:field="${trainer.name}" class="form-control" style="border: 1px solid #0056b9">
@@ -33,6 +34,7 @@
                                             <input th:field="${trainer.contactNumber}" class="form-control" style="border: 1px solid #0056b9">
                                         </label>
                                         <p class="error" th:errors="${trainer.contactNumber}"></p>
+                                    </div>
                                     </div>
 
                                     <div class="col">
