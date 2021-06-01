@@ -6,11 +6,6 @@
 <!--        <scritp src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></scritp>-->
     </head>
 
-    <body>
-        <header th:replace="fragments :: page-header"></header>
-
-        <div class="container px-5">
-            <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
 
 
 
@@ -60,18 +55,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <input class="btn mx-3" style="background-color: #0056b9; color: white;" type="submit" value="Create" th:href="@{/trainer/create}">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Create" th:href="@{/trainer/create}">
-                    </div>
+
                 </div>
             </form>
+    </br>
+    <footer th:replace="fragments :: footer"></footer>
         </div>
-    </div>
+
 
 <!--        </div>-->
-        <footer th:replace="fragments :: footer"></footer>
+
     </body>
 </html>
