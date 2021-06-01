@@ -346,3 +346,8 @@ td.numTable{
 .form-label {
     color: #0056b9;
 }
+
+.vidBody {
+    color: white;
+    background: blue;
+}
