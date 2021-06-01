@@ -1,6 +1,7 @@
 package org.launchcode.uTrain.models;
 
-import org.apache.tomcat.websocket.server.UriTemplate;
+
+import org.springframework.web.util.UriTemplate;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,6 +26,8 @@ public class CurrentWeather implements Serializable {
     private String timeUpdated;
     private String cityName;
     private String iconName;
+
+    private static final String iconUrl = "http://openweathermap.org/img/wn/{iconName}@2x.png";
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
@@ -185,10 +188,11 @@ public class CurrentWeather implements Serializable {
     }
 
     public String getIconName() {
+//        URI iconUrl2 = new UriTemplate(iconUrl).expand(iconName);
         URI iconUrl2 = new UriTemplate(iconUrl).expand(iconName);
         String iconURL;
         iconURL = iconUrl2.toString();
-        return iconName;
+        return iconURL;
     }
 
     public void setIconName(String iconName) {

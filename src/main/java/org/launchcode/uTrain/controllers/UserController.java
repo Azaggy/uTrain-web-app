@@ -194,15 +194,15 @@ public class UserController {
         model.addAttribute("backgroundImage", image.randomImageGenerator());
 
 
-        if (user.getUserDetail() != null) {
-            if (user.getUserDetail().getAddress().getZipCode() > 1) {
-                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
-            } else {
-                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
-            }
-        } else {
-            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
-        }
+//        if (user.getUserDetail() != null) {
+//            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+//                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+//            } else {
+//                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+//            }
+//        } else {
+//            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+//        }
 
         model.addAttribute("shared", sharedWorkouts);
 
