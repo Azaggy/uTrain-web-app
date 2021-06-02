@@ -185,6 +185,7 @@ public class WorkOutController {
             model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
         }
 
+        model.addAttribute("title", "Instructional Videos");
         model.addAttribute("user", user);
         return "workout/instructionalVideos";
     }
