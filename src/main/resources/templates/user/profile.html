@@ -20,6 +20,7 @@
         }
       }
     </style>
+    <link rel="stylesheet" th:href="@{/profilePic.css}" />
 </head>
 <body class="container">
 <header th:replace="fragments :: page-header"></header>
@@ -28,7 +29,8 @@
         <img th:if="${user.userPhoto == null}" src="https://i.ibb.co/z4wjxxQ/IMG-1588.png" class="proPic" width="320px" height="320">
         <img th:unless="${user.userPhoto == null}" th:src="@{'/profilePic/' + ${user.userPhoto.profilePic} + '/'}" alt="avatar" class="proPic" width="320px" height="320">
         <div style="margin: 5px 5px;">
-            <a  th:href="@{/user/profilePhoto}" class="proPicXchange"><h2 style="text-shadow: 2px 2px grey">Change Your Profile Photo!</h2></a>
+            <a  th:href="@{/user/profilePhoto}"  class="proPicXchange"><h2  style=" ">Change Your Profile Photo!</h2></a>
+
         </div>
     </div>
     <div class="col-lg-12">

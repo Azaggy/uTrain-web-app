@@ -2,6 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <!--<head th:replace="fragments :: head">-->
 <!--</head>-->
+<style>
+
+table.bmiTable {
+    border: 3 px solid #0056b9;
+    overflow: hidden;
+}
+        @media screen and (max-width: 1204px) {
+            .formulaTextAZ {
+                display: none;
+            }
+        }
+        @media screen and (min-width: 1204px) {
+            .formulaTextAZ2 {
+                display: none ;
+            }
+        }
+
+</style>
 <head>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
 
@@ -18,17 +36,17 @@
     <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/5.0/examples/heroes/heroes.css" rel="stylesheet">
     <link rel="icon" href="https://i.ibb.co/nCbHBN8/icon.png" size="16x16" type="image/png">
-
-    <style>
-        background-color: #0056b9;
-    </style>
 </head>
 <body>
 <!--<div th:replace="fragments :: page-header"></div>-->
 <div class="container">
-    <div class="b-example-divider" style="background-color: #0056b9;" >
-        <h2 style="text-align: center; color: white;">Calculate your BMI with the formula: (weight / (height * height))* 703</h2>
+    <div class=" formulaTextAZ b-example-divider" style="background-color: #0056b9;" >
+        <h2 class="formulaTextAZ" style="text-align: center; color: white;">Calculate your BMI with the formula: (weight / (height * height))* 703</h2>
         <p style="text-align: center; ">weight divided by height times height, all multiplied by 703</p>
+    </div>
+
+    <div class=" formulaTextAZ2 b-example-divider" style="background-color: #0056b9;" >
+        <h2 class="formulaTextAZ2" style="text-align: center; color: white;">(weight / (height * height))* 703</h2>
     </div>
 
     <div style="margin: 32px 5px;" class="row">
@@ -38,15 +56,13 @@
                     <h1 class="my-0 fw-normal">Calculator</h1>
                 </div>
 <!--                style="border: 1px solid #0056b9;" class="card rounded-3" class="card-body"-->
-                <div class="card-body">
+                <div class="card-body" style="overflow-x: auto;">
                     <form name="calculator">
                         <table>
                             <tr>
-                                <td colspan="3">
-                                    <input style="color: #0056b9;" class="form-control form-control-lg" type="text" name="display" id="display"
-                                           disabled>
+                                <td>
+                                    <input style="color: #0056b9" type="text" name="display">
                                 </td>
-                                <td><input class="btn btn-primary" style="background-color: #0056b9; width: 75px; height: 50px;" type="button" name="clear" value="c" onclick="calculator.display.value = ''"> </td>
                             </tr>
                             <tr>
                                 <div class="btn-group btn-group-lg">
@@ -92,30 +108,32 @@
                 <div style="background-color: #0056b9;" class="header py-3 text-white text-center">
                     <h1 class="my-0 fw-normal"> BMI Table</h1>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped" style="border:1px solid #0056b9;">
-                        <tr>
-                            <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">Classification</h2></td>
-                            <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">BMI Target</h2></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center; border:1px solid #0056b9; " class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Below 18.5</h5></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Between 18.5 -24.9</h5></td>
+                <div class="card-body" >
+                    <div style="overflow-x: auto;">
+                        <table class="table table-striped" style="border:1px solid #0056b9;">
+                            <tr>
+                                <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">Classification</h2></td>
+                                <td style="text-align: center; border:1px solid #0056b9; " class="subTitleTable"><h2 style="font-weight: bold;">BMI Target</h2></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border:1px solid #0056b9; " class="miniTitleTable"><h4 style="text-decoration: underline;">Underweight</h4></td>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Below 18.5</h5></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Healthy</h4></td>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Between 18.5 -24.9</h5></td>
 
-                        </tr>
-                        <tr>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>25 - 29.9</h5></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
-                            <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Over 30</h5></td>
-                        </tr>
-                    </table>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Overweight</h4></td>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>25 - 29.9</h5></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="miniTitleTable"><h4 style="text-decoration: underline;">Obese</h4></td>
+                                <td style="text-align: center; border:1px solid #0056b9;" class="numTable"><h5>Over 30</h5></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
