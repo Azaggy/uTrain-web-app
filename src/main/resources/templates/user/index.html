@@ -2,25 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head">
-    <style>
-        @media screen and (max-width: 992px) {
-        .goodBye {
-            display: none;
-        }
-      }
+<!--    <style>-->
+<!--        @media screen and (max-width: 992px) {-->
+<!--        .goodBye {-->
+<!--            display: none;-->
+<!--        }-->
+<!--      }-->
 
-      @media screen and (max-width: 250px) {
-        .byeBye {
-            display: none;
-        }
-      }
+<!--      @media screen and (max-width: 250px) {-->
+<!--        .byeBye {-->
+<!--            display: none;-->
+<!--        }-->
+<!--      }-->
 
-      @media screen and (max-width: 767px) {
-        .exampleAZ {
-            display: none;
-        }
-      }
-    </style>
+<!--      @media screen and (max-width: 767px) {-->
+<!--        .exampleAZ {-->
+<!--            display: none;-->
+<!--        }-->
+<!--      }-->
+<!--    </style>-->
 </head>
 <body class="container">
 <header th:replace="fragments :: page-header"></header>
@@ -124,10 +124,11 @@
                     <div class="body">
                     <div>
                         <h4 class="my-4 px-4">All alone on your journey? </br> Add a workout buddy today to help get you motivated!</h4>
+                        <a href="/user/addfriend">
+                            <button style="background-color: #0056b9" class="btn btn-primary btn-lg mb-4" type="button">Add Buddy</button>
+                        </a>
                     </div>
-                    <a href="/user/addfriend">
-                    <button style="background-color: #0056b9" class="btn btn-primary btn-lg my-4" type="button">Add Buddy</button>
-                    </a>
+
                     </div>
                 </div>
             </div>
