@@ -14,7 +14,7 @@
 #fragProPic2 {
     float: right;
 }
-.proPicXchange {
+a.proPicXchange {
     background-color: #0656b9;
     border: none;
     color: white;
@@ -27,8 +27,14 @@
     cursor: pointer;
 
 }
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 a.proPicXchange: hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+    background-color: white;
+    color: #0656b9;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .proPic2 {
@@ -127,6 +133,11 @@ body {
 
 table.bmiTable {
     border: 3 px solid #0056b9;
+    overflow: hidden;
+}
+
+hideMe {
+    overflow: hidden;
 }
 
 .titleTable {
