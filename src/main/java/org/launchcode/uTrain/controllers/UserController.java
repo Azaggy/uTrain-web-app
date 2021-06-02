@@ -29,6 +29,10 @@ public class UserController {
 
     private static final String userSessionKey = "user";
 
+    public UserController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
+
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
@@ -53,7 +57,7 @@ public class UserController {
     @Autowired
     GymRepository gymRepository;
 
-    LiveWeatherService liveWeatherService;
+    private final LiveWeatherService liveWeatherService;
 
     @GetMapping("index")
     public String userIndexPage(HttpServletRequest request, Model model, UserPhoto userPhoto) throws JsonProcessingException {
@@ -194,15 +198,15 @@ public class UserController {
         model.addAttribute("backgroundImage", image.randomImageGenerator());
 
 
-//        if (user.getUserDetail() != null) {
-//            if (user.getUserDetail().getAddress().getZipCode() > 1) {
-//                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
-//            } else {
-//                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
-//            }
-//        } else {
-//            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
-//        }
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("shared", sharedWorkouts);
 
@@ -211,7 +215,7 @@ public class UserController {
     }
 
     @GetMapping("addprofile/{userId}")
-    public String displayEditProfileForm(Model model, @PathVariable int userId) {
+    public String displayEditProfileForm(Model model, @PathVariable int userId) throws JsonProcessingException {
 
         /*
         User is directed to add profile from link if the boolean isNew is true. If false they'll be
@@ -226,12 +230,21 @@ public class UserController {
         model.addAttribute("user", updateUser);
         model.addAttribute("loggedIn", true);
         model.addAttribute("sexes", UserSex.values());
+        if (updateUser.getUserDetail() != null) {
+            if (updateUser.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(updateUser.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         return "user/addprofile";
     }
 
     @PostMapping("addprofile")
-    public String processEditProfileForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
+    public String processEditProfileForm(@ModelAttribute @Valid User user, Errors errors, Model model) throws JsonProcessingException {
 
         Optional<User> result = userRepository.findById(user.getId());
         User updatedUser = result.get();
@@ -242,6 +255,17 @@ public class UserController {
             model.addAttribute("sexes", UserSex.values());
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
+
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+
             return "user/addprofile";
         }
 
@@ -265,7 +289,7 @@ public class UserController {
     }
 
     @GetMapping("profile")
-    public String userProfile(HttpServletRequest request, Model model) {
+    public String userProfile(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         // This page is only displayed if the user variable isNew is false.
 
@@ -277,13 +301,22 @@ public class UserController {
         model.addAttribute("userPhoto", user.getUserPhoto());
 
 
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
 
         return "user/profile";
     }
 
     @GetMapping("bmi")
-    public String bmiCalc(HttpServletRequest request, Model model) {
+    public String bmiCalc(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -291,6 +324,12 @@ public class UserController {
             if (user.getUserDetail().getHeight() < 1 || user.getUserDetail().getWeight() < 1) {
                 model.addAttribute("title", "BMI Page");
                 model.addAttribute("user", user);
+                    if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                    } else {
+                        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                    }
+
 
                 return "/user/bmiNoDetail";
             }
@@ -298,10 +337,29 @@ public class UserController {
         } else {
             model.addAttribute("title", "BMI Page");
             model.addAttribute("user", user);
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
 
             return "/user/bmiNoDetail";
         }
 
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("title", "BMI Calculator");
         model.addAttribute("bmi1", user.getUserDetail().getBodyMassIndex());
@@ -313,9 +371,19 @@ public class UserController {
     }
 
     @GetMapping("bmiNoDetail")
-    public String bmiCalc(Model model, HttpServletRequest request) {
+    public String bmiCalc(Model model, HttpServletRequest request) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
@@ -324,9 +392,19 @@ public class UserController {
     }
 
     @GetMapping("addfriend")
-    public String displayAddFriendForm(HttpServletRequest request, Model model) {
+    public String displayAddFriendForm(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
+
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         model.addAttribute("title", "Add Workout Buddy");
         model.addAttribute("user", user);
@@ -339,7 +417,7 @@ public class UserController {
 
     @PostMapping("addfriend")
     public String renderAddFriendForm(@ModelAttribute @Valid Friend friend, HttpServletRequest request,
-                                      Model model, Errors errors) {
+                                      Model model, Errors errors) throws JsonProcessingException {
         User user = (User) getUserFromSession(request.getSession());
 
         User validateFriend = userRepository.findByUsername(friend.getUserName());
@@ -352,6 +430,17 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
             model.addAttribute("friend", friend);
+
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+
             return "user/addfriend";
         }
 
@@ -362,6 +451,17 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
             model.addAttribute("friend", friend);
+
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+
             return "user/addfriend";
         }
 

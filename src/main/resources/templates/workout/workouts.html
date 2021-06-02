@@ -2,7 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<header th:replace="fragments :: page-header"></header>
+<header th:replace="fragments :: page-header">
+    <style>
+          @media screen and (max-width: 992px) {
+            .goodBye {
+                display: none;
+            }
+          }
+
+          @media screen and (max-width: 250px) {
+            .byeBye {
+                display: none;
+            }
+          }
+
+          @media screen and (max-width: 767px) {
+            .exampleAZ {
+                display: none;
+            }
+          }
+    </style>
+</header>
 <div class="container py-3">
     <div style="border:1px solid #0056b9;" class="pb-4 rounded-3 shadow-lg">
         <div style="background-color: #0056b9" class="header py-3 text-white text-center">

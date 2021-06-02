@@ -1,8 +1,10 @@
 package org.launchcode.uTrain.controllers;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.PhotoRepository;
 import org.launchcode.uTrain.data.UserRepository;
+import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.user.UserPhoto;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,10 @@ import java.util.Optional;
 public class PhotoController {
 
     private static final String userSessionKey = "user";
+
+    public PhotoController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
 
 
     public User getUserFromSession(HttpSession session) {
@@ -61,6 +67,9 @@ public class PhotoController {
 
     @Autowired
     PhotoRepository photoRepository;
+
+
+    private final LiveWeatherService liveWeatherService;
 
 //    String fileName;
 //    @PostMapping("user/profilePhoto")
@@ -95,7 +104,7 @@ public class PhotoController {
 //    }
 
     @GetMapping("profilePhoto")
-    public String avatarPage(HttpServletRequest request, Model model) {
+    public String avatarPage(HttpServletRequest request, Model model) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -103,6 +112,15 @@ public class PhotoController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("userPhoto", user.getUserPhoto());
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
 
         return "user/profilePhoto";
@@ -110,7 +128,7 @@ public class PhotoController {
 
 
     @GetMapping("profilePhoto/")
-    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request, UserPhoto userPhoto) {
+    public String displayEditProfilePhotoForm(Model model, HttpServletRequest request, UserPhoto userPhoto) throws JsonProcessingException {
 
 
         User user = (User) getUserFromSession(request.getSession());
@@ -123,6 +141,15 @@ public class PhotoController {
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
         model.addAttribute("profilePic", user.getUserPhoto());
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
 
         return "user/profilePhoto";
@@ -166,6 +193,15 @@ public class PhotoController {
             model.addAttribute("loggedIn", true);
             model.addAttribute("userId", user.getId());
             errors.rejectValue("image","image.fail","Issue with uploading the image.");
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
 
 
             return "user/profilePhoto";

@@ -2,6 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
     <head th:replace="fragments :: head">
         <link rel="stylesheet" th:href="@{/styles.css}">
+        <style>
+          @media screen and (max-width: 992px) {
+            .goodBye {
+                display: none;
+            }
+          }
+
+          @media screen and (max-width: 250px) {
+            .byeBye {
+                display: none;
+            }
+          }
+
+          @media screen and (max-width: 767px) {
+            .exampleAZ {
+                display: none;
+            }
+          }
+        </style>
     </head>
     <body class="container">
         <header th:replace="fragments :: page-header"></header>
