@@ -87,7 +87,7 @@ public class TrainerController {
         Optional<Trainer> result = trainerRepository.findById(trainerId);
         Trainer trainer = result.get();
 
-        model.addAttribute("title", "Edit Trainer" + trainer.getName() + " (id=" + trainer.getId() + ")");
+        model.addAttribute("title", "Edit Trainer");
         model.addAttribute("trainer", trainer);
         model.addAttribute("user", user);
         model.addAttribute("loggedIn", true);
@@ -105,7 +105,7 @@ public class TrainerController {
         Trainer newTrainer = result.get();
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Edit Trainer" + trainer.getName() + " (id=" + trainer.getId() + ")");
+            model.addAttribute("title", "Edit Trainer");
             model.addAttribute("trainer", newTrainer);
             model.addAttribute("user", user);
             model.addAttribute("loggedIn", true);
