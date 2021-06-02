@@ -21,9 +21,10 @@
             }
           }
         </style>
+        <link rel="stylesheet" th:href="@{/styles.css}">
     </head>
-    <body class="container">
-        <header th:replace="fragments :: page-header"></header>
+<body class="container">
+<header th:replace="fragments :: page-header"></header>
 
         <div class="container px-5">
             <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>

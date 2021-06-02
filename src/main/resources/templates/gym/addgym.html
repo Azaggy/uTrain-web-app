@@ -27,7 +27,7 @@
         <body class="container">
             <header th:replace="fragments :: page-header"></header>
 
-            <div class="container px-5">
+            <div class="container py-3">
                 <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
 
                 <form method="post" th:action="@{/gym/addgym}">
@@ -128,13 +128,14 @@
                             <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Submit" th:href="@{/gym/addgym}">
                         </div>
                     </div>
-                </div>
+<!--                </div>-->
             </form>
+            <footer th:replace="fragments :: footer"></footer>
         </div>
 
 <!--<p><a th:href="@{/user/index}">Back to Home</a></p>-->
 
-    <footer th:replace="fragments :: footer"></footer>
+
 
 </body>
 </html>
