@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-
-    <scritp src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></scritp>
-
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 
-<header th:replace="fragments :: page-header">
+<header th:replace="fragments :: page-header"></header>
+<body class="container">
+<div class="container py-3">
+    <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
+    <form method="post" th:action="@{/trainer/edit}">
+    <input type="hidden"  th:field="${trainer.id}">
+        <div class="row justify-content-start">
+            <div class="col-md-12" py-3>
+                <div class="card md-8 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                    <h5 class="card-header" style="background-color:#0056b9; color: white">Edit Trainer</h5>
+                    <div class="card-body">
+                    <div class="row justify-content-start">
+                        <div>
+                            <div class="col">
+                                <label class="form-label" style="margin-right:20px">Name
+                                    <input th:field="${trainer.name}" class="form-control" style="border: 1px solid #0056b9">
+                                </label>
+                                <p class="error" th:errors="${trainer.name}"></p>
 
-</header>
+                                <label class="form-label" style="margin-right:20px">Contact Number
+                                    <input th:field="${trainer.contactNumber}" class="form-control" style="border: 1px solid #0056b9">
+                                </label>
+                                <p class="error" th:errors="${trainer.contactNumber}"></p>
+                            </div>
+                        </div>
 
-<body>
+                        <div class="col">
+                            <label class="form-label" style="margin-right:20px">Contact Email
+                                <input th:field="${trainer.contactEmail}" class="form-control" style="border: 1px solid #0056b9">
+                            </label>
+                            <p class="error" th:errors="${trainer.contactEmail}"></p>
 
-<h1 th:text="${title}"></h1>
+                            <label class="form-label" style="margin-right:20px;">Select Trainer Type
+                                <select  class="nav-item dropdown rounded-3" th:field="${trainer.type}" style="border: 1px solid #0056b9; height:38px">
+                                    <option th:each="type : ${types}"
+                                            th:value="${type}"
+                                            th:text="${type.exerciseType}"
+                                    ></option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<form method="post" th:action="@{/trainer/edit}">
-<input type="hidden"  th:field="${trainer.id}">
-    <div class="form-group">
-        <label>Name
-            <input th:field="${trainer.name}" class="Form-control">
-        </label>
-        <p class="error" th:errors="${trainer.name}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Contact Number
-            <input th:field="${trainer.contactNumber}" class="Form-control">
-        </label>
-        <p class="error" th:errors="${trainer.contactNumber}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Contact Email
-            <input th:field="${trainer.contactEmail}" class="Form-control">
-        </label>
-        <p class="error" th:errors="${trainer.contactEmail}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>
-            <select   th:field="${trainer.type}">
-                <option th:each="type : ${types}"
-                        th:value="${type}"
-                        th:text="${type.exerciseType}"
-                ></option>
-            </select>
-        </label>
-
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Edit" class="btn btn-success">
-    </div>
+        <div class="form-group pt-3">
+            <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Update">
+        </div>
+</div>
 </form>
-
+    <footer th:replace="fragments :: footer"></footer>
+</div>
 
 </body>
 </html>
