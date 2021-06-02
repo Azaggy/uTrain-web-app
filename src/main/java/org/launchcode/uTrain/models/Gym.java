@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Gym extends AbstractEntity {
 
+
+
     @NotNull
     private String name;
 
