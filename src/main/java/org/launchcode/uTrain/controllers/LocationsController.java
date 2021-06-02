@@ -1,9 +1,11 @@
 package org.launchcode.uTrain.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.GymRepository;
 import org.launchcode.uTrain.data.ParkRepository;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.Gym;
+import org.launchcode.uTrain.models.LiveWeatherService;
 import org.launchcode.uTrain.models.Park;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ import java.util.Optional;
 public class LocationsController {
 
     private static final String userSessionKey = "user";
+
+    public LocationsController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -45,8 +51,10 @@ public class LocationsController {
     @Autowired
     private GymRepository gymRepository;
 
+    private final LiveWeatherService liveWeatherService;
+
     @GetMapping("gym/addgym")
-    public String displayAddGym(Model model, HttpServletRequest request){
+    public String displayAddGym(Model model, HttpServletRequest request) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -54,14 +62,35 @@ public class LocationsController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("title", "Add Gym");
         model.addAttribute(new Gym());
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
+
         return "gym/addgym";
     }
 
     @PostMapping("gym/addgym")
-    public String processAddGym(@ModelAttribute @Valid Gym newGym, Errors errors, Model model){
+    public String processAddGym(@ModelAttribute @Valid Gym newGym, Errors errors, Model model, HttpServletRequest request) throws JsonProcessingException {
+
+        User user = (User) getUserFromSession(request.getSession());
 
         if(errors.hasErrors()) {
             model.addAttribute("title", "Add Gym");
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
             return "gym/addgym";
         }
 
@@ -70,7 +99,7 @@ public class LocationsController {
     }
 
     @GetMapping("gym/index")
-    public String gymIndex(Model model, HttpServletRequest request){
+    public String gymIndex(Model model, HttpServletRequest request) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -78,12 +107,21 @@ public class LocationsController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("gyms", gymRepository.findAll());
         model.addAttribute("title", "Gym List");
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         return "gym/index";
     }
 
     @GetMapping("park/addpark")
-    public String displayAddPark(Model model, HttpServletRequest request){
+    public String displayAddPark(Model model, HttpServletRequest request) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -91,14 +129,35 @@ public class LocationsController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("title", "Add Park");
         model.addAttribute(new Park());
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
 
         return "park/addpark";
     }
 
     @PostMapping("park/addpark")
-    public String processAddPark(@ModelAttribute @Valid Park newPark, Errors errors, Model model){
+    public String processAddPark(@ModelAttribute @Valid Park newPark, Errors errors, Model model, HttpServletRequest request) throws JsonProcessingException {
+
+        User user = (User) getUserFromSession(request.getSession());
+
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Park");
+            if (user.getUserDetail() != null) {
+                if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+                } else {
+                    model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+                }
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
             return "park/addpark";
         }
 
@@ -111,7 +170,7 @@ public class LocationsController {
     }
 
     @GetMapping("park/index")
-    public String parkIndex(Model model, HttpServletRequest request){
+    public String parkIndex(Model model, HttpServletRequest request) throws JsonProcessingException {
 
         User user = (User) getUserFromSession(request.getSession());
 
@@ -119,6 +178,16 @@ public class LocationsController {
         model.addAttribute("loggedIn", true);
         model.addAttribute("parks", parkRepository.findAll());
         model.addAttribute("title", "Park List");
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
+        } else {
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+        }
+
         return "park/index";
     }
 }

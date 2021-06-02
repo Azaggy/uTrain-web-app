@@ -50,11 +50,16 @@ public class CurrentWeatherController {
         model.addAttribute("title", "Weather");
 
 
-        if (true) {
-            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+        if (user.getUserDetail() != null) {
+            if (user.getUserDetail().getAddress().getZipCode() > 1) {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(user.getUserDetail().getAddress().getZipCode(), "us"));
+            } else {
+                model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
+            }
         } else {
-            model.addAttribute("currentWeather", stubWeatherService.getCurrentWeather("Detroit", "us"));
+            model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather(63101, "us"));
         }
+
         return "current-weather";
 
     }

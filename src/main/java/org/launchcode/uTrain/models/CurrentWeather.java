@@ -1,7 +1,11 @@
 package org.launchcode.uTrain.models;
 
+
+import org.springframework.web.util.UriTemplate;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,6 +25,9 @@ public class CurrentWeather implements Serializable {
     private String timeZone;
     private String timeUpdated;
     private String cityName;
+    private String iconName;
+
+    private static final String iconUrl = "http://openweathermap.org/img/wn/{iconName}@2x.png";
 
 //    private String getDateString(BigDecimal timeInMilliseconds) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy 'at' HH:mm:ss z");
@@ -37,7 +44,7 @@ public class CurrentWeather implements Serializable {
 
     public CurrentWeather(String description, BigDecimal humidity, BigDecimal temperature, BigDecimal feelsLike,
                           BigDecimal windSpeed, BigDecimal lat, BigDecimal lon, String sunrise, String sunset,
-                          BigDecimal temp_min, BigDecimal temp_max, String timeZone, String timeUpdated, String cityName) {
+                          BigDecimal temp_min, BigDecimal temp_max, String timeZone, String timeUpdated, String cityName, String iconName) {
         this.description = description;
         this.temperature = temperature;
         this.feelsLike = feelsLike;
@@ -52,6 +59,7 @@ public class CurrentWeather implements Serializable {
         this.timeZone = timeZone;
         this.timeUpdated = timeUpdated;
         this.cityName = cityName;
+        this.iconName = iconName;
 
     }
 
@@ -177,6 +185,18 @@ public class CurrentWeather implements Serializable {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public String getIconName() {
+//        URI iconUrl2 = new UriTemplate(iconUrl).expand(iconName);
+        URI iconUrl2 = new UriTemplate(iconUrl).expand(iconName);
+        String iconURL;
+        iconURL = iconUrl2.toString();
+        return iconURL;
+    }
+
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
     }
 
     //    private String getDateString(BigDecimal timeInMilliseconds) {
