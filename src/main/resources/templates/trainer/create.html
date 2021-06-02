@@ -6,12 +6,10 @@
 <!--        <scritp src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></scritp>-->
     </head>
 
-    <body>
-        <header th:replace="fragments :: page-header"></header>
-
-        <div class="container px-5">
-            <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
-
+<body class="container">
+<header th:replace="fragments :: page-header"></header>
+<div class="container py-3">
+<h1 style="color:#0056b9" th:text="${title}"></h1>
             <form method="post" th:action="@{trainer/create}">
 
             <!--Create Trainer card header-->
@@ -57,15 +55,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group pt-3">
                         <input class="btn" style="background-color: #0056b9; color: white;" type="submit" value="Create" th:href="@{/trainer/create}">
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+    <footer th:replace="fragments :: footer"></footer>
+</div>
 
-<!--        </div>-->
-        <footer th:replace="fragments :: footer"></footer>
+<!--    </div>-->
     </body>
 </html>

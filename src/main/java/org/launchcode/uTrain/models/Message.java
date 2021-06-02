@@ -3,6 +3,7 @@ package org.launchcode.uTrain.models;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public class Message extends AbstractEntity{
 
 
-    @NotNull
+    @NotBlank(message = "Field can not be blank!!")
     @Size(max = 500, message = "Message has more than 500 characters")
     private String body;
 
