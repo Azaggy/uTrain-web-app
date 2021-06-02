@@ -58,8 +58,8 @@
                                 </label>
                             </div>
                             <div class="col">
-                                <label class="form-label" style="margin-right:20px">Duration of Workout
-                                <input th:field="${workout.exercise.name}" class="form-control" type="number" style="border: 1px solid #0056b9; width:300px">
+                                <label class="form-label" style="margin-right:20px">Duration of Workout (Mins)
+                                <input th:field="${workout.duration}" class="form-control" type="number" style="border: 1px solid #0056b9; width:300px">
                                 </label>
                                 <p class="error" th:errors="${workout.duration}"></p>
                             </div>

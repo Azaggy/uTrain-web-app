@@ -14,7 +14,7 @@
     <thead>
     <tr>
         <th>Description</th>
-        <th>Calories Consumed</th>
+<!--        <th>Calories Consumed</th>-->
         <th>Calories Burned</th>
         <th>Exercise Name</th>
         <th>Exercise Type</th>
@@ -23,7 +23,7 @@
     </thead>
     <tr th:each="workout : ${workouts}">
         <th th:text="${workout.description}"></th>
-        <th th:text="${workout.consumedCal}"></th>
+<!--        <th th:text="${workout.consumedCal}"></th>-->
         <th th:text="${workout.burnedCal}"></th>
         <th th:text="${workout.exercise.name}"></th>
         <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
