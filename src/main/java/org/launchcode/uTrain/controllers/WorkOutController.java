@@ -186,6 +186,7 @@ public class WorkOutController {
         }
 
         model.addAttribute("user", user);
+        model.addAttribute("title", "Instructional Videos");
         return "workout/instructionalVideos";
     }
 
