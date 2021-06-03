@@ -36,9 +36,9 @@
         <th>Description</th>
 <!--        <th>Calories Consumed</th>-->
         <th>Calories Burned</th>
-
         <th>Exercise Name</th>
         <th>Exercise Type</th>
+        <th>Consumed Calories</th>
         <th>Date of Workout</th>
     </tr>
     </thead>
@@ -48,6 +48,7 @@
         <th th:text="${workout.burnedCal}"></th>
         <th th:text="${workout.exercise.name}"></th>
         <th th:text="${workout.exercise.exerciseType.exerciseType}"></th>
+        <th th:text="${workout.consumedCal}"></th>
         <th th:text="${workout.dateFormatter}"></th>
     </tr>
 </table>

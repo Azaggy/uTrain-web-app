@@ -46,6 +46,8 @@ public class Workout extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private Integer netCal;
+
     public Workout() {
     }
 
@@ -118,6 +120,14 @@ public class Workout extends AbstractEntity {
 
     public User getUser() {
         return user;
+    }
+
+    public Integer getNetCal() {
+        return netCal;
+    }
+
+    public void setNetCal(Integer consumedCal, Integer burnedCal) {
+        this.netCal = consumedCal - burnedCal;
     }
 
     public void setUser(User user) {
@@ -215,5 +225,7 @@ public class Workout extends AbstractEntity {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm a");
     return (formatter.format(this.timeStamp));
     }
+
+
 }
 
