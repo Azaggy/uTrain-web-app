@@ -3,6 +3,7 @@
         <head th:replace="fragments :: head">
             <link rel="stylesheet" th:href="@{/styles.css}">
 
+
             <style>
                 @media screen and (max-width: 992px) {
                     .goodBye {
@@ -26,10 +27,8 @@
 
         <body class="container">
             <header th:replace="fragments :: page-header"></header>
-
             <div class="container py-3">
                 <h1 style="color: #0056b9; text-align: center;"  th:text="${title}"></h1>
-
                 <form method="post" th:action="@{/gym/addgym}">
 
                 <!--Gym Info card header-->
@@ -43,41 +42,41 @@
                                     <div class="row justify-content-start">
                                         <div class="col">
                                             <label class="form-label" style="margin-right:20px">Name
-                                                <input  th:field="${gym.name}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.name}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.name}"></p>
 
                                             <label class="form-label" style="margin-right: 20px">Phone
-                                                <input  th:field="${gym.phoneNumber}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.phoneNumber}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.phoneNumber}"></p>
 
                                             <label class="form-label" style="margin-right: 20px">Email
-                                                <input  th:field="${gym.email}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.email}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.email}"></p>
                                         </div>
 
                                         <div class="col" style="width: 30%;">
                                             <label class="form-label" style="margin-right: 20px">Address
-                                                <input  th:field="${gym.address.street}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.address.street}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.address.street}"></p>
                                         </div>
 
                                         <div class="col px-3">
                                             <label class="form-label" style="margin-right: 20px">City
-                                                <input  th:field="${gym.address.city}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.address.city}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.address.city}"></p>
 
                                             <label class="form-label" style="margin-right: 20px">State
-                                                <input  th:field="${gym.address.state}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input  th:field="${gym.address.state}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.address.state}"></p>
 
                                             <label class="form-label" style="margin-right: 20px">Zip Code
-                                                <input th:field="${gym.address.zipCode}" class="form-control" style="border: 1px solid #0056b9">
+                                            <input th:field="${gym.address.zipCode}" class="form-control" style="border: 1px solid #0056b9">
                                             </label>
                                             <p class="error" th:errors="${gym.address.zipCode}"></p>
                                         </div>

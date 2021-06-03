@@ -144,30 +144,37 @@
                                     <th th:text="${shared[0].sender}"></th>
                                     <th th:text="${shared[0].body}"></th>
                                     <th th:text="${shared[0].dateFormatter}"></th>
+<!--                                    <th th:text="${shared[}"></th>-->
                                 </tr>
                                 <tr>
                                     <th th:text="${shared[1].sender}"></th>
                                     <th th:text="${shared[1].body}"></th>
                                     <th th:text="${shared[1].dateFormatter}"></th>
+<!--                                    <th th:text="${shared[1].dateFormatter}"></th>-->
+
                                 </tr>
                                 <tr>
                                     <th th:text="${shared[2].sender}"></th>
                                     <th th:text="${shared[2].body}"></th>
                                     <th th:text="${shared[2].dateFormatter}"></th>
+<!--                                    <th th:text="${shared[1].dateFormatter}"></th>-->
+
                                 </tr>
                             </th:block>
                             <th:block th:unless="${shared.size > 2}">
-                                <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Buddy</th>
-                                    <th>Workout Description</th>
-                                </tr>
-                                </thead>
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Buddy</th>
+                                            <th>Workout Description</th>
+                                            <th>Net Calories</th>
+                                        </tr>
+                                        </thead>
                                 <tr th:each="share : ${shared}">
                                     <th th:text="${share.dateFormatter}"></th>
                                     <th th:text="${share.user.username}"></th>
                                     <th th:text="${share.description}"></th>
+                                    <th th:text="${share.netCal}"></th>
                                 </tr>
                             </th:block>
                         </table>
