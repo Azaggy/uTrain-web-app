@@ -157,17 +157,18 @@
                                 </tr>
                             </th:block>
                             <th:block th:unless="${shared.size > 2}">
-                                <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Buddy</th>
-                                    <th>Workout Description</th>
-                                </tr>
-                                </thead>
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Buddy</th>
+                                            <th>Workout Description</th>
+                                        </tr>
+                                        </thead>
                                 <tr th:each="share : ${shared}">
                                     <th th:text="${share.dateFormatter}"></th>
                                     <th th:text="${share.user.username}"></th>
                                     <th th:text="${share.description}"></th>
+                                    <th th:text=("${share.consumedCal}"-"${share.burnedCal}")></th>
                                 </tr>
                             </th:block>
                         </table>
