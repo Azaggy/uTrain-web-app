@@ -24,9 +24,9 @@
     </style>
 </head>
 <body>
-
-<div th:replace="fragments :: page-header"></div>
 <div class="container py-3">
+<div th:replace="fragments :: page-header"></div>
+
     <div class="row">
         <div class="col-md-8" style="margin: auto;">
             <div style="border: 1px solid #0056b9;" class="card mb-4 rounded-3 shadow-sm">
@@ -47,6 +47,8 @@
             </div>
         </div>
     </div>
+    <footer th:replace="fragments :: footer"></footer>
+
 </div>
 
 
@@ -144,7 +146,6 @@
 <!--    </form>-->
 <!--</div>-->
 
-<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

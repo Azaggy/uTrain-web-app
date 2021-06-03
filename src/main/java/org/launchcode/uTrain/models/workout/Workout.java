@@ -4,12 +4,12 @@ import org.launchcode.uTrain.models.AbstractEntity;
 import org.launchcode.uTrain.models.user.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Workout extends AbstractEntity {
@@ -46,6 +46,7 @@ public class Workout extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @NotNull
     private Double netCal;
 
     public Workout() {
@@ -123,11 +124,21 @@ public class Workout extends AbstractEntity {
     }
 
     public Double getNetCal() {
-        return consumedCal - burnedCal;
+        if (consumedCal != null) {
+            Double netCal2 = consumedCal.doubleValue() - Double.valueOf(burnedCal);
+            return netCal2;
+        }else {
+            netCal = 0.0;
+            return netCal;
+        }
+
+//        return consumedCal - burnedCal;
+
     }
 
-    public void setNetCal(Integer consumedCal, Double burnedCal) {
-        this.netCal = consumedCal - burnedCal;
+
+    public void setNetCal(Double netCal) {
+        this.netCal = netCal;
     }
 
     public void setUser(User user) {
