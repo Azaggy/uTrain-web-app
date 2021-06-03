@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-    <head th:replace="fragments :: head">
-        <link rel="stylesheet" th:href="@{/styles.css}">
+<head th:replace="fragments :: head">
+    <link rel="stylesheet" th:href="@{/styles.css}">
         <style>
           @media screen and (max-width: 992px) {
             .goodBye {
@@ -21,7 +21,7 @@
             }
           }
         </style>
-    </head>
+</head>
 <body class="container">
 <header th:replace="fragments :: page-header"></header>
 <div class="container py-3 ">
@@ -68,12 +68,12 @@
                         <div class="row justify-content-start">
                             <div class="col">
                                 <label class="form-label" style="margin-right:20px">Type of Workout
-                                    <select class="form-control" th:field="${workout.exercise.exerciseType}" style="border: 1px solid #0056b9; width:300px">
-                                        <option th:each="type : ${types}"
-                                                th:value="${type}"
-                                                th:text="${type.exerciseType}">
-                                        </option>
-                                    </select>
+                                <select class="form-control" th:field="${workout.exercise.exerciseType}" style="border: 1px solid #0056b9; width:300px">
+                                    <option th:each="type : ${types}"
+                                            th:value="${type}"
+                                            th:text="${type.exerciseType}">
+                                    </option>
+                                </select>
                                 </label>
                             </div>
                             <div class="col">
@@ -83,6 +83,27 @@
                                 <p class="error" th:errors="${workout.duration}"></p>
                             </div>
                        </div>
+                    </div>
+                </div>
+
+                <!--Daily Activity card header-->
+                <div class="row justify-content-start py-3">
+                    <div class="col-lg-12">
+                        <div class="card md-6 rounded-3 shadow-sm" style="border: 1px solid #0056b9;">
+                            <h5 class="card-header" style="background-color:#0056b9; color: white">Calories Consumed</h5>
+
+                            <!--Daily Activity card body-->
+                            <div class="card-body">
+                                <div class="row justify-content-start">
+                                    <div class="col">
+                                        <label class="form-label" style="margin-right:20px">Amount of Total Daily Calories
+                                        <input th:field="${workout.consumedCal}" class="form-control" type="number" style="border: 1px solid #0056b9; width:300px">
+                                        </label>
+                                        <p class="error" th:errors="${workout.consumedCal}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

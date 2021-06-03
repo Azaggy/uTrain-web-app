@@ -92,7 +92,7 @@ public class WorkOutController {
 
         User user = (User) getUserFromSession(request.getSession());
 
-        model.addAttribute("title", "Add Workout");
+        model.addAttribute("title", "Daily Activity");
         model.addAttribute("user", user);
         model.addAttribute("types", ExerciseType.values());
         model.addAttribute("loggedIn", true);
