@@ -3,7 +3,6 @@ package org.launchcode.uTrain.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.uTrain.data.UserRepository;
 import org.launchcode.uTrain.models.LiveWeatherService;
-import org.launchcode.uTrain.models.StubWeatherService;
 import org.launchcode.uTrain.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,11 +33,9 @@ public class CurrentWeatherController {
     @Autowired
     UserRepository userRepository;
 
-    private final StubWeatherService stubWeatherService;
     private final LiveWeatherService liveWeatherService;
 
-    public CurrentWeatherController(StubWeatherService stubWeatherService, LiveWeatherService liveWeatherService) {
-        this.stubWeatherService = stubWeatherService;
+    public CurrentWeatherController(LiveWeatherService liveWeatherService) {
         this.liveWeatherService = liveWeatherService;
     }
 
