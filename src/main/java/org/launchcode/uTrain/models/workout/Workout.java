@@ -46,7 +46,7 @@ public class Workout extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Integer netCal;
+    private Double netCal;
 
     public Workout() {
     }
@@ -122,11 +122,11 @@ public class Workout extends AbstractEntity {
         return user;
     }
 
-    public Integer getNetCal() {
-        return netCal;
+    public Double getNetCal() {
+        return consumedCal - burnedCal;
     }
 
-    public void setNetCal(Integer consumedCal, Integer burnedCal) {
+    public void setNetCal(Integer consumedCal, Double burnedCal) {
         this.netCal = consumedCal - burnedCal;
     }
 
