@@ -46,7 +46,7 @@ public class Workout extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @NotNull
+//    @NotNull
     private Double netCal;
 
     public Workout() {
